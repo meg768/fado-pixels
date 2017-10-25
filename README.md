@@ -15,6 +15,30 @@ enter this.
 echo > /Volumes/boot/ssh
 ````
 
+### Configure Network
+
+
+````bash
+sudo nano /etc/wpa_supplicant/wpa_supplicant.conf
+````
+Create another file named **wpa_supplicant.conf** on /Volumes/boot.
+If the mac terminal, type
+
+````bash
+nano /Volumes/wpa_supplicant.conf
+````
+
+And paste in the following
+
+    country=GB
+    ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+    update_config=1
+
+    network={
+    	ssid="network"
+    	psk="password"
+    }
+
 ### Update apt-get
 
 When all set up. Update apt-get.
