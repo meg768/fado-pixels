@@ -21,7 +21,7 @@ Create another file named **wpa_supplicant.conf** on /Volumes/boot.
 If the mac terminal, type
 
 ````bash
-nano /Volumes/wpa_supplicant.conf
+nano /Volumes/boot/wpa_supplicant.conf
 ````
 
 And paste in the following
