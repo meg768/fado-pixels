@@ -43,10 +43,13 @@ Once it is booted, try to figure out the IP address by using LanScan for Mac.
 
 ### Update apt-get
 
-When all set up. Update apt-get.
+When all set up. Update your Pi.
 
 ````bash
-sudo apt-get update && sudo apt-get dist-upgrade
+sudo apt-get update
+sudo apt-get upgrade -y
+sudo apt-get dist-upgrade -y
+sudo rpi-update
 ````
 
 ### Configure using raspi-config
@@ -70,6 +73,18 @@ sudo apt-get install git-core pigpio
 ````
 ### Set up Bluetooth
 
+
+````bash
+sudo bluetoothctl
+````
+
+Enter the following commands
+
+    power on
+    agent NoInputNoOutput
+    default-agent
+
+
 Follow this link to set up Bluetooth file transfer. It will make your Raspberry Pi
 accept files from your Mac or PC. https://www.raspberrypi.org/forums/viewtopic.php?p=963751#p963751
 
@@ -87,6 +102,13 @@ cd neopixel-globe
 npm install
 ````
 
+### Create Environment File
+
+This project uses the npm module **dotenv** and needs some enviroment variables set up.
+
+````bash
+echo > .env
+````
 
 
 
