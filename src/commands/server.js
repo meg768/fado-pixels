@@ -50,7 +50,7 @@ var Module = new function() {
 			var ClockAnimation     = require('../scripts/clock-animation.js');
 			var BlankAnimation     = require('../scripts/animation.js');
 
-			var strip            = new Strip(16, 1);
+			var strip            = new Strip({width:16, height:1});
 			var animationIndex   = 0;
 			var animations       = [];
 			var currentAnimation = undefined;
