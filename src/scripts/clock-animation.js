@@ -24,7 +24,7 @@ module.exports = class extends Animation {
     tick() {
         var now = new Date();
 
-        if (now - this.lastRender > 500) {
+        if (now - this.lastRender > 1000) {
             this.hue = this.hue % 360;
             this.render();
         }
@@ -56,7 +56,7 @@ module.exports = class extends Animation {
         }
 
 
-        this.strip.render(pixels.getPixels(), options);
+        this.strip.render(pixels.getPixels(), {fadeIn:10});
         this.lastRender = new Date();
 
     }
