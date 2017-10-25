@@ -31,12 +31,14 @@ And paste in the following
     update_config=1
 
     network={
-    	ssid="network"
-    	psk="password"
+    	ssid="your-network-name"
+    	psk="your-password"
     }
 
 And save the file by pressing **CTRL+X** followed by **Y**. Now
 remove the memory card from your Mac and insert into your Raspberry.
+
+Once it is booted, try to figure out the IP address by using LanScan for Mac.
 
 ### Update apt-get
 
