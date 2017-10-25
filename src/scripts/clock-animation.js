@@ -25,7 +25,7 @@ module.exports = class extends Animation {
         var now = new Date();
 
         if (now - this.lastRender > 100) {
-            this.hue = this.hue % 360;
+            this.hue = (this.hue + 1) % 360;
             this.render();
         }
 
