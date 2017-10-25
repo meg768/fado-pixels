@@ -14,6 +14,7 @@ module.exports = class extends Animation {
 
         this.name       = 'Clock';
         this.lastRender = 0;
+        this.hue        = 0;
 
         this.setTiemout(20000);
     }
@@ -23,7 +24,8 @@ module.exports = class extends Animation {
     tick() {
         var now = new Date();
 
-        if (now - this.lastRender > 1000) {
+        if (now - this.lastRender > 500) {
+            this.hue = this.hue % 360;
             this.render();
         }
 
@@ -49,7 +51,7 @@ module.exports = class extends Animation {
 
         for (var y = 0; y < this.strip.height; y++) {
             for (var x = 0; x < this.strip.width; x++) {
-                pixels.setPixelHSL(x, y, hue, 100, 50);
+                pixels.setPixelHSL(x, y, this.hue, 100, 50);
             }
         }
 
