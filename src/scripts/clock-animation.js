@@ -49,7 +49,7 @@ module.exports = class extends Animation {
 
         for (var y = 0; y < this.strip.height; y++) {
             for (var x = 0; x < this.strip.width; x++) {
-                pixels.setPixelHSL(word.x + i, word.y, hue, 100, 50);
+                pixels.setPixelHSL(x, y, hue, 100, 50);
             }
         }
 
