@@ -24,7 +24,7 @@ module.exports = class extends Animation {
     tick() {
         var now = new Date();
 
-        if (now - this.lastRender > 100) {
+        if (now - this.lastRender > 50) {
             this.hue = (this.hue + 1) % 360;
             this.render();
         }
@@ -44,7 +44,6 @@ module.exports = class extends Animation {
     }
 
     render(options) {
-        console.log('Redrawing clock');
 
         var pixels  = new Pixels(this.strip.width, this.strip.height);
         var hue     = this.getHue();
