@@ -68,41 +68,17 @@ wget -O - https://raw.githubusercontent.com/sdesalas/node-pi-zero/master/install
 ````bash
 sudo apt-get install git-core pigpio
 ````
+### Set up Bluetooth
+
+Follow this link to set up Bluetooth file transfer. It will make your Raspberry Pi
+accept files from your Mac or PC. https://www.raspberrypi.org/forums/viewtopic.php?p=963751#p963751
+
 
 ### Clone repository
 
 ````bash
-git clone https://github.com/meg768/word-clock.git
+git clone https://github.com/meg768/neopixel-globe.git
 ````
-
-### Run it
-
-````bash
-cd word-clock
-npm install
-sudo node ./word-clock.js server
-````
-
-````bash
-sudo nano /etc/wpa_supplicant/wpa_supplicant.conf
-````
-
-````bash
-country=GB
-ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
-update_config=1
-
-network={
-	ssid="network"
-	psk="password"
-}
-````
-
-## wpa_supplicant
-
-Disconnect
-
-	wpa_cli disconnect -i wlan0
 
 
 
