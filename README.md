@@ -49,7 +49,7 @@ When all set up. Update apt-get.
 sudo apt-get update && sudo apt-get dist-upgrade
 ````
 
-### Use raspi-config to set time zone, enable SSH.
+### Configure using raspi-config
 
 Use **raspi-config** to configure time zone, enable SSH and enable I2C.
 
