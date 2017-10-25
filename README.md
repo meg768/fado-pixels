@@ -81,6 +81,13 @@ git clone https://github.com/meg768/neopixel-globe.git
 cd neopixel-globe
 ````
 
+### Install Node Modules
+
+````bash
+npm install
+````
+
+
 
 
 ## Links
