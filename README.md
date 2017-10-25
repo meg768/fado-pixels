@@ -78,6 +78,7 @@ accept files from your Mac or PC. https://www.raspberrypi.org/forums/viewtopic.p
 
 ````bash
 git clone https://github.com/meg768/neopixel-globe.git
+cd neopixel-globe
 ````
 
 
