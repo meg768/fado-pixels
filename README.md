@@ -35,7 +35,9 @@ And paste in the following
     	psk="password"
     }
 
-And save the file by pressing **CTRL+X** followed by **Y**
+And save the file by pressing **CTRL+X** followed by **Y**. Now
+remove the memory card from your Mac and insert into your Raspberry.
+
 ### Update apt-get
 
 When all set up. Update apt-get.
