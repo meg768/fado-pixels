@@ -23,7 +23,7 @@ module.exports = class extends Animation {
     tick() {
         var now = new Date();
 
-        if (now - this.lastRender > 30000) {
+        if (now - this.lastRender > 1000) {
             this.render();
         }
 
