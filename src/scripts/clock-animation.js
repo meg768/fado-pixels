@@ -24,10 +24,8 @@ module.exports = class extends Animation {
     tick() {
         var now = new Date();
 
-        if (now - this.lastRender > 50) {
-            this.hue = (this.hue + 1) % 360;
-            this.render();
-        }
+        this.hue = (this.hue + 1) % 360;
+        this.render();
 
     }
 
