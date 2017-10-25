@@ -19,6 +19,8 @@ var App = function() {
 			args.option('size',      {alias:'S', describe:'Size of the Neopixel strip', default:process.env.NEOPIXEL_STRIP_LENGTH});
 			args.option('debug',     {alias:'D', describe:'Debug mode', default:false});
 
+			args.command(require('./src/commands/server.js'));
+
 
 			args.wrap(null);
 			args.demand(1);
