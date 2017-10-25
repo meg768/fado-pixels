@@ -15,5 +15,14 @@
   "bugs": {
     "url": "https://github.com/meg768/neopixel-globe/issues"
   },
-  "homepage": "https://github.com/meg768/neopixel-globe#readme"
+  "homepage": "https://github.com/meg768/neopixel-globe#readme",
+  "dependencies": {
+      "color": "^2.0.0",
+      "dotenv": "^4.0.0",
+      "pigpio": "^0.6.2",
+      "rpi-ws281x-native": "^0.8.2",
+      "socket.io-client": "^2.0.3",
+      "yargs": "^8.0.2",
+      "yow": "^1.0.84"
+    }
 }
