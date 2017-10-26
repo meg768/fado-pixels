@@ -149,7 +149,7 @@ var Module = new function() {
 
 			setup.on('connecting', () => {
 				debug('Connecting to Wi-Fi...');
-                enqueue(new PulseAnimation(strip, {priority:'!', frequency: 10, color:'blue', duration:-1}));
+                enqueue(new PulseAnimation(strip, {priority:'!', frequency: 10, color:'orange', duration:-1}));
 			});
 
             setup.on('discoverable', () => {
@@ -163,7 +163,7 @@ var Module = new function() {
 
 			setup.on('ready', () => {
 				debug('Ready!');
-                enqueue(new PulseAnimation(strip, {priority:'!', frequency: 500, color:'red', duration:-1}));
+                enqueue(new PulseAnimation(strip, {priority:'!', frequency: 500, color:'green', duration:-1}));
 			});
 
 
