@@ -51,8 +51,8 @@ var Module = new function() {
 			var BlankAnimation     = require('../scripts/animation.js');
 
 			console.log('Connecting...');
-			
-			var socket           = io.connect("http://app-o.se/neopixel-globe");
+
+			var socket           = io.connect("http://app-o.se/service/neopixel-globe");
 			var strip            = new Strip({width:16, height:1});
 			var animationIndex   = 0;
 			var animations       = [];
