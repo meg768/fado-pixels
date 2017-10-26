@@ -18,7 +18,7 @@ module.exports = class extends Animation {
         this.hue       = Color('red').hue();
         this.luminance = 0;
         this.delta     = 1;
-        this.delay     = 10;
+        this.delay     = 50;
         this.ticks     = 0;
 
         if (isString(this.options.color)) {
