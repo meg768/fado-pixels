@@ -1,4 +1,5 @@
 
+var fs = require('fs');
 var WiFi = require('./wifi-connection.js');
 var isString = require('yow/is').isString;
 var Events  = require('events');
@@ -53,7 +54,6 @@ module.exports = class WifiSetup extends Events {
     }
 
     setup() {
-        var fs = require('fs');
         var fileName = this.fileName;
 
         function loadFile() {
