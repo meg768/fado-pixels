@@ -36,7 +36,7 @@ module.exports = function NeopixelStrip(options) {
 		var tmp = new Uint32Array(_length);
 		var numSteps = 50;
 
-/*
+
 		function sleep(milliseconds) {
 			var start = new Date().getTime();
 
@@ -46,7 +46,7 @@ module.exports = function NeopixelStrip(options) {
 				}
 			}
 		}
-*/
+
 
 		if (options && options.fadeIn) {
 			var numSteps = options.fadeIn;
@@ -71,7 +71,8 @@ module.exports = function NeopixelStrip(options) {
 				}
 				_strip.render(tmp);
 
-				sleep.msleep(50);
+				//sleep.msleep(50);
+				sleep(50);
 			}
 
 		}
