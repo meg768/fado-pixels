@@ -7,6 +7,10 @@ var Path       = require('path');
 var Watch      = require('watch');
 var FileMonitor = require('./src/scripts/file-monitor.js');
 
+function debug() {
+    console.log.apply(this, arguments);
+}
+
 /*
 class FileMonitor extends Events {
 
@@ -51,15 +55,15 @@ var App = function() {
 
 
 	monitor.on('created', (file) => {
-		console.log('Created', file);
+		debug('Created', file);
 	});
 
 	monitor.on('changed', (file) => {
-		console.log('Created', file);
+		debug('Changed', file);
 	});
 
 	monitor.on('removed', (file) => {
-		console.log('removed', file);
+		debug('removed', file);
 	});
 
 }
