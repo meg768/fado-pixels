@@ -18,6 +18,8 @@ module.exports = class extends Animation {
         this.hue       = Color('red').hue();
         this.luminance = 0;
         this.delta     = 1;
+        this.delay     = 10;
+        this.ticks     = 0;
 
         if (isString(this.options.color)) {
             try {
@@ -36,21 +38,25 @@ module.exports = class extends Animation {
 
 
     render() {
-        var pixels = new Pixels(this.strip.width, this.strip.height);
+        if ((this.ticks % this.delay) == 0) {
+            var pixels = new Pixels(this.strip.width, this.strip.height);
 
-        pixels.fill(Color.hsl(this.hue, 100, this.luminance).rgbNumber());
-        this.strip.render(pixels.getPixels());
+            pixels.fill(Color.hsl(this.hue, 100, this.luminance).rgbNumber());
+            this.strip.render(pixels.getPixels());
 
-        this.luminance += this.delta;
+            this.luminance += this.delta;
 
-        if (this.luminance >= 50) {
-            this.delta = -1;
+            if (this.luminance >= 50) {
+                this.delta = -1;
+            }
+
+            if (this.luminance <= 0) {
+                this.delta = 1;
+            }
+
+
         }
-
-        if (this.luminance <= 0) {
-            this.delta = 1;
-        }
-
+        this.ticks++;
 
     }
 
