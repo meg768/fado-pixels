@@ -40,6 +40,7 @@ var Module = new function() {
 		registerService().then(function() {
 			var ColorAnimation     = require('../scripts/color-animation.js');
 			var RandomAnimation    = require('../scripts/random-animation.js');
+            var FlashAnimation     = require('../scripts/flash-animation.js');
 			var BlankAnimation     = require('../scripts/animation.js');
 
 			console.log('Connecting...');
@@ -152,7 +153,7 @@ var Module = new function() {
 
             setup.on('discoverable', () => {
 				debug('Raspberry now discoverable.');
-				enqueue(new ColorAnimation(strip, {color:'blue', priority:'!', duration:-1}));
+				enqueue(new FlashAnimation(strip, {color:'blue', priority:'!', duration:-1}));
 			});
 
             setup.on('wifi-changed', () => {
