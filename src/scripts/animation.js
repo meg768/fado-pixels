@@ -18,13 +18,14 @@ module.exports = class Animation extends Events {
         this.cancelled = false;
         this.priority  = 'normal';
 
+
     }
 
     setTiemout(ms) {
         this.options.timeout = ms;
     }
 
-    tick() {
+    render() {
 
     }
 
@@ -80,7 +81,7 @@ module.exports = class Animation extends Events {
                     resolve();
                 }
                 else {
-                    self.tick();
+                    self.render();
                     setImmediate(loop);
                 }
             }

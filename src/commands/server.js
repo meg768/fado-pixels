@@ -74,10 +74,8 @@ var Module = new function() {
 			socket.on('colorize', function(params, fn) {
 				fn({status:'OK'});
 
-				console.log('Colorize!');
-				enqueue(new ClockAnimation(strip));
-
-
+				console.log('Colorize!', params);
+				enqueue(new ClockAnimation(strip, params));
 
 			});
 

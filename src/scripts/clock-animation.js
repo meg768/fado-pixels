@@ -20,14 +20,6 @@ module.exports = class extends Animation {
 
 
 
-    tick() {
-        var now = new Date();
-
-        this.hue = (this.hue + 1) % 360;
-        this.render();
-
-    }
-
     start() {
         return new Promise((resolve, reject) => {
             super.start().then(() => {
@@ -40,7 +32,10 @@ module.exports = class extends Animation {
         });
     }
 
-    render(options) {
+    render() {
+        var now = new Date();
+
+        this.hue = (this.hue + 1) % 360;
 
         var pixels  = new Pixels(this.strip.width, this.strip.height);
         var hue     = this.getHue();
