@@ -43,6 +43,7 @@ var Module = new function() {
             var FlashAnimation     = require('../scripts/flash-animation.js');
 			var BlankAnimation     = require('../scripts/animation.js');
             var PulseAnimation     = require('../scripts/pulse-animation.js');
+            var BlinkAnimation     = require('../scripts/blink-animation.js');
 
 			console.log('Connecting...');
 
@@ -163,7 +164,7 @@ var Module = new function() {
 
 			setup.on('ready', () => {
 				debug('Ready!');
-                enqueue(new PulseAnimation(strip, {priority:'!', frequency: 500, color:'green', duration:-1}));
+                enqueue(new BlinkAnimation(strip, {priority:'!', frequency: 500, color:'green', duration:-1}));
 			});
 
 
