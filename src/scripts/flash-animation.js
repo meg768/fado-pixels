@@ -45,12 +45,12 @@ module.exports = class extends Animation {
             this.time = now;
 
             pixels.fill(this.color);
-            this.strip.render(pixels.getPixels(), {fadeIn:5});
+            this.strip.render(pixels.getPixels());
 
-            Sleep.msleep(100);
+            Sleep.msleep(200);
 
             pixels.fill(0);
-            this.strip.render(pixels.getPixels(), {fadeIn:5});
+            this.strip.render(pixels.getPixels());
         }
 
 
