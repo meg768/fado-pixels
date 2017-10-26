@@ -6,11 +6,13 @@ var isFunction = require('yow/is').isFunction;
 var Timer = require('yow/timer');
 var Strip = require('../scripts/neopixel-strip.js');
 
+function debug() {
+    console.log.apply(this, arguments);
+}
+
 var Module = new function() {
 
-	function debug() {
-		console.log.apply(this, arguments);
-	}
+
 
 	function defineArgs(args) {
 
@@ -27,6 +29,7 @@ var Module = new function() {
 	function registerService() {
 		return Promise.resolve();
 	}
+
 
 
 	function run(argv) {
@@ -139,9 +142,24 @@ var Module = new function() {
 				}
 			}
 
+			var setup = new WifiSetup();
 
+			setup.on('working', () => {
+				debug('Connecting to Wi-Fi...');
+				enqueue(new RandomAnimation(strip, {duration:-1}));
+			});
 
-			enqueue(new RandomAnimation(strip, {duration:5000}));
+			setup.on('ready', () => {
+				debug('Ready!');
+				enqueue(new ColorAnimation(strip, {color:'blue', priority:'!', duration:-1}));
+			});
+
+			setup.on('error', (error) => {
+			    debug(error);
+				enqueue(new ColorAnimation(strip, {color:'red', priority:'!', duration:-1}));
+			});
+
+			setup.setup('/boot/bluetooth/config.json');
 
 
 		});

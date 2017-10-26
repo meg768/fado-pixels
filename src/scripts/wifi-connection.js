@@ -5,6 +5,10 @@ var isString = require('yow/is').isString;
 var child_process = require('child_process');
 
 
+function debug() {
+    //console.log.apply(this, arguments);
+}
+
 module.exports = class WiFi {
 
     constructor(iface = 'wlan0') {
@@ -44,22 +48,22 @@ module.exports = class WiFi {
     }
 
     addNetwork() {
-        console.log('Adding network...');
+        debug('Adding network...');
         return this.wpa_cli('add_network', '^([0-9]+)');
     }
 
     selectNetwork(id) {
-        console.log(sprintf('Selecting network %d...', id));
+        debug(sprintf('Selecting network %d...', id));
         return this.wpa_cli(sprintf('select_network %s', id), '^OK');
     }
 
     saveConfiguration() {
-        console.log(sprintf('Saving configuration'));
+        debug(sprintf('Saving configuration'));
         return this.wpa_cli(sprintf('save_config'), '^OK');
 
     }
 
-    isConnectedToNetwork() {
+    getConnectionState() {
         return new Promise((resolve, reject) => {
 
             this.getNetworkStatus().then((status) => {
@@ -87,7 +91,7 @@ module.exports = class WiFi {
 
         return new Promise((resolve, reject) => {
 
-            this.isConnectedToNetwork().then((connected) => {
+            this.getConnectionState().then((connected) => {
 
                 if (connected) {
                     return Promise.resolve();
@@ -116,54 +120,14 @@ module.exports = class WiFi {
 
     }
 
-    connectToNetwork(ssid, password, timeout = 20000) {
-        return new Promise((resolve, reject) => {
-
-            var networkID = undefined;
-
-            this.removeAllNetworks().then(() => {
-                return this.addNetwork();
-            })
-            .then((id) => {
-                console.log('Network created:', id);
-                networkID = parseInt(id);
-                return Promise.resolve();
-            })
-            .then(() => {
-                return this.setNetworkVariable(networkID, 'ssid', ssid);
-            })
-            .then(() => {
-                return (isString(password) ? this.setNetworkVariable(networkID, 'psk', password) : Promise.resolve());
-            })
-            .then(() => {
-                return this.selectNetwork(networkID);
-            })
-
-            .then(() => {
-                return this.waitForNetworkConnection(timeout);
-            })
-
-            .then(() => {
-                return this.saveConfiguration();
-            })
-
-            .then(() => {
-                resolve();
-            })
-            .catch((error) => {
-                reject(error);
-            })
-        });
-
-    }
 
     setNetworkVariable(id, name, value) {
-        console.log(sprintf('Setting variable %s=%s for network %d.', name, value, id));
+        debug(sprintf('Setting variable %s=%s for network %d.', name, value, id));
         return this.wpa_cli(sprintf('set_network %d %s \'"%s"\'', id, name, value), '^OK');
     }
 
     removeAllNetworks() {
-        console.log('Removing all networks...');
+        debug('Removing all networks...');
 
         return new Promise((resolve, reject) => {
             this.getNetworks().then((networks) => {
@@ -244,23 +208,46 @@ module.exports = class WiFi {
         });
 
     }
+
+
+    connectToNetwork(ssid, password, timeout = 20000) {
+        return new Promise((resolve, reject) => {
+
+            var networkID = undefined;
+
+            this.removeAllNetworks().then(() => {
+                return this.addNetwork();
+            })
+            .then((id) => {
+                debug('Network created:', id);
+                networkID = parseInt(id);
+                return Promise.resolve();
+            })
+            .then(() => {
+                return this.setNetworkVariable(networkID, 'ssid', ssid);
+            })
+            .then(() => {
+                return (isString(password) ? this.setNetworkVariable(networkID, 'psk', password) : Promise.resolve());
+            })
+            .then(() => {
+                return this.selectNetwork(networkID);
+            })
+
+            .then(() => {
+                return this.waitForNetworkConnection(timeout);
+            })
+
+            .then(() => {
+                return this.saveConfiguration();
+            })
+
+            .then(() => {
+                resolve();
+            })
+            .catch((error) => {
+                reject(error);
+            })
+        });
+
+    }
 }
-
-/*
-function test() {
-
-
-    var wifi = new WiFi();
-
-    wifi.connectToNetwork('Julia', 'potatismos').then((output) => {
-        console.log('Connected!');
-    })
-    .catch((error) => {
-        console.log(error);
-    });
-
-
-}
-
-test();
-*/

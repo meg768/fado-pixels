@@ -86,8 +86,8 @@ Enter the following commands
     default-agent
     exit
 
-Follow this link to set up Bluetooth file transfer. It will make your Raspberry Pi
-accept files from your Mac or PC. https://www.raspberrypi.org/forums/viewtopic.php?p=963751#p963751
+Follow this link to set up Bluetooth file transfer. https://www.raspberrypi.org/forums/viewtopic.php?p=963751#p963751
+It will make your Raspberry Pi accept files from your Mac or PC.
 
 
 ### Clone repository
