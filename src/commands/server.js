@@ -5,7 +5,7 @@ var isObject = require('yow/is').isObject;
 var isFunction = require('yow/is').isFunction;
 var Timer = require('yow/timer');
 var Strip = require('../scripts/neopixel-strip.js');
-var Button = require('../scripts/button.js');
+var io = require('socket.io-client');
 
 var Module = new function() {
 
@@ -50,6 +50,7 @@ var Module = new function() {
 			var ClockAnimation     = require('../scripts/clock-animation.js');
 			var BlankAnimation     = require('../scripts/animation.js');
 
+			var socket           = io.connect("hppt://app-o.se/");
 			var strip            = new Strip({width:16, height:1});
 			var animationIndex   = 0;
 			var animations       = [];
@@ -57,6 +58,27 @@ var Module = new function() {
 			var state            = 0;
 
 			animations.push(new ClockAnimation(strip));
+
+			socket.on('connect', function() {
+
+				console.log('Connected to socket server.');
+
+				socket.emit('i-am-the-provider');
+			});
+
+			socket.on('disconnect', function() {
+				console.log('Disconnected from socket server');
+			});
+
+
+			socket.on('colorize', function(params, fn) {
+				fn({status:'OK'});
+
+				console.log('Colorize!');
+
+
+			});
+
 
 
 			function disableAnimations() {
@@ -132,7 +154,7 @@ var Module = new function() {
 
 
 	module.exports.command  = 'server [options]';
-	module.exports.describe = 'Run Neopixel word clock';
+	module.exports.describe = 'Run Neopixel Globe';
 	module.exports.builder  = defineArgs;
 	module.exports.handler  = run;
 
