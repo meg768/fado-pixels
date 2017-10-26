@@ -6,6 +6,7 @@ var Animation = require('./animation.js');
 var Strip     = require('./neopixel-strip.js');
 var Pixels    = require('./pixels.js');
 var Color     = require('color');
+var Sleep     = require('sleep');
 
 module.exports = class extends Animation {
 
@@ -15,7 +16,6 @@ module.exports = class extends Animation {
 
         this.name = 'Color';
         this.time = undefined;
-        this.ticks = 0;
         this.color = Color('red').rgbNumber();
 
         if (isString(this.options.color)) {
@@ -40,13 +40,19 @@ module.exports = class extends Animation {
         var pixels = new Pixels(this.strip.width, this.strip.height);
 
 
-        if (this.ticks < 10) {
+        if (this.time == undefined || now - this.time > 500) {
+            this.time = now;
+
             pixels.fill(this.color);
+            this.strip.render(pixels.getPixels());
+            Sleep.msleep(100);
+        }
+        else {
+            this.strip.render(pixels.getPixels());
+
         }
 
-        this.strip.render(pixels.getPixels());
 
-        this.ticks = (this.ticks + 1) % 100;
     }
 
 
