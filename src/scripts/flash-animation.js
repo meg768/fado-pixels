@@ -15,6 +15,7 @@ module.exports = class extends Animation {
 
         this.name = 'Color';
         this.time = undefined;
+        this.ticks = 0;
         this.color = Color('red').rgbNumber();
 
         if (isString(this.options.color)) {
@@ -38,13 +39,14 @@ module.exports = class extends Animation {
         var now = new Date();
         var pixels = new Pixels(this.strip.width, this.strip.height);
 
-        if (this.time == undefined || now - this.time > 500) {
+
+        if (this.ticks < 10) {
             pixels.fill(this.color);
-            this.time = now;
         }
 
         this.strip.render(pixels.getPixels());
 
+        this.ticks = (this.ticks + 1) % 100;
     }
 
 
