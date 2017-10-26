@@ -5,6 +5,7 @@ var isObject = require('yow/is').isObject;
 var Pixels   = require('./pixels.js');
 var sleep    = require('sleep');
 
+var sleep = require('sleep');
 
 module.exports = function NeopixelStrip(options) {
 
@@ -71,11 +72,14 @@ module.exports = function NeopixelStrip(options) {
 				}
 				_strip.render(tmp);
 
+sleep.usleep(50 * 1000);
+	/*
 				sleep.usleep(50 * 1000);
 				process.nextTick(function() {
 
 				});
 				//sleep(50);
+				*/
 			}
 
 		}
