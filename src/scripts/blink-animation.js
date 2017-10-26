@@ -35,7 +35,7 @@ module.exports = class extends Animation {
 
     render() {
         if ((this.ticks % this.options.frequency) == 0) {
-            this.pixels.fill(this.color).rgbNumber());
+            this.pixels.fill(this.color).rgbNumber();
             this.strip.render(pixels.getPixels());
 
             Sleep.msleep(100);
