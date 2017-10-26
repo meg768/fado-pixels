@@ -75,6 +75,8 @@ var Module = new function() {
 				fn({status:'OK'});
 
 				console.log('Colorize!');
+				enqueue(new ClockAnimation(strip));
+
 
 
 			});
