@@ -17,17 +17,21 @@ var App = function() {
 
 	var monitor = new FileMonitor('/boot/bluetooth/wifi.json');
 
+    monitor.start();
 
 	monitor.on('created', (file) => {
 		debug('Created', file);
+        monitor.stop();
 	});
 
 	monitor.on('changed', (file) => {
 		debug('Changed', file);
+        monitor.stop();
 	});
 
 	monitor.on('removed', (file) => {
 		debug('removed', file);
+        monitor.stop();
 	});
 
 }

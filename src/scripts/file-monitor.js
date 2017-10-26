@@ -11,32 +11,42 @@ module.exports = class FileMonitor extends Events {
 	constructor(fileName) {
 		super();
 
+        this.fileName = fileName;
+        this.monitor  = undefined;
 
-		var path = Path.dirname(fileName);
+	}
 
-		debug('Monitoring', path);
+    start() {
+
+		var path = Path.dirname(this.fileName);
+
+		debug('Monitoring path ', path);
 
 		Watch.createMonitor(path, (monitor) => {
 
+            this.monitor = monitor;
+
 			monitor.on('created', (file, stat) => {
 				this.emit('created', file, stat);
-				monitor.stop();
 			});
 
 			monitor.on('changed', (file, stat) => {
 				this.emit('changed', file, stat);
-				monitor.stop();
 			});
 
 			monitor.on('removed', (file, stat) => {
 				this.emit('removed', file, stat);
-				monitor.stop();
 			});
 
 
 		});
 
 	}
+
+    stop() {
+        if (this.monitor != undefined)
+            this.monitor.stop();
+    }
 
 
 };
