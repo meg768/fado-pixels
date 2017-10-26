@@ -147,7 +147,7 @@ var Module = new function() {
 
 			setup.on('connecting', () => {
 				debug('Connecting to Wi-Fi...');
-				enqueue(new RandomAnimation(strip, {duration:-1}));
+				enqueue(new RandomAnimation(strip, {priority:'!', duration:-1}));
 			});
 
             setup.on('discoverable', () => {
