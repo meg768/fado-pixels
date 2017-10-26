@@ -32,6 +32,7 @@ module.exports = class WifiSetup extends Events {
             		debug('Created', file);
                     monitor.stop();
 
+                    debug('New file created. Setting up again.');
                     setTimeout(this.setup, 0);
             	});
 
@@ -57,8 +58,11 @@ module.exports = class WifiSetup extends Events {
     setup() {
         var fileName = this.fileName;
 
+        debug('SETUP:', fileName);
+        
         function loadFile() {
             try {
+                debug('Loading file', fileName);
                 return JSON.parse(fs.readFileSync(fileName));
             }
             catch(error) {
