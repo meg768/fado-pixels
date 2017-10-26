@@ -15,7 +15,6 @@ module.exports = class WifiSetup extends Events {
         super();
 
         this.fileName = fileName;
-        this.fileMonitor = new FileMonitor(this.fileName);
 
     }
 
@@ -26,6 +25,8 @@ module.exports = class WifiSetup extends Events {
                 this.emit('discoverable');
 
                 var monitor = new FileMonitor(this.fileName);
+
+                monitor.start();
 
                 monitor.on('created', (file) => {
             		debug('Created', file);
