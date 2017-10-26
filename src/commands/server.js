@@ -50,6 +50,8 @@ var Module = new function() {
 			var ClockAnimation     = require('../scripts/clock-animation.js');
 			var BlankAnimation     = require('../scripts/animation.js');
 
+			console.log('Connecting...');
+			
 			var socket           = io.connect("http://app-o.se/neopixel-globe");
 			var strip            = new Strip({width:16, height:1});
 			var animationIndex   = 0;
