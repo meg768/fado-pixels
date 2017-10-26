@@ -2,7 +2,7 @@
 
 
 var sprintf    = require('yow/sprintf');
-var prefixLogs = require('yow/logs').prefix;
+
 
 var App = function() {
 
@@ -11,12 +11,15 @@ var App = function() {
 
       monitor.on("created", function (f, stat) {
         console.log('new', f);
+		monitor.stop();
       })
       monitor.on("changed", function (f, curr, prev) {
 		  console.log('changed', f);
+		  monitor.stop();
       })
       monitor.on("removed", function (f, stat) {
 		  console.log('removed', f);
+		  monitor.stop();
       })
 //      monitor.stop(); // Stop watching
     })
