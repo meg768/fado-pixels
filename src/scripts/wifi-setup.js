@@ -22,6 +22,7 @@ module.exports = class WifiSetup extends Events {
                 return JSON.parse(fs.readFileSync(fileName));
             }
             catch(error) {
+                debug(error);
             }
         }
 
@@ -30,6 +31,7 @@ module.exports = class WifiSetup extends Events {
                 fs.unlinkSync(fileName);
             }
             catch(error) {
+                debug(error);
             }
 
         }

@@ -84,6 +84,7 @@ Enter the following commands
     power on
     agent NoInputNoOutput
     default-agent
+    pairable on
     exit
 
 Follow this link to set up Bluetooth file transfer. https://www.raspberrypi.org/forums/viewtopic.php?p=963751#p963751
