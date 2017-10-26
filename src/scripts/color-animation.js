@@ -40,7 +40,7 @@ module.exports = class extends Animation {
         var now = new Date();
 
         if (this.time == undefined || now - this.time > 1000) {
-            console.log('Redrawing color');
+            console.log('Redrawing color', this.color);
             var pixels = new Pixels(this.strip.width, this.strip.height);
 
             pixels.fill(this.color);
