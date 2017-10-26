@@ -163,7 +163,7 @@ var Module = new function() {
 
 			setup.on('ready', () => {
 				debug('Ready!');
-                enqueue(new PulseAnimation(strip, {priority:'!', frequency: 1000, color:'red', duration:-1}));
+                enqueue(new PulseAnimation(strip, {priority:'!', frequency: 500, color:'red', duration:-1}));
 			});
 
 
