@@ -31,6 +31,7 @@ module.exports = class WifiSetup extends Events {
                 monitor.on('created', (file) => {
             		debug('Created', file);
                     monitor.stop();
+                    this.emit('wifi-changed');
 
                     debug('New file created. Setting up again.');
                     setTimeout(this.setup, 0);
@@ -59,7 +60,7 @@ module.exports = class WifiSetup extends Events {
         var fileName = this.fileName;
 
         debug('SETUP:', fileName);
-        
+
         function loadFile() {
             try {
                 debug('Loading file', fileName);

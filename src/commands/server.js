@@ -155,6 +155,10 @@ var Module = new function() {
 				enqueue(new ColorAnimation(strip, {color:'yellow', priority:'!', duration:-1}));
 			});
 
+            setup.on('wifi-changed', () => {
+				enqueue(new ColorAnimation(strip, {color:'green', priority:'!', duration:-1}));
+			});
+
 			setup.on('ready', () => {
 				debug('Ready!');
 				enqueue(new ColorAnimation(strip, {color:'red', priority:'!', duration:-1}));
