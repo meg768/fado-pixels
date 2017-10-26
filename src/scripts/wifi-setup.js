@@ -88,22 +88,23 @@ module.exports = class WifiSetup extends Events {
 
         .then((connected) => {
             if (!connected) {
-                // Enable Bluetooth
-                child_process.exec('sudo hciconfig hci0 piscan', (error, stdout, stderr) => {
-                    if (!error) {
-                        this.emit('discoverable');
-                    }
-                });
+                throw new Error('No Wi-Fi connection.');
             }
-            else {
-                this.emit('ready');
-            }
+
+            this.emit('ready');
 
         })
 
         .catch((error) => {
             debug(error);
-            this.emit('error', error);
+
+            // Enable Bluetooth
+            child_process.exec('sudo hciconfig hci0 piscan', (error, stdout, stderr) => {
+                if (!error) {
+                    this.emit('discoverable');
+                }
+            });
+
         })
 
         .then(() => {
