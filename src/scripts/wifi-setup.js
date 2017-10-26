@@ -50,9 +50,6 @@ module.exports = class WifiSetup extends Events {
             function disable() {
                 // Enable Bluetooth
                 child_process.exec('sudo hciconfig hci0 noscan', (error, stdout, stderr) => {
-                    if (!error) {
-                        self.emit('discoverable', false);
-                    }
                 });
 
             }
@@ -61,8 +58,6 @@ module.exports = class WifiSetup extends Events {
                 // Enable Bluetooth
                 child_process.exec('sudo hciconfig hci0 piscan', (error, stdout, stderr) => {
                     if (!error) {
-                        self.emit('discoverable', true);
-
                         if (timeout != undefined)
                             setTimeout(disable, timeout);
                     }
@@ -131,6 +126,9 @@ module.exports = class WifiSetup extends Events {
 
             // Enable bluetooth forever
             enableBluetooth();
+
+            self.emit('discoverable');
+
 
         })
 
