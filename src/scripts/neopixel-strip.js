@@ -3,7 +3,7 @@ var Color = require('color');
 var isString = require('yow/is').isString;
 var isObject = require('yow/is').isObject;
 var Pixels   = require('./pixels.js');
-
+var sleep    = require('sleep');
 
 
 module.exports = function NeopixelStrip(options) {
@@ -36,6 +36,7 @@ module.exports = function NeopixelStrip(options) {
 		var tmp = new Uint32Array(_length);
 		var numSteps = 50;
 
+/*
 		function sleep(milliseconds) {
 			var start = new Date().getTime();
 
@@ -45,6 +46,7 @@ module.exports = function NeopixelStrip(options) {
 				}
 			}
 		}
+*/
 
 		if (options && options.fadeIn) {
 			var numSteps = options.fadeIn;
@@ -68,7 +70,8 @@ module.exports = function NeopixelStrip(options) {
 					tmp[i] = (red << 16) | (green << 8) | blue;
 				}
 				_strip.render(tmp);
-				sleep(50);
+
+				sleep.msleep(50);
 			}
 
 		}
