@@ -13,12 +13,12 @@ module.exports = class extends Animation {
     constructor(strip, options) {
         super(strip, options);
 
+        this.options   = Object.assign({}, {frequency:100}, this.options)
         this.name      = 'Pulse Animation';
         this.time      = undefined;
         this.hue       = Color('red').hue();
         this.luminance = 0;
         this.delta     = 1;
-        this.delay     = 100;
         this.ticks     = 0;
 
         if (isString(this.options.color)) {
@@ -38,7 +38,7 @@ module.exports = class extends Animation {
 
 
     render() {
-        if ((this.ticks % this.delay) == 0) {
+        if ((this.ticks % this.options.frequency) == 0) {
             var pixels = new Pixels(this.strip.width, this.strip.height);
 
             pixels.fill(Color.hsl(this.hue, 100, this.luminance).rgbNumber());
