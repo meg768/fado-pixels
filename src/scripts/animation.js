@@ -16,6 +16,7 @@ module.exports = class Animation extends Events {
         this.strip     = strip;
         this.name      = 'None';
         this.cancelled = false;
+        this.priority  = '';
 
     }
 

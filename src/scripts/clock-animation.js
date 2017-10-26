@@ -16,7 +16,6 @@ module.exports = class extends Animation {
         this.lastRender = 0;
         this.hue        = 0;
 
-        this.setTiemout(20000);
     }
 
 

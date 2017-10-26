@@ -50,15 +50,14 @@ var Module = new function() {
 			var BlankAnimation     = require('../scripts/animation.js');
 
 			console.log('Connecting...');
-			
+
 			var socket           = require('socket.io-client')('http://app-o.se/neopixel-globe');
 			var strip            = new Strip({width:16, height:1});
-			var animationIndex   = 0;
-			var animations       = [];
 			var currentAnimation = undefined;
+			var animationQueue   = [];
 			var state            = 0;
+			var busy             = false;
 
-			animations.push(new ClockAnimation(strip));
 
 			socket.on('connect', function() {
 
@@ -82,70 +81,75 @@ var Module = new function() {
 
 
 
-			function disableAnimations() {
+			function dequeue() {
+				return new Promise(function(resolve, reject) {
+					if (animationQueue.length > 0) {
+
+						currentAnimation = animationQueue.splice(0, 1)[0];
+
+						currentAnimation.run().then(function() {
+							return dequeue();
+						})
+						.then(function() {
+							currentAnimation = undefined;
+							resolve();
+						})
+						.catch(function(error) {
+							currentAnimation = undefined;
+							reject(error);
+						});
+					}
+					else {
+						resolve();
+					}
+
+				});
 			}
 
+			function enqueue(animation) {
 
-			function enableAnimations() {
-				disableAnimations();
-				runNextAnimation();
+				if (animation.priority == 'low' && busy)
+					return;
 
-			}
+				if (animation.priority == '!') {
+					stopCurrentAnimation();
+					animationQueue = [animation];
+					_matrix.stop();
+				}
+				else if (animation.priority == 'high') {
+					animationQueue.unshift(message);
+				}
+				else {
+					animationQueue.push(animation);
+				}
 
-			function runAnimation(animation) {
+				if (!busy) {
+					busy = true;
 
-
-                return new Promise((resolve, reject) => {
-
-					if (animation == undefined)
-						animation = new BlankAnimation(strip, {timeout:-1});
-
-					currentAnimation = animation;
-
-					animation.run().then(() => {
-					})
-
-					.catch((error) => {
+					dequeue().catch(function(error) {
 						console.log(error);
 					})
+					.then(function() {
+						busy = false;
 
-					.then(() => {
-						currentAnimation = undefined;
-						resolve();
+						debug('Entering idle mode...');
+						//socket.emit('idle', {});
 
 					})
-                });
 
+				}
 			}
 
 
-			function runNextAnimation() {
-
-
-                return new Promise((resolve, reject) => {
-
-					// Get next animation
-					var animation = animations[animationIndex];
-
-					runAnimation(animation).then(() => {
-					})
-
-					.catch((error) => {
-						console.log(error);
-					})
-
-					.then(() => {
-						animationIndex = (animationIndex + 1) % animations.length;
-						setTimeout(runNextAnimation, 0);
-
-						resolve();
-
-					})
-                });
-
+			function stopCurrentAnimation() {
+				if (currentAnimation != undefined) {
+					currentAnimation.cancel();
+				}
 			}
 
-			enableAnimations();
+
+
+			enqueue(new ClockAnimation(strip));
 
 
 		});
