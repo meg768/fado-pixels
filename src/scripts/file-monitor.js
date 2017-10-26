@@ -18,9 +18,11 @@ module.exports = class FileMonitor extends Events {
 
     start() {
 
-		var path = Path.dirname(this.fileName);
+        this.stop();
 
-		debug('Monitoring path ', path);
+        debug('File monotoring enabled on file', this.fileName);
+
+		var path = Path.dirname(this.fileName);
 
 		Watch.createMonitor(path, (monitor) => {
 
@@ -44,8 +46,10 @@ module.exports = class FileMonitor extends Events {
 	}
 
     stop() {
-        if (this.monitor != undefined)
+        if (this.monitor != undefined) {
+            debug('Stopping monotoring...');
             this.monitor.stop();
+        }
     }
 
 
