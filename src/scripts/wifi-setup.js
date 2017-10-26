@@ -3,6 +3,7 @@ var WiFi = require('./wifi-connection.js');
 var isString = require('yow/is').isString;
 var Events  = require('events');
 var child_process = require('child_process');
+var FileMonitor = require('./file-monitor.js');
 
 function debug() {
     console.log.apply(this, arguments);
@@ -10,8 +11,11 @@ function debug() {
 
 module.exports = class WifiSetup extends Events {
 
-    constructor() {
+    constructor(fileName) {
         super();
+
+        this.fileName = fileName;
+        this.fileMonitor = new FileMonitor(this.fileName);
 
     }
 
@@ -20,13 +24,36 @@ module.exports = class WifiSetup extends Events {
         child_process.exec('sudo hciconfig hci0 piscan', (error, stdout, stderr) => {
             if (!error) {
                 this.emit('discoverable');
+
+                var monitor = new FileMonitor(this.fileName);
+
+                monitor.on('created', (file) => {
+            		debug('Created', file);
+                    monitor.stop();
+
+                    setTimeout(this.setup, 0);
+            	});
+
+            	monitor.on('changed', (file) => {
+            		debug('Changed', file);
+                    monitor.stop();
+
+                    setTimeout(this.setup, 0);
+            	});
+
+            	monitor.on('removed', (file) => {
+            		debug('Removed', file);
+                    monitor.stop();
+            	});
+
             }
         });
 
     }
 
-    setup(fileName) {
+    setup() {
         var fs = require('fs');
+        var fileName = this.fileName;
 
         function loadFile() {
             try {

@@ -143,7 +143,7 @@ var Module = new function() {
 			}
 
 			var WifiSetup = require('../scripts/wifi-setup.js');
-			var setup = new WifiSetup();
+			var setup = new WifiSetup('/boot/bluetooth/wifi.json');
 
 			setup.on('connecting', () => {
 				debug('Connecting to Wi-Fi...');
@@ -166,7 +166,7 @@ var Module = new function() {
 				//enqueue(new ColorAnimation(strip, {color:'red', priority:'!', duration:-1}));
 			});
 
-			setup.setup('/boot/bluetooth/wifi.json');
+			setup.setup();
 
 
 		});
