@@ -3,9 +3,7 @@ var Color = require('color');
 var isString = require('yow/is').isString;
 var isObject = require('yow/is').isObject;
 var Pixels   = require('./pixels.js');
-var sleep    = require('sleep');
 
-var sleep = require('sleep');
 
 module.exports = function NeopixelStrip(options) {
 
@@ -71,6 +69,8 @@ module.exports = function NeopixelStrip(options) {
 					tmp[i] = (red << 16) | (green << 8) | blue;
 				}
 				_strip.render(tmp);
+
+var sleep = require('sleep');
 
 console.log(sleep);
 sleep.usleep(50 * 1000);
