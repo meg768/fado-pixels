@@ -11,29 +11,23 @@ class FileMonitor extends Events {
 	constructor(fileName) {
 		super();
 
-		this.monitor  = undefined;
-
-	}
-
-	start(fileName) {
-
 		var path = Path.dirname(fileName);
 
-		this.stop();
-
 		Watch.createMonitor(path, (monitor) => {
-			this.monitor = monitor;
 
 			monitor.on('created', (file, stat) => {
 				this.emit('created', file, stat);
+				monitor.stop();
 			});
 
 			monitor.on('changed', (file, stat) => {
 				this.emit('changed', file, stat);
+				monitor.stop();
 			});
 
 			monitor.on('removed', (file, stat) => {
 				this.emit('removed', file, stat);
+				monitor.stop();
 			});
 
 
@@ -41,35 +35,25 @@ class FileMonitor extends Events {
 
 	}
 
-	stop() {
-		if (this.monitor != undefined)
-			this.monitor.stop();
-
-		this.monitor = undefined;
-	}
 
 };
 
 var App = function() {
 
 
-	var monitor = new FileMonitor();
+	var monitor = new FileMonitor('/boot/bluetooth/wifi.json');
 
-	monitor.start('/boot/bluetooth/wifi.json');
 
 	monitor.on('created', (file) => {
 		console.log('Created', file);
-		monitor.stop();
 	});
 
 	monitor.on('changed', (file) => {
 		console.log('Created', file);
-		monitor.stop();
 	});
 
 	monitor.on('removed', (file) => {
 		console.log('removed', file);
-		monitor.stop();
 	});
 
 }
