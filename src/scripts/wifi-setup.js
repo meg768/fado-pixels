@@ -27,7 +27,6 @@ module.exports = class WifiSetup extends Events {
 
                 var monitor = new FileMonitor(this.fileName);
 
-                monitor.start();
 
                 monitor.on('created', (file) => {
             		debug('Created', file);
@@ -47,6 +46,8 @@ module.exports = class WifiSetup extends Events {
             		debug('Removed', file);
                     monitor.stop();
             	});
+
+                monitor.start();
 
             }
         });
