@@ -16,50 +16,33 @@ module.exports = class WifiSetup extends Events {
         super();
 
         this.fileName = fileName;
+        this.monitor  = new FileMonitor(this.fileName);
 
-    }
+        this.monitor.on('created', (file) => {
+            debug('Wi-Fi file created. Setting up again.');
 
-    enableBluetooth() {
-
-        child_process.exec('sudo hciconfig hci0 piscan', (error, stdout, stderr) => {
-            if (!error) {
-                this.emit('discoverable');
-
-                var monitor = new FileMonitor(this.fileName);
-
-
-                monitor.on('created', (file) => {
-            		debug('Created', file);
-                    monitor.stop();
-                    this.emit('wifi-changed');
-
-                    debug('New file created. Setting up again.');
-                    this.setup();
-            	});
-
-            	monitor.on('changed', (file) => {
-            		debug('Changed', file);
-                    monitor.stop();
-
-                    this.setup();
-            	});
-
-            	monitor.on('removed', (file) => {
-            		debug('Removed', file);
-                    monitor.stop();
-            	});
-
-                monitor.start();
-
-            }
+            this.emit('wifi-changed');
+            this.setup();
         });
 
+        this.monitor.on('changed', (file) => {
+            debug('Wi-Fi file changed. Setting up again.');
+
+            this.emit('wifi-changed');
+            this.setup();
+        });
+
+
+        this.monitor.start();
+
     }
+
+
 
     setup() {
         var fileName = this.fileName;
 
-        debug('SETUP:', fileName);
+        debug('Setting up Wi-Fi using file', fileName);
 
         function loadFile() {
             try {
@@ -105,15 +88,24 @@ module.exports = class WifiSetup extends Events {
 
         .then((connected) => {
             if (!connected) {
-                throw new Error('No wi-fi connection.');
+                // Enable Bluetooth
+                child_process.exec('sudo hciconfig hci0 piscan', (error, stdout, stderr) => {
+                    if (!error) {
+                        this.emit('discoverable');
+                    }
+                });
+            }
+            else {
+                this.emit('ready');
             }
 
-            this.emit('ready');
         })
+
         .catch((error) => {
             debug(error);
             this.emit('error', error);
         })
+
         .then(() => {
             deleteFile();
         })
