@@ -14,7 +14,7 @@ module.exports = class extends Animation {
     constructor(strip, options) {
         super(strip, options);
 
-        this.options   = Object.assign({}, {frequency:100, color:'red'}, this.options)
+        this.options   = Object.assign({}, {frequency:1000, color:'red'}, this.options)
         this.name      = 'Blink Animation';
         this.ticks     = 0;
         this.pixels    = new Pixels(this.strip.width, this.strip.height);

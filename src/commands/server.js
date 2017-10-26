@@ -164,7 +164,7 @@ var Module = new function() {
 
 			setup.on('ready', () => {
 				debug('Ready!');
-                enqueue(new BlinkAnimation(strip, {priority:'!', frequency: 500, color:'green', duration:-1}));
+                enqueue(new BlinkAnimation(strip, {priority:'!', frequency: 3000, color:'green', duration:-1}));
 			});
 
 
