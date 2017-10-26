@@ -40,9 +40,39 @@ module.exports = class WifiSetup extends Events {
 
 
     setup() {
+        var self = this;
         var fileName = this.fileName;
 
         debug('Setting up Wi-Fi using file', fileName);
+
+        function enableBluetooth(timeout) {
+
+            function disable() {
+                // Enable Bluetooth
+                child_process.exec('sudo hciconfig hci0 noscan', (error, stdout, stderr) => {
+                    if (!error) {
+                        self.emit('discoverable', false);
+                    }
+                });
+
+            }
+
+            function enable() {
+                // Enable Bluetooth
+                child_process.exec('sudo hciconfig hci0 piscan', (error, stdout, stderr) => {
+                    if (!error) {
+                        self.emit('discoverable', true);
+
+                        if (timeout != undefined)
+                            setTimeout(disable, timeout);
+                    }
+                });
+
+            }
+
+            enable();
+        }
+
 
         function loadFile() {
             try {
@@ -89,6 +119,9 @@ module.exports = class WifiSetup extends Events {
                 throw new Error('No Wi-Fi connection.');
             }
 
+            // Enable bluetooth for 30 minutes
+            enableBluetooth(30 * 60 * 1000);
+
             this.emit('ready');
 
         })
@@ -96,12 +129,8 @@ module.exports = class WifiSetup extends Events {
         .catch((error) => {
             debug(error);
 
-            // Enable Bluetooth
-            child_process.exec('sudo hciconfig hci0 piscan', (error, stdout, stderr) => {
-                if (!error) {
-                    this.emit('discoverable');
-                }
-            });
+            // Enable bluetooth forever
+            enableBluetooth();
 
         })
 
