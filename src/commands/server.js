@@ -42,6 +42,7 @@ var Module = new function() {
 			var RandomAnimation    = require('../scripts/random-animation.js');
             var FlashAnimation     = require('../scripts/flash-animation.js');
 			var BlankAnimation     = require('../scripts/animation.js');
+            var PulseAnimation     = require('../scripts/pulse-animation.js');
 
 			console.log('Connecting...');
 
@@ -162,7 +163,8 @@ var Module = new function() {
 
 			setup.on('ready', () => {
 				debug('Ready!');
-                enqueue(new RandomAnimation(strip, {priority:'!', duration:-1}));
+//                enqueue(new RandomAnimation(strip, {priority:'!', duration:-1}));
+                enqueue(new PulseAnimation(strip, {priority:'!', duration:-1}));
 			});
 
 
