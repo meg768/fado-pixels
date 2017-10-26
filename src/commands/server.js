@@ -142,7 +142,7 @@ var Module = new function() {
 				}
 			}
 
-			var WifiSetup = require('wifi-setup');
+			var WifiSetup = require('../scripts/wifi-setup.js');
 			var setup = new WifiSetup();
 
 			setup.on('working', () => {
