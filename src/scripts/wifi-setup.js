@@ -45,10 +45,12 @@ module.exports = class WifiSetup extends Events {
 
         debug('Setting up Wi-Fi using file', fileName);
 
-        function enableBluetooth(timeout) {
+        function enableBluetoothDiscovery(timeout) {
 
             function disable() {
                 // Disable Bluetooth
+                debug('Disabling Bluetooth...');
+
                 child_process.exec('sudo hciconfig hci0 noscan', (error, stdout, stderr) => {
                 });
 
@@ -56,6 +58,8 @@ module.exports = class WifiSetup extends Events {
 
             function enable() {
                 // Enable Bluetooth
+                debug('Enabling Bluetooth...');
+
                 child_process.exec('sudo hciconfig hci0 piscan', (error, stdout, stderr) => {
                     if (!error) {
                         if (timeout != undefined)
@@ -114,8 +118,8 @@ module.exports = class WifiSetup extends Events {
                 throw new Error('No Wi-Fi connection.');
             }
 
-            // Enable bluetooth for 30 minutes
-            enableBluetooth(30 * 60 * 1000);
+            // Enable bluetooth discovery for 30 minutes
+            enableBluetoothDiscovery(30 * 60 * 1000);
 
             this.emit('ready');
 
@@ -125,11 +129,9 @@ module.exports = class WifiSetup extends Events {
             debug(error);
 
             // Enable bluetooth forever
-            enableBluetooth();
+            enableBluetoothDiscovery();
 
             self.emit('discoverable');
-
-
         })
 
         .then(() => {
