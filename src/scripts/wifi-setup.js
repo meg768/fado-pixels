@@ -2,6 +2,7 @@
 var WiFi = require('./wifi-connection.js');
 var isString = require('yow/is').isString;
 var Events  = require('events');
+var child_process = require('child_process');
 
 function debug() {
     console.log.apply(this, arguments);
@@ -14,6 +15,15 @@ module.exports = class WifiSetup extends Events {
 
     }
 
+    enableBluetooth() {
+
+        child_process.exec('sudo hciconfig hci0 piscan', (error, stdout, stderr) => {
+            if (!error) {
+                this.emit('discoverable');
+            }
+        });
+
+    }
     setup(fileName) {
         var fs = require('fs');
 
@@ -44,7 +54,7 @@ module.exports = class WifiSetup extends Events {
 
         .then((config) => {
             if (config && isString(config.ssid)) {
-                this.emit('working');
+                this.emit('connecting');
 
                 return wifi.connectToNetwork(config.ssid, config.password, 30000).then(() => {
                     return true;
@@ -59,8 +69,9 @@ module.exports = class WifiSetup extends Events {
         })
 
         .then((connected) => {
-            if (!connected)
+            if (!connected) {
                 throw new Error('No wi-fi connection.');
+            }
 
             this.emit('ready');
         })

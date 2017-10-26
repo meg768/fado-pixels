@@ -145,9 +145,14 @@ var Module = new function() {
 			var WifiSetup = require('../scripts/wifi-setup.js');
 			var setup = new WifiSetup();
 
-			setup.on('working', () => {
+			setup.on('connecting', () => {
 				debug('Connecting to Wi-Fi...');
 				enqueue(new RandomAnimation(strip, {duration:-1}));
+			});
+
+            setup.on('discoverable', () => {
+				debug('Raspberry now discoverable.');
+				enqueue(new ColorAnimation(strip, {color:'yellow', priority:'!', duration:-1}));
 			});
 
 			setup.on('ready', () => {
@@ -156,8 +161,9 @@ var Module = new function() {
 			});
 
 			setup.on('error', (error) => {
+                setup.enableBluetooth();
 			    debug(error);
-				enqueue(new ColorAnimation(strip, {color:'red', priority:'!', duration:-1}));
+				//enqueue(new ColorAnimation(strip, {color:'red', priority:'!', duration:-1}));
 			});
 
 			setup.setup('/boot/bluetooth/wifi.json');
