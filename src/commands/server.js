@@ -157,7 +157,7 @@ var Module = new function() {
 
 			setup.on('ready', () => {
 				debug('Ready!');
-				enqueue(new ColorAnimation(strip, {color:'blue', priority:'!', duration:-1}));
+				enqueue(new ColorAnimation(strip, {color:'red', priority:'!', duration:-1}));
 			});
 
 			setup.on('error', (error) => {
