@@ -13,6 +13,8 @@ class FileMonitor extends Events {
 
 		var path = Path.dirname(fileName);
 
+		console.log('Monitoring', path);
+
 		Watch.createMonitor(path, (monitor) => {
 
 			monitor.on('created', (file, stat) => {
