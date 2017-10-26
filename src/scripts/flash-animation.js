@@ -45,11 +45,11 @@ module.exports = class extends Animation {
 
             pixels.fill(this.color);
             this.strip.render(pixels.getPixels());
-            Sleep.msleep(100);
-        }
-        else {
-            this.strip.render(pixels.getPixels());
 
+            Sleep.msleep(100);
+
+            pixels.fill(0);
+            this.strip.render(pixels.getPixels());
         }
 
 
