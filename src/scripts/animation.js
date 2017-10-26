@@ -12,11 +12,10 @@ module.exports = class Animation extends Events {
     constructor(strip, options) {
         super();
 
-        this.options   = Object.assign({}, options);
+        this.options   = Object.assign({}, {priority:'normal'}, options);
         this.strip     = strip;
         this.name      = 'None';
         this.cancelled = false;
-        this.priority  = 'normal';
 
 
     }

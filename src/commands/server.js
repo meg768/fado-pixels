@@ -97,17 +97,19 @@ var Module = new function() {
 
 			function enqueue(animation) {
 
-				if (animation.priority == 'low' && busy)
+				var priority = animation.options.priority;
+
+				if (priority == 'low' && busy)
 					return;
 
-				if (animation.priority == '!') {
+				if (priority == '!') {
 					animationQueue = [animation];
 
 					if (currentAnimation != undefined) {
 						currentAnimation.cancel();
 					}
 				}
-				else if (animation.priority == 'high') {
+				else if (priority == 'high') {
 					animationQueue.unshift(message);
 				}
 				else {
