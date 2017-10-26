@@ -17,6 +17,7 @@ module.exports = class extends Animation {
         this.name = 'Color';
         this.time = undefined;
         this.color = Color('red').rgbNumber();
+        this.options = Object.assign({}, {interval:1000}, this.options);
 
         if (isString(this.options.color)) {
             try {
@@ -40,7 +41,7 @@ module.exports = class extends Animation {
         var pixels = new Pixels(this.strip.width, this.strip.height);
 
 
-        if (this.time == undefined || now - this.time > 1000) {
+        if (this.time == undefined || now - this.time > this.options.interval) {
             this.time = now;
 
             pixels.fill(this.color);
