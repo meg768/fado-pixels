@@ -37,7 +37,7 @@ module.exports = function NeopixelStrip(options) {
 		var numSteps = 50;
 
 
-		function sleep(milliseconds) {
+		function sleepX(milliseconds) {
 			var start = new Date().getTime();
 
 			for (var i = 0; i < 1e7; i++) {
@@ -71,8 +71,8 @@ module.exports = function NeopixelStrip(options) {
 				}
 				_strip.render(tmp);
 
-				//sleep.msleep(50);
-				sleep(50);
+				sleep.msleep(50);
+				//sleep(50);
 			}
 
 		}
