@@ -40,7 +40,7 @@ module.exports = class extends Animation {
         var pixels = new Pixels(this.strip.width, this.strip.height);
 
 
-        if (this.time == undefined || now - this.time > 500) {
+        if (this.time == undefined || now - this.time > 1000) {
             this.time = now;
 
             pixels.fill(this.color);
