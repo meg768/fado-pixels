@@ -48,7 +48,7 @@ module.exports = class WifiSetup extends Events {
         function enableBluetooth(timeout) {
 
             function disable() {
-                // Enable Bluetooth
+                // Disable Bluetooth
                 child_process.exec('sudo hciconfig hci0 noscan', (error, stdout, stderr) => {
                 });
 
