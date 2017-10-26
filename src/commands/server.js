@@ -160,7 +160,7 @@ var Module = new function() {
 				enqueue(new ColorAnimation(strip, {color:'red', priority:'!', duration:-1}));
 			});
 
-			setup.setup('/boot/bluetooth/config.json');
+			setup.setup('/boot/bluetooth/wifi.json');
 
 
 		});
