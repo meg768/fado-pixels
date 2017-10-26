@@ -149,12 +149,12 @@ var Module = new function() {
 
 			setup.on('connecting', () => {
 				debug('Connecting to Wi-Fi...');
-                enqueue(new FlashAnimation(strip, {interval: 500, color:'blue', priority:'!', duration:-1}));
+                enqueue(new PulseAnimation(strip, {priority:'!', frequency: 10, color:'blue', duration:-1}));
 			});
 
             setup.on('discoverable', () => {
 				debug('Raspberry now discoverable.');
-                enqueue(new PulseAnimation(strip, {priority:'!', color:'blue', duration:-1}));
+                enqueue(new PulseAnimation(strip, {priority:'!', frequency: 100, color:'blue', duration:-1}));
 			});
 
             setup.on('wifi-changed', () => {
@@ -163,9 +163,7 @@ var Module = new function() {
 
 			setup.on('ready', () => {
 				debug('Ready!');
-//                enqueue(new RandomAnimation(strip, {priority:'!', duration:-1}));
-                enqueue(new PulseAnimation(strip, {priority:'!', frequency: 10, color:'blue', duration:-1}));
-//                enqueue(new PulseAnimation(strip, {priority:'!', duration:-1}));
+                enqueue(new PulseAnimation(strip, {priority:'!', frequency: 1000, color:'red', duration:-1}));
 			});
 
 
