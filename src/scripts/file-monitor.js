@@ -48,7 +48,9 @@ module.exports = class FileMonitor extends Events {
     stop() {
         if (this.monitor != undefined) {
             debug('Stopping monotoring...');
+
             this.monitor.stop();
+            this.monitor = undefined;
         }
     }
 
