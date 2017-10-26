@@ -5,7 +5,7 @@ var sprintf    = require('yow/sprintf');
 var Events     = require('events');
 var Path       = require('path');
 var Watch      = require('watch');
-var FileMonitor = require('./scripts/file-monitor.js');
+var FileMonitor = require('./src/scripts/file-monitor.js');
 
 /*
 class FileMonitor extends Events {
