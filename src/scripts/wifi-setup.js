@@ -24,6 +24,7 @@ module.exports = class WifiSetup extends Events {
         });
 
     }
+
     setup(fileName) {
         var fs = require('fs');
 
