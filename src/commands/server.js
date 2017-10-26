@@ -148,29 +148,23 @@ var Module = new function() {
 
 			setup.on('connecting', () => {
 				debug('Connecting to Wi-Fi...');
-                enqueue(new ColorAnimation(strip, {color:'red', priority:'!', duration:-1}));
+                enqueue(new FlashAnimation(strip, {interval: 500, color:'blue', priority:'!', duration:-1}));
 			});
 
             setup.on('discoverable', () => {
 				debug('Raspberry now discoverable.');
-				enqueue(new FlashAnimation(strip, {color:'blue', priority:'!', duration:-1}));
+				enqueue(new FlashAnimation(strip, {interval: 1500, color:'blue', priority:'!', duration:-1}));
 			});
 
             setup.on('wifi-changed', () => {
-				enqueue(new ColorAnimation(strip, {color:'green', priority:'!', duration:-1}));
+				//enqueue(new ColorAnimation(strip, {color:'green', priority:'!', duration:-1}));
 			});
 
 			setup.on('ready', () => {
 				debug('Ready!');
-//                enqueue(new RandomAnimation(strip, {priority:'!', duration:-1}));
-                enqueue(new FlashAnimation(strip, {color:'blue', priority:'!', duration:-1}));
+                enqueue(new RandomAnimation(strip, {priority:'!', duration:-1}));
 			});
 
-			setup.on('error', (error) => {
-                setup.enableBluetooth();
-			    debug(error);
-				//enqueue(new ColorAnimation(strip, {color:'red', priority:'!', duration:-1}));
-			});
 
 			setup.setup();
 
