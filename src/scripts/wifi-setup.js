@@ -34,14 +34,14 @@ module.exports = class WifiSetup extends Events {
                     this.emit('wifi-changed');
 
                     debug('New file created. Setting up again.');
-                    setTimeout(this.setup, 0);
+                    this.setup();
             	});
 
             	monitor.on('changed', (file) => {
             		debug('Changed', file);
                     monitor.stop();
 
-                    setTimeout(this.setup, 0);
+                    this.setup();
             	});
 
             	monitor.on('removed', (file) => {
