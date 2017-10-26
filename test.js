@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 
-require('dotenv').config();
 
 var sprintf    = require('yow/sprintf');
 var prefixLogs = require('yow/logs').prefix;
