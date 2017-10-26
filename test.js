@@ -3,7 +3,7 @@
 
 var sprintf    = require('yow/sprintf');
 var prefixLogs = require('yow/logs').prefix;
-var Watch      = require('watch');
+var watch      = require('watch');
 
 var App = function() {
 
