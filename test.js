@@ -3,22 +3,23 @@
 
 var sprintf    = require('yow/sprintf');
 var prefixLogs = require('yow/logs').prefix;
-var watch      = require('watch');
 
 var App = function() {
 
-	watch.watchTree('/boot/bluetooth', function (f, curr, prev) {
-	    if (typeof f == "object" && prev === null && curr === null) {
-	      console.log('Finished walking the tree');
-
-	    } else if (prev === null) {
-	      console.log('new file', f);
-	    } else if (curr.nlink === 0) {
-			console.log('removed', f);
-	    } else {
-			console.log('changed', f);
-	    }
-	  })
+	var watch = require('watch')
+    watch.createMonitor('/boot/bluetooth', function (monitor) {
+      monitor.files['/home/mikeal/.zshrc'] // Stat object for my zshrc.
+      monitor.on("created", function (f, stat) {
+        console.log('new', f);
+      })
+      monitor.on("changed", function (f, curr, prev) {
+		  console.log('changed', f);
+      })
+      monitor.on("removed", function (f, stat) {
+		  console.log('removed', f);
+      })
+//      monitor.stop(); // Stop watching
+    })
 
 };
 
