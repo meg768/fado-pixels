@@ -39,6 +39,10 @@ module.exports = class extends Animation {
             this.strip.render(this.pixels.getPixels());
 
             Sleep.msleep(100);
+
+            this.pixels.fill(0);
+            this.strip.render(this.pixels.getPixels());
+
         }
 
         this.ticks++;
