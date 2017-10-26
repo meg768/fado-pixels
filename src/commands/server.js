@@ -162,7 +162,8 @@ var Module = new function() {
 
 			setup.on('ready', () => {
 				debug('Ready!');
-                enqueue(new RandomAnimation(strip, {priority:'!', duration:-1}));
+//                enqueue(new RandomAnimation(strip, {priority:'!', duration:-1}));
+                enqueue(new FlashAnimation(strip, {color:'blue', priority:'!', duration:-1}));
 			});
 
 			setup.on('error', (error) => {
