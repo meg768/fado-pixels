@@ -32,6 +32,8 @@ module.exports = function NeopixelStrip(options) {
 
 	_this.render = function(pixels, options) {
 
+		var sleep = require('sleep');
+
 		var tmp = new Uint32Array(_length);
 		var numSteps = 50;
 
@@ -70,17 +72,7 @@ module.exports = function NeopixelStrip(options) {
 				}
 				_strip.render(tmp);
 
-var sleep = require('sleep');
-
-console.log(sleep);
-sleep.usleep(50 * 1000);
-	/*
 				sleep.usleep(50 * 1000);
-				process.nextTick(function() {
-
-				});
-				//sleep(50);
-				*/
 			}
 
 		}
