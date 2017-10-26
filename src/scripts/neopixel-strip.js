@@ -71,8 +71,8 @@ module.exports = function NeopixelStrip(options) {
 				}
 				_strip.render(tmp);
 
+				sleep.msleep(50);
 				process.nextTick(function() {
-					sleep.msleep(50);
 					
 				});
 				//sleep(50);
