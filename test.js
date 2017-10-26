@@ -8,7 +8,7 @@ var App = function() {
 
 	var watch = require('watch')
     watch.createMonitor('/boot/bluetooth', function (monitor) {
-      monitor.files['/home/mikeal/.zshrc'] // Stat object for my zshrc.
+
       monitor.on("created", function (f, stat) {
         console.log('new', f);
       })
