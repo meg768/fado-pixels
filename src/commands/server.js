@@ -150,7 +150,7 @@ var Module = new function() {
 
 			setup.on('connecting', () => {
 				debug('Connecting to Wi-Fi...');
-                enqueue(new PulseAnimation(strip, {priority:'!', frequency: 100, color:'orange', duration:-1}));
+                enqueue(new BlinkAnimation(strip, {priority:'!', frequency: 4000, color:'orange', duration:-1}));
 			});
 
             setup.on('discoverable', () => {
@@ -164,7 +164,7 @@ var Module = new function() {
 
 			setup.on('ready', () => {
 				debug('Ready!');
-                enqueue(new BlinkAnimation(strip, {priority:'!', frequency: 3000, color:'green', duration:-1}));
+                enqueue(new PulseAnimation(strip, {priority:'!', frequency: 100, color:'green', duration:-1}));
 			});
 
 
