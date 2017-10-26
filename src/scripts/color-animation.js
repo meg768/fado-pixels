@@ -27,6 +27,8 @@ module.exports = class extends Animation {
             }
         }
 
+        console.log('New color animation', this.options);
+
     }
 
 

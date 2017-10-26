@@ -35,7 +35,8 @@ var Module = new function() {
 		var timer = new Timer();
 
 		registerService().then(function() {
-			var ClockAnimation     = require('../scripts/clock-animation.js');
+			var ColorAnimation     = require('../scripts/color-animation.js');
+			var RandomAnimation    = require('../scripts/random-animation.js');
 			var BlankAnimation     = require('../scripts/animation.js');
 
 			console.log('Connecting...');
@@ -63,11 +64,16 @@ var Module = new function() {
 			socket.on('colorize', function(params, fn) {
 				fn({status:'OK'});
 
-				console.log('Colorize!', params);
-				enqueue(new ClockAnimation(strip, params));
+				enqueue(new ColorAnimation(strip, params));
 
 			});
 
+			socket.on('random', function(params, fn) {
+				fn({status:'OK'});
+
+				enqueue(new RandomAnimation(strip, params));
+
+			});
 
 
 			function dequeue() {
@@ -135,7 +141,7 @@ var Module = new function() {
 
 
 
-			enqueue(new ClockAnimation(strip));
+			enqueue(new RandomAnimation(strip, {duration:5000}));
 
 
 		});
