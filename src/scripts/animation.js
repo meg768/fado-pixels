@@ -12,7 +12,7 @@ module.exports = class Animation extends Events {
     constructor(strip, options) {
         super();
 
-        this.options   = Object.assign({}, {timeout:10000}, options);
+        this.options   = Object.assign({}, options);
         this.strip     = strip;
         this.name      = 'None';
         this.cancelled = false;
@@ -77,7 +77,14 @@ module.exports = class Animation extends Events {
                 if (self.cancelled) {
                     resolve();
                 }
-                else if (self.options.timeout >= 0 && now - start > self.options.timeout) {
+                else if (self.options.duration == undefined) {
+
+                    // If no duration specified, render only once and stop
+                    self.render();
+
+                    resolve();
+                }
+                else if (self.options.duration >= 0 && now - start > self.options.duration) {
                     resolve();
                 }
                 else {

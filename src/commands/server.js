@@ -16,21 +16,10 @@ var Module = new function() {
 
 		args.help('help').alias('help', 'h');
 
-		args.option('clock',     {alias:'c', describe:'Run clock animation',    default:undefined});
-		args.option('weather',   {alias:'w', describe:'Run weather animation',  default:undefined});
-		args.option('avanza',    {alias:'a', describe:'Run avanza animation',   default:undefined});
-		args.option('matrix',    {alias:'m', describe:'Run matrix animation',   default:undefined});
 
 		args.wrap(null);
 
 		args.check(function(argv) {
-			if (argv.clock == undefined && argv.weather == undefined && argv.avanza == undefined && argv.matrix == undefined)
-
-				argv.clock   = true;
-				argv.weather = true;
-				argv.avanza  = true;
-				argv.matrix  = true;
-
 			return true;
 		});
 	}
