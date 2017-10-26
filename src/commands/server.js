@@ -112,9 +112,11 @@ var Module = new function() {
 					return;
 
 				if (animation.priority == '!') {
-					stopCurrentAnimation();
 					animationQueue = [animation];
-					_matrix.stop();
+
+					if (currentAnimation != undefined) {
+						currentAnimation.cancel();
+					}
 				}
 				else if (animation.priority == 'high') {
 					animationQueue.unshift(message);
@@ -137,13 +139,6 @@ var Module = new function() {
 
 					})
 
-				}
-			}
-
-
-			function stopCurrentAnimation() {
-				if (currentAnimation != undefined) {
-					currentAnimation.cancel();
 				}
 			}
 

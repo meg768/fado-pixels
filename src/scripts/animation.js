@@ -16,7 +16,7 @@ module.exports = class Animation extends Events {
         this.strip     = strip;
         this.name      = 'None';
         this.cancelled = false;
-        this.priority  = '';
+        this.priority  = 'normal';
 
     }
 
@@ -41,6 +41,23 @@ module.exports = class Animation extends Events {
 
         });
 
+    }
+
+    stop() {
+        console.log('Stopping animation', this.name);
+
+        return new Promise((resolve, reject) => {
+            var pixels = new Pixels(this.strip.width, this.strip.height);
+
+            if (this.cancelled)
+                this.strip.render(pixels.getPixels());
+            else
+                this.strip.render(pixels.getPixels(), {fadeIn:5});
+
+            resolve();
+
+            this.emit('stopped');
+        });
     }
 
     loop() {
@@ -72,22 +89,6 @@ module.exports = class Animation extends Events {
         });
     }
 
-    stop() {
-        console.log('Stopping animation', this.name);
-
-        return new Promise((resolve, reject) => {
-            var pixels = new Pixels(this.strip.width, this.strip.height);
-
-            if (this.cancelled)
-                this.strip.render(pixels.getPixels());
-            else
-                this.strip.render(pixels.getPixels(), {fadeIn:5});
-
-            resolve();
-
-            this.emit('stopped');
-        });
-    }
 
 
 
@@ -107,11 +108,11 @@ module.exports = class Animation extends Events {
             .then(() => {
                 return this.stop();
             })
+            .catch((error) => {
+                console.log(error);
+            })
             .then(() => {
                 resolve();
-            })
-            .catch((error) => {
-                reject(error);
             });
 
         });
