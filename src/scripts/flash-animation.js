@@ -17,7 +17,7 @@ module.exports = class extends Animation {
         this.name = 'Color';
         this.time = undefined;
         this.color = Color('red').rgbNumber();
-        this.options = Object.assign({}, {interval:100}, this.options);
+        this.options = Object.assign({}, {interval:1000}, this.options);
 
         if (isString(this.options.color)) {
             try {
