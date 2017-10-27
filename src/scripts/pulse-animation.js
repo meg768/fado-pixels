@@ -7,6 +7,10 @@ var Strip     = require('./neopixel-strip.js');
 var Pixels    = require('./pixels.js');
 var Color     = require('color');
 
+function debug() {
+    console.log.apply(this, arguments);
+}
+
 module.exports = class extends Animation {
 
 
@@ -16,11 +20,11 @@ module.exports = class extends Animation {
         this.options   = Object.assign({}, {interval:1000, speed:100}, this.options)
         this.name      = 'Pulse Animation';
         this.time      = undefined;
-        this.hue       = Color('red').hue();
+        this.color     = Color('red').rgbNumber();
 
         if (isString(this.options.color)) {
             try {
-                this.hue = Color(this.options.color).hue();
+                this.color = Color(this.options.color).rgbNumber();
             }
             catch (error) {
                 console.log('Invalid color value.');
@@ -28,7 +32,7 @@ module.exports = class extends Animation {
             }
         }
 
-        console.log('New color animation', this.options);
+        debug('New color animation', this.options);
 
     }
 
@@ -42,7 +46,7 @@ module.exports = class extends Animation {
 
         if (this.time == undefined || now - this.time > this.options.interval) {
 
-            pixels.fill(Color.hsl(this.hue, 100, 50).rgbNumber());
+            pixels.fill(this.color);
             strip.render(pixels.getPixels(), {fadeIn:this.options.speed});
 
             pixels.fill(0);
