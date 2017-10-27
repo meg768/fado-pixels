@@ -68,20 +68,35 @@ var Module = new function() {
 			});
 
 
-			socket.on('colorize', function(params, fn) {
+			socket.on('color', function(params, fn) {
 				fn({status:'OK'});
-
 				enqueue(new ColorAnimation(strip, params));
-
 			});
 
 			socket.on('random', function(params, fn) {
 				fn({status:'OK'});
-
 				enqueue(new RandomAnimation(strip, params));
-
 			});
 
+            socket.on('clock', function(params, fn) {
+				fn({status:'OK'});
+				enqueue(new ClockAnimation(strip, params));
+			});
+
+            socket.on('flash', function(params, fn) {
+				fn({status:'OK'});
+				enqueue(new FlashAnimation(strip, params));
+			});
+
+            socket.on('pulse', function(params, fn) {
+				fn({status:'OK'});
+				enqueue(new PulseAnimation(strip, params));
+			});
+
+            socket.on('blink', function(params, fn) {
+				fn({status:'OK'});
+				enqueue(new BlinkAnimation(strip, params));
+			});
 
 			function dequeue() {
 				return new Promise(function(resolve, reject) {
