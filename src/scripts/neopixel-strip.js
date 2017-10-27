@@ -66,7 +66,7 @@ module.exports = function NeopixelStrip(options) {
 
 				// Sleep for a while. The value was adjusted
 				// for a Pi Zero so that every step takes 1 millisecond
-				Sleep.usleep(370);
+				Sleep.usleep(380);
 			}
 
 			var now = new Date();
