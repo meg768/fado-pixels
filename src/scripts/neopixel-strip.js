@@ -64,12 +64,12 @@ module.exports = function NeopixelStrip(options) {
 				}
 				_strip.render(tmp);
 
-				Sleep.usleep(100);
+				Sleep.usleep(500);
 			}
 
 			var now = new Date();
 
-			debug('Fade', numSteps, 'took', now - timer, 'seconds');
+			debug('Fade', numSteps, 'took', now - timer, 'milliseconds');
 
 		}
 		// Save rgb buffer
