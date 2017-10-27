@@ -11,7 +11,7 @@ module.exports = class extends Animation {
 
 
     constructor(strip, options) {
-        super(strip, Object.assign({}, {fade:10}, options));
+        super(strip, Object.assign({}, {fade:100}, options));
 
         this.name = 'Color';
         this.time = undefined;
@@ -37,7 +37,7 @@ module.exports = class extends Animation {
 
         var now = new Date();
 
-        if (this.time == undefined || now - this.time > 1000) {
+        if (this.time == undefined || now - this.time > 10000) {
             var pixels = new Pixels(this.strip.width, this.strip.height);
 
             pixels.fill(this.color);
