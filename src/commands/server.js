@@ -153,13 +153,13 @@ var Module = new function() {
 				debug('Connecting to Wi-Fi...');
                 //enqueue(new PulseAnimation(strip, {priority:'!', frequency: 100, color:'orange', duration:-1}));
                 //enqueue(new BlinkAnimation(strip, {priority:'!', frequency: 4000, color:'orange', duration:-1}));
-                enqueue(new ColorAnimation(strip, {priority:'!', color:'orange', duration:-1}));
+                //enqueue(new ColorAnimation(strip, {priority:'!', color:'orange', duration:-1}));
+                enqueue(new PulseAnimation(strip, {priority:'!', color:'orange', duration:-1}));
 			});
 
             setup.on('discoverable', () => {
 				debug('Raspberry now discoverable.');
                 enqueue(new PulseAnimation(strip, {priority:'!', color:'blue', duration:-1}));
-                //enqueue(new ColorAnimation(strip, {priority:'!', color:'blue', duration:-1}));
 			});
 
             setup.on('wifi-changed', () => {
@@ -170,8 +170,7 @@ var Module = new function() {
 				debug('Ready!');
                 //enqueue(new PulseAnimation(strip, {priority:'!', frequency: 100, color:'green', duration:-1}));
                 //enqueue(new ColorAnimation(strip, {priority:'!', color:'white', duration:-1}));
-                //enqueue(new ClockAnimation(strip, {priority:'!', duration:-1}));
-                enqueue(new PulseAnimation(strip, {priority:'!', color:'blue', duration:-1}));
+                enqueue(new ClockAnimation(strip, {priority:'!', duration:-1}));
 			});
 
 
