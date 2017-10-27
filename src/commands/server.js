@@ -81,7 +81,7 @@ var Module = new function() {
 
             socket.on('flash', function(params, fn) {
 				fn({status:'OK'});
-                enqueue(new PulseAnimation(strip, Object.assign({}, {interval:500, delay:50}, params)));
+                enqueue(new PulseAnimation(strip, Object.assign({}, {interval:500, delay:0, length:50}, params)));
 			});
 
             socket.on('pulse', function(params, fn) {
@@ -91,7 +91,7 @@ var Module = new function() {
 
             socket.on('blink', function(params, fn) {
 				fn({status:'OK'});
-                enqueue(new PulseAnimation(strip, Object.assign({}, {interval:500, delay:250}, params)));
+                enqueue(new PulseAnimation(strip, Object.assign({}, {interval:1000, delay:0, length:500}, params)));
 			});
 
 			function dequeue() {
