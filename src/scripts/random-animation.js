@@ -44,7 +44,7 @@ module.exports = class extends Animation {
             var time = (now.valueOf() - this.time.valueOf()) / 1000;
             debug('Frames per second:', this.tick / time, time, this.tick);
         }
-    }
 */
+    }
 
 }
