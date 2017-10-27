@@ -5,6 +5,7 @@ var isObject = require('yow/is').isObject;
 var isFunction = require('yow/is').isFunction;
 var Timer = require('yow/timer');
 var Strip = require('../scripts/neopixel-strip.js');
+var WifiSetup = require('../scripts/wifi-setup.js');
 
 function debug() {
     console.log.apply(this, arguments);
@@ -46,7 +47,7 @@ var Module = new function() {
             var ClockAnimation     = require('../scripts/clock-animation.js');
             var BlinkAnimation     = require('../scripts/blink-animation.js');
 
-			console.log('Connecting...');
+			debug('Connecting...');
 
 			var socket           = require('socket.io-client')('http://app-o.se/neopixel-globe');
 			var strip            = new Strip({width:16, height:1});
@@ -55,16 +56,13 @@ var Module = new function() {
 			var state            = 0;
 			var busy             = false;
 
-
 			socket.on('connect', function() {
-
-				console.log('Connected to socket server.');
-
+				debug('Connected to socket server.');
 				socket.emit('i-am-the-provider');
 			});
 
 			socket.on('disconnect', function() {
-				console.log('Disconnected from socket server');
+				debug('Disconnected from socket server');
 			});
 
 
@@ -154,21 +152,16 @@ var Module = new function() {
 						busy = false;
 
 						debug('Entering idle mode...');
-						//socket.emit('idle', {});
 
 					})
 
 				}
 			}
 
-			var WifiSetup = require('../scripts/wifi-setup.js');
 			var setup = new WifiSetup('/boot/bluetooth/wifi.json');
 
 			setup.on('connecting', () => {
 				debug('Connecting to Wi-Fi...');
-                //enqueue(new PulseAnimation(strip, {priority:'!', frequency: 100, color:'orange', duration:-1}));
-                //enqueue(new BlinkAnimation(strip, {priority:'!', frequency: 4000, color:'orange', duration:-1}));
-                //enqueue(new ColorAnimation(strip, {priority:'!', color:'orange', duration:-1}));
                 enqueue(new PulseAnimation(strip, {priority:'!', color:'orange', duration:-1}));
 			});
 
@@ -178,13 +171,10 @@ var Module = new function() {
 			});
 
             setup.on('wifi-changed', () => {
-				//enqueue(new ColorAnimation(strip, {color:'green', priority:'!', duration:-1}));
 			});
 
 			setup.on('ready', () => {
 				debug('Ready!');
-                //enqueue(new PulseAnimation(strip, {priority:'!', frequency: 100, color:'green', duration:-1}));
-                //enqueue(new ColorAnimation(strip, {priority:'!', color:'white', duration:-1}));
                 enqueue(new ClockAnimation(strip, {priority:'!', duration:-1}));
 			});
 
