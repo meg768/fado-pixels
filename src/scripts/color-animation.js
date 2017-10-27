@@ -41,7 +41,7 @@ module.exports = class extends Animation {
             var pixels = new Pixels(this.strip.width, this.strip.height);
 
             pixels.fill(this.color);
-            this.strip.render(pixels.getPixels());
+            this.strip.render(pixels.getPixels(), {fadeIn:5});
 
             this.time = now;
         }
