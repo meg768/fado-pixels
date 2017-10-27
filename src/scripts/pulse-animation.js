@@ -17,9 +17,6 @@ module.exports = class extends Animation {
         this.name      = 'Pulse Animation';
         this.time      = undefined;
         this.hue       = Color('red').hue();
-        this.luminance = 0;
-        this.delta     = 1;
-        this.ticks     = 0;
 
         if (isString(this.options.color)) {
             try {
@@ -38,24 +35,19 @@ module.exports = class extends Animation {
 
 
     render() {
-        if ((this.ticks % this.options.frequency) == 0) {
+        var now = new Date();
+
+        if (this.time == undefined || now - this.time > 1000) {
             var pixels = new Pixels(this.strip.width, this.strip.height);
 
             pixels.fill(Color.hsl(this.hue, 100, this.luminance).rgbNumber());
-            this.strip.render(pixels.getPixels());
+            this.strip.render(pixels.getPixels(), {fade:100});
 
-            this.luminance += this.delta;
+            pixels.fill(0).rgbNumber());
+            this.strip.render(pixels.getPixels(), {fade:100});
 
-            if (this.luminance >= 50) {
-                this.delta = -1;
-            }
-
-            if (this.luminance <= 0) {
-                this.delta = 1;
-            }
+            this.time = now;
         }
-
-        this.ticks++;
 
     }
 
