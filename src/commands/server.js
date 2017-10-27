@@ -41,11 +41,9 @@ var Module = new function() {
 		registerService().then(function() {
 			var ColorAnimation     = require('../scripts/color-animation.js');
 			var RandomAnimation    = require('../scripts/random-animation.js');
-            var FlashAnimation     = require('../scripts/flash-animation.js');
 			var BlankAnimation     = require('../scripts/animation.js');
             var PulseAnimation     = require('../scripts/pulse-animation.js');
             var ClockAnimation     = require('../scripts/clock-animation.js');
-            var BlinkAnimation     = require('../scripts/blink-animation.js');
 
 			debug('Connecting...');
 
@@ -83,7 +81,7 @@ var Module = new function() {
 
             socket.on('flash', function(params, fn) {
 				fn({status:'OK'});
-				enqueue(new FlashAnimation(strip, params));
+                enqueue(new PulseAnimation(strip, Object.assign({}, {interval:500, speed:50}, params));
 			});
 
             socket.on('pulse', function(params, fn) {
@@ -93,7 +91,7 @@ var Module = new function() {
 
             socket.on('blink', function(params, fn) {
 				fn({status:'OK'});
-				enqueue(new BlinkAnimation(strip, params));
+                enqueue(new PulseAnimation(strip, Object.assign({}, {interval:500, speed:250}, params));
 			});
 
 			function dequeue() {
