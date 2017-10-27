@@ -5,6 +5,8 @@ var isString = require('yow/is').isString;
 var isObject = require('yow/is').isObject;
 var Pixels   = require('./pixels.js');
 
+var TOTAL_STEPS = 0;
+var TIMAL_TIME  = 1;
 
 module.exports = function NeopixelStrip(options) {
 
@@ -62,7 +64,7 @@ module.exports = function NeopixelStrip(options) {
 				}
 				_strip.render(tmp);
 
-				Sleep.msleep(1);
+				Sleep.msleep(2);
 			}
 
 			var now = new Date();
