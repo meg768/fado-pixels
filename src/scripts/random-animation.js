@@ -37,7 +37,7 @@ module.exports = class extends Animation {
 
         if ((this.tick % 1000) == 0) {
             var fps = this.ticks / (this.time.valueOf() - now.valueOf()) / 1000;
-            debug('Frames per second:', tps);
+            debug('Frames per second:', fps);
         }
     }
 
