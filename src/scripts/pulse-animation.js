@@ -40,7 +40,7 @@ module.exports = class extends Animation {
         if (this.time == undefined || now - this.time > 1000) {
             var pixels = new Pixels(this.strip.width, this.strip.height);
 
-            pixels.fill(Color.hsl(this.hue, 100, this.luminance).rgbNumber());
+            pixels.fill(Color.hsl(this.hue, 100, 50).rgbNumber());
             this.strip.render(pixels.getPixels(), {fade:100});
 
             pixels.fill(0);
