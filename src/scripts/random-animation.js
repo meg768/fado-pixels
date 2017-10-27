@@ -36,8 +36,8 @@ module.exports = class extends Animation {
         this.strip.render(this.pixels.getPixels());
 
         if ((this.tick % 1000) == 0) {
-            var fps = this.tick / (now.valueOf() - this.time.valueOf());
-            debug('Frames per second:', fps);
+            var time = (now.valueOf() - this.time.valueOf()) / 1000;
+            debug('Frames per second:', this.tick / time, time, this.tick);
         }
     }
 
