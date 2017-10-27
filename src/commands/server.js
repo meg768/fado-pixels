@@ -91,7 +91,7 @@ var Module = new function() {
 
             socket.on('blink', function(params, fn) {
 				fn({status:'OK'});
-                enqueue(new PulseAnimation(strip, Object.assign({}, {interval:500, speed:250}, params));
+                enqueue(new PulseAnimation(strip, Object.assign({}, {interval:500, speed:250}, params)));
 			});
 
 			function dequeue() {
