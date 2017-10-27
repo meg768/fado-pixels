@@ -40,6 +40,7 @@ module.exports = function NeopixelStrip(options) {
 
 		if (options && options.fadeIn) {
 			var numSteps = options.fadeIn;
+			var timer = new Date();
 
 			for (var step = 0; step < numSteps; step++) {
 
@@ -61,8 +62,12 @@ module.exports = function NeopixelStrip(options) {
 				}
 				_strip.render(tmp);
 
-				Sleep.msleep(50);
+				Sleep.msleep(1);
 			}
+
+			var now = new Date();
+
+			debug('Fade', numSteps, 'took', now - timer, 'seconds');
 
 		}
 		// Save rgb buffer

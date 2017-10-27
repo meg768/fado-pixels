@@ -11,7 +11,7 @@ module.exports = class extends Animation {
 
 
     constructor(strip, options) {
-        super(strip, options);
+        super(strip, Object.assign({}, {fade:10}, options));
 
         this.name = 'Color';
         this.time = undefined;
@@ -41,7 +41,7 @@ module.exports = class extends Animation {
             var pixels = new Pixels(this.strip.width, this.strip.height);
 
             pixels.fill(this.color);
-            this.strip.render(pixels.getPixels(), {fadeIn:5});
+            this.strip.render(pixels.getPixels(), {fadeIn:this.options.fade});
 
             this.time = now;
         }
