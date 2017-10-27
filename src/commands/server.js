@@ -170,7 +170,8 @@ var Module = new function() {
 				debug('Ready!');
                 //enqueue(new PulseAnimation(strip, {priority:'!', frequency: 100, color:'green', duration:-1}));
                 //enqueue(new ColorAnimation(strip, {priority:'!', color:'white', duration:-1}));
-                enqueue(new ClockAnimation(strip, {priority:'!', duration:-1}));
+                //enqueue(new ClockAnimation(strip, {priority:'!', duration:-1}));
+                enqueue(new PulseAnimation(strip, {priority:'!', color:'blue', duration:-1}));
 			});
 
 
