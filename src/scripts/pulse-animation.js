@@ -18,7 +18,7 @@ module.exports = class extends Animation {
     constructor(strip, options) {
         super(strip, options);
 
-        this.options   = Object.assign({}, {interval:1000, speed:100}, this.options);
+        this.options   = Object.assign({}, {interval:500, delay:500}, this.options);
         this.name      = 'Pulse Animation';
         this.time      = undefined;
         this.color     = Color('red').rgbNumber();
@@ -48,14 +48,14 @@ module.exports = class extends Animation {
         if (this.time == undefined || now - this.time > this.options.interval) {
 
             pixels.fill(this.color);
-            strip.render(pixels.getPixels(), {fadeIn:this.options.speed});
+            strip.render(pixels.getPixels(), {fadeIn:this.options.delay});
 
             if (this.options.length && this.options.length > 0) {
                 Sleep.msleep(this.options.length);
             }
 
             pixels.fill(0);
-            strip.render(pixels.getPixels(), {fadeIn:this.options.speed});
+            strip.render(pixels.getPixels(), {fadeIn:this.options.delay});
 
             this.time = now;
         }
