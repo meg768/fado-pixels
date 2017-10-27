@@ -8,7 +8,6 @@ var Color     = require('color');
 
 module.exports = class extends Animation {
 
-
     constructor(strip, options) {
         super(strip, options);
 
@@ -20,43 +19,11 @@ module.exports = class extends Animation {
 
     }
 
-
-
-    start() {
-        return new Promise((resolve, reject) => {
-            super.start().then(() => {
-                this.render();
-                resolve();
-            })
-            .catch((error) => {
-                reject(error);
-            })
-        });
-    }
-
     render() {
-        var now = new Date();
-
         this.hue = (this.hue + 1) % 360;
-
-        var pixels  = new Pixels(this.strip.width, this.strip.height);
-        var hue     = this.getHue();
-
-        for (var y = 0; y < this.strip.height; y++) {
-            for (var x = 0; x < this.strip.width; x++) {
-                pixels.setPixelHSL(x, y, this.hue, 100, 50);
-            }
-        }
-
-
-        this.strip.render(pixels.getPixels(), {});
-        this.lastRender = new Date();
-
+        this.pixels.fill(Color.hsl(this.hue, 100, 50).rgbNumber());
+        this.strip.render(pixels.getPixels());
     }
 
-    getHue() {
-        var now = new Date();
-        return Math.floor(360 * (((now.getHours() % 12) * 60) + now.getMinutes()) / (12 * 60));
-    }
 
 }

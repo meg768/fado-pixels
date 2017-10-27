@@ -16,6 +16,7 @@ module.exports = class Animation extends Events {
         this.strip     = strip;
         this.name      = 'None';
         this.cancelled = false;
+        this.pixels     = new Pixels(strip.width, strip.height);
 
 
     }
@@ -47,10 +48,12 @@ module.exports = class Animation extends Events {
         console.log('Stopping animation', this.name);
 
         return new Promise((resolve, reject) => {
-            var pixels = new Pixels(this.strip.width, this.strip.height);
 
-            if (!this.cancelled)
-                this.strip.render(pixels.getPixels(), {fadeIn:10});
+            if (!this.cancelled) {
+                this.pixels.clear();
+                this.strip.render(this.pixels.getPixels(), {fadeIn:10});
+
+            }
 
             resolve();
 
