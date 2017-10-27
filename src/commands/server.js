@@ -158,8 +158,8 @@ var Module = new function() {
 
             setup.on('discoverable', () => {
 				debug('Raspberry now discoverable.');
-//                enqueue(new PulseAnimation(strip, {priority:'!', frequency: 100, color:'blue', duration:-1}));
-                enqueue(new ColorAnimation(strip, {priority:'!', color:'blue', duration:-1}));
+                enqueue(new PulseAnimation(strip, {priority:'!', color:'blue', duration:-1}));
+                //enqueue(new ColorAnimation(strip, {priority:'!', color:'blue', duration:-1}));
 			});
 
             setup.on('wifi-changed', () => {
