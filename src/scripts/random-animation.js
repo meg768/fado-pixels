@@ -27,19 +27,24 @@ module.exports = class extends Animation {
 
     render() {
 
+
+        if ((this.tick % 100) == 0) {
+            this.tick++;
+
+            this.hue = (this.hue + 1) % 360;
+            this.pixels.fill(Color.hsl(this.hue, 100, 50).rgbNumber());
+            this.strip.render(this.pixels.getPixels());
+
+        }
+
+/*
         var now = new Date();
-
-        this.tick++;
-
-        this.hue = (this.hue + 1) % 360;
-        this.pixels.fill(Color.hsl(this.hue, 100, 50).rgbNumber());
-        this.strip.render(this.pixels.getPixels());
 
         if ((this.tick % 1000) == 0) {
             var time = (now.valueOf() - this.time.valueOf()) / 1000;
             debug('Frames per second:', this.tick / time, time, this.tick);
         }
     }
-
+*/
 
 }
