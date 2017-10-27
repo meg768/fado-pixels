@@ -21,7 +21,7 @@ module.exports = class extends Animation {
         this.time       = new Date();
         this.tick       = 0;
 
-        console.log('New random animation', this.options);
+        debug('New random animation', this.options);
 
     }
 
@@ -35,7 +35,7 @@ module.exports = class extends Animation {
         this.pixels.fill(Color.hsl(this.hue, 100, 50).rgbNumber());
         this.strip.render(this.pixels.getPixels());
 
-        if ((this.ticks % 1000) == 0) {
+        if ((this.tick % 1000) == 0) {
             var fps = this.ticks / (this.time.valueOf() - now.valueOf()) / 1000;
             debug('Frames per second:', tps);
         }
