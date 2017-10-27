@@ -64,7 +64,7 @@ module.exports = function NeopixelStrip(options) {
 				}
 				_strip.render(tmp);
 
-				Sleep.msleep(2);
+//				Sleep.msleep(2);
 			}
 
 			var now = new Date();
