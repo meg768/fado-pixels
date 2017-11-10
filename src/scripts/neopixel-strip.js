@@ -5,6 +5,9 @@ var isString = require('yow/is').isString;
 var isObject = require('yow/is').isObject;
 var Pixels   = require('./pixels.js');
 
+function debug() {
+	// console.log.apply(this, arguments);
+}
 
 module.exports = function NeopixelStrip(options) {
 
@@ -15,7 +18,6 @@ module.exports = function NeopixelStrip(options) {
 		throw new Error('Width and height of strip must be specified.');
 
 	var _this          = this;         // That
-	var _debug         = 0;            // Output log messages to console?
 
 	var _width         = options.width;
 	var _height        = options.height;
@@ -28,27 +30,27 @@ module.exports = function NeopixelStrip(options) {
 	_this.height = _height;
 
 
-	function debug() {
-		if (_debug)
-			console.log.apply(this, arguments);
-	}
-
-	process.on('SIGINT', function () {
+	function exit() {
 		_strip.render(new Uint32Array(_length));
 		process.exit();
-	});
+
+	}
+
+	process.on('SIGUSR1', exit);
+	process.on('SIGUSR2', exit);
+	process.on('SIGINT', exit);
+	process.on('SIGTERM', exit);
 
 	_this.render = function(pixels, options) {
 
 		var tmp = new Uint32Array(_length);
-		var numSteps = 50;
 
 		if (options && options.fadeIn) {
-			var numSteps = options.fadeIn;
-			var timer = new Date();
+			var factor   = 0.17;
+			var numSteps = options.fadeIn * factor;
+			var timer    = new Date();
 
 			for (var step = 0; step < numSteps; step++) {
-
 				for (var i = 0; i < _length; i++) {
 
 					var r1 = (_pixels[i] & 0xFF0000) >> 16;
@@ -65,16 +67,13 @@ module.exports = function NeopixelStrip(options) {
 
 					tmp[i] = (red << 16) | (green << 8) | blue;
 				}
-				_strip.render(tmp);
 
-				// Sleep for a while. The value was adjusted
-				// for a Pi Zero so that every step takes 1 millisecond
-				Sleep.usleep(380);
+				_strip.render(tmp);
 			}
 
 			var now = new Date();
 
-			debug('Fade', numSteps, 'took', now - timer, 'milliseconds');
+			debug('Fade', options.fadeIn, 'took', now - timer, 'milliseconds');
 
 		}
 		// Save rgb buffer

@@ -14,7 +14,7 @@ module.exports = class extends Animation {
         super(strip, Object.assign({}, {fade:100}, options));
 
         this.name = 'Color';
-        this.time = undefined;
+        this.renderFrequency = 1000;
         this.color = Color('red').rgbNumber();
 
         if (isString(this.options.color)) {
@@ -35,15 +35,8 @@ module.exports = class extends Animation {
 
     render() {
 
-        var now = new Date();
-
-        if (this.time == undefined || now - this.time > 10000) {
-            var pixels = new Pixels(this.strip.width, this.strip.height);
-
-            pixels.fill(this.color);
-            this.strip.render(pixels.getPixels(), {fadeIn:this.options.fade});
-
-            this.time = now;
+            this.pixels.fill(this.color);
+            this.strip.render(this.pixels.getPixels(), {fadeIn:this.options.fade});
         }
 
     }

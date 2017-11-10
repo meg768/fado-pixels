@@ -6,36 +6,40 @@ var Events  = require('events')
 var Pixels  = require('./pixels.js');
 var Events  = require('events');
 
+function debug() {
+    //console.log.apply(this, arguments);
+}
+
 module.exports = class Animation extends Events {
 
 
     constructor(strip, options) {
         super();
 
-        this.options   = Object.assign({}, {priority:'normal'}, options);
-        this.strip     = strip;
-        this.name      = 'None';
-        this.cancelled = false;
-        this.pixels     = new Pixels(strip.width, strip.height);
+        this.options         = Object.assign({}, {priority:'normal'}, options);
+        this.strip           = strip;
+        this.name            = 'None';
+        this.cancelled       = false;
+        this.renderFrequency = 0;
+        this.renderTime      = 0;
+        this.pixels          = new Pixels(strip.width, strip.height);
 
 
     }
 
-    setTiemout(ms) {
-        this.options.timeout = ms;
-    }
 
     render() {
-
     }
 
     start() {
-        console.log('Starting animation', this.name);
+        debug('Starting animation', this.name);
 
         return new Promise((resolve, reject) => {
 
-            this.cancelled = false;
+            this.cancelled  = false;
+            this.renderTime = 0;
 
+            debug('Animation', this.name, 'started.');
             resolve();
 
             this.emit('started');
@@ -45,7 +49,7 @@ module.exports = class Animation extends Events {
     }
 
     stop() {
-        console.log('Stopping animation', this.name);
+        debug('Stopping animation', this.name);
 
         return new Promise((resolve, reject) => {
 
@@ -55,6 +59,7 @@ module.exports = class Animation extends Events {
 
             }
 
+            debug('Animation', this.name, 'stopped.');
             resolve();
 
             this.emit('stopped');
@@ -64,7 +69,7 @@ module.exports = class Animation extends Events {
     loop() {
         var self = this;
 
-        console.log('Running loop', self.name);
+        debug('Running loop', self.name);
 
         return new Promise((resolve, reject) => {
 
@@ -88,7 +93,13 @@ module.exports = class Animation extends Events {
                     resolve();
                 }
                 else {
-                    self.render();
+                    var now = new Date();
+
+                    if (self.renderFrequency == 0 || now - self.renderTime >= self.renderFrequency) {
+                        self.render();
+                        self.renderTime = now;
+                    }
+
                     setImmediate(loop);
                 }
             }
@@ -99,9 +110,8 @@ module.exports = class Animation extends Events {
 
 
 
-
     cancel() {
-        console.log('Cancelling animation', this.name);
+        debug('Cancelling animation', this.name);
         this.cancelled = true;
     }
 
