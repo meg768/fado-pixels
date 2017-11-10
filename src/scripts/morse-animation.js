@@ -3,19 +3,21 @@ var sprintf  = require('yow/sprintf');
 var isString = require('yow/is').isString;
 
 var Animation = require('./animation.js');
-var Strip     = require('./neopixel-strip.js');
-var Pixels    = require('./pixels.js');
 var Color     = require('color');
+
+function debug() {
+    //console.log.apply(this, arguments);
+}
 
 module.exports = class extends Animation {
 
 
     constructor(strip, options) {
-        super(strip, Object.assign({}, {fade:100}, options));
+        super(strip, Object.assign({}, options));
 
-        this.name = 'Color';
-        this.renderFrequency = 1000;
-        this.color = Color('red').rgbNumber();
+        this.name = 'Morse';
+        this.renderFrequency = 0;
+        this.color = Color('white').rgbNumber();
 
         if (isString(this.options.color)) {
             try {
