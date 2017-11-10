@@ -50,7 +50,7 @@ var Module = new function() {
 
 			var socket           = require('socket.io-client')('http://app-o.se/neopixel-globe');
 			var strip            = new Strip({width:16, height:1});
-			var animationQueue   = new animationQueue();
+			var animationQueue   = new AnimationQueue();
             var animationIndex   = 0;
             var animations       = [ClockAnimation];
 
