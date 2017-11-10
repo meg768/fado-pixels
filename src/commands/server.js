@@ -53,6 +53,7 @@ var Module = new function() {
 			var animationQueue   = new AnimationQueue();
             var animationIndex   = 0;
             var animations       = [ClockAnimation];
+            var duration         = 10000;
 
 			function runNextAnimation() {
 
