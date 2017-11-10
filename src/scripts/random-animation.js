@@ -17,9 +17,7 @@ module.exports = class extends Animation {
 
         this.name       = 'Random';
         this.hue        = 0;
-
-        this.time       = new Date();
-        this.tick       = 0;
+        this.renderFrequency = 100;
 
         debug('New random animation', this.options);
 
@@ -27,24 +25,10 @@ module.exports = class extends Animation {
 
     render() {
 
-        this.tick++;
+        this.hue = (this.hue + 1) % 360;
+        this.pixels.fill(Color.hsl(this.hue, 100, 50).rgbNumber());
+        this.strip.render(this.pixels.getPixels());
 
-        if ((this.tick % 100) == 0) {
-
-            this.hue = (this.hue + 1) % 360;
-            this.pixels.fill(Color.hsl(this.hue, 100, 50).rgbNumber());
-            this.strip.render(this.pixels.getPixels());
-
-        }
-
-/*
-        var now = new Date();
-
-        if ((this.tick % 1000) == 0) {
-            var time = (now.valueOf() - this.time.valueOf()) / 1000;
-            debug('Frames per second:', this.tick / time, time, this.tick);
-        }
-*/
     }
 
 }
