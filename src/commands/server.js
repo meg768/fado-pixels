@@ -52,7 +52,7 @@ var Module = new function() {
 			var strip            = new Strip({width:16, height:1});
 			var animationQueue   = new AnimationQueue();
             var animationIndex   = 0;
-            var animations       = [ClockAnimation, RandomAnimation];
+            var animations       = [ClockAnimation];
             var duration         = 60000;
 
 			function runNextAnimation() {

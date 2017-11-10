@@ -53,11 +53,6 @@ module.exports = class Animation extends Events {
 
         return new Promise((resolve, reject) => {
 
-            if (!this.cancelled) {
-                this.pixels.clear();
-                this.strip.render(this.pixels.getPixels(), {fadeIn:10});
-
-            }
 
             debug('Animation', this.name, 'stopped.');
             resolve();
