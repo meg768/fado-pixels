@@ -34,11 +34,8 @@ module.exports = class extends Animation {
 
 
     render() {
-
-            this.pixels.fill(this.color);
-            this.strip.render(this.pixels.getPixels(), {fadeIn:this.options.fade});
-        }
-
+        this.pixels.fill(this.color);
+        this.strip.render(this.pixels.getPixels(), {fadeIn:this.options.fade});
     }
 
 
