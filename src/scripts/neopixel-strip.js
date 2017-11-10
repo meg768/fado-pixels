@@ -6,7 +6,7 @@ var isObject = require('yow/is').isObject;
 var Pixels   = require('./pixels.js');
 
 function debug() {
-	// console.log.apply(this, arguments);
+	 console.log.apply(this, arguments);
 }
 
 module.exports = function NeopixelStrip(options) {
