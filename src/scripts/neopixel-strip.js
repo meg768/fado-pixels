@@ -46,7 +46,7 @@ module.exports = function NeopixelStrip(options) {
 		var tmp = new Uint32Array(_length);
 
 		if (options && options.fadeIn) {
-			var factor   = 0.17 * 169 / _length;
+			var factor   = 1.4; //0.17
 			var numSteps = options.fadeIn * factor;
 			var timer    = new Date();
 
