@@ -2,7 +2,7 @@
 var sprintf  = require('meg768/yow/sprintf');
 var isString = require('meg768/yow/is').isString;
 
-var Animation = require('./animation.js');
+var Animation = require('meg768/neopixels/animation');
 var Color     = require('color');
 
 function debug() {

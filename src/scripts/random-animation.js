@@ -1,7 +1,6 @@
 
-var sprintf = require('meg768/yow/sprintf');
-
-var Animation = require('./animation.js');
+var sprintf   = require('meg768/yow/sprintf');
+var Animation = require('meg768/neopixels/animation');
 var Color     = require('color');
 
 function debug() {
