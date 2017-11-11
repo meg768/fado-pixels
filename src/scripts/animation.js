@@ -1,7 +1,7 @@
 var isArray = require('meg768/yow/is').isArray;
 var sprintf = require('meg768/yow/sprintf');
 var Timer   = require('meg768/yow/timer');
-
+var Pixels  = require('meg768/neopixels/pixels');
 var Events  = require('events')
 
 
