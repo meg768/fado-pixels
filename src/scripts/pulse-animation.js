@@ -3,8 +3,6 @@ var sprintf  = require('yow/sprintf');
 var isString = require('yow/is').isString;
 
 var Animation = require('./animation.js');
-var Strip     = require('./neopixel-strip.js');
-var Pixels    = require('./pixels.js');
 var Color     = require('color');
 var Sleep     = require('sleep');
 

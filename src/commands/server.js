@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 
-var sprintf = require('yow/sprintf');
-var isObject = require('yow/is').isObject;
-var isFunction = require('yow/is').isFunction;
+var sprintf = require('meg768/yow/sprintf');
+var isObject = require('meg768/yow/is').isObject;
+var isFunction = require('meg768/yow/is').isFunction;
 var Timer = require('yow/timer');
-var Strip = require('../scripts/neopixel-strip.js');
-var WifiSetup = require('../scripts/wifi-setup.js');
+var Strip = require('meg768/neopixels/strip');
+//var WifiSetup = require('../scripts/wifi-setup.js');
 var WifiSetup = require('meg768/rpi/wifi-setup.js');
 var AnimationQueue = require('../scripts/animation-queue.js');
 

@@ -1,10 +1,4 @@
 
-var isArray = require('yow/is').isArray;
-var sprintf = require('yow/sprintf');
-var Timer   = require('yow/timer');
-var Events  = require('events')
-var Pixels  = require('./pixels.js');
-var Events  = require('events');
 
 function debug() {
     //console.log.apply(this, arguments);
@@ -12,6 +6,12 @@ function debug() {
 
 module.exports = class Animation extends Events {
 
+
+    var isArray = require('yow/is').isArray;
+    var sprintf = require('yow/sprintf');
+    var Timer   = require('yow/timer');
+    var Events  = require('events')
+    var Events  = require('events');
 
     constructor(strip, options) {
         super();

@@ -2,8 +2,6 @@
 var sprintf = require('yow/sprintf');
 
 var Animation = require('./animation.js');
-var Strip     = require('./neopixel-strip.js');
-var Pixels    = require('./pixels.js');
 var Color     = require('color');
 
 function debug() {

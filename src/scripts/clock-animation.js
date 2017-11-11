@@ -1,9 +1,10 @@
 
-var ColorAnimation = require('./color-animation.js');
-var Color     = require('color');
 
 module.exports = class extends ColorAnimation {
 
+
+    var ColorAnimation = require('./color-animation.js');
+    var Color     = require('color');
 
     constructor(strip, options) {
         super(strip, options);
