@@ -1,7 +1,7 @@
 var Color = require('color');
 
-var isString = require('yow/is').isString;
-var isObject = require('yow/is').isObject;
+var isString = require('meg768/yow/is').isString;
+var isObject = require('meg768/yow/is').isObject;
 
 
 module.exports = function Pixels(width, height) {

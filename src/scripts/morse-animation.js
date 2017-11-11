@@ -1,6 +1,6 @@
 
-var sprintf  = require('yow/sprintf');
-var isString = require('yow/is').isString;
+var sprintf  = require('meg768/yow/sprintf');
+var isString = require('meg768/yow/is').isString;
 
 var Animation = require('./animation.js');
 var Color     = require('color');

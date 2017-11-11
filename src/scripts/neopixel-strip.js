@@ -1,8 +1,8 @@
 var Color = require('color');
 var Sleep = require('sleep');
 
-var isString = require('yow/is').isString;
-var isObject = require('yow/is').isObject;
+var isString = require('meg768/yow/is').isString;
+var isObject = require('meg768/yow/is').isObject;
 var Pixels   = require('./pixels.js');
 
 function debug() {
