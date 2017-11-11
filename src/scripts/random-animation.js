@@ -1,5 +1,5 @@
 
-var sprintf = require('yow/sprintf');
+var sprintf = require('meg768/yow/sprintf');
 
 var Animation = require('./animation.js');
 var Color     = require('color');

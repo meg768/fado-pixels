@@ -1,13 +1,13 @@
 #!/usr/bin/env node
 
-var sprintf = require('meg768/yow/sprintf');
-var isObject = require('meg768/yow/is').isObject;
-var isFunction = require('meg768/yow/is').isFunction;
-var Timer = require('yow/timer');
-var Strip = require('meg768/neopixels/strip');
+var sprintf          = require('meg768/yow/sprintf');
+var isObject         = require('meg768/yow/is').isObject;
+var isFunction       = require('meg768/yow/is').isFunction;
+var Timer            = require('meg768/yow/timer');
+var Strip            = require('meg768/neopixels/strip');
 //var WifiSetup = require('../scripts/wifi-setup.js');
-var WifiSetup = require('meg768/rpi/wifi-setup.js');
-var AnimationQueue = require('../scripts/animation-queue.js');
+var WifiSetup        = require('meg768/rpi/wifi-setup.js');
+var AnimationQueue   = require('../scripts/animation-queue.js');
 
 function debug() {
     console.log.apply(this, arguments);
