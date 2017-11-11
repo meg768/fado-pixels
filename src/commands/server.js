@@ -5,9 +5,8 @@ var isObject         = require('meg768/yow/is').isObject;
 var isFunction       = require('meg768/yow/is').isFunction;
 var Timer            = require('meg768/yow/timer');
 var Strip            = require('meg768/neopixels/strip');
-//var WifiSetup = require('../scripts/wifi-setup.js');
 var WifiSetup        = require('meg768/rpi/wifi-setup.js');
-var AnimationQueue   = require('../scripts/animation-queue.js');
+var AnimationQueue   = require('meg768/neopixels/animation-queue');
 
 function debug() {
     console.log.apply(this, arguments);
