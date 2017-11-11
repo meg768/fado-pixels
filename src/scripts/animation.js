@@ -22,7 +22,7 @@ module.exports = class Animation extends Events {
         this.cancelled       = false;
         this.renderFrequency = 0;
         this.renderTime      = 0;
-        this.pixels          = new Pixels(strip.width, strip.height);
+        this.pixels          = new Pixels({width:strip.width, height:strip.height});
 
 
     }
