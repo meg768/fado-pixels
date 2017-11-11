@@ -9,7 +9,6 @@ var Color     = require('color');
 
 module.exports = class extends Animation {
 
-
     constructor(strip, options) {
         super(strip, Object.assign({}, {fade:100}, options));
 
@@ -28,8 +27,6 @@ module.exports = class extends Animation {
         }
 
     }
-
-
 
     render() {
         this.pixels.fill(this.color);

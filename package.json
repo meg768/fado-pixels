@@ -19,6 +19,7 @@
   "dependencies": {
     "color": "^2.0.0",
     "dotenv": "^4.0.0",
+    "meg768": "^1.0.2",
     "pigpio": "^0.6.2",
     "rpi-ws281x-native": "^0.8.2",
     "sleep": "^5.1.1",

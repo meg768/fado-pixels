@@ -15,8 +15,8 @@ module.exports = class extends Animation {
     constructor(strip, options) {
         super(strip, options);
 
-        this.name       = 'Random';
-        this.hue        = 0;
+        this.name = 'Random';
+        this.hue = 0;
         this.renderFrequency = 10;
 
         debug('New random animation', this.options);

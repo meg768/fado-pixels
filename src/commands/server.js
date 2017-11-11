@@ -6,6 +6,7 @@ var isFunction = require('yow/is').isFunction;
 var Timer = require('yow/timer');
 var Strip = require('../scripts/neopixel-strip.js');
 var WifiSetup = require('../scripts/wifi-setup.js');
+var WifiSetup = require('meg768/rpi/wifi-setup.js');
 var AnimationQueue = require('../scripts/animation-queue.js');
 
 function debug() {
