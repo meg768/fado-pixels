@@ -42,7 +42,6 @@ var Module = new function() {
 		registerService().then(function() {
 			var ColorAnimation     = require('../scripts/color-animation.js');
 			var RandomAnimation    = require('../scripts/random-animation.js');
-			var BlankAnimation     = require('../scripts/animation.js');
             var PulseAnimation     = require('../scripts/pulse-animation.js');
             var ClockAnimation     = require('../scripts/clock-animation.js');
 

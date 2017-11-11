@@ -2,8 +2,8 @@
 
 require('dotenv').config();
 
-var sprintf    = require('yow/sprintf');
-var prefixLogs = require('yow/logs').prefix;
+var sprintf    = require('meg768/yow/sprintf');
+var prefixLogs = require('meg768/yow/logs').prefix;
 
 var App = function() {
 
