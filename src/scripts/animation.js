@@ -1,3 +1,8 @@
+var isArray = require('meg768/yow/is').isArray;
+var sprintf = require('meg768/yow/sprintf');
+var Timer   = require('meg768/yow/timer');
+
+var Events  = require('events')
 
 
 function debug() {
@@ -7,11 +12,6 @@ function debug() {
 module.exports = class Animation extends Events {
 
 
-    var isArray = require('meg768/yow/is').isArray;
-    var sprintf = require('meg768/yow/sprintf');
-    var Timer   = require('meg768/yow/timer');
-
-    var Events  = require('events')
 
     constructor(strip, options) {
         super();
