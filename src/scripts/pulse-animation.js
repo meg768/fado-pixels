@@ -49,7 +49,7 @@ module.exports = class extends Neopixels.Animation {
         }
 
         pixels.fill(0);
-        pixels.render({fadeIn:this.options.delay});
+        pixels.render({transition:'fade', duration:this.options.delay});
 
     }
 
