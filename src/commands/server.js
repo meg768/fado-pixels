@@ -136,7 +136,7 @@ var Module = new function() {
 
 				setup.on('ready', () => {
 					debug('Ready!');
-                    runAnimation(new PulseAnimation(strip, {priority:'!', color:'green', duration:2000}));
+                    runAnimation(new PulseAnimation(strip, {priority:'!', color:'white', duration:2000}));
 				});
 
 
