@@ -35,7 +35,7 @@ module.exports = class extends Neopixels.Animation {
 
     render() {
         this.pixels.fill(this.color);
-        this.strip.render(this.pixels.getPixels(), {fadeIn:this.options.fade});
+        this.pixels.render({fadeIn:this.options.fade});
     }
 
 

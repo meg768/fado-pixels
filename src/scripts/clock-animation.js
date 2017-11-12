@@ -6,8 +6,8 @@ module.exports = class extends ColorAnimation {
 
 
 
-    constructor(strip, options) {
-        super(strip, options);
+    constructor(pixels, options) {
+        super(pixels, options);
 
         this.name = 'Clock';
         this.renderFrequency = 15 * 1000;

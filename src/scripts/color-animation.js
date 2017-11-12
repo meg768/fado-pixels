@@ -7,8 +7,8 @@ var Color     = require('color');
 
 module.exports = class extends Neopixels.Animation {
 
-    constructor(strip, options) {
-        super(strip, Object.assign({}, {fade:100}, options));
+    constructor(pixels, options) {
+        super(pixels, Object.assign({}, {fade:100}, options));
 
         this.name = 'Color';
         this.renderFrequency = 1000;
@@ -28,7 +28,7 @@ module.exports = class extends Neopixels.Animation {
 
     render() {
         this.pixels.fill(this.color);
-        this.strip.render(this.pixels.getPixels(), {fadeIn:this.options.fade});
+        this.pixels.render({fadeIn:this.options.fade});
     }
 
 
