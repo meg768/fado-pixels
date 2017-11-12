@@ -1,11 +1,11 @@
 
-var sprintf  = require('meg768/yow/sprintf');
-var isString = require('meg768/yow/is').isString;
+var sprintf  = require('yow/sprintf');
+var isString = require('yow/is').isString;
 
-var Animation = require('meg768/neopixels/animation');
+var Neopixels = require('rpi-neopixels');
 var Color     = require('color');
 
-module.exports = class extends Animation {
+module.exports = class extends Neopixels.Animation {
 
     constructor(strip, options) {
         super(strip, Object.assign({}, {fade:100}, options));

@@ -4,9 +4,9 @@ var sprintf          = require('yow/sprintf');
 var isObject         = require('yow/is').isObject;
 var isFunction       = require('yow/is').isFunction;
 var Timer            = require('yow/timer');
-var Strip            = require('meg768/neopixels/strip');
 var WifiSetup        = require('rpi-bluetooth-wifi-config');
-var AnimationQueue   = require('meg768/neopixels/animation-queue');
+var Strip            = require('rpi-neopixels').Strip;
+var AnimationQueue   = require('rpi-neopixels').AnimationQueue;
 
 function debug() {
     console.log.apply(this, arguments);

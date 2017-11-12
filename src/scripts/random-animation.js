@@ -1,13 +1,13 @@
 
-var sprintf   = require('meg768/yow/sprintf');
-var Animation = require('meg768/neopixels/animation');
+var sprintf   = require('yow/sprintf');
+var Neopixels = require('rpi-neopixels');
 var Color     = require('color');
 
 function debug() {
     console.log.apply(this, arguments);
 }
 
-module.exports = class extends Animation {
+module.exports = class extends Neopixels.Animation {
 
     constructor(strip, options) {
         super(strip, options);
