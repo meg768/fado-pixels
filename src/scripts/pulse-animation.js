@@ -42,7 +42,7 @@ module.exports = class extends Neopixels.Animation {
         var strip  = this.strip;
 
         pixels.fill(this.color);
-        pixels.render({fadeIn:this.options.delay});
+        pixels.render({transition:'fade', duration:this.options.delay});
 
         if (this.options.length && this.options.length > 0) {
             Sleep.msleep(this.options.length);
