@@ -48,7 +48,7 @@ var Module = new function() {
 			debug('Connecting...');
 
 			var socket           = require('socket.io-client')('http://app-o.se/neopixel-globe');
-			var strip            = new Strip({width:16, height:1, debug:1, speeX:1.4});
+			var strip            = new Strip({width:16, height:1, debug:1});
 			var animationQueue   = new AnimationQueue();
             var animationIndex   = 0;
             var animations       = [ClockAnimation];
@@ -136,7 +136,7 @@ var Module = new function() {
 
 				setup.on('ready', () => {
 					debug('Ready!');
-                    runAnimation(new PulseAnimation(strip, {priority:'!', color:'white', duration:2000}));
+                    runAnimation(new PulseAnimation(strip, {priority:'!', color:'white', duration:0, delay:1000}));
 				});
 
 
