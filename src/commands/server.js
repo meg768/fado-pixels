@@ -123,20 +123,21 @@ var Module = new function() {
 
                 // The file has already been deleted.
                 // File contents is in the contents parameter.
-                debug('File name', fileName);
-                debug('Full path', Path.join(monitor.path, fileName));
+                debug('File uploaded', Path.join(monitor.path, fileName));
 
                 try {
                     var json = JSON.parse(content);
 
-                    if (json.ssid) {
+                    if (json.ssid != undefined) {
+                        debug('Connecting to network', json.ssid, '...');
                         runAnimation(new PulseAnimation(strip, {priority:'!', color:'orange', duration:-1}));
 
                         wifi.connect({ssid:json.ssid, psk:json.password}).then(() => {
-                            console.log('Connected to network.');
+                            debug('Connected to network.');
                             runNextAnimation();
                         })
                         .catch((error) => {
+                            runAnimation(new PulseAnimation(strip, {priority:'!', color:'blue', duration:-1}));
                             console.log(error);
                         });
 
