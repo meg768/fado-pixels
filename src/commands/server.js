@@ -1,12 +1,14 @@
 #!/usr/bin/env node
 
+var Path             = require('path');
 var sprintf          = require('yow/sprintf');
 var isObject         = require('yow/is').isObject;
 var isFunction       = require('yow/is').isFunction;
 var Timer            = require('yow/timer');
-var WifiSetup        = require('rpi-bluetooth-wifi-config');
 var Strip            = require('rpi-neopixels').Strip;
 var AnimationQueue   = require('rpi-neopixels').AnimationQueue;
+var Monitor          = require('rpi-obex-monitor');
+var Wifi             = require('rpi-wifi-connection');
 
 function debug() {
     console.log.apply(this, arguments);
@@ -50,6 +52,7 @@ var Module = new function() {
 			var socket           = require('socket.io-client')('http://app-o.se/neopixel-globe');
 			var strip            = new Strip({width:16, height:1, debug:1});
 			var animationQueue   = new AnimationQueue();
+            var wifi             = new Wifi();
             var animationIndex   = 0;
             var animations       = [ClockAnimation];
             var duration         = 60000;
@@ -114,38 +117,53 @@ var Module = new function() {
 				fn({status:'OK'});
                 runAnimation(new PulseAnimation(strip, Object.assign({}, {interval:1000, delay:0, length:500}, params)));
 			});
+/*
+            monitor.on('upload', (fileName, content) => {
 
+                // The file has already been deleted.
+                // File contents is in the contents parameter.
+                debug('File name', fileName);
+                debug('Full path', Path.join(monitor.path, fileName));
 
-            function startup() {
+                try {
+                    var json = JSON.parse(content);
 
+                    if (json.ssid) {
+                        runAnimation(new PulseAnimation(strip, {priority:'!', color:'orange', duration:-1}));
 
-				var setup = new WifiSetup('/boot/bluetooth/wifi.json');
+                        wifi.connect({ssid:json.ssid, psk:json.password}).then(() => {
+                            console.log('Connected to network.');
+                            runNextAnimation();
+                        })
+                        .catch((error) => {
+                            console.log(error);
+                        });
 
-				setup.on('connecting', () => {
-					debug('Connecting to Wi-Fi...');
-                    runAnimation(new PulseAnimation(strip, {priority:'!', color:'orange', duration:-1}));
-				});
+                    }
+                }
+                catch(error) {
+                    debug('Invalid file contents');
+                }
+            });
+*/
+            monitor.enableBluetooth();
 
-	            setup.on('discoverable', () => {
-					debug('Raspberry now discoverable.');
+            // Start monitoring. Stop by calling stop()
+            monitor.start();
+
+            wifi.getState().then((connected) => {
+                if (connected) {
+                    runNextAnimation();
+                }
+                else {
                     runAnimation(new PulseAnimation(strip, {priority:'!', color:'blue', duration:-1}));
-				});
+                }
 
-	            setup.on('wifi-changed', () => {
-				});
+            })
+            .catch(() => {
+                runAnimation(new PulseAnimation(strip, {priority:'!', color:'blue', duration:-1}));
 
-				setup.on('ready', () => {
-					debug('Ready!');
-                    runAnimation(new PulseAnimation(strip, {priority:'!', color:'white', duration:1500, delay:300}));
-				});
-
-
-				setup.setup();
-
-			}
-
-			startup();
-
+            })
 
 
 		});
