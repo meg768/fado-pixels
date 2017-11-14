@@ -118,7 +118,7 @@ var Module = new function() {
 				fn({status:'OK'});
                 runAnimation(new PulseAnimation(strip, Object.assign({}, {interval:1000, delay:0, length:500}, params)));
 			});
-/*
+
             monitor.on('upload', (fileName, content) => {
 
                 // The file has already been deleted.
@@ -146,7 +146,7 @@ var Module = new function() {
                     debug('Invalid file contents');
                 }
             });
-*/
+
             monitor.enableBluetooth();
 
             // Start monitoring. Stop by calling stop()
