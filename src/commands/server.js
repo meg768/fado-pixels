@@ -49,11 +49,12 @@ var Module = new function() {
 
 			debug('Connecting...');
 
+            var debug            = true;
 			var socket           = require('socket.io-client')('http://app-o.se/neopixel-globe');
-			var strip            = new Strip({width:16, height:1});
-			var animationQueue   = new AnimationQueue();
-            var wifi             = new Wifi();
-            var monitor          = new Monitor();
+			var strip            = new Strip({width:16, height:1, debug:argv.debug});
+			var animationQueue   = new AnimationQueue({debug:argv.debug});
+            var wifi             = new Wifi({debug:argv.debug});
+            var monitor          = new Monitor({debug:argv.debug});
             var animationIndex   = 0;
             var animations       = [ClockAnimation];
             var duration         = 60000;
