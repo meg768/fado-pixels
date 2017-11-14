@@ -4,14 +4,12 @@ var Path             = require('path');
 var sprintf          = require('yow/sprintf');
 var isObject         = require('yow/is').isObject;
 var isFunction       = require('yow/is').isFunction;
-var Timer            = require('yow/timer');
 var Strip            = require('rpi-neopixels').Strip;
 var AnimationQueue   = require('rpi-neopixels').AnimationQueue;
 var Monitor          = require('rpi-obex-monitor');
 var Wifi             = require('rpi-wifi-connection');
 
 function debug() {
-    console.log.apply(this, arguments);
 }
 
 var Module = new function() {
@@ -38,8 +36,11 @@ var Module = new function() {
 
 	function run(argv) {
 
-
-		var timer = new Timer();
+        if (argv.debug) {
+            debug = function() {
+                console.log.apply(this, arguments);
+            }
+        }
 
 		registerService().then(function() {
 			var ColorAnimation     = require('../scripts/color-animation.js');
@@ -49,7 +50,6 @@ var Module = new function() {
 
 			debug('Connecting...');
 
-            var debug            = true;
 			var socket           = require('socket.io-client')('http://app-o.se/neopixel-globe');
 			var strip            = new Strip({width:16, height:1, debug:argv.debug});
 			var animationQueue   = new AnimationQueue({debug:argv.debug});
