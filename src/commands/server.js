@@ -8,6 +8,7 @@ var Strip            = require('rpi-neopixels').Strip;
 var AnimationQueue   = require('rpi-neopixels').AnimationQueue;
 var Monitor          = require('rpi-obex-monitor');
 var Wifi             = require('rpi-wifi-connection');
+var Button           = require('./button.js');
 
 function debug() {
 }
@@ -58,6 +59,11 @@ var Module = new function() {
             var animationIndex   = 0;
             var animations       = [ClockAnimation];
             var duration         = 60000;
+			var button           = new Button();
+
+			button.on('click', () => {
+				debug('Click!!');
+			});
 
 			function runNextAnimation() {
 
