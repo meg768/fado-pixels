@@ -66,7 +66,7 @@ var Module = new function() {
 				debug('Click!!');
 
 				if (onoff) {
-					runAnimation(new ColorAnimation(strip, {color:'black', priority:'!', duration:-1});
+					runAnimation(new ColorAnimation(strip, {color:'black', priority:'!', duration:-1}));
 				}
 				else {
 					runNextAnimation();
