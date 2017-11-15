@@ -60,9 +60,19 @@ var Module = new function() {
             var animations       = [ClockAnimation];
             var duration         = 60000;
 			var button           = new Button({autoEnable:true, pin:19});
+			var onoff            = true;
 
 			button.on('click', () => {
 				debug('Click!!');
+
+				if (onoff) {
+					runAnimation(new ColorAnimation(strip, {color:'black', priority:'!', duration:-1});
+				}
+				else {
+					runNextAnimation();
+				}
+
+				onoff = !onoff;
 			});
 
 			function runNextAnimation() {
