@@ -17,9 +17,9 @@ module.exports = class Button extends Events {
 
 		if (options.pin == undefined)
 			throw new Error('Must supply a pin for the button.');
-			
+
 		this.pin      = options.pin;
-		this.gpio     = new Gpio(pin, {mode: Gpio.INPUT, pullUpDown: Gpio.PUD_DOWN, edge: Gpio.EITHER_EDGE});
+		this.gpio     = new Gpio(this.pin, {mode: Gpio.INPUT, pullUpDown: Gpio.PUD_DOWN, edge: Gpio.EITHER_EDGE});
 		this.state    = 0;
 		this.pressed  = 0;
 		this.released = 0;
