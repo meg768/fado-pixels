@@ -59,7 +59,7 @@ var Module = new function() {
             var animationIndex   = 0;
             var animations       = [ClockAnimation];
             var duration         = 60000;
-			var button           = new Button({autoEnable:true, pin:13});
+			var button           = new Button({autoEnable:true, pin:19});
 
 			button.on('click', () => {
 				debug('Click!!');
