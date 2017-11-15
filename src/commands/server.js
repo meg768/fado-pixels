@@ -8,7 +8,7 @@ var Strip            = require('rpi-neopixels').Strip;
 var AnimationQueue   = require('rpi-neopixels').AnimationQueue;
 var Monitor          = require('rpi-obex-monitor');
 var Wifi             = require('rpi-wifi-connection');
-var Button           = require('./src/button.js');
+var Button           = require('./scripts/button.js');
 
 function debug() {
 }
