@@ -69,7 +69,8 @@ var Module = new function() {
 					runAnimation(new ColorAnimation(strip, {color:'black', priority:'!', duration:-1}));
 				}
 				else {
-					runNextAnimation();
+					runAnimation(new BlinkAnimation(strip, {color:'white', priority:'!', duration:500}));
+//					runNextAnimation();
 				}
 
 				onoff = !onoff;
