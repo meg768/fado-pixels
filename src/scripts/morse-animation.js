@@ -12,8 +12,8 @@ function debug() {
 module.exports = class extends Neopixels.Animation {
 
 
-    constructor(strip, options) {
-        super(strip, Object.assign({}, options));
+    constructor(pixels, options) {
+        super(pixels, Object.assign({}, options));
 
         this.name = 'Morse';
         this.renderFrequency = 0;

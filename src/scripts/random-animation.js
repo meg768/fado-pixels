@@ -9,8 +9,8 @@ function debug() {
 
 module.exports = class extends Neopixels.Animation {
 
-    constructor(strip, options) {
-        super(strip, options);
+    constructor(pixels, options) {
+        super(pixels, options);
 
         this.name = 'Random';
         this.hue = 0;

@@ -52,7 +52,7 @@ var Module = new function() {
 			debug('Connecting...');
 
 			var socket           = require('socket.io-client')('http://app-o.se/neopixel-globe');
-			var strip            = new Strip({width:16, height:1, debug:argv.debug});
+			var strip            = new Strip({length:16, debug:argv.debug});
 			var animationQueue   = new AnimationQueue({debug:argv.debug});
             var wifi             = new Wifi({debug:argv.debug});
             var monitor          = new Monitor({debug:argv.debug});

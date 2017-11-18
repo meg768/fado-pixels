@@ -13,8 +13,8 @@ function debug() {
 module.exports = class extends Neopixels.Animation {
 
 
-    constructor(strip, options) {
-        super(strip, options);
+    constructor(pixels, options) {
+        super(pixels, options);
 
         this.options = Object.assign({}, {interval:1000, delay:1000}, this.options);
         this.name = 'Pulse Animation';
@@ -39,7 +39,6 @@ module.exports = class extends Neopixels.Animation {
 
     render() {
         var pixels = this.pixels;
-        var strip  = this.strip;
 
         pixels.fill(this.color);
         pixels.render({transition:'fade', duration:this.options.delay});
