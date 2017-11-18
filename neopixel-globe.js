@@ -21,7 +21,6 @@ var App = function() {
 
 			args.command(require('./src/commands/server.js'));
 
-
 			args.wrap(null);
 			args.demand(1);
 
