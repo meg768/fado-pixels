@@ -19,14 +19,12 @@
   "dependencies": {
     "color": "^2.0.0",
     "dotenv": "^4.0.0",
-    "meg768": "^1.0.2",
     "pigpio": "^0.6.2",
     "rpi-neopixels": "^1.0.1",
-    "rpi-obex-monitor": "^1.0.10",
+    "rpi-obex-monitor": "^1.0.11",
     "rpi-wifi-connection": "^1.0.5",
     "sleep": "^5.1.1",
     "socket.io-client": "^2.0.3",
-    "watch": "^1.0.2",
     "yargs": "^8.0.2",
     "yow": "^1.0.84"
   }
