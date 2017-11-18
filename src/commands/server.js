@@ -64,8 +64,6 @@ var Module = new function() {
 
 
 			button.on('click', (clicks) => {
-				debug('Click!!');
-
 				if (state == 'on') {
 					runAnimation(new ColorAnimation(strip, {color:'black', priority:'!', duration:-1}));
 				}
@@ -100,7 +98,7 @@ var Module = new function() {
 
 			socket.on('connect', function() {
 				debug('Connected to socket server.');
-				socket.emit('i-am-the-provider');
+				socket.emit('i-am-the-provider', 'KALLE');
 			});
 
 			socket.on('disconnect', function() {
