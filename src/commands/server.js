@@ -60,21 +60,20 @@ var Module = new function() {
             var animationIndex   = 0;
             var animations       = [ClockAnimation];
             var duration         = 60000;
-			var onoff            = true;
+			var state            = 'on';
 
 
 			button.on('click', (clicks) => {
 				debug('Click!!');
 
-				if (onoff) {
+				if (state == 'on') {
 					runAnimation(new ColorAnimation(strip, {color:'black', priority:'!', duration:-1}));
 				}
 				else {
-//					runAnimation(new BlinkAnimation(strip, {color:'white', priority:'!', duration:500}));
 					runNextAnimation();
 				}
 
-				onoff = !onoff;
+				state = (state == 'on') ? 'off' : 'on';
 			});
 
 
