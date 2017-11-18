@@ -49,7 +49,7 @@ var Module = new function() {
             var PulseAnimation     = require('../scripts/pulse-animation.js');
             var ClockAnimation     = require('../scripts/clock-animation.js');
 
-			debug('Starting up...');
+			debug('Starting...');
 
 			var socket           = require('socket.io-client')('http://app-o.se/neopixel-globe');
 			var strip            = new Strip({length:16, debug:argv.debug});
