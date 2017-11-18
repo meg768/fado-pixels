@@ -51,7 +51,9 @@ var Module = new function() {
 
 			debug('Starting...');
 
-			//var socket           = require('socket.io-client')('http://app-o.se/neopixel-globe');
+			var socket           = require('socket.io-client')('http://app-o.se/neopixel-globe');
+			//var button           = new Button({autoEnable:true, pin:19});
+			var button           = new Button(19);
 			var strip            = new Strip({length:16, debug:argv.debug});
 			var animationQueue   = new AnimationQueue({debug:argv.debug});
             var wifi             = new Wifi({debug:argv.debug});
@@ -61,8 +63,6 @@ var Module = new function() {
             var duration         = 60000;
 			var onoff            = true;
 
-			//var button           = new Button({autoEnable:true, pin:19});
-			var button           = new Button(19);
 
 			button.on('click', (clicks) => {
 				debug('Click!!');
@@ -99,7 +99,7 @@ var Module = new function() {
 				debug('Idle. Running next animation');
 				runNextAnimation();
 			});
-/*
+
 			socket.on('connect', function() {
 				debug('Connected to socket server.');
 				socket.emit('i-am-the-provider');
@@ -139,7 +139,7 @@ var Module = new function() {
 				fn({status:'OK'});
                 runAnimation(new PulseAnimation(strip, Object.assign({}, {interval:1000, delay:0, length:500}, params)));
 			});
-*/
+
             monitor.on('upload', (fileName, content) => {
 
                 // The file has already been deleted.
