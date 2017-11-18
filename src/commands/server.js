@@ -61,8 +61,8 @@ var Module = new function() {
             var duration         = 60000;
 			var onoff            = true;
 
-			var button           = new Button({autoEnable:true, pin:19});
-			//var button           = new Button(19);
+			//var button           = new Button({autoEnable:true, pin:19});
+			var button           = new Button(19);
 
 			button.on('click', () => {
 				debug('Click!!');
