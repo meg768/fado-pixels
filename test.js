@@ -40,25 +40,29 @@ var Module =  function() {
 
 			var socket = require('socket.io-client')('http://app-o.se/neopixels-KALLE');
 
-			socket.on('connect', function() {
-				debug('Connected to neopixels');
-
+			function clearTimer() {
 				if (timer != null) {
 					clearInterval(timer);
 					timer = null;
 
 				}
+
+			}
+			socket.on('connect', function() {
+				debug('Connected to neopixels');
+
+				clearTimer();
 			});
 
 			socket.on('disconnect', function() {
 				debug('Disconnected from neopixels');
-
+/*
 				timer = setInterval(function() {
 					debug('Trying to reconnect');
 					socket = require('socket.io-client')('http://app-o.se/neopixels-KALLE');
 
 				}, 5000);
-
+*/
 			});
 
 

@@ -103,7 +103,7 @@ var Module = new function() {
 			});
 
 			socket.on('connect', function() {
-				debug('Connected to socket server.');
+				debug('Connected to socket server. Registerring methods and events...');
 				socket.emit('register', 'KALLE', ['color', 'random', 'clock', 'flash', 'pulse', 'blink'], ['change']);
 			});
 
