@@ -33,6 +33,7 @@ var Module =  function() {
 
 	function run() {
 
+		var timer = null;
 
 		registerService().then(function() {
 			debug('Starting...');
@@ -41,16 +42,22 @@ var Module =  function() {
 
 			socket.on('connect', function() {
 				debug('Connected to neopixels');
+
+				if (timer != null) {
+					clearInterval(timer);
+					timer = null;
+
+				}
 			});
 
 			socket.on('disconnect', function() {
 				debug('Disconnected from neopixels');
-				
-				setTimeout(function() {
+
+				timer = setInterval(function() {
 					debug('Trying to reconnect');
 					socket = require('socket.io-client')('http://app-o.se/neopixels-KALLE');
 
-				}, 2000);
+				}, 5000);
 
 			});
 
