@@ -102,7 +102,7 @@ var Module = new function() {
 
 			socket.on('connect', function() {
 				debug('Connected to socket server.');
-				socket.emit('i-am-the-provider', 'KALLE');
+				socket.emit('register', 'KALLE', ['color', 'random', 'clock', 'flash', 'pulse', 'blink']);
 			});
 
 			socket.on('disconnect', function() {
