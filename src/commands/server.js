@@ -87,6 +87,8 @@ var Module = new function() {
 				var Animation = animations[animationIndex % animations.length];
 				var animation = new Animation(strip, {duration:duration, priority:'!'});
 
+				socket.emit('change', 'new animation');
+				
 				runAnimation(animation);
             }
 
@@ -102,7 +104,7 @@ var Module = new function() {
 
 			socket.on('connect', function() {
 				debug('Connected to socket server.');
-				socket.emit('register', 'KALLE', ['color', 'random', 'clock', 'flash', 'pulse', 'blink']);
+				socket.emit('register', 'KALLE', ['color', 'random', 'clock', 'flash', 'pulse', 'blink'], ['change']);
 			});
 
 			socket.on('disconnect', function() {
