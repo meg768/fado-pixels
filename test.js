@@ -37,7 +37,7 @@ var Module =  function() {
 		registerService().then(function() {
 			debug('Starting...');
 
-			var socket = require('socket.io-client')('http://app-o.se/neopixels/KALLE');
+			var socket = require('socket.io-client')('http://app-o.se/neopixels-KALLE');
 
 			socket.on('connect', function() {
 				debug('Connected to neopixels');
@@ -54,13 +54,13 @@ var Module =  function() {
 
 			function run() {
 				debug('Running!');
-				socket.emit('blink', {}, function(response) {
+				socket.emit('blink', {priority:'!', duration:2000, color:'blue'}, function(response) {
 					debug('Response from blink');
 					debug(response);
 				});
 
 			}
-			setTimeout(run, 3000);
+			setInterval(run, 10000);
 
 		});
 

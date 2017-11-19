@@ -8,7 +8,7 @@ var Strip            = require('rpi-neopixels').Strip;
 var AnimationQueue   = require('rpi-neopixels').AnimationQueue;
 var Monitor          = require('rpi-obex-monitor');
 var Wifi             = require('rpi-wifi-connection');
-var Button           = require('../scripts/button.js');
+var Button           = require('pigpio-button');
 
 function debug() {
 }
@@ -88,7 +88,7 @@ var Module = new function() {
 				var animation = new Animation(strip, {duration:duration, priority:'!'});
 
 				socket.emit('change', 'new animation');
-				
+
 				runAnimation(animation);
             }
 
