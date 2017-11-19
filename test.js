@@ -9,7 +9,7 @@ function debug() {
 	console.log.apply(this, arguments);
 }
 
-var Module = new function() {
+var Module =  function() {
 
 
 
@@ -31,19 +31,13 @@ var Module = new function() {
 
 
 
-	function run(argv) {
+	function run() {
 
-        if (argv.debug) {
-            debug = function() {
-                console.log.apply(this, arguments);
-            }
-        }
 
 		registerService().then(function() {
 			debug('Starting...');
 
 			var socket = require('socket.io-client')('http://app-o.se/neopixels/KALLE');
-
 
 			socket.on('connect', function() {
 				debug('Connected to neopixels');
@@ -73,10 +67,10 @@ var Module = new function() {
 
 	}
 
+	run();
 
-	module.exports.command  = 'test [options]';
-	module.exports.describe = 'Run Test';
-	module.exports.builder  = defineArgs;
-	module.exports.handler  = run;
 
 };
+
+
+new Module();
