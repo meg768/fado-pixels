@@ -51,7 +51,8 @@ var Module = new function() {
 
 			debug('Starting...');
 
-			var socket           = require('socket.io-client')('http://app-o.se/neopixel-globe');
+			//var socket           = require('socket.io-client')('http://app-o.se/neopixel-globe');
+			var socket           = require('socket.io-client')('http://app-o.se/neopixels');
 			var button           = new Button({autoEnable:true, pin:19});
 			var strip            = new Strip({length:16, debug:argv.debug});
 			var animationQueue   = new AnimationQueue({debug:argv.debug});
