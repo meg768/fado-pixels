@@ -54,6 +54,12 @@ var Module =  function() {
 				clearTimer();
 			});
 
+			socket.on('reconnect', function() {
+				debug('RECONNECG');
+				socket = require('socket.io-client')('http://app-o.se/neopixels-KALLE');
+
+			});
+
 			socket.on('disconnect', function() {
 				debug('Disconnected from neopixels');
 /*
