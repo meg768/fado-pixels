@@ -68,7 +68,10 @@ var Module = new function() {
 					runAnimation(new ColorAnimation(strip, {color:'black', priority:'!', duration:-1}));
 				}
 				else {
-					runNextAnimation();
+					if (clicks > 1)
+						runAnimation(new PulseAnimation(strip, {duration:duration, priority:'!', interval:1000, delay:0, color:'white', length:500}));
+					else
+						runNextAnimation();
 				}
 
 				state = (state == 'on') ? 'off' : 'on';
