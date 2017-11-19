@@ -42,15 +42,15 @@ var Module = new function() {
 		registerService().then(function() {
 			debug('Starting...');
 
-			var socket           = require('socket.io-client')('http://app-o.se/neopixels/KALLE');
+			var socket = require('socket.io-client')('http://app-o.se/neopixels/KALLE');
 
 
 			socket.on('connect', function() {
-				debug('Connected to neopixels server.');
+				debug('Connected to neopixels');
 			});
 
 			socket.on('disconnect', function() {
-				debug('Disconnected from socket server');
+				debug('Disconnected from neopixels');
 			});
 
 
@@ -58,6 +58,15 @@ var Module = new function() {
 				debug('Neopixels changed!', params);
 			});
 
+			function run() {
+				debug('Running!');
+				socket.emit('blink', {}, function(response) {
+					debug('Response from blink');
+					debug(response);
+				});
+
+			}
+			setTimeout(run, 3000);
 
 		});
 
