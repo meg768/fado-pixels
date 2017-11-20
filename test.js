@@ -35,56 +35,92 @@ var Module =  function() {
 
 		var timer = null;
 
+
 		registerService().then(function() {
 			debug('Starting...');
+			var io = require('socket.io-client');
 
-			var socket = require('socket.io-client')('http://app-o.se/neopixels-KALLE');
+			//var socket = require('socket.io-client')('http://app-o.se/neopixels-KALLE');
+			//var socket = io.connect('http://app-o.se/neopixels-KALLE', {'forceNew': true});
+			//var socket = io.connect('http://app-o.se/neopixels-KALLE', {});
+			var socket = io.connect('http://app-o.se/neopixels?instance=KALLE', {});
 
-			function clearTimer() {
-				if (timer != null) {
-					clearInterval(timer);
-					timer = null;
+
+
+			function init(socket) {
+
+				socket.on('connect', function() {
+					debug('Connected to neopixels', socket.id);
+
+
+
+				});
+
+				socket.on('event', function(data) {
+					debug('Event:', data);
+				});
+
+
+				socket.on('reconnecting', function(attempt) {
+					debug('Reconnecting', attempt);
+					//socket.open();
+
+				});
+
+				socket.on('reconnect_error', function(error) {
+					debug('Reconnect error', error.message);
+					//socket.open();
+
+				});
+
+				socket.on('reconnect', function(attempt) {
+					debug('Reconnect', socket.id, attempt);
+					//socket.open();
+					//socket.io.reconnect();
+
+					//debug(socket);
+				});
+
+				socket.on('connect_error', function(error) {
+					debug('Connect error', error.message);
+
+				});
+
+				socket.on('disconnecting', function() {
+					debug('Disconnecting');
+
+				});
+				socket.on('disconnect', function() {
+					//init(socket);
+					debug('Disconnected from neopixels');
+
+					//socket = io.connect('http://app-o.se/neopixels-KALLE');
+					//init(socket);
+				});
+
+
+				socket.on('change', function(params) {
+					debug('Neopixels changed!', params);
+				});
+
+
+			}
+
+			init(socket);
+
+			function run() {
+				debug('Running. Socket state', socket.connected);
+				if (true) {
+					socket.emit('blink', {priority:'!', duration:1000, color:'blue'}, function(response) {
+						debug('Response from blink');
+						debug(response);
+					});
 
 				}
 
-			}
-			socket.on('connect', function() {
-				debug('Connected to neopixels');
-
-				clearTimer();
-			});
-
-			socket.on('reconnect', function() {
-				debug('RECONNECG');
-				socket = require('socket.io-client')('http://app-o.se/neopixels-KALLE');
-
-			});
-
-			socket.on('disconnect', function() {
-				debug('Disconnected from neopixels');
-/*
-				timer = setInterval(function() {
-					debug('Trying to reconnect');
-					socket = require('socket.io-client')('http://app-o.se/neopixels-KALLE');
-
-				}, 5000);
-*/
-			});
-
-
-			socket.on('change', function(params) {
-				debug('Neopixels changed!', params);
-			});
-
-			function run() {
-				debug('Running!');
-				socket.emit('blink', {priority:'!', duration:2000, color:'blue'}, function(response) {
-					debug('Response from blink');
-					debug(response);
-				});
 
 			}
-			setInterval(run, 10000);
+			setInterval(run, 5000);
 
 		});
 
