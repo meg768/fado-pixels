@@ -53,8 +53,8 @@ var Module =  function() {
 					debug('Connected to neopixels', socket.id);
 
 
-
 				});
+
 
 				socket.on('event', function(data) {
 					debug('Event:', data);
