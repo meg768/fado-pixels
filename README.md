@@ -122,10 +122,9 @@ Edit
 sudo nano /etc/rc.local
 ````
 
-And add the following
+And add the following at the end of the file.
 
-    cd /home/pi/neopixel-globe && node neopixel-globe.js server --debug
-
+    cd /home/pi/neopixel-globe && node neopixel-globe.js server
 
 ### Create Environment File
 
