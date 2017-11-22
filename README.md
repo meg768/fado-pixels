@@ -71,7 +71,7 @@ sudo raspi-config
 wget -O - https://raw.githubusercontent.com/sdesalas/node-pi-zero/master/install-node-v8.9.0.sh | bash
 ````
 
-This following command installs node version 6.9.1. To install later versions
+This following command installs node version 8.9.0. To install later versions
 see https://github.com/sdesalas/node-pi-zero.
 
 
