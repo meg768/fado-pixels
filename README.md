@@ -113,6 +113,20 @@ cd neopixel-globe
 npm install
 ````
 
+### Autostart
+
+Edit the autostart file rc.local
+
+Edit
+````bash
+sudo nano /etc/rc.local
+````
+
+And add the following
+
+    cd /home/pi/neopixel-globe && node neopixel-globe.js server --debug
+
+
 ### Create Environment File
 
 This project uses the npm module **dotenv** and needs some enviroment variables set up.
