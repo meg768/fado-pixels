@@ -68,7 +68,7 @@ sudo raspi-config
 ### Install Node and npm
 
 ````bash
-wget -O - https://raw.githubusercontent.com/sdesalas/node-pi-zero/master/install-node-v6.9.1.sh | bash
+wget -O - https://raw.githubusercontent.com/sdesalas/node-pi-zero/master/install-node-v8.9.0.sh | bash
 ````
 
 This following command installs node version 6.9.1. To install later versions
