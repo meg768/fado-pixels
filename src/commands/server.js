@@ -22,6 +22,7 @@ var Module = new function() {
 		args.help('help').alias('help', 'h');
 
 
+		args.option('id', {alias:'i', describe:'ID of globe', demand: 'ID must be specified'});
 		args.wrap(null);
 
 		args.check(function(argv) {
@@ -51,8 +52,8 @@ var Module = new function() {
 
 			debug('Starting...');
 
-			//var socket           = require('socket.io-client')('http://app-o.se/neopixel-globe');
-			var socket           = require('socket.io-client')('http://app-o.se/neopixels?instance=KALLE');
+			var url              = sprintf('http://app-o.se/neopixels?instance=%s', argv.id);
+			var socket           = require('socket.io-client')(url);
 			var button           = new Button({autoEnable:true, pin:19});
 			var strip            = new Strip({length:16, debug:argv.debug});
 			var animationQueue   = new AnimationQueue({debug:argv.debug});
