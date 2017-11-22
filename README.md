@@ -40,6 +40,11 @@ save the file by pressing **CTRL+X** followed by **Y**. Now
 remove the memory card from your Mac and insert into your Raspberry.
 
 Once it is booted, try to figure out the IP address by using LanScan for Mac.
+Then connect to your Raspberry Pi.
+
+````bash
+ssh pi@XXX.XXX.XXX.XXX
+````
 
 ### Update apt-get
 
