@@ -115,13 +115,13 @@ npm install
 
 ### Autostart
 
-Edit the autostart file rc.local
+Edit the autostart file **rc.local**.
 
 ````bash
 sudo nano /etc/rc.local
 ````
 
-And add the following at the end of the file.
+And add the following at the end of the file but before the line "exit 0".
 
     cd /home/pi/neopixel-globe && node neopixel-globe.js server
 
