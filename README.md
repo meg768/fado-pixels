@@ -117,7 +117,6 @@ npm install
 
 Edit the autostart file rc.local
 
-Edit
 ````bash
 sudo nano /etc/rc.local
 ````
