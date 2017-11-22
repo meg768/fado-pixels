@@ -123,7 +123,7 @@ sudo nano /etc/rc.local
 
 And add the following at the end of the file but before the line "exit 0".
 
-    cd /home/pi/neopixel-globe && node neopixel-globe.js server
+    cd /home/pi/neopixel-globe && node neopixel-globe.js server &
 
 ### Create Environment File
 
