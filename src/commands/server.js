@@ -155,14 +155,14 @@ var Module = new function() {
 
                     if (json.ssid != undefined) {
                         debug('Connecting to network', json.ssid, '...');
-                        runAnimation(new PulseAnimation(strip, {priority:'!', color:'orange', duration:-1}));
+                        runAnimation(new PulseAnimation(strip, {priority:'!', color:'orange', interval:1000, delay:10, duration:-1}));
 
                         wifi.connect({ssid:json.ssid, psk:json.password, timeout:90000}).then(() => {
                             debug('Connected to network.');
                             runNextAnimation();
                         })
                         .catch((error) => {
-                            runAnimation(new PulseAnimation(strip, {priority:'!', color:'blue', duration:-1}));
+							runAnimation(new PulseAnimation(strip, {priority:'!', color:'blue', interval:1000, delay:10, duration:-1}));
                             console.log(error);
                         });
 
