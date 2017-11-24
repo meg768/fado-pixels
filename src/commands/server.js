@@ -157,7 +157,7 @@ var Module = new function() {
                         debug('Connecting to network', json.ssid, '...');
                         runAnimation(new PulseAnimation(strip, {priority:'!', color:'orange', duration:-1}));
 
-                        wifi.connect({ssid:json.ssid, psk:json.password, removePreviousNetworks:true}).then(() => {
+                        wifi.connect({ssid:json.ssid, psk:json.password, timeout:90000}).then(() => {
                             debug('Connected to network.');
                             runNextAnimation();
                         })
