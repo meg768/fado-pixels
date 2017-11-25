@@ -3,6 +3,7 @@
 var Path             = require('path');
 var sprintf          = require('yow/sprintf');
 var isObject         = require('yow/is').isObject;
+var isString         = require('yow/is').isString;
 var isFunction       = require('yow/is').isFunction;
 var Strip            = require('rpi-neopixels').Strip;
 var AnimationQueue   = require('rpi-neopixels').AnimationQueue;
