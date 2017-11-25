@@ -156,21 +156,23 @@ var Module = new function() {
 
                     if (json.ssid != undefined) {
                         debug('Connecting to network', json.ssid, '...');
-                        runAnimation(new PulseAnimation(strip, {priority:'!', color:'orange', interval:1000, length:500, delay:0, duration:-1}));
+                        runAnimation(new BlinkAnimation(strip, {priority:'!', color:'orange', interval:500, softness:0, duration:-1}));
 
                         wifi.connect({ssid:json.ssid, psk:json.password, timeout:90000}).then(() => {
                             debug('Connected to network.');
                             runNextAnimation();
                         })
                         .catch((error) => {
-							runAnimation(new PulseAnimation(strip, {priority:'!', color:'blue', interval:1000, length:500, delay:0, duration:-1}));
+							runAnimation(new BlinkAnimation(strip, {priority:'!', color:'blue', interval:500, softness:0, duration:-1}));
                             console.log(error);
                         });
 
                     }
                 }
                 catch(error) {
-                    debug('Invalid file contents');
+					runAnimation(new ColorAnimation(strip, {priority:'!', color:'red', duration:2000}));
+					runAnimation(new BlinkAnimation(strip, {color:'blue', interval:500, softness:0, duration:-1}));
+					console.log(error);
                 }
             });
 
@@ -184,12 +186,12 @@ var Module = new function() {
                     runNextAnimation();
                 }
                 else {
-                    runAnimation(new PulseAnimation(strip, {priority:'!', color:'blue', duration:-1}));
+					runAnimation(new BlinkAnimation(strip, {color:'blue', interval:500, softness:0, duration:-1}));
                 }
 
             })
             .catch(() => {
-                runAnimation(new PulseAnimation(strip, {priority:'!', color:'blue', duration:-1}));
+				runAnimation(new BlinkAnimation(strip, {color:'blue', interval:500, softness:0, duration:-1}));
 
             })
 
