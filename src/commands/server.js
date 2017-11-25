@@ -49,6 +49,7 @@ var Module = new function() {
 			var RandomAnimation    = require('../scripts/random-animation.js');
             var PulseAnimation     = require('../scripts/pulse-animation.js');
             var ClockAnimation     = require('../scripts/clock-animation.js');
+			var BlinkAnimation     = require('../scripts/blink-animation.js');
 
 			debug('Starting...');
 
@@ -141,7 +142,7 @@ var Module = new function() {
 
             socket.on('blink', function(params, fn) {
 				fn({status:'OK'});
-                runAnimation(new PulseAnimation(strip, Object.assign({}, {interval:1000, delay:0, length:500}, params)));
+                runAnimation(new BlinkAnimation(strip, Object.assign({}, params)));
 			});
 
             monitor.on('upload', (fileName, content) => {
@@ -155,14 +156,14 @@ var Module = new function() {
 
                     if (json.ssid != undefined) {
                         debug('Connecting to network', json.ssid, '...');
-                        runAnimation(new PulseAnimation(strip, {priority:'!', color:'orange', interval:1000, delay:10, duration:-1}));
+                        runAnimation(new PulseAnimation(strip, {priority:'!', color:'orange', interval:1000, length:500, delay:0, duration:-1}));
 
                         wifi.connect({ssid:json.ssid, psk:json.password, timeout:90000}).then(() => {
                             debug('Connected to network.');
                             runNextAnimation();
                         })
                         .catch((error) => {
-							runAnimation(new PulseAnimation(strip, {priority:'!', color:'blue', interval:1000, delay:10, duration:-1}));
+							runAnimation(new PulseAnimation(strip, {priority:'!', color:'blue', interval:1000, length:500, delay:0, duration:-1}));
                             console.log(error);
                         });
 
