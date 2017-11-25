@@ -154,7 +154,7 @@ var Module = new function() {
 
 				function connect(json) {
 
-					function continue() {
+					function moveOn() {
 						setTimeout({
 							wifi.getState().then((connected) => {
 								if (connected)
@@ -170,17 +170,17 @@ var Module = new function() {
 					if (isString(json.ssid)) {
 						wifi.connect({ssid:json.ssid, psk:json.password, timeout:60000}).then(() => {
 	                        debug('Connected to network.');
-	                        continue();
+	                        runNextAnimation();
 	                    })
 						.catch((error) => {
 							console.log(error);
-							continue();
+							moveOn();
 						});
 
 					}
 					else {
 						runAnimation(new ColorAnimation(strip, {priority:'!', color:'red', duration:-1}));
-						continue();
+						moveOn();
 					}
 
 				}
