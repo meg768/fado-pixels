@@ -142,7 +142,7 @@ var Module = new function() {
 
             socket.on('blink', function(params, fn) {
 				fn({status:'OK'});
-                runAnimation(new BlinkAnimation(strip, Object.assign({}, params)));
+				runAnimation(new BlinkAnimation(strip, params));
 			});
 
             monitor.on('upload', (fileName, content) => {
