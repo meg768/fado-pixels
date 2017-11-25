@@ -14,7 +14,7 @@ module.exports = class extends Neopixels.Animation {
     constructor(pixels, options) {
         super(pixels, options);
 
-        this.options = Object.assign({}, {color:'blue', interval:1000, fade:0}, this.options);
+        this.options = Object.assign({}, {color:'blue', interval:500, softness:0}, this.options);
         this.name = 'Blink Animation';
         this.renderFrequency = this.options.interval;
         this.state = 0;
@@ -34,7 +34,7 @@ module.exports = class extends Neopixels.Animation {
         var pixels = this.pixels;
 
         pixels.fill(this.state ? this.color : 0);
-        pixels.render({transition:'fade', duration:this.options.fade});
+        pixels.render({transition:'fade', duration:this.options.softness});
 
         this.state = !this.state;
     }
