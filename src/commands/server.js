@@ -151,29 +151,46 @@ var Module = new function() {
                 // File contents is in the contents parameter.
                 debug('File uploaded', Path.join(monitor.path, fileName));
 
-                try {
-                    var json = JSON.parse(content);
 
-                    if (json.ssid != undefined) {
-                        debug('Connecting to network', json.ssid, '...');
-                        runAnimation(new BlinkAnimation(strip, {priority:'!', color:'orange', interval:500, softness:0, duration:-1}));
+				function connect(json) {
 
-                        wifi.connect({ssid:json.ssid, psk:json.password, timeout:90000}).then(() => {
-                            debug('Connected to network.');
-                            runNextAnimation();
-                        })
-                        .catch((error) => {
-							runAnimation(new BlinkAnimation(strip, {priority:'!', color:'blue', interval:500, softness:0, duration:-1}));
-                            console.log(error);
-                        });
+					function continue() {
+						setTimeout({
+							wifi.getState().then((connected) => {
+								if (connected)
+									runNextAnimation();
+								else {
+									runAnimation(new BlinkAnimation(strip, {priority:'!', color:'blue', interval:500, softness:0, duration:-1}));
+								}
+							});
 
-                    }
-                }
-                catch(error) {
-					runAnimation(new ColorAnimation(strip, {priority:'!', color:'red', duration:2000}));
-					runAnimation(new BlinkAnimation(strip, {color:'blue', interval:500, softness:0, duration:-1}));
-					console.log(error);
-                }
+						}, 2000);
+					}
+
+					if (isString(json.ssid)) {
+						wifi.connect({ssid:json.ssid, psk:json.password, timeout:60000}).then(() => {
+	                        debug('Connected to network.');
+	                        continue();
+	                    })
+						.catch((error) => {
+							console.log(error);
+							continue();
+						});
+
+					}
+					else {
+						runAnimation(new ColorAnimation(strip, {priority:'!', color:'red', duration:-1}));
+						continue();
+					}
+
+				}
+
+				try {
+					connect(JSON.parse(content));
+				}
+				catch(error) {
+					connect({});
+				}
             });
 
             monitor.enableBluetooth();
