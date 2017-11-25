@@ -155,7 +155,7 @@ var Module = new function() {
 				function connect(json) {
 
 					function moveOn() {
-						setTimeout({
+						setTimeout(() => {
 							wifi.getState().then((connected) => {
 								if (connected)
 									runNextAnimation();
