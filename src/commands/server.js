@@ -169,6 +169,8 @@ var Module = new function() {
 					}
 
 					if (isString(json.ssid)) {
+						runAnimation(new BlinkAnimation(strip, {priority:'!', color:'orange', interval:500, softness:0, duration:-1}));
+
 						wifi.connect({ssid:json.ssid, psk:json.password, timeout:60000}).then(() => {
 	                        debug('Connected to network.');
 	                        runNextAnimation();
