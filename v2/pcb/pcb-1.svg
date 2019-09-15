@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 22.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" baseProfile="tiny" id="Lager_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+	 x="0px" y="0px" width="283.5px" height="283.5px" viewBox="0 0 283.5 283.5" xml:space="preserve">
+<g id="board">
+	<path id="pcb" fill="#008000" d="M141.7,0C63.5,0,0,63.4,0,141.7s63.4,141.7,141.7,141.7S283.5,220,283.5,141.7S220,0,141.7,0z
+		 M141.7,159.3c-9.8,0-17.7-7.9-17.7-17.7S132,124,141.7,124s17.7,7.9,17.7,17.7S151.5,159.3,141.7,159.3z"/>
+</g>
+<g id="silkscreen">
+	<g>
+		
+			<rect x="115" y="15.9" transform="matrix(-0.1305 -0.9914 0.9914 -0.1305 122.723 146.5854)" fill="none" stroke="#FFFFFF" stroke-width="0.8504" stroke-miterlimit="10" width="21.3" height="7.1"/>
+		
+			<rect x="147.2" y="15.9" transform="matrix(0.1305 -0.9914 0.9914 0.1305 117.9131 173.4143)" fill="none" stroke="#FFFFFF" stroke-width="0.8504" stroke-miterlimit="10" width="21.3" height="7.1"/>
+		
+			<rect x="178.3" y="24.3" transform="matrix(0.3827 -0.9239 0.9239 0.3827 90.929 191.7076)" fill="none" stroke="#FFFFFF" stroke-width="0.8504" stroke-miterlimit="10" width="21.3" height="7.1"/>
+		
+			<rect x="206.2" y="40.4" transform="matrix(0.6088 -0.7934 0.7934 0.6088 49.9862 189.1743)" fill="none" stroke="#FFFFFF" stroke-width="0.8504" stroke-miterlimit="10" width="21.3" height="7.1"/>
+		
+			<rect x="228.9" y="63.1" transform="matrix(0.7934 -0.6088 0.6088 0.7934 8.9192 159.6105)" fill="none" stroke="#FFFFFF" stroke-width="0.8504" stroke-miterlimit="10" width="21.3" height="7.1"/>
+		
+			<rect x="245" y="91" transform="matrix(0.9239 -0.3827 0.3827 0.9239 -16.7203 105.031)" fill="none" stroke="#FFFFFF" stroke-width="0.8504" stroke-miterlimit="10" width="21.3" height="7.1"/>
+		
+			<rect x="253.4" y="122.1" transform="matrix(0.9914 -0.1305 0.1305 0.9914 -14.1406 35.5317)" fill="none" stroke="#FFFFFF" stroke-width="0.8504" stroke-miterlimit="10" width="21.3" height="7.1"/>
+		
+			<rect x="253.4" y="154.3" transform="matrix(0.9914 0.1305 -0.1305 0.9914 22.859 -33.1067)" fill="none" stroke="#FFFFFF" stroke-width="0.8504" stroke-miterlimit="10" width="21.3" height="7.1"/>
+		
+			<rect x="245" y="185.4" transform="matrix(0.9239 0.3827 -0.3827 0.9239 91.7569 -83.4536)" fill="none" stroke="#FFFFFF" stroke-width="0.8504" stroke-miterlimit="10" width="21.3" height="7.1"/>
+		
+			<rect x="228.9" y="213.3" transform="matrix(0.7934 0.6088 -0.6088 0.7934 181.4815 -101.0335)" fill="none" stroke="#FFFFFF" stroke-width="0.8504" stroke-miterlimit="10" width="21.3" height="7.1"/>
+		
+			<rect x="206.2" y="236" transform="matrix(0.6088 0.7934 -0.7934 0.6088 274.8737 -78.2721)" fill="none" stroke="#FFFFFF" stroke-width="0.8504" stroke-miterlimit="10" width="21.3" height="7.1"/>
+		
+			<rect x="178.3" y="252.1" transform="matrix(0.3827 0.9239 -0.9239 0.3827 352.8161 -16.7203)" fill="none" stroke="#FFFFFF" stroke-width="0.8504" stroke-miterlimit="10" width="21.3" height="7.1"/>
+		
+			<rect x="147.2" y="260.4" transform="matrix(0.1305 0.9914 -0.9914 0.1305 398.9525 73.0507)" fill="none" stroke="#FFFFFF" stroke-width="0.8504" stroke-miterlimit="10" width="21.3" height="7.1"/>
+		
+			<rect x="115" y="260.4" transform="matrix(-0.1305 0.9914 -0.9914 -0.1305 403.7625 173.8787)" fill="none" stroke="#FFFFFF" stroke-width="0.8504" stroke-miterlimit="10" width="21.3" height="7.1"/>
+		
+			<rect x="83.9" y="252.1" transform="matrix(-0.3827 0.9239 -0.9239 -0.3827 366.9181 266.1395)" fill="none" stroke="#FFFFFF" stroke-width="0.8504" stroke-miterlimit="10" width="21.3" height="7.1"/>
+		
+			<rect x="56" y="236" transform="matrix(-0.6088 0.7934 -0.7934 -0.6088 297.3068 332.5013)" fill="none" stroke="#FFFFFF" stroke-width="0.8504" stroke-miterlimit="10" width="21.3" height="7.1"/>
+		
+			<rect x="33.3" y="213.3" transform="matrix(-0.7934 0.6088 -0.6088 -0.7934 210.7169 362.065)" fill="none" stroke="#FFFFFF" stroke-width="0.8504" stroke-miterlimit="10" width="21.3" height="7.1"/>
+		
+			<rect x="17.2" y="185.4" transform="matrix(-0.9239 0.3827 -0.3827 -0.9239 125.8023 352.8161)" fill="none" stroke="#FFFFFF" stroke-width="0.8504" stroke-miterlimit="10" width="21.3" height="7.1"/>
+		
+			<rect x="8.9" y="154.3" transform="matrix(-0.9914 0.1305 -0.1305 -0.9914 59.3941 311.7613)" fill="none" stroke="#FFFFFF" stroke-width="0.8504" stroke-miterlimit="10" width="21.3" height="7.1"/>
+		
+			<rect x="8.9" y="122.1" transform="matrix(-0.9914 -0.1305 0.1305 -0.9914 22.3946 252.7428)" fill="none" stroke="#FFFFFF" stroke-width="0.8504" stroke-miterlimit="10" width="21.3" height="7.1"/>
+		
+			<rect x="17.2" y="91" transform="matrix(-0.9239 -0.3827 0.3827 -0.9239 17.3251 192.5356)" fill="none" stroke="#FFFFFF" stroke-width="0.8504" stroke-miterlimit="10" width="21.3" height="7.1"/>
+		
+			<rect x="33.3" y="63.1" transform="matrix(-0.7934 -0.6088 0.6088 -0.7934 38.1546 146.2871)" fill="none" stroke="#FFFFFF" stroke-width="0.8504" stroke-miterlimit="10" width="21.3" height="7.1"/>
+		
+			<rect x="56" y="40.4" transform="matrix(-0.6088 -0.7934 0.7934 -0.6088 72.4193 123.5256)" fill="none" stroke="#FFFFFF" stroke-width="0.8504" stroke-miterlimit="10" width="21.3" height="7.1"/>
+		
+			<rect x="83.9" y="24.3" transform="matrix(-0.3827 -0.9239 0.9239 -0.3827 105.031 125.8023)" fill="none" stroke="#FFFFFF" stroke-width="0.8504" stroke-miterlimit="10" width="21.3" height="7.1"/>
+	</g>
+	<g>
+		<g>
+			<rect x="137.3" y="3.3" fill="none" stroke="#FFFFFF" stroke-width="0.8504" stroke-miterlimit="10" width="8.8" height="30.3"/>
+			
+				<rect x="224.5" y="39.4" transform="matrix(0.7071 0.7071 -0.7071 0.7071 105.6165 -145.8987)" fill="none" stroke="#FFFFFF" stroke-width="0.8504" stroke-miterlimit="10" width="8.8" height="30.3"/>
+			
+				<rect x="260.6" y="126.6" transform="matrix(4.491855e-11 1 -1 4.491855e-11 406.7717 -123.3071)" fill="none" stroke="#FFFFFF" stroke-width="0.8504" stroke-miterlimit="10" width="8.8" height="30.3"/>
+			
+				<rect x="224.5" y="213.8" transform="matrix(-0.7071 0.7071 -0.7071 -0.7071 552.6703 228.9236)" fill="none" stroke="#FFFFFF" stroke-width="0.8504" stroke-miterlimit="10" width="8.8" height="30.3"/>
+			
+				<rect x="137.3" y="249.9" transform="matrix(-1 8.983779e-11 -8.983779e-11 -1 283.4646 530.0787)" fill="none" stroke="#FFFFFF" stroke-width="0.8504" stroke-miterlimit="10" width="8.8" height="30.3"/>
+			
+				<rect x="50.1" y="213.8" transform="matrix(-0.7071 -0.7071 0.7071 -0.7071 -68.7661 429.3633)" fill="none" stroke="#FFFFFF" stroke-width="0.8504" stroke-miterlimit="10" width="8.8" height="30.3"/>
+			
+				<rect x="14" y="126.6" transform="matrix(-1.346531e-10 -1 1 -1.346531e-10 -123.3071 160.1575)" fill="none" stroke="#FFFFFF" stroke-width="0.8504" stroke-miterlimit="10" width="8.8" height="30.3"/>
+			
+				<rect x="50.1" y="39.4" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -22.5916 54.541)" fill="none" stroke="#FFFFFF" stroke-width="0.8504" stroke-miterlimit="10" width="8.8" height="30.3"/>
+		</g>
+		<g>
+			
+				<rect x="105.4" y="7.5" transform="matrix(0.9659 -0.2588 0.2588 0.9659 -2.1143 29.194)" fill="none" stroke="#FFFFFF" stroke-width="0.8504" stroke-miterlimit="10" width="8.8" height="30.3"/>
+			
+				<rect x="199" y="19.8" transform="matrix(0.866 0.5 -0.5 0.866 44.7211 -97.0111)" fill="none" stroke="#FFFFFF" stroke-width="0.8504" stroke-miterlimit="10" width="8.8" height="30.3"/>
+			
+				<rect x="256.4" y="94.7" transform="matrix(0.2588 0.9659 -0.9659 0.2588 299.4041 -170.5549)" fill="none" stroke="#FFFFFF" stroke-width="0.8504" stroke-miterlimit="10" width="8.8" height="30.3"/>
+			
+				<rect x="244.1" y="188.2" transform="matrix(-0.5 0.866 -0.866 -0.5 548.9163 89.8547)" fill="none" stroke="#FFFFFF" stroke-width="0.8504" stroke-miterlimit="10" width="8.8" height="30.3"/>
+			
+				<rect x="169.3" y="245.7" transform="matrix(-0.9659 0.2588 -0.2588 -0.9659 408.8859 467.8447)" fill="none" stroke="#FFFFFF" stroke-width="0.8504" stroke-miterlimit="10" width="8.8" height="30.3"/>
+			
+				<rect x="75.7" y="233.4" transform="matrix(-0.866 -0.5 0.5 -0.866 25.1693 503.7828)" fill="none" stroke="#FFFFFF" stroke-width="0.8504" stroke-miterlimit="10" width="8.8" height="30.3"/>
+			
+				<rect x="18.2" y="158.5" transform="matrix(-0.2588 -0.9659 0.9659 -0.2588 -139.2466 240.4453)" fill="none" stroke="#FFFFFF" stroke-width="0.8504" stroke-miterlimit="10" width="8.8" height="30.3"/>
+			
+				<rect x="30.6" y="64.9" transform="matrix(0.5 -0.866 0.866 0.5 -51.8776 70.3028)" fill="none" stroke="#FFFFFF" stroke-width="0.8504" stroke-miterlimit="10" width="8.8" height="30.3"/>
+		</g>
+		<g>
+			
+				<rect x="75.7" y="19.8" transform="matrix(0.866 -0.5 0.5 0.866 -6.7441 44.7211)" fill="none" stroke="#FFFFFF" stroke-width="0.8504" stroke-miterlimit="10" width="8.8" height="30.3"/>
+			
+				<rect x="169.3" y="7.5" transform="matrix(0.9659 0.2588 -0.2588 0.9659 11.7731 -44.172)" fill="none" stroke="#FFFFFF" stroke-width="0.8504" stroke-miterlimit="10" width="8.8" height="30.3"/>
+			
+				<rect x="244.1" y="64.9" transform="matrix(0.5 0.866 -0.866 0.5 193.6099 -175.1847)" fill="none" stroke="#FFFFFF" stroke-width="0.8504" stroke-miterlimit="10" width="8.8" height="30.3"/>
+			
+				<rect x="256.4" y="158.5" transform="matrix(-0.2588 0.9659 -0.9659 -0.2588 496.0772 -33.3604)" fill="none" stroke="#FFFFFF" stroke-width="0.8504" stroke-miterlimit="10" width="8.8" height="30.3"/>
+			
+				<rect x="199" y="233.4" transform="matrix(-0.866 0.5 -0.5 -0.866 503.7828 362.0505)" fill="none" stroke="#FFFFFF" stroke-width="0.8504" stroke-miterlimit="10" width="8.8" height="30.3"/>
+			
+				<rect x="105.4" y="245.7" transform="matrix(-0.9659 -0.2588 0.2588 -0.9659 148.3844 541.2108)" fill="none" stroke="#FFFFFF" stroke-width="0.8504" stroke-miterlimit="10" width="8.8" height="30.3"/>
+			
+				<rect x="30.6" y="188.2" transform="matrix(-0.5 -0.866 0.866 -0.5 -123.7195 335.3422)" fill="none" stroke="#FFFFFF" stroke-width="0.8504" stroke-miterlimit="10" width="8.8" height="30.3"/>
+			
+				<rect x="18.2" y="94.7" transform="matrix(0.2588 -0.9659 0.9659 0.2588 -89.3056 103.2508)" fill="none" stroke="#FFFFFF" stroke-width="0.8504" stroke-miterlimit="10" width="8.8" height="30.3"/>
+		</g>
+	</g>
+</g>
+</svg>
