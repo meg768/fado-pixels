@@ -37,7 +37,7 @@ var Module = new function() {
             }
         }
 
-		var strip     = new Strip({length:argv.size, debug:argv.debug});
+		var strip     = new Strip({length:parseInt(argv.size), debug:argv.debug});
 		var queue     = new AnimationQueue({debug:argv.debug});
 		var duration  = 60000;
 
