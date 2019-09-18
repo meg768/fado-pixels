@@ -48,8 +48,8 @@ var Module = new function() {
 	}
 
 
-	module.exports.command  = 'server [options]';
-	module.exports.describe = 'Run Neopixel Globe';
+	module.exports.command  = 'blink [options]';
+	module.exports.describe = 'Blink';
 	module.exports.builder  = defineArgs;
 	module.exports.handler  = run;
 
