@@ -33,8 +33,8 @@ var Module = new function() {
 
 		var pin      = 19;
 		var timeout = null;
-		var gpio     = new Gpio(pin, {mode: Gpio.INPUT, pullUpDown: Gpio.PUD_UP, edge: Gpio.RISING_EDGE});
-		//var gpio     = new Gpio(pin, {mode: Gpio.INPUT, alert:true});
+		//var gpio     = new Gpio(pin, {mode: Gpio.INPUT, pullUpDown: Gpio.PUD_UP, edge: Gpio.RISING_EDGE});
+		var gpio     = new Gpio(pin, {mode: Gpio.INPUT, alert:true});
 
 		console.log('Test started.')
 
