@@ -49,7 +49,7 @@ var Module = new function() {
 		gpio.on('alert', (level, tick) => {
 
 			if (level > 0) {
-				console.log('alert', level, tick);
+				//console.log('alert', level, tick);
 				if (timeout != null) {
 					clearTimeout(timeout);
 					timeout = null;
