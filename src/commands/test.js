@@ -30,7 +30,6 @@ var Module = new function() {
 
 
 	function run(argv) {
-		var button  = new Button({autoEnable:true, pin:19});
 
 		var pin      = 19;
 		var gpio     = new Gpio(pin, {mode: Gpio.INPUT, pullUpDown: Gpio.PUD_DOWN, edge: Gpio.EITHER_EDGE});
