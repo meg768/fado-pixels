@@ -63,7 +63,7 @@ var Module = new function() {
 					clearTimeout(timeout);
 					timeout = null;
 
-				}, 500);
+				}, 100);
 				
 			}
 			console.log('alert', level, tick);
