@@ -37,7 +37,7 @@ var Module = new function() {
 
 		console.log('Test started.')
 
-
+		gpio.glitchFilter(10000);
 		gpio.on('interrupt', (state, time) => {
 
 			console.log('interrupt', state, time);
