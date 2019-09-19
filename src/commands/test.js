@@ -55,7 +55,7 @@ var Module = new function() {
 					timeout = null;
 				}
 				else {
-					console.log('First tick', startTick);
+					console.log('First tick', tick);
 					startTick = tick;
 				}
 				timeout = setTimeout(() => {
