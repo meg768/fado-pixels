@@ -41,11 +41,31 @@ var Module = new function() {
 //		gpio.glitchFilter(10000);
 		gpio.on('interrupt', (state, time) => {
 
+
 			console.log('interrupt', state, time);
 		});		
 
+		var startTick = null;
 		gpio.on('alert', (level, tick) => {
 
+			if (level > 0) {
+				if (timeout != null) {
+					clearTimeout(timeout);
+					timeout = null;
+				}
+				else {
+					startTick = tick;
+				}
+				timeout = setTimeout(() => {
+					var endTick = tick;
+					var diff = (endTick >> 0) - (startTick >> 0);
+					console.log('foo', diff);
+					clearTimeout(timeout);
+					timeout = null;
+
+				}, 500);
+				
+			}
 			console.log('alert', level, tick);
 		});
 
