@@ -21,6 +21,7 @@ var App = function() {
 
 			args.command(require('./src/commands/server.js'));
 			args.command(require('./src/commands/blink.js'));
+			args.command(require('./src/commands/test.js'));
 
 			args.wrap(null);
 			args.demand(1);
