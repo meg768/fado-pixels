@@ -55,14 +55,14 @@ var Module = new function() {
 					timeout = null;
 				}
 				else {
-					console.log('First tick', tick);
+					//console.log('First tick', tick);
 					startTick = tick;
 				}
 				timeout = setTimeout(() => {
-					console.log('Last tick', tick);
+					//console.log('Last tick', tick);
 					var endTick = tick;
 					var diff = (endTick >> 0) - (startTick >> 0);
-					console.log('foo', diff);
+					console.log('dB-ish', diff);
 					clearTimeout(timeout);
 					timeout = null;
 
