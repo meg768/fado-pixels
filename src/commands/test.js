@@ -32,15 +32,21 @@ var Module = new function() {
 	function run(argv) {
 
 		var pin      = 19;
-		var gpio     = new Gpio(pin, {mode: Gpio.INPUT, pullUpDown: Gpio.PUD_DOWN, edge: Gpio.EITHER_EDGE});
+		//var gpio     = new Gpio(pin, {mode: Gpio.INPUT, alert:true, pullUpDown: Gpio.PUD_DOWN, edge: Gpio.EITHER_EDGE});
+		var gpio     = new Gpio(pin, {mode: Gpio.INPUT, alert:true});
 
 		console.log('Test started.')
 
 
 		gpio.on('interrupt', (state, time) => {
 
-			console.log(state, time);
+			console.log('interrupt', state, time);
 		});		
+
+		gpio.on('alert', (level, tick) => {
+
+			console.log('alert', level, tick);
+		});
 
 
 	}
