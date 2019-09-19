@@ -7,7 +7,7 @@ var isString         = require('yow/is').isString;
 var isFunction       = require('yow/is').isFunction;
 var Strip            = require('rpi-neopixels').Strip;
 var AnimationQueue   = require('rpi-neopixels').AnimationQueue;
-var Button           = require('pigpio-button');
+var Gpio       = require('pigpio').Gpio;
 
 function debug() {
 }
@@ -31,11 +31,17 @@ var Module = new function() {
 
 	function run(argv) {
 		var button  = new Button({autoEnable:true, pin:19});
+
+		var pin      = 19;
+		var gpio     = new Gpio(pin, {mode: Gpio.INPUT, pullUpDown: Gpio.PUD_DOWN, edge: Gpio.EITHER_EDGE});
+
 		console.log('Test started.')
 
-		button.on('click', (clicks) => {
-			console.log('Click', clicks);
-		});
+
+		gpio.on('interrupt', (state, time) => {
+
+			console.log(state, time);
+		});		
 
 
 	}
