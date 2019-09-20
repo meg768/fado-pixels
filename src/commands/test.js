@@ -1,13 +1,5 @@
 #!/usr/bin/env node
 
-var Path             = require('path');
-var sprintf          = require('yow/sprintf');
-var isObject         = require('yow/is').isObject;
-var isString         = require('yow/is').isString;
-var isFunction       = require('yow/is').isFunction;
-var Strip            = require('rpi-neopixels').Strip;
-var AnimationQueue   = require('rpi-neopixels').AnimationQueue;
-var Gpio       = require('pigpio').Gpio;
 
 function debug() {
 }
@@ -33,11 +25,10 @@ var Module = new function() {
 
 	function run(argv) {
 		var SoundSensor = require('pigpio-vma309');
-		///var SoundSensor = require('../scripts/pigpio-vma309.js');
-		var sensor = new SoundSensor({pin:19, timeout:100, debug:console.log});
+		var sensor = new SoundSensor({pin:19});
 
 		sensor.on('alert', (duration) => {
-			console.log('Sound detected', duration);
+			console.log('Sound detected for %d milliseconds', duration);
 		});
 
 	}
