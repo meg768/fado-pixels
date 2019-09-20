@@ -16,7 +16,7 @@ module.exports = class SoundSensor extends Events {
         if (typeof debug !== 'function')
     		debug = () => {};
 
-        debug('Construct options:', {pin:pin, event:event, debug:debug, delay:delay});
+        debug('Construct options:', {pin:pin, event:event, debug:debug, timeout:timeout});
 
         var gpio = new Gpio(pin, {mode: Gpio.INPUT, alert:true});
 
