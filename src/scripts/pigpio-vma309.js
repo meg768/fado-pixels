@@ -48,12 +48,8 @@ module.exports = class SoundSensor extends Events {
 					timestamp = null;
 
 				}, delay);
-				
 			}
 
 		});
 	}
-
-
-
 };
