@@ -16,16 +16,20 @@ module.exports = class SoundSensor extends Events {
 
 		var debug = isFunction(options.debug) ? options.debug : function(){};
 
-		//var gpio = new Gpio(options.pin, {mode: Gpio.INPUT, pullUpDown: Gpio.PUD_DOWN, edge: Gpio.EITHER_EDGE});
-		var gpio = new Gpio(options.pin, {mode: Gpio.INPUT, alert: true});
+//		var gpio = new Gpio(options.pin, {mode: Gpio.INPUT, alert: true});
+		var gpio = new Gpio(options.pin, {mode: Gpio.INPUT, edge: Gpio.RISING_EDGE});
 
 		var timeout = null;
 		var timestamp = null;
 
+		gpio.on('interrupt', (level) => {
+			console.log('interrupt', level);
+		});
+
 		gpio.on('alert', (level, tick) => {
 			if (level > 0) {
 
-				debug('Alert', level, tick);
+				debug('alert', level, tick);
 
 				if (timeout != null) {
 					clearTimeout(timeout);
@@ -41,7 +45,7 @@ module.exports = class SoundSensor extends Events {
 					var duration = (tick >> 0) - (timestamp >> 0);
 
 					debug('Sound suration', duration);
-					this.emit('sound', duration);
+					this.emit('alert', duration);
 
 					clearTimeout(timeout);
 					timeout = null;
