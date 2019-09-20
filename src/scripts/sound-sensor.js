@@ -17,7 +17,7 @@ module.exports = class SoundSensor extends Events {
 		var debug = isFunction(options.debug) ? options.debug : function(){};
 
 //		var gpio = new Gpio(options.pin, {mode: Gpio.INPUT, alert: true});
-		var gpio = new Gpio(options.pin, {mode: Gpio.INPUT, edge: Gpio.RISING_EDGE});
+		var gpio = new Gpio(options.pin, {mode: Gpio.INPUT, edge: Gpio.FALLING_EDGE});
 
 		var timeout = null;
 		var timestamp = null;
