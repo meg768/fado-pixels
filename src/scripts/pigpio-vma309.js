@@ -29,7 +29,7 @@ module.exports = class SoundSensor extends Events {
 		gpio.on('alert', (level, tick) => {
 			if (level > 0) {
 
-				debug('GPIO alert, level %d, timestamp %d', level, tick);
+				debug('GPIO alert, level: %d, timestamp: %d', level, tick);
 
 				if (timeout != null) {
 					clearTimeout(timeout);
@@ -43,7 +43,7 @@ module.exports = class SoundSensor extends Events {
 				timeout = setTimeout(() => {
 					var duration = (tick >> 0) - (timestamp >> 0);
 
-					debug('Sound suration', duration);
+					debug('Sound duration %d ms', duration / 1000);
 					this.emit(event, duration);
 
 					clearTimeout(timeout);
