@@ -34,10 +34,7 @@ var Module = new function() {
 
 
 	function run(argv) {
-
-
-		var sensor = new SoundSensor({pin:19, debug:console.log});
-		console.log('Test started.')
+		var sensor = new SoundSensor({pin:19});
 
 		sensor.on('alert', (duration) => {
 			console.log('Sound detected', duration);
