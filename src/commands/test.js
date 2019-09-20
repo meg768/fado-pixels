@@ -34,7 +34,7 @@ var Module = new function() {
 
 	function run(argv) {
 		var SoundSensor = require('../scripts/pigpio-vma309.js');
-		var sensor = new SoundSensor({pin:19, xevent:'foo', xdelay:200, debug:console.log});
+		var sensor = new SoundSensor({pin:19, xevent:'foo', delay:200, debug:console.log});
 
 		sensor.on('alert', (duration) => {
 			console.log('Sound detected', duration);
