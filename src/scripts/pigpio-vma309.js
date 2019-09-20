@@ -8,19 +8,19 @@ module.exports = class SoundSensor extends Events {
 
 		super();
 
-        var {pin, event = 'alert', debug, delay = 100} = options;
+        var {pin, event = 'alert', debug, timeout = 100} = options;
 
 		if (pin == undefined)
 			throw new Error('Must supply a pin number.');
 
         if (typeof debug !== 'function')
-    		debug = function(){};
+    		debug = () => {};
 
         debug('Construct options:', {pin:pin, event:event, debug:debug, delay:delay});
 
         var gpio = new Gpio(pin, {mode: Gpio.INPUT, alert:true});
 
-		var timeout = null;
+		var timer = null;
 		var timestamp = null;
 
 		gpio.on('alert', (level, tick) => {
@@ -28,26 +28,26 @@ module.exports = class SoundSensor extends Events {
 
 				debug('GPIO alert: Level: %d, timestamp: %d', level, tick);
 
-				if (timeout != null) {
-					clearTimeout(timeout);
-					timeout = null;
+				if (timer != null) {
+					clearTimeout(timer);
+					timer = null;
 				}
 
 				if (timestamp == null) {
 					timestamp = tick;
 				}
 
-				timeout = setTimeout(() => {
+				timer = setTimeout(() => {
 					var duration = ((tick >> 0) - (timestamp >> 0)) / 1000;
 
 					debug('Sound duration: %d ms', duration);
 					this.emit(event, duration);
 
-					clearTimeout(timeout);
-					timeout = null;
+					clearTimeout(timer);
+					timer = null;
 					timestamp = null;
 
-				}, delay);
+				}, timeout);
 			}
 
 		});
