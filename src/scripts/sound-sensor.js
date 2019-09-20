@@ -1,4 +1,5 @@
 var Timer      = require('yow/timer');
+var isFunction = require('yow/is').isFunction;
 var Events     = require('events');
 var Gpio       = require('pigpio').Gpio;
 
@@ -13,6 +14,8 @@ module.exports = class SoundSensor extends Events {
 		if (options.pin == undefined)
 			throw new Error('Must supply a pin number.');
 
+		var debug = isFunction(options.debug) ? options.debug : function(){};
+
 		//var gpio = new Gpio(options.pin, {mode: Gpio.INPUT, pullUpDown: Gpio.PUD_DOWN, edge: Gpio.EITHER_EDGE});
 		var gpio = new Gpio(options.pin, {mode: Gpio.INPUT, alert: true});
 
@@ -22,22 +25,22 @@ module.exports = class SoundSensor extends Events {
 		gpio.on('alert', (level, tick) => {
 			if (level > 0) {
 
-				console.log('alert', level, tick);
+				debug('Alert', level, tick);
+
 				if (timeout != null) {
 					clearTimeout(timeout);
 					timeout = null;
 				}
 
 				if (timestamp == null) {
-					console.log('First tick', tick);
+					debug('First tick:', tick);
 					timestamp = tick;
 				}
 
 				timeout = setTimeout(() => {
-					//console.log('Last tick', tick);
 					var duration = (tick >> 0) - (timestamp >> 0);
-					console.log('dB-ish', duration);
 
+					debug('Sound suration', duration);
 					this.emit('sound', duration);
 
 					clearTimeout(timeout);
@@ -50,6 +53,7 @@ module.exports = class SoundSensor extends Events {
 
 		});
 	}
+
 
 
 };
