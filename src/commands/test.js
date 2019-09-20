@@ -9,7 +9,6 @@ var Strip            = require('rpi-neopixels').Strip;
 var AnimationQueue   = require('rpi-neopixels').AnimationQueue;
 var Gpio       = require('pigpio').Gpio;
 //var SoundSensor = require('../scripts/sound-sensor.js');
-var SoundSensor = require('pigpio-vma309');
 
 function debug() {
 }
@@ -34,6 +33,7 @@ var Module = new function() {
 
 
 	function run(argv) {
+		var SoundSensor = require('pigpio-vma309');
 		var sensor = new SoundSensor({pin:19});
 
 		sensor.on('alert', (duration) => {
