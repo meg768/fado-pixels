@@ -8,7 +8,8 @@ var isFunction       = require('yow/is').isFunction;
 var Strip            = require('rpi-neopixels').Strip;
 var AnimationQueue   = require('rpi-neopixels').AnimationQueue;
 var Gpio       = require('pigpio').Gpio;
-var SoundSensor = require('../scripts/sound-sensor.js');
+//var SoundSensor = require('../scripts/sound-sensor.js');
+var SoundSensor = require('pigpio-vma309');
 
 function debug() {
 }
