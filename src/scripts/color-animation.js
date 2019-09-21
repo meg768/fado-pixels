@@ -7,7 +7,9 @@ module.exports = class extends Animation {
 
     constructor(options) {
         
-        super({name:'Color Animation', color:'red', renderFrequency:1000, ...options});
+        var {transition = 'fade', duration = 100, color = 'red', ...options} = options;
+
+        super({name:'Color Animation', renderFrequency:1000, ...options});
 
         if (isString(color)) {
             try {
@@ -20,12 +22,14 @@ module.exports = class extends Animation {
         }
 
         this.color = color;
+        this.transition = this.transition;
+        this.duration = duration;
 
     }
 
     render() {
         this.pixels.fill(this.color);
-        this.pixels.render({transition:'fade', duration:100});
+        this.pixels.render({transition:this.transition, duration:this.duration});
     }
 
 
