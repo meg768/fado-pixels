@@ -2,19 +2,23 @@
 var sprintf   = require('yow/sprintf');
 var isString  = require('yow/is').isString;
 var Neopixels = require('rpi-neopixels');
+var Animation = require('rpi-animations').Animation;
 var Color     = require('color');
 
 function debug() {
     console.log.apply(this, arguments);
 }
 
-module.exports = class extends Neopixels.Animation {
+module.exports = class extends Animation {
 
 
-    constructor(pixels, options) {
-        super(pixels, options);
+    constructor(options) {
+        var {pixels, ...options} = options;
+
+        super(options);
 
         this.options = Object.assign({}, {color:'blue', interval:500, softness:0}, this.options);
+        this.pixels = pixels;
         this.name = 'Blink Animation';
         this.renderFrequency = this.options.interval;
         this.state = 0;
