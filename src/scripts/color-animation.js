@@ -1,6 +1,6 @@
 
 var isString  = require('yow/is').isString;
-var Animation = require('./animation.js');
+var Animation = require('./pixel-animation.js');
 var Color     = require('color');
 
 module.exports = class extends Animation {
