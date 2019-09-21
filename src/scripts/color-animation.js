@@ -1,24 +1,17 @@
 
-var sprintf  = require('yow/sprintf');
-var isString = require('yow/is').isString;
-
-var Animation = require('rpi-animations').Animation;
+var isString  = require('yow/is').isString;
+var Animation = require('./animation.js');
 var Color     = require('color');
 
 module.exports = class extends Animation {
 
     constructor(options) {
-        var {pixels, ...options} = options;
-        super(Object.assign({}, {fade:100}, options));
+        
+        super({name:'Color Animation', color:'red', renderFrequency:1000, ...options});
 
-        this.pixels = pixels;
-        this.name = 'Color';
-        this.renderFrequency = 1000;
-        this.color = Color('red').rgbNumber();
-
-        if (isString(this.options.color)) {
+        if (isString(color)) {
             try {
-                this.color = Color(this.options.color).rgbNumber();
+                color = Color(color).rgbNumber();
             }
             catch (error) {
                 console.log('Invalid color value.');
@@ -26,11 +19,13 @@ module.exports = class extends Animation {
             }
         }
 
+        this.color = color;
+
     }
 
     render() {
         this.pixels.fill(this.color);
-        this.pixels.render({transition:'fade', duration:this.options.fade});
+        this.pixels.render({transition:'fade', duration:100});
     }
 
 

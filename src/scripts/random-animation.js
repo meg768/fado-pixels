@@ -1,25 +1,13 @@
 
-var sprintf    = require('yow/sprintf');
-var Animations = require('rpi-animations').Animation;
+var Animation  = require('./animation');
 var Color      = require('color');
-
-function debug() {
-    console.log.apply(this, arguments);
-}
 
 module.exports = class extends Animation {
 
     constructor(options) {
-        var {pixels, ...options} = options;
+        super({name:'Random', renderFrequency:10, options});
 
-        super(options);
-
-        this.pixels = pixels;
-        this.name = 'Random';
         this.hue = 0;
-        this.renderFrequency = 10;
-
-        debug('New random animation', options);
 
     }
 
