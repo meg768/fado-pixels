@@ -13,7 +13,7 @@ function configure() {
     }
 
     function debug() {
-        
+
     }
 
     var stripType = 'grb';
@@ -21,6 +21,8 @@ function configure() {
     var height    = 1;
     var map       = 'alternating-matrix';
 
+    map = undefined;
+    
     Neopixels.configure({debug:debug, map:map, width:width, height:height, stripType:stripType});
 
     process.on('SIGUSR1', cleanup);
