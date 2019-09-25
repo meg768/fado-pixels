@@ -5,8 +5,8 @@ var sprintf          = require('yow/sprintf');
 var isObject         = require('yow/is').isObject;
 var isString         = require('yow/is').isString;
 var isFunction       = require('yow/is').isFunction;
-var Strip            = require('rpi-neopixels').Strip;
-var AnimationQueue   = require('rpi-neopixels').AnimationQueue;
+var Neopixels        = require('rpi-neopixels');
+var AnimationQueue   = require('rpi-animations').Queue;
 var BlinkAnimation   = require('../scripts/blink-animation.js');
 
 function debug() {
@@ -37,11 +37,11 @@ var Module = new function() {
             }
         }
 
-		var strip     = new Strip({length:parseInt(argv.size), debug:argv.debug});
+		var pixels    = new Neopixels({width:24, height:1, debug:argv.debug});
 		var queue     = new AnimationQueue({debug:argv.debug});
 		var duration  = 60000;
 
-		var animation = new BlinkAnimation(strip, {duration:duration, priority:'!'});
+		var animation = new BlinkAnimation(pixels, {duration:duration, priority:'!'});
 
 		queue.enqueue(animation);
 
