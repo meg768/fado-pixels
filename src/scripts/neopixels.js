@@ -20,8 +20,9 @@ function configure() {
     var width     = 24;
     var height    = 1;
     var map       = 'alternating-matrix';
+    var gpio      = 24;
     
-    Neopixels.configure({debug:debug, map:map, width:width, height:height, stripType:stripType});
+    Neopixels.configure({gpio:gpio, debug:debug, map:map, width:width, height:height, stripType:stripType});
 
     process.on('SIGUSR1', cleanup);
     process.on('SIGUSR2', cleanup);
