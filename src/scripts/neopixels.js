@@ -13,15 +13,13 @@ function configure() {
     }
 
     function debug() {
-
+        console.log.apply(null, arguments);
     }
 
     var stripType = 'grb';
     var width     = 24;
     var height    = 1;
     var map       = 'alternating-matrix';
-
-    map = undefined;
     
     Neopixels.configure({debug:debug, map:map, width:width, height:height, stripType:stripType});
 
