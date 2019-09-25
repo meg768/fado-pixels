@@ -5,7 +5,7 @@ var sprintf          = require('yow/sprintf');
 var isObject         = require('yow/is').isObject;
 var isString         = require('yow/is').isString;
 var isFunction       = require('yow/is').isFunction;
-var Neopixels        = require('rpi-neopixels');
+var Neopixels        = require('../scripts/neopixels.js');
 var AnimationQueue   = require('rpi-animations').Queue;
 var BlinkAnimation   = require('../scripts/blink-animation.js');
 
@@ -37,7 +37,7 @@ var Module = new function() {
             }
         }
 
-		var pixels    = new Neopixels({width:24, height:1, debug:argv.debug});
+		var pixels    = new Neopixels();
 		var queue     = new AnimationQueue({debug:argv.debug});
 		var duration  = 60000;
 
