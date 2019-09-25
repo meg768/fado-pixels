@@ -41,7 +41,7 @@ var Module = new function() {
 		var queue     = new AnimationQueue({debug:argv.debug});
 		var duration  = 60000;
 
-		var animation = new BlinkAnimation(pixels, {duration:duration, priority:'!'});
+		var animation = new BlinkAnimation({pixels:pixels, duration:duration, priority:'!'});
 
 		queue.enqueue(animation);
 
