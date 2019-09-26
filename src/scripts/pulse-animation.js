@@ -8,7 +8,7 @@ module.exports = class extends Animation {
 
 
     constructor(options) {
-        var {length, ...options} = options;
+        var {length = 100, ...options} = options;
 
         super({name:'Pulse Animation', ...options});
 
