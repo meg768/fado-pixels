@@ -8,11 +8,11 @@ module.exports = class extends Animation {
 
 
     constructor(options) {
-        var {length = 100, ...options} = options;
+        var {interval = 500, ...options} = options;
 
         super({name:'Pulse Animation', ...options});
 
-        this.length = length;
+        this.interval = interval;
     }
 
 
@@ -21,14 +21,14 @@ module.exports = class extends Animation {
         var pixels = this.pixels;
 
         pixels.fill(this.color);
-        pixels.render({transition:'fade', duration:100});
+        pixels.render({transition:'fade', duration:this.interval});
 
-        if (this.length && this.length > 0) {
-            Sleep.msleep(this.length);
+        if (this.interval && this.interval > 0) {
+            Sleep.msleep(this.interval);
         }
 
         pixels.fill(0);
-        pixels.render({transition:'fade', duration:100});
+        pixels.render({transition:'fade', duration:this.interval});
 
     }
 
