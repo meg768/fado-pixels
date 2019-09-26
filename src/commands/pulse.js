@@ -48,8 +48,8 @@ var Module = new function() {
 	}
 
 
-	module.exports.command  = 'fade [options]';
-	module.exports.describe = 'Fade';
+	module.exports.command  = 'pulse [options]';
+	module.exports.describe = 'Pulse';
 	module.exports.builder  = defineArgs;
 	module.exports.handler  = run;
 
