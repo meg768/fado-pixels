@@ -19,6 +19,8 @@ var Module = new function() {
 	function defineArgs(args) {
 
 		args.help('help').alias('help', 'h');
+		args.option('color', {describe:'Color', default:'red'});
+		args.option('duration', {describe:'Duration', default:60000});
 
 
 		args.wrap(null);
@@ -39,9 +41,11 @@ var Module = new function() {
 
 		var pixels    = new Neopixels();
 		var queue     = new AnimationQueue({debug:argv.debug});
-		var duration  = 60000;
+		var duration  = argv.duration;
+		var color     = argv.color;
+		var interval  = 500;
 
-		var animation = new PulseAnimation({pixels:pixels, duration:duration, priority:'!'});
+		var animation = new PulseAnimation({pixels:pixels, color:color, duration:duration, priority:'!'});
 
 		queue.enqueue(animation);
 
