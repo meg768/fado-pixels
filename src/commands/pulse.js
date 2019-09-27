@@ -21,6 +21,7 @@ var Module = new function() {
 		args.help('help').alias('help', 'h');
 		args.option('color', {describe:'Color', default:'red'});
 		args.option('duration', {describe:'Duration', default:60000});
+		args.option('interval', {describe:'Interval', default:500});
 
 
 		args.wrap(null);
@@ -43,9 +44,9 @@ var Module = new function() {
 		var queue     = new AnimationQueue({debug:argv.debug});
 		var duration  = argv.duration;
 		var color     = argv.color;
-		var interval  = 500;
+		var interval  = argv.interval;
 
-		var animation = new PulseAnimation({pixels:pixels, color:color, duration:duration, priority:'!'});
+		var animation = new PulseAnimation({pixels:pixels, interval:interval, color:color, duration:duration, priority:'!'});
 
 		queue.enqueue(animation);
 
