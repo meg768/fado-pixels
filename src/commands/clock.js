@@ -41,6 +41,9 @@ var Module = new function() {
 		var duration  = -1;
 		var state     = 'on'
 
+		function runAnimation(animation) {
+			queue.enqueue(animation);
+		}
 		button.on('click', (clicks) => {
 			if (state == 'on') {
 				runAnimation(new ColorAnimation({pixels:pixels, color:'black', priority:'!', duration:-1}));
