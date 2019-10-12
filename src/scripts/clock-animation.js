@@ -5,7 +5,7 @@ module.exports = class extends ColorAnimation {
 
 
     constructor(options) {
-        super({name:'Clock Animation', renderFrequency: 15 * 1000, ...options});
+        super({name:'Clock Animation', renderFrequency: 1 * 1000, ...options});
     }
 
 
@@ -15,6 +15,7 @@ module.exports = class extends ColorAnimation {
 
         this.color = Color.hsl(hue, 100, 50).rgbNumber();
 
+        console.log(color);
         super.render();
     }
 
