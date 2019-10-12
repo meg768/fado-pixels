@@ -15,7 +15,7 @@ module.exports = class extends ColorAnimation {
 
         this.color = Color.hsl(hue, 100, 50).rgbNumber();
 
-        console.log(color);
+        console.log(this.color);
         super.render();
     }
 
