@@ -40,8 +40,6 @@ var Module = new function() {
 		var duration  = argv.duration;
 		var color     = argv.color;
 		var interval  = argv.interval;
-		console.log(argv);
-		console.log(color);
 
 		var animation = new PulseAnimation({pixels:pixels, interval:interval, color:color, duration:duration, priority:'!'});
 
