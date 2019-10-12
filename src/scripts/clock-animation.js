@@ -19,7 +19,7 @@ module.exports = class extends ColorAnimation {
 
     render() {
         this.color = this.getColor();
-        this.color = 'dark green';
+        this.color = 'dark-green';
 
         console.log(this.color);
         super.render();
