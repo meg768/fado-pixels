@@ -27,7 +27,7 @@
     "rpi-neopixels": "^1.0.74",
     "rpi-obex-monitor": "^1.0.11",
     "rpi-wifi-connection": "^1.0.6",
-    "sleep": "^5.1.1",
+    "sleep": "^6.1.0",
     "socket.io-client": "^2.0.3",
     "yargs": "^8.0.2",
     "yow": "^1.0.84"
