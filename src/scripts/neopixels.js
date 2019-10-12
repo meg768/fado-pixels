@@ -16,7 +16,7 @@ function configure() {
         console.log.apply(null, arguments);
     }
 
-    var stripType = 'grb';
+    var stripType = 'rgb';
     var width     = 24;
     var height    = 1;
     var map       = undefined;
