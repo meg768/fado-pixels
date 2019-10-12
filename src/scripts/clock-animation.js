@@ -19,7 +19,6 @@ module.exports = class extends ColorAnimation {
 
     render() {
         this.color = this.getColor();
-        this.color = 'purple';
 
         console.log(this.color);
         super.render();
