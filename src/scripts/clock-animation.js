@@ -12,7 +12,7 @@ module.exports = class extends ColorAnimation {
     render() {
         var now = new Date();
         var hue = Math.floor(360 * (((now.getHours() % 12) * 60) + now.getMinutes()) / (12 * 60));
-hue =0;
+
         this.color = Color.hsl(hue, 100, 50).rgbNumber();
 
         console.log(this.color);
