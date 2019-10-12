@@ -10,7 +10,6 @@ module.exports = class extends ColorAnimation {
 
     getHue() {
         var now = new Date();
-        now.setHours(3);
         return Math.floor(360 * (((now.getHours() % 12) * 60) + now.getMinutes()) / (12 * 60));
     }
 
