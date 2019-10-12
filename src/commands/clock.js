@@ -3,6 +3,7 @@
 var Neopixels        = require('../scripts/neopixels.js');
 var AnimationQueue   = require('rpi-animations').Queue;
 var ClockAnimation   = require('../scripts/clock-animation.js');
+var ColorAnimation   = require('../scripts/color-animation.js');
 var Button           = require('pigpio-button');
 
 function debug() {
