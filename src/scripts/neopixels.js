@@ -21,7 +21,7 @@ function configure() {
     var height    = 1;
     var map       = undefined;
     
-    Neopixels.configure({debug:debug, map:map, width:width, height:height, stripType:stripType});
+    Neopixels.configure({debug:false, map:map, width:width, height:height, stripType:stripType});
 
     process.on('SIGUSR1', cleanup);
     process.on('SIGUSR2', cleanup);
