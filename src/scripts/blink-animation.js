@@ -1,7 +1,7 @@
 
-var Animation = require('./color-animation.js');
+var ColorAnimation = require('./color-animation.js');
 
-module.exports = class extends Animation {
+module.exports = class extends ColorAnimation {
 
     constructor(options) {
         super({name:'Blink Animation', renderFrequency:500, ...options});
