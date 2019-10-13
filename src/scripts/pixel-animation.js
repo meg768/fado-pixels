@@ -4,7 +4,7 @@ var Animation = require('rpi-animations').Animation;
 module.exports = class extends Animation {
 
     constructor(options) {
-        var {pixels, iterations, ...options} = options;
+        var {pixels, ...options} = options;
 
         super(options);
 
@@ -14,23 +14,5 @@ module.exports = class extends Animation {
             this.debug = () => {};
 
         this.pixels = pixels;
-        this.iterations = iterations;
-        this.iteration = 0;
     }
-
-    start() {
-        this.iteration = 0;
-        return super.start();
-    }
-    render() {
-        if (this.iterations) {
-            this.iteration++;
-
-            if (this.iteration > this.iterations)
-                this.cancel();
-        }
-
-    }
-
-
 }

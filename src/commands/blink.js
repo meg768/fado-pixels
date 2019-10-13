@@ -1,10 +1,5 @@
 #!/usr/bin/env node
 
-var Path             = require('path');
-var sprintf          = require('yow/sprintf');
-var isObject         = require('yow/is').isObject;
-var isString         = require('yow/is').isString;
-var isFunction       = require('yow/is').isFunction;
 var Neopixels        = require('../scripts/neopixels.js');
 var AnimationQueue   = require('rpi-animations').Queue;
 var BlinkAnimation   = require('../scripts/blink-animation.js');
