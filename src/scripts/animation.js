@@ -12,7 +12,7 @@ module.exports = class Animation extends Events {
     constructor(options = {}) {
         super();
 
-        this.debug('-----------------', options);
+        console.log('-----------------', options);
 
         var {debug, renderFrequency = 0, name = 'Noname', priority = 'normal', iterations = undefined, duration = undefined} = options;
 
