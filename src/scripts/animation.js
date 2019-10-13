@@ -82,6 +82,8 @@ module.exports = class Animation extends Events {
             var start = new Date();
 
             var loop = () => {
+                console.log('ITERATION', this.iteration);
+                console.log('ITERATIONS', this.iterations);
 
                 var now = new Date();
 
