@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 var Neopixels        = require('../scripts/neopixels.js');
-var AnimationQueue   = require('./animation-queue.js');
+var AnimationQueue   = require('../scripts/animation-queue.js');
 var ClockAnimation   = require('../scripts/clock-animation.js');
 var ColorAnimation   = require('../scripts/color-animation.js');
 var Button           = require('pigpio-button');
