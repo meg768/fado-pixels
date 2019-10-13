@@ -14,7 +14,7 @@ module.exports = class Animation extends Events {
 
         console.log('-----------------', options);
 
-        var {debug, renderFrequency = 0, name = 'Noname', priority = 'normal', iterations = undefined, duration = undefined} = options;
+        var {debug, renderFrequency, name = 'Noname', priority = 'normal', iterations = undefined, duration = undefined} = options;
 
         this.name            = name;
         this.priority        = priority;
@@ -100,7 +100,7 @@ module.exports = class Animation extends Events {
                 else {
                     var now = new Date();
 
-                    if (this.renderFrequency == 0 || now - this.renderTime >= this.renderFrequency) {
+                    if (this.renderFrequency == undefined || this.renderFrequency == 0 || now - this.renderTime >= this.renderFrequency) {
 
                         this.debug('Rendering...');
                         this.render();
