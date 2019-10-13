@@ -1,9 +1,8 @@
+
+module.exports = require('rpi-animations').Animation;
+
+
 /*
-var Animation = require('rpi-animations').Animation;
-
-module.exports = Animation;
-*/
-
 var Events = require('events');
 
 
@@ -144,3 +143,5 @@ module.exports = class Animation extends Events {
 
     }
 }
+
+*/

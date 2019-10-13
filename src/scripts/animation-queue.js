@@ -1,6 +1,7 @@
 
-//module.exports = require('rpi-animations').Queue;
+module.exports = require('rpi-animations').Queue;
 
+/*
 var Events = require('events');
 
 module.exports = class AnimationQueue extends Events {
@@ -103,3 +104,5 @@ module.exports = class AnimationQueue extends Events {
 		}
 
 }
+
+*/
