@@ -1,5 +1,5 @@
 
-var Animation = require('rpi-animations').Animation;
+var Animation = require('./animation.js');
 
 module.exports = class extends Animation {
 
