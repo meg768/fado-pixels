@@ -31,11 +31,11 @@ var Module = new function() {
 
 		var pixels     = new Neopixels();
 		var queue      = new AnimationQueue({debug:argv.debug});
-		var options    = {length:length, debug:debug, color:color, iterations:iterations, duration:duration, priority:'!'};
+		var options    = {pixels:pixels, length:length, debug:debug, color:color, iterations:iterations, duration:duration, priority:'!'};
 	
 		//var animation = new BlinkAnimation({pixels:pixels, length:argv.length, debug:argv.debug, color:argv.color, iterations:argv.iterations, duration:argv.duration, priority:'!'});
 
-		var animation = new BlinkAnimation({pixels:pixels, priority:'!', ...options});
+		var animation = new BlinkAnimation(options);
 		queue.enqueue(animation);
 
 	}
