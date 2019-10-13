@@ -12,8 +12,6 @@ module.exports = class Animation extends Events {
     constructor(options = {}) {
         super();
 
-        console.log('-----------------', options);
-
         var {debug, renderFrequency, name = 'Noname', priority = 'normal', iterations = undefined, duration = undefined} = options;
 
         this.name            = name;
@@ -33,10 +31,6 @@ module.exports = class Animation extends Events {
         else if (debug) {
             this.debug = console.log;
         }
-
-
-        console.log('ITERATIONS:', this.iterations);
-        console.log('DURATION:', this.duration);
     }
 
     render() {
@@ -79,7 +73,6 @@ module.exports = class Animation extends Events {
 
         return new Promise((resolve, reject) => {
 
-
             var render = () => {
                 this.debug('Rendering...');
                 this.render();
@@ -88,9 +81,6 @@ module.exports = class Animation extends Events {
 
             var loop = () => {
                 var start = new Date();
-                
-                console.log('ITERATION', this.iteration);
-                console.log('ITERATIONS', this.iterations);
 
                 var now = new Date();
 
@@ -101,7 +91,6 @@ module.exports = class Animation extends Events {
                     resolve();
                 }
                 else if (this.iterations != undefined && (this.iteration >= this.iterations)) {
-                    console.log('Stopping!!');
                     resolve();
                 }
                 else {
@@ -147,7 +136,7 @@ module.exports = class Animation extends Events {
                 return this.stop();
             })
             .catch((error) => {
-                console.log(error);
+                this.debug(error);
             })
             .then(() => {
                 resolve();
