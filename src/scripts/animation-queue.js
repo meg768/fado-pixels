@@ -16,7 +16,7 @@ module.exports = class AnimationQueue extends Events {
             this.debug            = () => {};
 
 			if (typeof debug === 'function') {
-				thnis.debug = debug;
+				this.debug = debug;
 			}
 			else if (debug) {
 				this.debug = console.log;
