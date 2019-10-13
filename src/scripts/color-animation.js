@@ -14,7 +14,7 @@ module.exports = class extends PixelAnimation {
                 color = Color(color).rgbNumber();
             }
             catch (error) {
-                console.log('Invalid color value.');
+                this.debug('Invalid color value.');
 
             }
         }
