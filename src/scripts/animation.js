@@ -100,7 +100,7 @@ module.exports = class Animation extends Events {
                 else {
                     var now = new Date();
 
-                    if (this.renderFrequency == undefined || this.renderFrequency == 0 || now - this.renderTime >= this.renderFrequency) {
+                    if (this.iterations || this.renderFrequency == undefined || this.renderFrequency == 0 || now - this.renderTime >= this.renderFrequency) {
 
                         this.debug('Rendering...');
                         this.render();
