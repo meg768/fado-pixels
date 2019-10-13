@@ -1,5 +1,6 @@
 
 var ColorAnimation = require('./color-animation.js');
+var Sleep = require('sleep');
 
 module.exports = class extends ColorAnimation {
 
@@ -18,6 +19,8 @@ module.exports = class extends ColorAnimation {
         this.pixels.fill(this.color);
         this.pixels.render({transition:'fade', duration:100});
 
+        Sleep.msleep(500);
+        
         this.pixels.fill(0);
         this.pixels.render({transition:'fade', duration:100});
 
