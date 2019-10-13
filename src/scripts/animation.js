@@ -35,7 +35,8 @@ module.exports = class Animation extends Events {
         }
 
 
-
+        console.log('ITERATIONS:', this.iterations);
+        console.log('DUTATION:', this.duration);
     }
 
     render() {
