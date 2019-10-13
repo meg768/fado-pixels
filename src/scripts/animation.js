@@ -12,6 +12,8 @@ module.exports = class Animation extends Events {
     constructor(options = {}) {
         super();
 
+        this.debug('-----------------', options);
+
         var {debug, renderFrequency = 0, name = 'Noname', priority = 'normal', iterations = undefined, duration = undefined} = options;
 
         this.name            = name;
@@ -24,13 +26,14 @@ module.exports = class Animation extends Events {
         this.debug           = () => {};
 
         this.debug('Iterations', iterations);
-        
+
         if (typeof debug === 'function') {
             this.debug = debug;
         }
         else if (debug) {
             this.debug = console.log;
         }
+
 
 
     }
