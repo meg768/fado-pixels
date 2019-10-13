@@ -13,6 +13,7 @@ var Module = new function() {
 		args.help('help').alias('help', 'h');
 		args.option('duration', {describe:'Duration', default:undefined});
 		args.option('iterations', {describe:'Iterations', default:undefined});
+		args.option('duration', {describe:'Duration', default:undefined});
 		args.option('color', {describe:'Color', default:'white'});
 		args.option('length', {describe:'Length', default:500});
 		args.option('fade', {describe:'Fade', default:undefined});
