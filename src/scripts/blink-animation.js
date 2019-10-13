@@ -40,6 +40,9 @@ module.exports = class extends ColorAnimation {
         else
             this.pixels.render();
 
+        if (this.length > 0)
+            Sleep.msleep(this.length);
+ 
     }
 
 
