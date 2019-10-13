@@ -23,6 +23,7 @@ module.exports = class Animation extends Events {
         this.renderTime      = 0;
         this.debug           = () => {};
 
+        this.debug('Iterations', iterations);
         if (typeof debug === 'function') {
             this.debug = debug;
         }
