@@ -5,7 +5,7 @@ var Sleep = require('sleep');
 module.exports = class extends ColorAnimation {
 
     constructor(options) {
-        var {length = 500, fade, fadeIn, fadeOut, fadeInOut, ...options} = options;
+        var {length = 5000, fade, fadeIn, fadeOut, fadeInOut, ...options} = options;
         super({name:'Blink Animation', renderFrequency:500, ...options});
 
         if (fade)
