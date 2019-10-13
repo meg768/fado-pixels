@@ -5,9 +5,9 @@ var Color = require('color');
 module.exports = class extends PixelAnimation {
 
     constructor(options) {
-        var {transition = 'fade', name = 'Color Animation', duration = 100, color = 'red', ...options} = options;
+        var {color = 'red', ...options} = options;
 
-        super({name:name, renderFrequency:1000, ...options});
+        super(options);
 
         if (isString(color)) {
             try {
@@ -20,14 +20,8 @@ module.exports = class extends PixelAnimation {
         }
 
         this.color = color;
-        this.transition = this.transition;
-        this.duration = duration;
     }
 
-    render() {
-        this.pixels.fill(this.color);
-        this.pixels.render({transition:this.transition, duration:this.duration});
-    }
 
 
 }
