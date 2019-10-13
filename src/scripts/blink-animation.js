@@ -15,9 +15,6 @@ module.exports = class extends ColorAnimation {
 
 
     render() {
-        this.pixels.fill(0);
-        this.pixels.render({transition:'fade', duration:100});
-
         this.pixels.fill(this.color);
         this.pixels.render({transition:'fade', duration:100});
 
