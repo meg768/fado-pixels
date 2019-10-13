@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 var Neopixels        = require('../scripts/neopixels.js');
-var AnimationQueue   = require('rpi-animations').Queue;
+var AnimationQueue   = require('./animation-queue.js');
 var BlinkAnimation   = require('../scripts/blink-animation.js');
 
 
