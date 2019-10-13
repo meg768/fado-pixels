@@ -79,15 +79,16 @@ module.exports = class Animation extends Events {
 
         return new Promise((resolve, reject) => {
 
-            var start = new Date();
 
             var render = () => {
                 this.debug('Rendering...');
                 this.render();
-                this.renderTime = now;
+                this.renderTime = new Date();
             };
 
             var loop = () => {
+                var start = new Date();
+                
                 console.log('ITERATION', this.iteration);
                 console.log('ITERATIONS', this.iterations);
 
