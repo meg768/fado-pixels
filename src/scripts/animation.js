@@ -94,6 +94,7 @@ module.exports = class Animation extends Events {
                     resolve();
                 }
                 else if (this.iterations != undefined && (this.iteration >= this.iterations)) {
+                    console.log('Stopping!!');
                     resolve();
                 }
                 else {
