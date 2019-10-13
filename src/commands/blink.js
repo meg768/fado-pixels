@@ -9,21 +9,21 @@ var Neopixels        = require('../scripts/neopixels.js');
 var AnimationQueue   = require('rpi-animations').Queue;
 var BlinkAnimation   = require('../scripts/blink-animation.js');
 
-function debug() {
-}
 
 var Module = new function() {
-
 
 
 	function defineArgs(args) {
 
 		args.help('help').alias('help', 'h');
+		args.option('duration', {describe:'Duration', default:undefined});
+		args.option('iterations', {describe:'Iterations', default:undefined});
 
 
 		args.wrap(null);
 
 		args.check(function(argv) {
+			if (duration)
 			return true;
 		});
 	}
@@ -31,17 +31,13 @@ var Module = new function() {
 
 	function run(argv) {
 
-        if (argv.debug) {
-            debug = function() {
-                console.log.apply(this, arguments);
-            }
-        }
 
-		var pixels    = new Neopixels();
-		var queue     = new AnimationQueue({debug:argv.debug});
-		var duration  = 60000;
+		var pixels     = new Neopixels();
+		var queue      = new AnimationQueue({debug:argv.debug});
+		var duration   = argv.duration;
+		var iterations = argv.iterations;
 
-		var animation = new BlinkAnimation({pixels:pixels, duration:duration, priority:'!'});
+		var animation = new BlinkAnimation({pixels:pixels, iterations:iterations, duration:duration, priority:'!'});
 
 		queue.enqueue(animation);
 
