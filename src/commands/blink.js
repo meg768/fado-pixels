@@ -26,6 +26,8 @@ var Module = new function() {
 	function run(argv) {
 
 
+		console.log(argv);
+		
 		var pixels     = new Neopixels();
 		var queue      = new AnimationQueue({debug:argv.debug});
 		var duration   = argv.duration;
