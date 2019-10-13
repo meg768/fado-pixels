@@ -13,6 +13,7 @@ var Module = new function() {
 		args.help('help').alias('help', 'h');
 		args.option('duration', {describe:'Duration', default:undefined});
 		args.option('iterations', {describe:'Iterations', default:undefined});
+		args.option('color', {describe:'Color', default:'white'});
 
 
 		args.wrap(null);
@@ -28,10 +29,8 @@ var Module = new function() {
 
 		var pixels     = new Neopixels();
 		var queue      = new AnimationQueue({debug:argv.debug});
-		var duration   = argv.duration;
-		var iterations = argv.iterations;
-
-		var animation = new BlinkAnimation({pixels:pixels, debug:argv.debug, iterations:iterations, duration:duration, priority:'!'});
+	
+		var animation = new BlinkAnimation({pixels:pixels, debug:argv.debug, color:argv.color, iterations:argv.iterations, duration:argv.duration, priority:'!'});
 
 		queue.enqueue(animation);
 
