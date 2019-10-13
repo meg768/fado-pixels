@@ -4,7 +4,7 @@ var Animation = require('rpi-animations').Animation;
 module.exports = Animation;
 */
 
-var Events  = require('events');
+var Events = require('events');
 
 
 module.exports = class Animation extends Events {
@@ -22,8 +22,6 @@ module.exports = class Animation extends Events {
         this.renderFrequency = renderFrequency;
         this.renderTime      = 0;
         this.debug           = () => {};
-
-        this.debug('Iterations', iterations);
 
         if (typeof debug === 'function') {
             this.debug = debug;
