@@ -21,6 +21,7 @@ module.exports = class Animation extends Events {
         this.iterations      = iterations;
         this.renderFrequency = renderFrequency;
         this.renderTime      = 0;
+        this.debug           = () => {};
 
         if (typeof debug === 'function') {
             this.debug = debug;
