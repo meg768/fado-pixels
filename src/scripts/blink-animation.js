@@ -4,7 +4,6 @@ var Animation = require('./color-animation.js');
 module.exports = class extends Animation {
 
     constructor(options) {
-        console.log('Blink animation:', options);
         super({name:'Blink Animation', renderFrequency:500, ...options});
 
         this.state = 0;

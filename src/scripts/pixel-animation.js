@@ -4,7 +4,6 @@ var Animation = require('rpi-animations').Animation;
 module.exports = class extends Animation {
 
     constructor(options) {
-        console.log('Pixel animation:', options);
         var {pixels, ...options} = options;
 
         super(options);

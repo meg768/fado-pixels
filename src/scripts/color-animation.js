@@ -1,13 +1,11 @@
 
 var isString  = require('yow/is').isString;
-var Animation = require('./pixel-animation.js');
+var Animation = require('./animation.js');
 var Color     = require('color');
 
 module.exports = class extends Animation {
 
     constructor(options) {
-        console.log('Color animation:', options);
-
         var {transition = 'fade', name = 'Color Animation', duration = 100, color = 'red', ...options} = options;
 
         super({name:name, renderFrequency:1000, ...options});
