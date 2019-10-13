@@ -38,6 +38,7 @@ module.exports = class extends ColorAnimation {
             this.pixels.render({transition:'fade', duration:this.fadeOut});
         else
             this.pixels.render();
+
     }
 
 
