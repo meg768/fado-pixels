@@ -31,7 +31,7 @@ var Module = new function() {
 		var duration   = argv.duration;
 		var iterations = argv.iterations;
 
-		var animation = new BlinkAnimation({pixels:pixels, iterations:iterations, duration:duration, priority:'!'});
+		var animation = new BlinkAnimation({pixels:pixels, debug:argv.debug, iterations:iterations, duration:duration, priority:'!'});
 
 		queue.enqueue(animation);
 
