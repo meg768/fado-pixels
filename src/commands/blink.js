@@ -15,7 +15,7 @@ var Module = new function() {
 		args.option('iterations', {describe:'Iterations', default:undefined});
 		args.option('color', {describe:'Color', default:'white'});
 		args.option('length', {describe:'Length', default:500});
-		args.option('fade', {describe:'fade', default:undefined});
+		args.option('fade', {describe:'Fade', default:undefined});
 
 
 		args.wrap(null);
