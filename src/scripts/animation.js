@@ -81,6 +81,12 @@ module.exports = class Animation extends Events {
 
             var start = new Date();
 
+            var render = () => {
+                this.debug('Rendering...');
+                this.render();
+                this.renderTime = now;
+            };
+
             var loop = () => {
                 console.log('ITERATION', this.iteration);
                 console.log('ITERATIONS', this.iterations);
@@ -101,10 +107,7 @@ module.exports = class Animation extends Events {
                     var now = new Date();
 
                     if (this.iterations || this.renderFrequency == undefined || this.renderFrequency == 0 || now - this.renderTime >= this.renderFrequency) {
-
-                        this.debug('Rendering...');
-                        this.render();
-                        this.renderTime = now;
+                        render();
                     }
 
                     this.iteration++;
