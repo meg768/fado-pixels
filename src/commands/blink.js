@@ -23,7 +23,6 @@ var Module = new function() {
 		args.wrap(null);
 
 		args.check(function(argv) {
-			if (duration)
 			return true;
 		});
 	}
