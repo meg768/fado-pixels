@@ -15,6 +15,7 @@ var Module = new function() {
 		args.option('iterations', {describe:'Iterations', default:undefined});
 		args.option('color', {describe:'Color', default:'white'});
 		args.option('length', {describe:'Length', default:500});
+		args.option('fade', {describe:'fade', default:undefined});
 
 
 		args.wrap(null);
@@ -31,7 +32,7 @@ var Module = new function() {
 
 		var pixels     = new Neopixels();
 		var queue      = new AnimationQueue({debug:argv.debug});
-		var options    = {pixels:pixels, renderingFrequency:100, length:length, debug:debug, color:color, iterations:iterations, duration:duration, priority:'!'};
+		var options    = {pixels:pixels, renderingFrequency:100, fade:argv.fade, length:length, debug:debug, color:color, iterations:iterations, duration:duration, priority:'!'};
 	
 		//var animation = new BlinkAnimation({pixels:pixels, length:argv.length, debug:argv.debug, color:argv.color, iterations:argv.iterations, duration:argv.duration, priority:'!'});
 
