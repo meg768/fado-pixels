@@ -1,5 +1,5 @@
 
-mnodule.exports = class CLI {
+module.exports = class CLI {
 
 	constructor(options) {
 		var {command, describe} = options;
