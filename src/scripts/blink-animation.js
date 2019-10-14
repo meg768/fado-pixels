@@ -6,7 +6,7 @@ module.exports = class extends ColorAnimation {
 
     constructor(options) {
         var {hold = 100, fade, fadeIn, fadeOut, fadeInOut, ...options} = options;
-        super({name:'Blink Animation', renderFrequency:500, ...options});
+        super({name:'Blink Animation', ...options});
 
         if (fade)
             fadeIn = fadeOut = fade;
@@ -39,6 +39,9 @@ module.exports = class extends ColorAnimation {
         else
             this.pixels.render();
 
+        if (this.hold > 0)
+            Sleep.msleep(this.hold);
+ 
  
     }
 
