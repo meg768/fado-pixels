@@ -1,9 +1,7 @@
 #!/usr/bin/env node
 
-var Neopixels        = require('../scripts/neopixels.js');
-var AnimationQueue   = require('../scripts/animation-queue.js');
-var BlinkAnimation   = require('../scripts/blink-animation.js');
-
+var CLI = require('../scripts/cli.js');
+/*
 class Command {
 
 	constructor(options) {
@@ -21,8 +19,9 @@ class Command {
 	run() {
 	}
 }
+*/
 
-class BlinkCommand extends Command {
+class BlinkCommand extends CLI {
 
 	constructor() {
 		super({command:'blink [options]', describe:'Blink'});
@@ -48,6 +47,10 @@ class BlinkCommand extends Command {
 	}
 
 	run(argv) {
+		var Neopixels        = require('../scripts/neopixels.js');
+		var AnimationQueue   = require('../scripts/animation-queue.js');
+		var BlinkAnimation   = require('../scripts/blink-animation.js');
+		
 		var queue      = new AnimationQueue({debug:argv.debug});
 		var options    = {pixels:new Neopixels(), priority:'!', ...argv};	
 		var animation  = new BlinkAnimation(options);
