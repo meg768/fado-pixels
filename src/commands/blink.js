@@ -4,9 +4,60 @@ var Neopixels        = require('../scripts/neopixels.js');
 var AnimationQueue   = require('../scripts/animation-queue.js');
 var BlinkAnimation   = require('../scripts/blink-animation.js');
 
+class Command {
 
+	constructor(options) {
+		var {command, describe} = options;
+
+		module.exports.command  = command;
+		module.exports.describe = describe;
+		module.exports.builder  = this.defineArgs;
+		module.exports.handler  = this.run;
+	}
+
+	defineArgs(args) {
+
+	}
+	run() {
+	}
+}
+
+class BlinkCommand extends Command {
+
+	defineArgs(args) {
+		args.help('help').alias('help', 'h');
+		args.option('iterations', {describe:'Iterations', default:undefined});
+		args.option('duration', {describe:'Duration', default:undefined});
+		args.option('color', {describe:'Color', default:'white'});
+		args.option('hold', {describe:'Hold', default:200});
+		args.option('fadeIn', {describe:'Fade in', default:undefined});
+		args.option('fadeOut', {describe:'Fade out', default:undefined});
+		args.option('fade', {describe:'Fade in & out', default:undefined});
+		args.option('fadeInOut', {describe:'Fade in & out', default:undefined});
+
+		args.wrap(null);
+
+		args.check(function(argv) {
+			return true;
+		});
+
+	}
+
+	run() {
+		var queue      = new AnimationQueue({debug:argv.debug});
+		var options    = {pixels:new Neopixels(), priority:'!', ...argv};	
+		var animation  = new BlinkAnimation(options);
+
+		queue.enqueue(animation);
+
+	}
+}
+
+new BlinkCommand();
+
+
+/*
 var Module = new function() {
-
 
 	function defineArgs(args) {
 
@@ -14,10 +65,11 @@ var Module = new function() {
 		args.option('iterations', {describe:'Iterations', default:undefined});
 		args.option('duration', {describe:'Duration', default:undefined});
 		args.option('color', {describe:'Color', default:'white'});
-		args.option('length', {describe:'Length', default:500});
+		args.option('hold', {describe:'Hold', default:200});
 		args.option('fadeIn', {describe:'Fade in', default:undefined});
 		args.option('fadeOut', {describe:'Fade out', default:undefined});
-
+		args.option('fade', {describe:'Fade in & out', default:undefined});
+		args.option('fadeInOut', {describe:'Fade in & out', default:undefined});
 
 		args.wrap(null);
 
@@ -29,15 +81,11 @@ var Module = new function() {
 
 	function run(argv) {
 
-		var pixels     = new Neopixels();
 		var queue      = new AnimationQueue({debug:argv.debug});
-		var options    = {pixels:pixels, priority:'!', ...argv};
-	
-		//var animation = new BlinkAnimation({pixels:pixels, length:argv.length, debug:argv.debug, color:argv.color, iterations:argv.iterations, duration:argv.duration, priority:'!'});
+		var options    = {pixels:new Neopixels(), priority:'!', ...argv};	
+		var animation  = new BlinkAnimation(options);
 
-		var animation = new BlinkAnimation(options);
 		queue.enqueue(animation);
-
 	}
 
 
@@ -47,3 +95,5 @@ var Module = new function() {
 	module.exports.handler  = run;
 
 };
+
+*/

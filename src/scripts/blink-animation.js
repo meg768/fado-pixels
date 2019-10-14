@@ -5,7 +5,7 @@ var Sleep = require('sleep');
 module.exports = class extends ColorAnimation {
 
     constructor(options) {
-        var {length = 5000, fade, fadeIn, fadeOut, fadeInOut, ...options} = options;
+        var {hold = 100, fade, fadeIn, fadeOut, fadeInOut, ...options} = options;
         super({name:'Blink Animation', renderFrequency:500, ...options});
 
         if (fade)
@@ -14,8 +14,7 @@ module.exports = class extends ColorAnimation {
         if (fadeInOut)
             fadeIn = fadeOut = fadeInOut;
 
-
-        this.length  = length;
+        this.hold    = hold;
         this.fadeIn  = fadeIn;
         this.fadeOut = fadeOut;
     }
@@ -30,8 +29,8 @@ module.exports = class extends ColorAnimation {
         else
             this.pixels.render();
 
-        if (this.length > 0)
-           Sleep.msleep(this.length);
+        if (this.hold > 0)
+           Sleep.msleep(this.hold);
         
         this.pixels.fill(0);
 
@@ -40,8 +39,6 @@ module.exports = class extends ColorAnimation {
         else
             this.pixels.render();
 
-        if (this.length > 0)
-            Sleep.msleep(this.length);
  
     }
 
