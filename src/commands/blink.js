@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
-var CLI = require('../scripts/cli.js');
-/*
-class Command {
+//var CLI = require('../scripts/cli.js');
+
+class CLI {
 
 	constructor(options) {
 		var {command, describe} = options;
@@ -19,7 +19,6 @@ class Command {
 	run() {
 	}
 }
-*/
 
 class BlinkCommand extends CLI {
 
@@ -29,7 +28,7 @@ class BlinkCommand extends CLI {
 
 	defineArgs(args) {
 		super.defineArgs(args);
-		
+
 		args.option('iterations', {describe:'Iterations', default:undefined});
 		args.option('duration', {describe:'Duration', default:undefined});
 		args.option('color', {describe:'Color', default:'white'});
