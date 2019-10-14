@@ -11,6 +11,7 @@ mnodule.exports = class CLI {
 	}
 
 	defineArgs(args) {
+		args.help('help').alias('help', 'h');
 	}
 
 	run() {

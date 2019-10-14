@@ -28,7 +28,8 @@ class BlinkCommand extends CLI {
 	}
 
 	defineArgs(args) {
-		args.help('help').alias('help', 'h');
+		super.defineArgs(args);
+		
 		args.option('iterations', {describe:'Iterations', default:undefined});
 		args.option('duration', {describe:'Duration', default:undefined});
 		args.option('color', {describe:'Color', default:'white'});
