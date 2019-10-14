@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
-var CLIX = require('../scripts/cli.js');
+var CLI = require('../scripts/cli.js');
 
-class CLI {
+class CLIX {
 
 	constructor(options) {
 		var {command, describe} = options;
@@ -17,14 +17,14 @@ class CLI {
 		args.help('help').alias('help', 'h');
 	}
 
-	run() {
+	run(argv) {
 	}
 }
 
 class BlinkCommand extends CLI {
 
 	constructor() {
-		super({command:'blink [options]', describe:'Blink'});
+		super({module:module, command:'blink [options]', describe:'Blink'});
 	}
 
 	defineArgs(args) {
