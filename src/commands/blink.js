@@ -34,7 +34,7 @@ var Module = new function() {
 
 		var pixels     = new Neopixels();
 		var queue      = new AnimationQueue({debug:argv.debug});
-		var options    = {pixels:pixels, renderingFrequency:100, fade:argv.fade, length:length, debug:debug, color:color, iterations:iterations, duration:duration, priority:'!'};
+		var options    = {pixels:pixels, priority:'!', ...argv};
 	
 		//var animation = new BlinkAnimation({pixels:pixels, length:argv.length, debug:argv.debug, color:argv.color, iterations:argv.iterations, duration:argv.duration, priority:'!'});
 
