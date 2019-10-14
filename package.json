@@ -23,7 +23,7 @@
     "pigpio": "^2.0.0",
     "pigpio-button": "^1.0.0",
     "pigpio-vma309": "^1.0.10",
-    "rpi-animations": "^1.0.11",
+    "rpi-animations": "^1.0.12",
     "rpi-neopixels": "^1.0.74",
     "rpi-obex-monitor": "^1.0.11",
     "rpi-wifi-connection": "^1.0.6",
