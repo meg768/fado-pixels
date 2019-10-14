@@ -65,10 +65,13 @@ module.exports = class Animation extends Events {
 
 
     loop() {
+        var start = new Date();
 
         this.debug('Running loop', this.name);
 
+
         return new Promise((resolve, reject) => {
+
 
             var render = () => {
                 this.debug('Rendering...');
@@ -77,8 +80,6 @@ module.exports = class Animation extends Events {
             };
 
             var loop = () => {
-                var start = new Date();
-
                 var now = new Date();
 
                 if (this.cancelled) {
