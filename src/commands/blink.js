@@ -11,18 +11,22 @@ class Command {
 
 		module.exports.command  = command;
 		module.exports.describe = describe;
-		module.exports.builder  = this.defineArgs;
-		module.exports.handler  = this.run;
+		module.exports.builder  = this.defineArgs.bind(this);
+		module.exports.handler  = this.run.bind(this);
 	}
 
 	defineArgs(args) {
-
 	}
+	
 	run() {
 	}
 }
 
 class BlinkCommand extends Command {
+
+	constructor() {
+		super({command:'blink [options]', describe:'Blink'});
+	}
 
 	defineArgs(args) {
 		args.help('help').alias('help', 'h');
