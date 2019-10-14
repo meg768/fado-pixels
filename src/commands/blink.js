@@ -11,12 +11,12 @@ var Module = new function() {
 	function defineArgs(args) {
 
 		args.help('help').alias('help', 'h');
-		args.option('duration', {describe:'Duration', default:undefined});
 		args.option('iterations', {describe:'Iterations', default:undefined});
 		args.option('duration', {describe:'Duration', default:undefined});
 		args.option('color', {describe:'Color', default:'white'});
 		args.option('length', {describe:'Length', default:500});
-		args.option('fade', {describe:'Fade', default:undefined});
+		args.option('fadeIn', {describe:'Fade in', default:undefined});
+		args.option('fadeOut', {describe:'Fade out', default:undefined});
 
 
 		args.wrap(null);
@@ -29,6 +29,7 @@ var Module = new function() {
 
 	function run(argv) {
 
+		console.log(argv);
 		var {debug, color, length, iterations, duration} = argv;
 
 		var pixels     = new Neopixels();
