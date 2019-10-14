@@ -1,5 +1,5 @@
 
-export default class CLI {
+mnodule.exports = class CLI {
 
 	constructor(options) {
 		var {command, describe} = options;
