@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
-var CLIX = require('../scripts/cli.js');
+var CLI = require('../scripts/cli.js');
 
-class CLI {
+class CLIX {
 
 	constructor(options) {
 		var {command, describe} = options;
