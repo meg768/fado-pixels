@@ -17,7 +17,7 @@ class Command {
 
 	defineArgs(args) {
 	}
-	
+
 	run() {
 	}
 }
@@ -47,7 +47,7 @@ class BlinkCommand extends Command {
 
 	}
 
-	run() {
+	run(argv) {
 		var queue      = new AnimationQueue({debug:argv.debug});
 		var options    = {pixels:new Neopixels(), priority:'!', ...argv};	
 		var animation  = new BlinkAnimation(options);
