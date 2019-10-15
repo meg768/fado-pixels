@@ -26,11 +26,11 @@ class Command extends CLI {
 		var ColorAnimation   = require('../scripts/color-animation.js');
 		var ClockAnimation   = require('../scripts/clock-animation.js');
 	
-		var button    = new Button({autoEnable:true, pin:6});
-		var pixels    = new Neopixels();
-		var queue     = new AnimationQueue({debug:argv.debug});
-		var state     = 'on'
-		var defaultOptions = {...argv, pixels:pixels, duration: -1, priority:'!'};
+		var button           = new Button({debug:argv.debug, autoEnable:true, pin:6});
+		var pixels           = new Neopixels({debug:argv.debug});
+		var queue            = new AnimationQueue({debug:argv.debug});
+		var state            = 'on'
+		var defaultOptions   = {...argv, pixels:pixels, duration: -1, priority:'!'};
 
 		var runAnimation = (animation) => {
 			queue.enqueue(animation);
