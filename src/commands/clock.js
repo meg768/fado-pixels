@@ -54,4 +54,4 @@ class Command extends CLI {
 
 }
 
-return new Command();
+new Command();
