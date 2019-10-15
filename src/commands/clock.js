@@ -1,50 +1,39 @@
 #!/usr/bin/env node
 
-var Neopixels        = require('../scripts/neopixels.js');
-var AnimationQueue   = require('../scripts/animation-queue.js');
-var ClockAnimation   = require('../scripts/clock-animation.js');
-var ColorAnimation   = require('../scripts/color-animation.js');
-var Button           = require('pigpio-button');
-
-function debug() {
-}
+var CLI = require('../scripts/cli.js');
 
 
-var Module = new function() {
+class Command extends CLI {
 
+	constructor() {
+		super({module:module, command:'clock [options]', describe:'Displays time as a color'});
+	}
 
+	defineArgs(args) {
+		super.defineArgs(args);
 
-	function defineArgs(args) {
-
-		args.help('help').alias('help', 'h');
-
-
-		args.wrap(null);
 
 		args.check(function(argv) {
 			return true;
 		});
+
 	}
 
-
-	function run(argv) {
-
-        if (argv.debug) {
-            debug = function() {
-                console.log.apply(this, arguments);
-            }
-        }
-
+	run(argv) {
+		var Neopixels        = require('../scripts/neopixels.js');
+		var AnimationQueue   = require('../scripts/animation-queue.js');
+		var ColorAnimation   = require('../scripts/color-animation.js');
+		var ClockAnimation   = require('../scripts/clock-animation.js');
+	
 		var button    = new Button({autoEnable:true, pin:6});
-
 		var pixels    = new Neopixels();
 		var queue     = new AnimationQueue({debug:argv.debug});
-		var duration  = -1;
 		var state     = 'on'
 
-		function runAnimation(animation) {
+		var runAnimation = (animation) => {
 			queue.enqueue(animation);
 		}
+
 		button.on('click', (clicks) => {
 			if (state == 'on') {
 				runAnimation(new ColorAnimation({pixels:pixels, color:'black', priority:'!', duration:-1}));
@@ -53,24 +42,16 @@ var Module = new function() {
 				runAnimation(new ClockAnimation({pixels:pixels, duration:-1, priority:'!'}));
 			}
 
-			debug('button click');
+			this.debug('button click');
 
 			state = (state == 'on') ? 'off' : 'on';
 		});
 
 
-		var animation = new ClockAnimation({pixels:pixels, duration:-1, priority:'!'});
-
-		queue.enqueue(animation);
-
-
-
+		runAnimation(new ClockAnimation({pixels:pixels, duration:-1, priority:'!'}));
+	
 	}
 
+}
 
-	module.exports.command  = 'clock [options]';
-	module.exports.describe = 'Display clock (as hue)';
-	module.exports.builder  = defineArgs;
-	module.exports.handler  = run;
-
-};
+return new Command();
