@@ -28,6 +28,7 @@ module.exports = class extends PixelAnimation {
 
     render() {
         this.pixels.fill(this.getColor());
+        this.pixels.render();
     }
 
 

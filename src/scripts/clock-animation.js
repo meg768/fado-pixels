@@ -4,9 +4,9 @@ var Color = require('color');
 module.exports = class extends PixelAnimation {
 
 
-    constructor(options) {
+    constructor(options) {        
         super({name:'Clock Animation', renderFrequency: 1000, ...options});
-        this.debug('New animation');
+        this.debug('New pixel-animation...');
     }
 
     getHue() {
@@ -20,8 +20,9 @@ module.exports = class extends PixelAnimation {
 
 
     render() {
-
+        this.debug('Rendering clockl animadasfsd');
         this.pixels.fill(this.getColor());
+        this.pixels.render();
     }
 
 
