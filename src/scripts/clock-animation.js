@@ -5,8 +5,8 @@ module.exports = class extends PixelAnimation {
 
 
     constructor(options) {
-        this.debug('New animation');
         super({name:'Clock Animation', renderFrequency: 1000, ...options});
+        this.debug('New animation');
     }
 
     getHue() {
