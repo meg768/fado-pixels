@@ -1,7 +1,7 @@
-var ColorAnimation = require('./color-animation.js');
+var PixelAnimation = require('./pixel-animation.js');
 var Color = require('color');
 
-module.exports = class extends ColorAnimation {
+module.exports = class extends PixelAnimation {
 
 
     constructor(options) {
@@ -12,7 +12,6 @@ module.exports = class extends ColorAnimation {
         var now = new Date();
         return Math.floor(360 * (((now.getHours() % 12) * 60) + now.getMinutes()) / (12 * 60));
     }
-
 
     getColor() {        
         return Color.hsl([this.getHue(), 100, 50]).rgbNumber();
