@@ -2,7 +2,7 @@
 
 var CLI = require('../scripts/cli.js');
 
-class BlinkCommand extends CLI {
+class Command extends CLI {
 
 	constructor() {
 		super({module:module, command:'blink [options]', desc:'Blink'});
@@ -42,5 +42,5 @@ class BlinkCommand extends CLI {
 	}
 }
 
-new BlinkCommand();
+new Command();
 

@@ -11,6 +11,8 @@ module.exports = class CLI {
 		module.exports.aliases  = aliases;
 		module.exports.builder  = this.defineArgs.bind(this);
 		module.exports.handler  = this.run.bind(this);
+
+		this.debug = console.log;
 	}
 
 	defineArgs(yargs) {
@@ -20,6 +22,7 @@ module.exports = class CLI {
 		yargs.wrap(null);
 
 	}
+
 
 	run(argv) {
 	}
