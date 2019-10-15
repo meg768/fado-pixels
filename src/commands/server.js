@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+/*
 
 var Path             = require('path');
 var sprintf          = require('yow/sprintf');
@@ -228,3 +229,5 @@ var Module = new function() {
 	module.exports.handler  = run;
 
 };
+
+*/
