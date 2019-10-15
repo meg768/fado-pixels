@@ -23,5 +23,4 @@ module.exports = class extends PixelAnimation {
     }
 
 
-
 }

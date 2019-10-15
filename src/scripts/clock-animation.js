@@ -20,7 +20,6 @@ module.exports = class extends ColorAnimation {
 
 
     render() {
-        this.debug('Rendering clock');
         this.pixels.fill(this.getColor());
     }
 
