@@ -1,11 +1,11 @@
 var ColorAnimation = require('./color-animation.js');
-var Color          = require('color');
+var Color = require('color');
 
 module.exports = class extends ColorAnimation {
 
 
     constructor(options) {
-        super({name:'Clock Animation', renderFrequency: 1 * 1000, ...options});
+        super({name:'Clock Animation', renderFrequency: 60000, ...options});
     }
 
     getHue() {
@@ -20,8 +20,8 @@ module.exports = class extends ColorAnimation {
 
 
     render() {
-        this.color = this.getColor();
-        super.render();
+        this.debug('Rendering clock');
+        this.pixels.fill(this.getColor());
     }
 
 
