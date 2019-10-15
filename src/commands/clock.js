@@ -21,7 +21,7 @@ class Command extends CLI {
 
 	run(argv) {
 		this.debug('Running clock...');
-		
+
 		var Button           = require('pigpio-button');
 		var Neopixels        = require('../scripts/neopixels.js');
 		var AnimationQueue   = require('../scripts/animation-queue.js');
@@ -39,17 +39,16 @@ class Command extends CLI {
 
 		button.on('click', (clicks) => {
 			if (state == 'on') {
-				runAnimation(new ColorAnimation({pixels:pixels, color:'black', priority:'!', duration:-1}));
+				runAnimation(new ColorAnimation({...argv, pixels:pixels, color:'black', priority:'!', duration:-1}));
 			}
 			else {
-				runAnimation(new ClockAnimation({pixels:pixels, duration:-1, priority:'!'}));
+				runAnimation(new ClockAnimation({...argv, pixels:pixels, duration:-1, priority:'!'}));
 			}
 
-			this.debug('button click');
 
 			state = (state == 'on') ? 'off' : 'on';
+			this.debug(`Button clicked, state is now ${state}...`);
 		});
-
 
 		runAnimation(new ClockAnimation({pixels:pixels, duration:-1, priority:'!'}));
 	

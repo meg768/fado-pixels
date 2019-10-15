@@ -5,7 +5,8 @@ module.exports = class extends PixelAnimation {
 
 
     constructor(options) {
-        super({name:'Clock Animation', renderFrequency: 60000, ...options});
+        this.debug('New animation');
+        super({name:'Clock Animation', renderFrequency: 1000, ...options});
     }
 
     getHue() {
@@ -19,6 +20,7 @@ module.exports = class extends PixelAnimation {
 
 
     render() {
+
         this.pixels.fill(this.getColor());
     }
 
