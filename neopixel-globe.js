@@ -16,10 +16,10 @@ var App = function() {
 
 			args.help();
 
-			args.option('length',    {alias:'L', describe:'Length of the Neopixel strip', default:process.env.NEOPIXEL_STRIP_LENGTH});
-			args.option('debug',     {alias:'D', describe:'Debug mode', default:false});
+//			args.option('length',    {alias:'L', describe:'Length of the Neopixel strip', default:process.env.NEOPIXEL_STRIP_LENGTH});
+//			args.option('debug',     {alias:'D', describe:'Debug mode', default:false});
 
-			args.command(require('./src/commands/server.js'));
+			//args.command(require('./src/commands/server.js'));
 			args.command(require('./src/commands/blink.js'));
 			args.command(require('./src/commands/pulse.js'));
 			args.command(require('./src/commands/clock.js'));
