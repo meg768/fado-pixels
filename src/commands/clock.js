@@ -51,7 +51,7 @@ class Command extends CLI {
 			this.debug(`Button clicked, state is now ${state}...`);
 		});
 
-		runAnimation(new ClockAnimation(defaultOptions);
+		runAnimation(new ClockAnimation(defaultOptions));
 	
 	}
 
