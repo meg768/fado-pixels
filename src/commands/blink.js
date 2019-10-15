@@ -28,6 +28,7 @@ class Command extends CLI {
 
 	}
 
+
 	run(argv) {
 		var Neopixels        = require('../scripts/neopixels.js');
 		var AnimationQueue   = require('../scripts/animation-queue.js');
@@ -37,6 +38,7 @@ class Command extends CLI {
 		var options    = {pixels:new Neopixels(), priority:'!', ...argv};	
 		var animation  = new BlinkAnimation(options);
 
+	
 		queue.enqueue(animation);
 
 	}

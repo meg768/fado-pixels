@@ -32,6 +32,7 @@ class Command extends CLI {
 		var pixels    = new Neopixels();
 		var queue     = new AnimationQueue({debug:argv.debug});
 		var state     = 'on'
+		var defaultOptions = {...argv, pixels:pixels, duration: -1, priority:'!'};
 
 		var runAnimation = (animation) => {
 			queue.enqueue(animation);
@@ -39,10 +40,10 @@ class Command extends CLI {
 
 		button.on('click', (clicks) => {
 			if (state == 'on') {
-				runAnimation(new ColorAnimation({...argv, pixels:pixels, color:'black', priority:'!', duration:-1}));
+				runAnimation(new ColorAnimation({...defaultOptions, color:'black'}));
 			}
 			else {
-				runAnimation(new ClockAnimation({...argv, pixels:pixels, duration:-1, priority:'!'}));
+				runAnimation(new ClockAnimation(defaultOptions));
 			}
 
 
@@ -50,7 +51,7 @@ class Command extends CLI {
 			this.debug(`Button clicked, state is now ${state}...`);
 		});
 
-		runAnimation(new ClockAnimation({pixels:pixels, duration:-1, priority:'!'}));
+		runAnimation(new ClockAnimation(defaultOptions);
 	
 	}
 
