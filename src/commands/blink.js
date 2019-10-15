@@ -5,7 +5,7 @@ var CLI = require('../scripts/cli.js');
 class BlinkCommand extends CLI {
 
 	constructor() {
-		super({module:module, command:'blink [options]', describe:'Blink'});
+		super({module:module, command:'blink [options]', desc:'Blink'});
 	}
 
 	defineArgs(args) {

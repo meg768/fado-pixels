@@ -1,26 +1,26 @@
 module.exports = class CLI {
 
 	constructor(options) {
-		var {module, command, describe} = options;
+		var {module, command, desc, aliases} = options;
 
-		if (!module || !command || !describe)
-			throw new Error('The module, command name and description must be specified.');
+		if (!module || !command || !desc)
+			throw new Error('The module, command name (command) and description (desc) must be specified.');
 
 		module.exports.command  = command;
-		module.exports.describe = describe;
+		module.exports.desc     = desc;
+		module.exports.aliases  = aliases;
 		module.exports.builder  = this.defineArgs.bind(this);
 		module.exports.handler  = this.run.bind(this);
 	}
 
-	defineArgs(args) {
-		//args.option('help').alias('help', 'h');
-		args.option('help',  {alias:'H', describe:'Display help', default:false});
-		args.option('debug', {alias:'D', describe:'Debug mode', default:false});
+	defineArgs(yargs) {
+		yargs.option('help',  {alias:'H', describe:'Display help', default:false});
+		yargs.option('debug', {alias:'D', describe:'Debug mode', default:false});
 
-		args.wrap(null);
+		yargs.wrap(null);
 
 	}
 
-	run() {
+	run(argv) {
 	}
 }

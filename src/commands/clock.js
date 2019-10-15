@@ -6,14 +6,14 @@ var CLI = require('../scripts/cli.js');
 class Command extends CLI {
 
 	constructor() {
-		super({module:module, command:'clock [options]', describe:'Displays time as a color'});
+		super({module:module, command:'clock [options]', desc:'Displays time as a color'});
 	}
 
-	defineArgs(args) {
-		super.defineArgs(args);
+	defineArgs(yargs) {
+		super.defineArgs(yargs);
 
 
-		args.check(function(argv) {
+		yargs.check(function(argv) {
 			return true;
 		});
 
