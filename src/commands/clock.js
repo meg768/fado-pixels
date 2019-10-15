@@ -20,6 +20,7 @@ class Command extends CLI {
 	}
 
 	run(argv) {
+		var Button           = require('pigpio-button');
 		var Neopixels        = require('../scripts/neopixels.js');
 		var AnimationQueue   = require('../scripts/animation-queue.js');
 		var ColorAnimation   = require('../scripts/color-animation.js');
