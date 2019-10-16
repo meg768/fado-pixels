@@ -36,7 +36,7 @@ class SpyAnimation extends Animation {
         luminance = 100;
         saturation = 50 + (Math.abs(change) * 50);
 
-        return {hue:hue, saturation:saturation, luminance:luminance}
+        return Color.hsl(hue, saturation, luminance);
     }
 
 
@@ -149,7 +149,7 @@ class SpyAnimation extends Animation {
 
 	render() {
 		this.log('Rendering SPY.', this.color);
-        this.pixels.fill(Color(this.color).rgbNumber());
+        this.pixels.fill(this.color);
         this.pixels.render();
 
 	}
