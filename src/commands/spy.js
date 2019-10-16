@@ -150,7 +150,7 @@ class SpyAnimation extends Animation {
 	render() {
 		this.log('Rendering SPY.', this.color);
         this.pixels.fill(this.color);
-        this.pixels.fill(Color.hsl(0, 50, 50));
+        this.pixels.fill(Color.hsl(0, 50, 50).rgbNumber());
         this.pixels.render();
 
 	}
