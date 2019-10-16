@@ -14,8 +14,8 @@ module.exports = class Command {
 
 		module.exports.builder  = (yargs) => {
 			yargs.wrap(null);
-			yargs.option('help',  {alias:'H', describe:'Display help', default:false});
-			yargs.option('debug', {alias:'D', describe:'Debug mode', boolean:true, default:false});
+			yargs.option('help',  {describe:'Display help', default:false});
+			yargs.option('debug', {describe:'Debug mode', boolean:true, default:false});
 	
 
 			this.defineArgs(yargs);
