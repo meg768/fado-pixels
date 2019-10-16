@@ -29,16 +29,6 @@ module.exports = class CLI {
 
 		yargs.wrap(null);
 
-		yargs.check((argv) => {
-			if (argv.debug) {
-				console.log('DEBUG MODE');
-				this.debug = console.log;
-
-			}
-			return true;
-		});
-
-
 	}
 
 	run(argv) {
