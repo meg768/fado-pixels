@@ -43,7 +43,7 @@ class SpyAnimation extends Animation {
 
         saturation = 50 + (Math.abs(change) * 50);
 
-        return {h:hue, s:saturation, l:luminance};
+        return {h:hue, s:saturation/100, l:luminance/100};
     }
 
 
