@@ -16,19 +16,13 @@ var App = function() {
 		var localConfigFile = path.join(parts.dir, parts.name + '.json');
 		var bootConfigFile  = path.join('/boot', parts.name + '.json');
 
-		console.log('Config files:', localConfigFile, bootConfigFile);
-
 		if (fs.existsSync(localConfigFile)) {
-			var json = JSON.parse(fs.readFileSync(localConfigFile));
-			Object.assign(config, json);
+			Object.assign(config, JSON.parse(fs.readFileSync(localConfigFile)));
 		}
 
 		if (fs.existsSync(bootConfigFile)) {
-			var json = JSON.parse(fs.readFileSync(bootConfigFile));
-			Object.assign(config, json);
+			Object.assign(config, JSON.parse(fs.readFileSync(bootConfigFile)));
 		}
-
-		console.log('Config', require('./src/scripts/config.js'));	
 	}
 
 	function run() {
@@ -44,6 +38,7 @@ var App = function() {
 			args.command(require('./src/commands/blink.js'));
 			args.command(require('./src/commands/pulse.js'));
 			args.command(require('./src/commands/clock.js'));
+			args.command(require('./src/commands/spy.js'));
 
 			args.demandCommand(1);
 

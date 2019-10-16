@@ -1,23 +1,31 @@
-#!/usr/bin/env node
+var Command          = require('../scripts/command.js');
+var Button           = require('pigpio-button');
+var Neopixels        = require('../scripts/neopixels.js');
+var AnimationQueue   = require('../scripts/animation-queue.js');
+var ColorAnimation   = require('../scripts/color-animation.js');
 
-var Command = require('../scripts/command.js');
+class SpyAnimation extends ColorAnimation {
 
 
-class ClockCommand extends Command {
+	getColor() {
+		
+	}
+	render() {
+
+	}
+
+}
+
+class SpyCommand extends Command {
 
 	constructor() {
-		super({module:module, name:'clock', description:'Displays time as a color'});
+		super({module:module, name:'spy', description:'Displays stock market symbol as a color'});
 	}
 
 	defineArgs(yargs) {
 	}
 
 	run(argv) {
-		var Button           = require('pigpio-button');
-		var Neopixels        = require('../scripts/neopixels.js');
-		var AnimationQueue   = require('../scripts/animation-queue.js');
-		var ColorAnimation   = require('../scripts/color-animation.js');
-		var ClockAnimation   = require('../scripts/clock-animation.js');
 	
 		var button           = new Button({debug:argv.debug, autoEnable:true, pin:6});
 		var pixels           = new Neopixels({debug:argv.debug});
@@ -34,7 +42,7 @@ class ClockCommand extends Command {
 				runAnimation(new ColorAnimation({...defaultOptions, color:'black'}));
 			}
 			else {
-				runAnimation(new ClockAnimation({...defaultOptions}));
+				runAnimation(new SpyAnimation({...defaultOptions}));
 			}
 
 
@@ -42,10 +50,10 @@ class ClockCommand extends Command {
 			this.debug(`Button clicked, state is now ${state}...`);
 		});
 
-		runAnimation(new ClockAnimation(defaultOptions));
+		runAnimation(new SpyAnimation(defaultOptions));
 	
 	}
 
 }
 
-new ClockCommand();
+new SpyCommand();
