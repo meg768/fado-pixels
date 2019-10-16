@@ -172,6 +172,7 @@ class SpyCommand extends Command {
 	}
 
 	run(argv) {
+		console.log('CONFIG', this.config);
 	
 		var button           = new Button({debug:argv.debug, autoEnable:true, pin:6});
 		var pixels           = new Neopixels({debug:argv.debug});
