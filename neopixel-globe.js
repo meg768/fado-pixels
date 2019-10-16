@@ -11,8 +11,10 @@ var App = function() {
 		var fs = require('fs');
 		var path = require('path');
 		var parts = path.parse(__filename);
-		var config = require('./scripts/config.js');
+		var config = require('./src/scripts/config.js');
 		var json = {};
+
+		console.log(parts);
 
 		var configFile = path.join(parts.dir, parts.name, '.json');
 
