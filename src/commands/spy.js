@@ -39,7 +39,7 @@ class SpyAnimation extends Animation {
         var change     = Math.max(-1, Math.min(1, quote.change));
         var hue        = change >= 0 ? 240 : 0;
         var saturation = 100;
-        var luminance  = 25 + (Math.abs(change) * 25);
+        var luminance  = 10 + (Math.abs(change) * 40);
 
         //saturation = 50 + (Math.abs(change) * 50);
 
