@@ -115,13 +115,15 @@ class SpyAnimation extends Animation {
                     var now = new Date();
                     var hour = now.getHours();
 
-                    if (hour >= 9 && hour <= 22)
-                        return color;
-                    else
+					return color;
+//                    if (hour >= 9 && hour <= 22)
+  //                      return color;
+    //                else
                         return ({hue:0, saturation:0, luminance:0});
 
                 })
                 .then((color) => {
+					this.log('Color:', color);
 					this.color = color;
 					this.render();
 
