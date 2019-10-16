@@ -26,7 +26,7 @@ module.exports = class CLI {
 
 	defineArgs(yargs) {
 		yargs.option('help',  {alias:'H', describe:'Display help', default:false});
-		yargs.boolean('debug', {alias:'D', describe:'Debug mode', boolean:true, default:false});
+		yargs.option('debug', {alias:'D', describe:'Debug mode', boolean:true, default:false});
 
 		yargs.wrap(null);
 
