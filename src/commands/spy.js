@@ -8,7 +8,7 @@ var Yahoo            = require('yahoo-finance');
 var sprintf          = require('yow/sprintf');
 var Color            = require('color');
 
-var currentColor     = 'pink';
+var currentColor     = Color('pink');
 
 class SpyAnimation extends Animation {
 
@@ -43,7 +43,7 @@ class SpyAnimation extends Animation {
 
         saturation = 50 + (Math.abs(change) * 50);
 
-        return {h:hue, s:saturation/100, l:luminance/100};
+        return Color.hsl(hue, saturation, luminance);
     }
 
 
@@ -152,9 +152,8 @@ class SpyAnimation extends Animation {
 
 
 	render() {
-		var color = Color(this.getColor());
-		this.log('Rendering SPY with color', this.getColor());
-        this.pixels.fill(color.rgbNumber());
+		this.log('Rendering SPY with color', this.color.rgb.array());
+        this.pixels.fill(this.color.rgbNumber());
         this.pixels.render();
 
 	}
