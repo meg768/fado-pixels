@@ -28,11 +28,11 @@ class SpyAnimation extends Animation {
 	}
 
 	getColor() {
-		return currentColor;
+		return Color(currentColor);
 	}
 
 	setColor(color) {
-		currentColor = color;
+		currentColor = Color(color);
 	}
 
     computeColor(quote) {
@@ -43,7 +43,7 @@ class SpyAnimation extends Animation {
 
         saturation = 50 + (Math.abs(change) * 50);
 
-        return Color.hsl(hue, 1, 1);
+        return Color.hsl(hue, 1, 1).rgbNumber();
     }
 
 
