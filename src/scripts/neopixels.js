@@ -1,4 +1,5 @@
 var Neopixels = require('rpi-neopixels');
+var config = require('./config.js');
 
 function configure() {
 
@@ -12,16 +13,7 @@ function configure() {
         process.exit();
     }
 
-    function debug() {
-        console.log.apply(null, arguments);
-    }
-
-    var stripType = 'rgb';
-    var width     = 24;
-    var height    = 1;
-    var map       = undefined;
-    
-    Neopixels.configure({debug:false, map:map, width:width, height:height, stripType:stripType});
+    Neopixels.configure({stripType:'rgb', width:24, height:1, map:undefined, ...config.neopixels});
 
     process.on('SIGUSR1', cleanup);
     process.on('SIGUSR2', cleanup);

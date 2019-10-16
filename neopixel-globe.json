@@ -1,11 +1,12 @@
 {
 	"commands": {
-		"blink": {				
-			"duration": 10000
+		"blink": {		
+			"color": "red",
+			"iterations": 5,		
+			"duration": 60000
 		}
 	},
 	"neopixels": {
 		"stripType":"rgb"
-
 	}
 }
