@@ -43,7 +43,7 @@ class SpyAnimation extends Animation {
 
         saturation = 50 + (Math.abs(change) * 50);
 
-        return Color.hsl(hue, 50, 50).rgbNumber();
+        return Color.hsl(hue, saturation, luminance).rgbNumber();
     }
 
 
