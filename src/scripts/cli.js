@@ -14,6 +14,7 @@ module.exports = class CLI {
 		};
 
 		module.exports.handler  = (argv) => {
+			console.log(argv);
 			if (argv.debug) {
 				console.log('DEBUG MODE');
 				this.debug = console.log;
