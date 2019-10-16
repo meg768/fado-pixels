@@ -26,13 +26,6 @@ class ClockCommand extends Command {
 	}
 
 	defineArgs(yargs) {
-		super.defineArgs(yargs);
-
-
-		yargs.check(function(argv) {
-			return true;
-		});
-
 	}
 
 	run(argv) {
