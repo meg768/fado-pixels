@@ -112,17 +112,6 @@ class SpyAnimation extends Animation {
                     return color;
                 })
                 .then((color) => {
-                    var now = new Date();
-                    var hour = now.getHours();
-
-					return color;
-//                    if (hour >= 9 && hour <= 22)
-  //                      return color;
-    //                else
-                        return ({hue:0, saturation:0, luminance:0});
-
-                })
-                .then((color) => {
 					this.log('Color:', color);
 					this.color = color;
 					this.render();
@@ -158,7 +147,7 @@ class SpyAnimation extends Animation {
 
 
 	render() {
-		this.log('Rendering SPY.');
+		this.log('Rendering SPY.', this.color);
         this.pixels.fill(this.color);
         this.pixels.render();
 
