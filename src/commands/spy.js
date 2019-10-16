@@ -2,7 +2,7 @@ var Command          = require('../scripts/command.js');
 var Button           = require('pigpio-button');
 var Neopixels        = require('../scripts/neopixels.js');
 var AnimationQueue   = require('../scripts/animation-queue.js');
-var Animation        = require('../scripts/animation.js');
+var Animation        = require('../scripts/pixel-animation.js');
 var Yahoo            = require('yahoo-finance');
 
 class SpyAnimation extends Animation {
