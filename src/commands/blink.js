@@ -20,8 +20,6 @@ class Command extends CLI {
 		args.option('fade', {describe:'Fade in & out', default:undefined});
 		args.option('fadeInOut', {describe:'Fade in & out', default:undefined});
 
-		args.wrap(null);
-
 		args.check(function(argv) {
 			return true;
 		});

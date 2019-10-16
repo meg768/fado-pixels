@@ -12,7 +12,7 @@ module.exports = class CLI {
 		module.exports.builder  = this.defineArgs.bind(this);
 		module.exports.handler  = this.run.bind(this);
 
-		this.debug = console.log;
+		this.debug = () => {};
 	}
 
 	defineArgs(yargs) {
@@ -20,6 +20,16 @@ module.exports = class CLI {
 		yargs.option('debug', {alias:'D', describe:'Debug mode', default:false});
 
 		yargs.wrap(null);
+
+		yargs.check((argv) => {
+			if (argv.debug) {
+				console.log('DEBUG MODE');
+				this.debug = console.log;
+
+			}
+			return true;
+		});
+
 
 	}
 

@@ -2,6 +2,22 @@
 
 var CLI = require('../scripts/cli.js');
 
+class AnimatedCLI {
+
+	constructor(options) {
+		var {debug} = options;
+
+		var Neopixels        = require('../scripts/neopixels.js');
+		var AnimationQueue   = require('../scripts/animation-queue.js');
+
+		var pixels           = new Neopixels({debug:debug});
+		var queue            = new AnimationQueue({debug:debug});
+
+		this.queue = queue;
+		this.pixels = pixels;
+	}
+
+}
 
 class Command extends CLI {
 
