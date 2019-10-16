@@ -24,13 +24,15 @@ module.exports = class Command {
 		module.exports.handler  = (argv) => {
 
 			if (argv.debug) {
-				console.log(argv);
-				this.debug = console.log;
+				this.log(argv);
+				this.debug = this.log;
 			}
 
 			return this.run(argv)
 		};
 
+		this.log = console.log;
+		this.debug = () => {};
 		this.config = Object.assign({}, defaultConfig || {}, (config.commands && config.commands[name]) || {});
 
 	}
