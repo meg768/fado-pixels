@@ -39,12 +39,12 @@ class SpyAnimation extends Animation {
         var change     = Math.max(-1, Math.min(1, quote.change));
         var hue        = change >= 0 ? 240 : 0;
         var saturation = 100;
-        var luminance  = 0 + (Math.abs(change) * 50);
+        var luminance  = 25 + (Math.abs(change) * 25);
 
-        saturation = 50 + (Math.abs(change) * 50);
+        //saturation = 50 + (Math.abs(change) * 50);
 
 		this.log('Computed Color', hue, saturation, luminance);
-        return Color.hsl(hue, saturation, 100).rgbNumber();
+        return Color.hsl(hue, saturation, luminance).rgbNumber();
     }
 
 
