@@ -1,26 +1,31 @@
 var Command = require('../scripts/command.js');
+var config = require('../scripts/config.js');
 
 class BlinkCommand extends Command {
 
 	constructor() {
+		var defaultConfig = {
+			color: 'green',
+			iterations: 3,
+			hold: 200
+		};
+
 		super({module:module, command:'blink [options]', desc:'Blink'});
+
+		this.config = Object.assign({}, defaultConfig, (config.commands && config.commands.blink) || {});
+
 	}
 
 	defineArgs(args) {
-		super.defineArgs(args);
 
-		args.option('iterations', {describe:'Iterations', default:undefined});
-		args.option('duration', {describe:'Duration', default:undefined});
-		args.option('color', {describe:'Color', default:'white'});
-		args.option('hold', {describe:'Hold', default:200});
-		args.option('fadeIn', {describe:'Fade in', default:undefined});
-		args.option('fadeOut', {describe:'Fade out', default:undefined});
-		args.option('fade', {describe:'Fade in & out', default:undefined});
-		args.option('fadeInOut', {describe:'Fade in & out', default:undefined});
-
-		args.check(function(argv) {
-			return true;
-		});
+		args.option('iterations', {describe:'Iterations', default:this.config.iterations});
+		args.option('duration', {describe:'Duration', default:this.config.duration});
+		args.option('color', {describe:'Color', default:this.config.color});
+		args.option('hold', {describe:'Hold', default:this.config.hold});
+		args.option('fadeIn', {describe:'Fade in', default:this.config.fadeIn});
+		args.option('fadeOut', {describe:'Fade out', default:this.config.fadeOut});
+		args.option('fade', {describe:'Fade in & out', default:this.config.fade});
+		args.option('fadeInOut', {describe:'Fade in & out', default:this.config.fadeInOut});
 
 	}
 

@@ -12,18 +12,21 @@ var App = function() {
 		var path = require('path');
 		var parts = path.parse(__filename);
 		var config = require('./src/scripts/config.js');
-		var json = {};
 
-		console.log(parts);
+		var localConfigFile = path.join(parts.dir, parts.name + '.json');
+		var bootConfigFile  = path.join('/boot', parts.name + '.json');
 
-		var configFile = path.join(parts.dir, parts.name + '.json');
-		console.log(configFile);
+		console.log('Config files:', localConfigFile, bootConfigFile);
 
-		if (fs.existsSync(configFile)) {
-			json = JSON.parse(fs.readFileSync(configFile));
+		if (fs.existsSync(localConfigFile)) {
+			var json = JSON.parse(fs.readFileSync(localConfigFile));
+			Object.assign(config, json);
 		}
 
-		Object.assign(config, json);
+		if (fs.existsSync(bootConfigFile)) {
+			var json = JSON.parse(fs.readFileSync(bootConfigFile));
+			Object.assign(config, json);
+		}
 
 		console.log('Config', require('./src/scripts/config.js'));	
 	}
