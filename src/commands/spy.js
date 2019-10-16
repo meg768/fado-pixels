@@ -13,7 +13,7 @@ var currentColor     = 'black';
 class SpyAnimation extends Animation {
 
 	constructor(options) {
-		var {updateInterval = 10000, symbol = 'SPY'} = options;
+		var {updateInterval = 10000, symbol = 'SPY', ...options} = options;
 
 		super({renderFrequency: 60000, ...options});
 
@@ -22,7 +22,6 @@ class SpyAnimation extends Animation {
 		this.debug = console.log;
 		this.symbol = symbol;
 		this.updateInterval = updateInterval;
-		this.symbol = symbol;
 
 		this.updateLoop();
 
@@ -45,7 +44,7 @@ class SpyAnimation extends Animation {
         luminance = 100;
         saturation = 50 + (Math.abs(change) * 50);
 
-        return Color.hsl(hue, saturation, luminance).rgbNumber();
+        return {h:hue, s:saturation, l:luminance};
     }
 
 
@@ -157,8 +156,8 @@ class SpyAnimation extends Animation {
 
 
 	render() {
-		this.log('Rendering SPY.', this.getColor());
-        this.pixels.fill(this.getColor());
+		this.log('Rendering SPY with color', this.getColor());
+        this.pixels.fill(Color(this.getColor()));
         this.pixels.render();
 
 	}
@@ -172,6 +171,7 @@ class SpyCommand extends Command {
 	}
 
 	defineArgs(yargs) {
+		yargs.option('symbol', {describe:'Stock symbol to display', default:this.config.symbol});
 	}
 
 	run(argv) {
