@@ -17,6 +17,7 @@ var App = function() {
 		console.log(parts);
 
 		var configFile = path.join(parts.dir, parts.name, '.json');
+		console.log(configFile);
 
 		if (fs.existsSync(configFile)) {
 			json = JSON.parse(fs.readFileSync(configFile));
