@@ -121,7 +121,6 @@ class SpyAnimation extends Animation {
                     return color;
                 })
                 .then((color) => {
-					this.log('Color:', color);
 					this.setColor(color);
 					this.render();
 
@@ -189,7 +188,7 @@ class SpyCommand extends Command {
 				runAnimation(new ColorAnimation({...defaultOptions, color:'black'}));
 			}
 			else {
-				runAnimation(new SpyAnimation({...defaultOptions}));
+				runAnimation(new SpyAnimation({...defaultOptions, symbol:argv.symbol}));
 			}
 
 
