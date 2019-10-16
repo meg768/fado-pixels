@@ -4,6 +4,7 @@ var Neopixels        = require('../scripts/neopixels.js');
 var AnimationQueue   = require('../scripts/animation-queue.js');
 var Animation        = require('../scripts/pixel-animation.js');
 var Yahoo            = require('yahoo-finance');
+var sprintf          = require('yow/sprintf');
 
 class SpyAnimation extends Animation {
 
