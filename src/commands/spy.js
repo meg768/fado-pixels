@@ -41,7 +41,6 @@ class SpyAnimation extends Animation {
         var saturation = 100;
         var luminance  = 0 + (Math.abs(change) * 50);
 
-        luminance = 100;
         saturation = 50 + (Math.abs(change) * 50);
 
         return {h:hue, s:saturation, l:luminance};
@@ -141,23 +140,21 @@ class SpyAnimation extends Animation {
     }
 
 	updateLoop() {
-        // Get update interval from config, default 5 minutes
-        var updateInterval = (parseFloat(this.updateInterval) || 5) * 60000;
-
         this.update().then(() => {
-            setTimeout(this.updateLoop.bind(this), updateInterval);
+            setTimeout(this.updateLoop.bind(this), this.updateInterval);
         })
         .catch((error) => {
             this.log(error.stack);
-            setTimeout(this.updateLoop.bind(this), updateInterval);
+            setTimeout(this.updateLoop.bind(this), this.updateInterval);
         });
 
     }
 
 
 	render() {
+		var color = Color(this.getColor());
 		this.log('Rendering SPY with color', this.getColor());
-        this.pixels.fill(Color(this.getColor()));
+        this.pixels.fill(color.rgbNumber());
         this.pixels.render();
 
 	}
