@@ -3,6 +3,7 @@ var Button           = require('pigpio-button');
 var Neopixels        = require('../scripts/neopixels.js');
 var AnimationQueue   = require('../scripts/animation-queue.js');
 var Animation        = require('../scripts/pixel-animation.js');
+var ColorAnimation   = require('../scripts/color-animation.js');
 var Yahoo            = require('yahoo-finance');
 var sprintf          = require('yow/sprintf');
 
@@ -121,7 +122,8 @@ class SpyAnimation extends Animation {
 
                 })
                 .then((color) => {
-                    this.color = color;
+					this.color = color;
+					this.render();
 
                 })
                 .then(() => {
