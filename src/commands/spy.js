@@ -8,6 +8,7 @@ var Yahoo            = require('yahoo-finance');
 var sprintf          = require('yow/sprintf');
 var Color            = require('color');
 
+
 class SpyAnimation extends Animation {
 
 	constructor(options) {
@@ -26,6 +27,8 @@ class SpyAnimation extends Animation {
 		this.updateLoop();
 
 	}
+
+	static color = 'red';
 
     computeColor(quote) {
         var change     = Math.max(-1, Math.min(1, quote.change));
