@@ -25,7 +25,7 @@ var App = function() {
 
 		Object.assign(config, json);
 
-		console.log('Config', config);	
+		console.log('Config', require('./src/scripts/config.js'));	
 	}
 
 	function run() {
