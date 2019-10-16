@@ -4,15 +4,14 @@ var config = require('../scripts/config.js');
 class BlinkCommand extends Command {
 
 	constructor() {
-		var defaultConfig = {
-			color: 'green',
-			iterations: 3,
-			hold: 200
+		var config = {
+			color      : 'green',
+			iterations : 3,
+			hold       : 200
 		};
 
-		super({module:module, command:'blink [options]', desc:'Blink'});
+		super({module:module, name: 'blink', description:'Blink', config:config});
 
-		this.config = Object.assign({}, defaultConfig, (config.commands && config.commands.blink) || {});
 
 	}
 

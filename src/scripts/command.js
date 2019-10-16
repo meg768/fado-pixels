@@ -1,13 +1,15 @@
+var config = require('./config.js');
+
 module.exports = class Command {
 
 	constructor(options) {
-		var {module, command, desc, aliases} = options;
+		var {module, name, description, aliases, defaultConfig} = options;
 
-		if (!module || !command || !desc)
-			throw new Error('The module, command name (command) and description (desc) must be specified.');
+		if (!module || !name || !description)
+			throw new Error('The module, command name and description must be specified.');
 
-		module.exports.command  = command;
-		module.exports.desc     = desc;
+		module.exports.command  = `${name} [options]`;
+		module.exports.desc     = description;
 		module.exports.aliases  = aliases;
 
 		module.exports.builder  = (yargs) => {
@@ -28,6 +30,9 @@ module.exports = class Command {
 
 			return this.run(argv)
 		};
+
+		this.config = Object.assign({}, defaultConfig || {}, (config.commands && config.commands[name]) || {});
+
 	}
 
 	defineArgs(yargs) {

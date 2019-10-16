@@ -1,6 +1,6 @@
 {
 	"commands": {
-		"blink": {
+		"blink": {				
 			"duration": 10000
 		}
 	},

@@ -5,13 +5,19 @@ var Command          = require('../scripts/command.js');
 
 class PulseCommand extends Command {
 	constructor() {
-		super({module:module, command:'pulse [options]', desc:'Pulse light'});
+		var config = {
+			color      : 'red',
+			duration   : 60000,
+			interval   : 500
+		};
+
+		super({module:module, name: 'pulse', description:'Pulse light', config:config});
 	}
 
 	defineArgs(args) {
-		args.option('color', {describe:'Color', default:'red'});
-		args.option('duration', {describe:'Duration', default:60000});
-		args.option('interval', {describe:'Interval', default:500});
+		args.option('color', {describe:'Color', default:thjis.config.color});
+		args.option('duration', {describe:'Duration', default:this.config.duration});
+		args.option('interval', {describe:'Interval', default:this.color.interval});
 	}
 
 	run(argv) {

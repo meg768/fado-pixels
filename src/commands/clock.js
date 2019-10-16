@@ -22,7 +22,7 @@ class AnimatedCLI {
 class ClockCommand extends Command {
 
 	constructor() {
-		super({module:module, command:'clock [options]', desc:'Displays time as a color'});
+		super({module:module, name:'clock', description:'Displays time as a color'});
 	}
 
 	defineArgs(yargs) {
