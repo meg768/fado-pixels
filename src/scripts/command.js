@@ -1,4 +1,4 @@
-module.exports = class CLI {
+module.exports = class Command {
 
 	constructor(options) {
 		var {module, command, desc, aliases} = options;
@@ -9,14 +9,20 @@ module.exports = class CLI {
 		module.exports.command  = command;
 		module.exports.desc     = desc;
 		module.exports.aliases  = aliases;
+
 		module.exports.builder  = (yargs) => {
+			yargs.wrap(null);
+			yargs.option('help',  {alias:'H', describe:'Display help', default:false});
+			yargs.option('debug', {alias:'D', describe:'Debug mode', boolean:true, default:false});
+	
+
 			this.defineArgs(yargs);
 		};
 
 		module.exports.handler  = (argv) => {
-			console.log(argv);
+
 			if (argv.debug) {
-				console.log('DEBUG MODE');
+				console.log(argv);
 				this.debug = console.log;
 			}
 
@@ -25,11 +31,6 @@ module.exports = class CLI {
 	}
 
 	defineArgs(yargs) {
-		yargs.option('help',  {alias:'H', describe:'Display help', default:false});
-		yargs.option('debug', {alias:'D', describe:'Debug mode', boolean:true, default:false});
-
-		yargs.wrap(null);
-
 	}
 
 	run(argv) {

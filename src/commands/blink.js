@@ -1,8 +1,6 @@
-#!/usr/bin/env node
+var Command = require('../scripts/command.js');
 
-var CLI = require('../scripts/cli.js');
-
-class Command extends CLI {
+class BlinkCommand extends Command {
 
 	constructor() {
 		super({module:module, command:'blink [options]', desc:'Blink'});
@@ -42,5 +40,6 @@ class Command extends CLI {
 	}
 }
 
-new Command();
+
+new BlinkCommand();
 

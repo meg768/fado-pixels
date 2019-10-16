@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-var CLI = require('../scripts/cli.js');
+var Command = require('../scripts/command.js');
 
 class AnimatedCLI {
 
@@ -19,7 +19,7 @@ class AnimatedCLI {
 
 }
 
-class Command extends CLI {
+class ClockCommand extends Command {
 
 	constructor() {
 		super({module:module, command:'clock [options]', desc:'Displays time as a color'});
@@ -71,4 +71,4 @@ class Command extends CLI {
 
 }
 
-new Command();
+new ClockCommand();
