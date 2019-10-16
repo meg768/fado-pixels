@@ -9,10 +9,18 @@ module.exports = class CLI {
 		module.exports.command  = command;
 		module.exports.desc     = desc;
 		module.exports.aliases  = aliases;
-		module.exports.builder  = this.defineArgs.bind(this);
-		module.exports.handler  = this.run.bind(this);
+		module.exports.builder  = (yargs) => {
+			this.defineArgs(yargs);
+		};
 
-		this.debug = () => {};
+		module.exports.handler  = (argv) => {
+			if (argv.debug) {
+				console.log('DEBUG MODE');
+				this.debug = console.log;
+			}
+
+			return this.run(argv)
+		};
 	}
 
 	defineArgs(yargs) {
@@ -32,7 +40,6 @@ module.exports = class CLI {
 
 
 	}
-
 
 	run(argv) {
 	}
