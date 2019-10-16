@@ -46,7 +46,7 @@ class ClockCommand extends Command {
 		var pixels           = new Neopixels({debug:argv.debug});
 		var queue            = new AnimationQueue({debug:argv.debug});
 		var state            = 'on'
-		var defaultOptions   = {...argv, pixels:pixels, duration: -1, priority:'!'};
+		var defaultOptions   = {...argv, pixels:pixels, duration: -1, renderFrequency:60000, priority:'!'};
 
 		var runAnimation = (animation) => {
 			queue.enqueue(animation);
@@ -57,7 +57,7 @@ class ClockCommand extends Command {
 				runAnimation(new ColorAnimation({...defaultOptions, color:'black'}));
 			}
 			else {
-				runAnimation(new ClockAnimation(defaultOptions));
+				runAnimation(new ClockAnimation({...defaultOptions}));
 			}
 
 
