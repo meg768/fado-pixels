@@ -8,6 +8,7 @@ var Yahoo            = require('yahoo-finance');
 var sprintf          = require('yow/sprintf');
 var Color            = require('color');
 
+var currentColor     = 'black';
 
 class SpyAnimation extends Animation {
 
@@ -19,7 +20,6 @@ class SpyAnimation extends Animation {
 		this.lastQuote = undefined;		
 		this.log = console.log;
 		this.debug = console.log;
-		this.color = 'purple';
 		this.symbol = symbol;
 		this.updateInterval = updateInterval;
 		this.symbol = symbol;
@@ -28,7 +28,13 @@ class SpyAnimation extends Animation {
 
 	}
 
-	static color = 'red';
+	getColor() {
+		return currentColor;
+	}
+
+	setColor(color) {
+		currentColor = color;
+	}
 
     computeColor(quote) {
         var change     = Math.max(-1, Math.min(1, quote.change));
@@ -117,7 +123,7 @@ class SpyAnimation extends Animation {
                 })
                 .then((color) => {
 					this.log('Color:', color);
-					this.color = color;
+					this.setColor(color);
 					this.render();
 
                 })
@@ -151,8 +157,8 @@ class SpyAnimation extends Animation {
 
 
 	render() {
-		this.log('Rendering SPY.', this.color);
-        this.pixels.fill(this.color);
+		this.log('Rendering SPY.', this.getColor());
+        this.pixels.fill(this.this.getColor());
         this.pixels.render();
 
 	}
