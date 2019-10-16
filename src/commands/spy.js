@@ -6,6 +6,7 @@ var Animation        = require('../scripts/pixel-animation.js');
 var ColorAnimation   = require('../scripts/color-animation.js');
 var Yahoo            = require('yahoo-finance');
 var sprintf          = require('yow/sprintf');
+var Color            = require('color');
 
 class SpyAnimation extends Animation {
 
@@ -148,7 +149,7 @@ class SpyAnimation extends Animation {
 
 	render() {
 		this.log('Rendering SPY.', this.color);
-        this.pixels.fill(this.color);
+        this.pixels.fill(Color(this.color));
         this.pixels.render();
 
 	}
