@@ -49,6 +49,7 @@ var App = function() {
 			yargs.command(require('./src/commands/pulse.js'));
 			yargs.command(require('./src/commands/clock.js'));
 			yargs.command(require('./src/commands/spy.js'));
+			yargs.command(require('./src/commands/knock.js'));
 			debug('Finished loading commands...')
 
 			yargs.demandCommand(1);
