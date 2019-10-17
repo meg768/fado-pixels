@@ -201,7 +201,7 @@ class SpyCommand extends Command {
 			this.debug(`Button clicked, state is now ${state}...`);
 		});
 
-		runAnimation(new SpyAnimation(defaultOptions));
+        runAnimation(new SpyAnimation({...defaultOptions, symbol:argv.symbol, priority:'!'}));
 	
 	}
 
