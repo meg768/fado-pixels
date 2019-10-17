@@ -153,7 +153,7 @@ class SpyAnimation extends Animation {
 	render() {
 		var color = this.getColor();
 		this.log('Rendering SPY with color', color);
-        this.pixels.fill(color.rgbNumber());
+        this.pixels.fill(color);
         this.pixels.render({transition:'fade', duration:500});
 	}
 
@@ -190,7 +190,7 @@ class SpyCommand extends Command {
 
 		button.on('click', (clicks) => {
 			if (state == 'on') {
-				runAnimation(new ColorAnimation({...defaultOptions, render:{transition:'fade', duration:500} , duration:-1, color:'black', priority:'!'}));
+				runAnimation(new ColorAnimation({...defaultOptions, renderOptions:{transition:'fade', duration:500} , duration:-1, color:'black', priority:'!'}));
 			}
 			else {
 				runAnimation(new SpyAnimation({...defaultOptions, symbol:argv.symbol, priority:'!'}));
