@@ -1,25 +1,24 @@
-var isString = require('yow/is').isString;
-var PixelAnimation = require('./pixel-animation.js');
 var Color = require('color');
+var Animation = require('./pixel-animation.js');
 
-module.exports = class extends PixelAnimation {
+module.exports = class extends Animation {
 
     constructor(options) {
-        var {color = 'red', ...options} = options;
+        var {renderOptions = undefined, color = 'red', ...options} = options;
 
         super(options);
 
-        if (isString(color)) {
+        if (typeof color == 'string') {
             try {
                 color = Color(color).rgbNumber();
             }
             catch (error) {
                 this.debug('Invalid color value.');
-
             }
         }
 
         this.color = color;
+        this.renderOptions = renderOptions;
     }
 
     getColor() {
@@ -28,7 +27,12 @@ module.exports = class extends PixelAnimation {
 
     render() {
         this.pixels.fill(this.getColor());
-        this.pixels.render();
+
+        if (this.renderOptions)
+            this.pixels.render(this.renderOptions);
+        else
+            this.pixels.render();
+
     }
 
 
