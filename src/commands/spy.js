@@ -97,7 +97,7 @@ class SpyAnimation extends Animation {
         }
 
         this.fetch(this.symbol).then((quote) => {
-            this.cache = {quote:quote, timestamp: new Date()};
+            this.cache = cache = {quote:quote, timestamp: new Date()};
             return this.computeColor(quote);
         })
         .then((color) => {
