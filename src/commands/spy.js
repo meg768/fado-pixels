@@ -11,15 +11,14 @@ var currentColor     = Color('blue').rgbNumber();
 class SpyAnimation extends Animation {
 
 	constructor(options) {
-		var {updateInterval = 60000, symbol = 'SPY', ...options} = options;
+		var {symbol = 'SPY', ...options} = options;
 
 		super({renderFrequency: 60000, ...options});
 
 		this.lastQuote = undefined;		
 		this.log = console.log;
 		this.debug = console.log;
-		this.symbol = symbol;
-		this.updateInterval = updateInterval;
+        this.symbol = symbol;
 
         this.update();
 
@@ -47,81 +46,58 @@ class SpyAnimation extends Animation {
 
 
     fetch(symbol) {
-
+        var Yahoo = require('yahoo-finance');
         var then = new Date();
 
 		return new Promise((resolve, reject) => {
-            try {
-                var Yahoo = require('yahoo-finance');
 
-                var options = {};
+            var options = {};
 
-                options.symbol = symbol;
-                options.modules = ['price', 'summaryProfile', 'summaryDetail'];
-  
-				this.debug(`Fetching quotes for ${symbol}...`);
+            options.symbol = symbol;
+            options.modules = ['price', 'summaryProfile', 'summaryDetail'];
 
-                Yahoo.quote(options).then((data) => {
-                    var now = new Date();
-                    var time = Math.floor(now.valueOf() - then.valueOf());
+            this.debug(`Fetching quotes for ${symbol}...`);
 
-                    var quote = {};
-                    quote.symbol = symbol;
-                    quote.name = data.price.longName ? data.price.longName : data.price.shortName;
-                    quote.sector = data.summaryProfile ? data.summaryProfile.sector : 'n/a';
-                    quote.industry = data.summaryProfile ? data.summaryProfile.industry : 'n/a';
-                    quote.exchange = data.price.exchangeName;
-                    quote.type = data.price.quoteType.toLowerCase().replace(/\b\w/g, l => l.toUpperCase());
-                    quote.change = data.price.regularMarketChangePercent * 100;
-                    quote.time = data.price.regularMarketTime;
-                    quote.price = data.price.regularMarketPrice;
+            Yahoo.quote(options).then((data) => {
+                var now = new Date();
+                var time = Math.floor(now.valueOf() - then.valueOf());
 
-                    // Fix some stuff
-                    quote.name = quote.name.replace(/&amp;/g, '&');
+                var quote = {};
+                quote.symbol = symbol;
+                quote.name = data.price.longName ? data.price.longName : data.price.shortName;
+                quote.sector = data.summaryProfile ? data.summaryProfile.sector : 'n/a';
+                quote.industry = data.summaryProfile ? data.summaryProfile.industry : 'n/a';
+                quote.exchange = data.price.exchangeName;
+                quote.type = data.price.quoteType.toLowerCase().replace(/\b\w/g, l => l.toUpperCase());
+                quote.change = data.price.regularMarketChangePercent * 100;
+                quote.time = data.price.regularMarketTime;
+                quote.price = data.price.regularMarketPrice;
 
-                    this.log(sprintf('Fetched quote from Yahoo for symbol %s (%s%.2f%%). Took %d ms.', quote.symbol, quote.change >= 0 ? '+' : '-', parseFloat(Math.abs(quote.change)), time));
-    
-                    resolve(quote);
-    
-                })
-                .catch((error) => {
-                    this.log(sprintf('Could not get quote for symbol %s. %s', symbol, error.message));
-                    reject(error);
-                });
-    
-            }
-            catch (error) {
-                this.log(error);
-                reolve();
-            }
+                // Fix some stuff
+                quote.name = quote.name.replace(/&amp;/g, '&');
+
+                this.log(sprintf('Fetched quote from Yahoo for symbol %s (%s%.2f%%). Took %d ms.', quote.symbol, quote.change >= 0 ? '+' : '-', parseFloat(Math.abs(quote.change)), time));
+
+                resolve(quote);
+
+            })
+            .catch((error) => {
+                reject(error);
+            })
 		})
 	}
 
 
     update() {
         this.fetch(this.symbol).then((quote) => {
-
-            var color = this.computeColor(quote);
-
-            // Set to blue when market closed...
-            if (false) {
-                if (this.lastQuote && quote.time) {
-                    if (this.lastQuote.time.valueOf() == quote.time.valueOf()) {
-                        color = Color.rgb(0, 0, 5).rgbNumber();
-                    }
-                }
-
-            }
-            
-            this.lastQuote = quote;
-
-            return color;
+            return this.computeColor(quote);
         })
         .then((color) => {
             this.setColor(color);
-
+            this.render();
         })
         .catch((error) => {
+            this.log(sprintf('Could not get quote for symbol %s. %s', symbol, error.message));
         })
     }
 
@@ -132,7 +108,7 @@ class SpyAnimation extends Animation {
         this.pixels.render({transition:'fade', duration:500});
 
         this.update();
-	}
+    }
 
 }
 
