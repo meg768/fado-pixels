@@ -1,20 +1,16 @@
 #!/usr/bin/env node
 
-console.log('Loading yargs...');
-var yargs = require('yargs');
-console.log('Loading pigpio-button...');
-var Button           = require('pigpio-button');
-console.log('Loading yahoo-finance...');
-var Yahoo            = require('yahoo-finance');
-console.log('Loading sprintf...');
-var sprintf          = require('yow/sprintf');
-console.log('Loading color...');
-var Color            = require('color');
-console.log('Finished loading...');
+require('yow/logs').prefix();
 
+var debug = console.log;
+
+debug('Loading dotenv...');
 require('dotenv').config();
+debug('Loading yargs...');
+require('yargs');
+debug('Finished loading...');
 
-var prefixLogs = require('yow/logs').prefix;
+
 
 var App = function() {
 
@@ -41,16 +37,19 @@ var App = function() {
 
 	function run() {
 		try {
+			var yargs = require('yargs');
 
 			loadConfig();
 
 			yargs.usage('Usage: $0 <command> [options]');
 			yargs.help();
 
+			console.log('Loading commands...')
 			yargs.command(require('./src/commands/blink.js'));
 			yargs.command(require('./src/commands/pulse.js'));
 			yargs.command(require('./src/commands/clock.js'));
 			yargs.command(require('./src/commands/spy.js'));
+			console.log('Finished loading commands...')
 
 			yargs.demandCommand(1);
 
@@ -69,7 +68,6 @@ var App = function() {
 		console.log('Unhandled Rejection at: Promise', p, 'reason:', reason);
 	});
 */
-	prefixLogs();
 	run();
 };
 
