@@ -51,6 +51,7 @@ class SpyAnimation extends Animation {
 		return new Promise((resolve, reject) => {
 
             var options = {};
+            var start = new Date();
 
             options.symbol = symbol;
             options.modules = ['price', 'summaryProfile', 'summaryDetail'];
@@ -59,7 +60,9 @@ class SpyAnimation extends Animation {
 
             Yahoo.quote(options).then((data) => {
 
+                var now = new Date();
                 var quote = {};
+
                 quote.symbol = symbol;
                 quote.name = data.price.longName ? data.price.longName : data.price.shortName;
                 quote.sector = data.summaryProfile ? data.summaryProfile.sector : 'n/a';
@@ -73,7 +76,7 @@ class SpyAnimation extends Animation {
                 // Fix some stuff
                 quote.name = quote.name.replace(/&amp;/g, '&');
 
-                this.log(sprintf('Fetched quote from Yahoo for symbol %s (%s%.2f%%). Took %d ms.', quote.symbol, quote.change >= 0 ? '+' : '-', parseFloat(Math.abs(quote.change)), time));
+                this.log(sprintf('Fetched quote from Yahoo for symbol %s (%s%.2f%%). Took %d ms.', quote.symbol, quote.change >= 0 ? '+' : '-', parseFloat(Math.abs(quote.change)), start - now));
 
                 resolve(quote);
 
