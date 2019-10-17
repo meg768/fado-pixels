@@ -27,31 +27,23 @@ var App = function() {
 		if (fs.existsSync(bootConfigFile)) {
 			merge(config, JSON.parse(fs.readFileSync(bootConfigFile)));
 		}
-		console.log('---------');
-		console.log(config);
-		console.log('---------');
 	}
 
 	function run() {
 		try {
-			console.log('RUN started');
 			loadConfig();
-
 
 			yargs.usage('Usage: $0 <command> [options]');
 			yargs.help();
 
-			//args.command(require('./src/commands/server.js'));
 			yargs.command(require('./src/commands/blink.js'));
-			//args.command(require('./src/commands/pulse.js'));
-			//args.command(require('./src/commands/clock.js'));
-//			args.command(require('./src/commands/spy.js'));
+			args.command(require('./src/commands/pulse.js'));
+			args.command(require('./src/commands/clock.js'));
+			args.command(require('./src/commands/spy.js'));
 
-			//args.demandCommand(1);
+			args.demandCommand(1);
 
-			console.log('Started parsing');
 			yargs.parse();
-			console.log('Finished parsing');
 		}
 
 		catch(error) {
