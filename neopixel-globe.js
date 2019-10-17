@@ -41,7 +41,7 @@ var App = function() {
 			yargs.command(require('./src/commands/clock.js'));
 			yargs.command(require('./src/commands/spy.js'));
 
-			args.demandCommand(1);
+			yargs.demandCommand(1);
 
 			yargs.parse();
 		}
