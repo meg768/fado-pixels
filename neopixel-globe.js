@@ -2,12 +2,15 @@
 
 console.log('Loading yargs...');
 var yargs = require('yargs');
+console.log('Loading pigpio-button...');
 var Button           = require('pigpio-button');
+console.log('Loading yahoo-finance...');
 var Yahoo            = require('yahoo-finance');
+console.log('Loading sprintf...');
 var sprintf          = require('yow/sprintf');
+console.log('Loading color...');
 var Color            = require('color');
-
-console.log('Finished loading yargs...');
+console.log('Finished loading...');
 
 require('dotenv').config();
 
