@@ -33,9 +33,11 @@ var App = function() {
 	function run() {
 		try {
 			console.log('RUN started');
-			loadConfig();
 
 			var args = require('yargs');
+			console.log('Loaded yargs');
+			loadConfig();
+
 
 			args.usage('Usage: $0 <command> [options]');
 			args.help();
