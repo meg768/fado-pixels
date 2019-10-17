@@ -1,4 +1,5 @@
 var config = require('./config.js');
+var merge = require('./merge.js');
 
 module.exports = class Command {
 
@@ -33,7 +34,8 @@ module.exports = class Command {
 
 		this.log = console.log;
 		this.debug = () => {};
-		this.config = Object.assign({}, defaultConfig || {}, (config.commands && config.commands[name]) || {});
+		this.config = merge({}, defaultConfig, config.commands && config.commands[name]);
+
 
 	}
 
