@@ -1,5 +1,3 @@
-console.log(`Loading ${__filename}...`);
-
 var sprintf          = require('yow/sprintf');
 var Color            = require('color');
 
@@ -95,7 +93,7 @@ class SpyAnimation extends Animation {
         var now = new Date();
 
         if (this.cache && this.cache.quote && this.cache.timestamp && (now - this.cache.timestamp) < 60000) {
-            console.log('Using cache...');
+            this.debug('Not updating, using cache...');
             return;
         }
 
@@ -113,7 +111,7 @@ class SpyAnimation extends Animation {
 
 	render() {
 		var color = this.getColor();
-		this.log('Rendering SPY with color', color);
+		this.debug('Rendering SPY with color', color);
         this.pixels.fill(color);
         this.pixels.render({transition:'fade', duration:500});
 
@@ -172,4 +170,3 @@ class SpyCommand extends Command {
 
 new SpyCommand();
 
-console.log(`Finished loading ${__filename}...`);
