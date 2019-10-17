@@ -21,8 +21,6 @@ class KnockCommand extends Command {
 			this.debug(`Button clicked, state is now ${state}...`);
 		});
 
-		runAnimation(new SpyAnimation(defaultOptions));
-	
 	}
 
 }
