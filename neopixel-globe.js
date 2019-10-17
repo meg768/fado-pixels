@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 
+console.log('Loading yargs...');
 var yargs = require('yargs');
+console.log('Finished loading yargs...');
 
 require('dotenv').config();
 
