@@ -4,10 +4,7 @@ var sprintf          = require('yow/sprintf');
 var Color            = require('color');
 
 var Command          = require('../scripts/command.js');
-var Neopixels        = require('../scripts/neopixels.js');
-var AnimationQueue   = require('../scripts/animation-queue.js');
 var Animation        = require('../scripts/pixel-animation.js');
-var ColorAnimation   = require('../scripts/color-animation.js');
 
 var currentColor     = Color('blue').rgbNumber();
 
@@ -178,6 +175,9 @@ class SpyCommand extends Command {
 
 	run(argv) {
         var Button = require('pigpio-button');
+        var Neopixels = require('../scripts/neopixels.js');
+        var AnimationQueue = require('../scripts/animation-queue.js');
+        var ColorAnimation = require('../scripts/color-animation.js');
 
         console.log('CONFIG', this.config);
 	
