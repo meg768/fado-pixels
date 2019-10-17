@@ -1,13 +1,14 @@
 console.log(`Loading ${__filename}...`);
 
 
-var config = require('./config.js');
-var merge = require('./merge.js');
 
 module.exports = class Command {
 
 	constructor(options) {
-		var {module, name, description, aliases, defaultConfig} = options;
+		var appConfig = require('./config.js');
+		var merge = require('./merge.js');
+
+		var {module, name, description, aliases, config} = options;
 
 		if (!module || !name || !description)
 			throw new Error('The module, command name and description must be specified.');
@@ -37,7 +38,7 @@ module.exports = class Command {
 
 		this.log = console.log;
 		this.debug = () => {};
-		this.config = merge({}, defaultConfig, config.commands && config.commands[name]);
+		this.config = merge({}, config, appConfig.commands && appConfig.commands[name]);
 
 
 	}
