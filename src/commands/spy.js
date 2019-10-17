@@ -1,14 +1,15 @@
-var Command          = require('../scripts/command.js');
 var Button           = require('pigpio-button');
-var Neopixels        = require('../scripts/neopixels.js');
-var AnimationQueue   = require('../scripts/animation-queue.js');
-var Animation        = require('../scripts/pixel-animation.js');
-var ColorAnimation   = require('../scripts/color-animation.js');
 var Yahoo            = require('yahoo-finance');
 var sprintf          = require('yow/sprintf');
 var Color            = require('color');
 
-var currentColor     = Color('blue');
+var Command          = require('../scripts/command.js');
+var Neopixels        = require('../scripts/neopixels.js');
+var AnimationQueue   = require('../scripts/animation-queue.js');
+var Animation        = require('../scripts/pixel-animation.js');
+var ColorAnimation   = require('../scripts/color-animation.js');
+
+var currentColor     = Color('blue').rgbNumber();
 
 class SpyAnimation extends Animation {
 
@@ -23,7 +24,7 @@ class SpyAnimation extends Animation {
 		this.symbol = symbol;
 		this.updateInterval = updateInterval;
 
-		this.updateLoop();
+        this.updateLoop();
 
 	}
 
@@ -85,13 +86,14 @@ class SpyAnimation extends Animation {
     
                 })
                 .catch((error) => {
-                    this.log(sprintf('Could not get general information about symbol %s. %s', symbol, error.message));
+                    this.log(sprintf('Could not get quote for symbol %s. %s', symbol, error.message));
                     reject(error);
                 });
     
             }
             catch (error) {
-                reject(error);
+                this.log(error);
+                reolve();
             }
 		})
 	}
@@ -107,10 +109,10 @@ class SpyAnimation extends Animation {
                     var color = this.computeColor(quote);
 
                     // Set to blue when market closed...
-                    if (false) {
+                    if (true) {
                         if (this.lastQuote && quote.time) {
                             if (this.lastQuote.time.valueOf() == quote.time.valueOf()) {
-                                color = {red:0, green:0, blue:5};
+                                color = Color.rgb(0, 0, 5).rgbNumber();
                             }
                         }
     
@@ -150,13 +152,11 @@ class SpyAnimation extends Animation {
 
     }
 
-
 	render() {
 		var color = this.getColor();
 		this.log('Rendering SPY with color', color);
         this.pixels.fill(color.rgbNumber());
         this.pixels.render();
-
 	}
 
 }
