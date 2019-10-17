@@ -6,7 +6,7 @@ var Color            = require('color');
 var Command          = require('../scripts/command.js');
 var Animation        = require('../scripts/pixel-animation.js');
 
-var currentColor     = Color('blue').rgbNumber();
+var currentColor     = Color('purple').rgbNumber();
 var cache            = {};
 
 class SpyAnimation extends Animation {
