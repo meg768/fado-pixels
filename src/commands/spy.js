@@ -26,11 +26,11 @@ class SpyAnimation extends Animation {
 	}
 
 	getColor() {
-		return Color(currentColor);
+		return Color(currentColor).rgbNumber();
 	}
 
 	setColor(color) {
-		currentColor = Color(color);
+		currentColor = Color(color).rgbNumber();
 	}
 
     computeColor(quote) {
