@@ -107,12 +107,13 @@ class SpyAnimation extends Animation {
     }
 
 	render() {
-		var color = this.getColor();
+        this.update();
+
+        var color = this.getColor();
 		this.debug('Rendering SPY with color', color);
         this.pixels.fill(color);
         this.pixels.render({transition:'fade', duration:500});
 
-        this.update();
     }
 
 }
