@@ -48,7 +48,9 @@ var App = function() {
 
 			//args.demandCommand(1);
 
-			args.argv;
+			console.log('Started parsing');
+			args.parse();
+			console.log('Finished parsing');
 		}
 
 		catch(error) {
