@@ -7,7 +7,7 @@ var Command          = require('../scripts/command.js');
 var Animation        = require('../scripts/pixel-animation.js');
 
 var currentColor     = Color('blue').rgbNumber();
-var cache            = null;
+var cache            = {};
 
 class SpyAnimation extends Animation {
 
@@ -16,14 +16,11 @@ class SpyAnimation extends Animation {
 
 		super({renderFrequency: 30000, ...options});
 
-		this.lastQuote = undefined;		
 		this.log = console.log;
 		this.debug = console.log;
         this.symbol = symbol;
-        this.lastFetch = null;
         this.cache = cache;
 
-        //this.update();
 
 	}
 
@@ -93,11 +90,13 @@ class SpyAnimation extends Animation {
     update() {
         var now = new Date();
 
-        if (this.cache && this.cache.quote && this.cache.timestamp && (now - this.cache.timestamp) < 60000)
+        if (this.cache && this.cache.quote && this.cache.timestamp && (now - this.cache.timestamp) < 60000) {
+            console.log('Using cache...');
             return;
-
+        }
 
         this.fetch(this.symbol).then((quote) => {
+            this.cache = {quote:quote, timestamp: new Date()};
             return this.computeColor(quote);
         })
         .then((color) => {
