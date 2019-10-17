@@ -1,3 +1,5 @@
+console.log(`Loading ${__filename}...`);
+
 var Button           = require('pigpio-button');
 var Yahoo            = require('yahoo-finance');
 var sprintf          = require('yow/sprintf');
@@ -204,3 +206,5 @@ class SpyCommand extends Command {
 }
 
 new SpyCommand();
+
+console.log(`Finished loading ${__filename}...`);
