@@ -1,7 +1,5 @@
 console.log(`Loading ${__filename}...`);
 
-var Button           = require('pigpio-button');
-var Yahoo            = require('yahoo-finance');
 var sprintf          = require('yow/sprintf');
 var Color            = require('color');
 
@@ -57,6 +55,8 @@ class SpyAnimation extends Animation {
 
 		return new Promise((resolve, reject) => {
             try {
+                var Yahoo = require('yahoo-finance');
+
                 var options = {};
 
                 options.symbol = symbol;
@@ -174,7 +174,9 @@ class SpyCommand extends Command {
 	}
 
 	run(argv) {
-		console.log('CONFIG', this.config);
+        var Button = require('pigpio-button');
+
+        console.log('CONFIG', this.config);
 	
 		var button           = new Button({debug:argv.debug, autoEnable:true, pin:6});
 		var pixels           = new Neopixels({debug:argv.debug});
