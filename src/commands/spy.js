@@ -76,7 +76,7 @@ class SpyAnimation extends Animation {
                 // Fix some stuff
                 quote.name = quote.name.replace(/&amp;/g, '&');
 
-                this.log(sprintf('Fetched quote from Yahoo for symbol %s (%s%.2f%%). Took %d ms.', quote.symbol, quote.change >= 0 ? '+' : '-', parseFloat(Math.abs(quote.change)), start - now));
+                this.log(sprintf('Fetched quote from Yahoo for symbol %s (%s%.2f%%). Took %d ms.', quote.symbol, quote.change >= 0 ? '+' : '-', parseFloat(Math.abs(quote.change)), now - start));
 
                 resolve(quote);
 
