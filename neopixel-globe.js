@@ -44,12 +44,12 @@ var App = function() {
 			yargs.usage('Usage: $0 <command> [options]');
 			yargs.help();
 
-			console.log('Loading commands...')
+			debug('Loading commands...')
 			yargs.command(require('./src/commands/blink.js'));
 			yargs.command(require('./src/commands/pulse.js'));
 			yargs.command(require('./src/commands/clock.js'));
 			yargs.command(require('./src/commands/spy.js'));
-			console.log('Finished loading commands...')
+			debug('Finished loading commands...')
 
 			yargs.demandCommand(1);
 
