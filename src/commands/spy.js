@@ -21,6 +21,8 @@ class SpyAnimation extends Animation {
         this.symbol = symbol;
         this.cache = cache;
 
+        this.update();
+
 
 
 	}
