@@ -14,7 +14,7 @@ class SpyAnimation extends Animation {
 	constructor(options) {
 		var {symbol = 'SPY', ...options} = options;
 
-		super({renderFrequency: 30000, ...options});
+		super({name:'Spy Animation', renderFrequency: 30000, ...options});
 
 		this.log = console.log;
 		this.debug = console.log;
