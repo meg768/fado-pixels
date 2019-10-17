@@ -111,7 +111,7 @@ class SpyAnimation extends Animation {
                     var color = this.computeColor(quote);
 
                     // Set to blue when market closed...
-                    if (true) {
+                    if (false) {
                         if (this.lastQuote && quote.time) {
                             if (this.lastQuote.time.valueOf() == quote.time.valueOf()) {
                                 color = Color.rgb(0, 0, 5).rgbNumber();
@@ -158,7 +158,7 @@ class SpyAnimation extends Animation {
 		var color = this.getColor();
 		this.log('Rendering SPY with color', color);
         this.pixels.fill(color.rgbNumber());
-        this.pixels.render();
+        this.pixels.render({transition:'fade', duration:500});
 	}
 
 }
@@ -166,11 +166,14 @@ class SpyAnimation extends Animation {
 class SpyCommand extends Command {
 
 	constructor() {
-		super({module:module, name:'spy', description:'Displays stock market symbol as a color'});
+        var defaults = {
+            symbol:'SPY'
+        };
+		super({module:module, name:'spy', description:'Displays stock market symbol as a color', defaults:defaults});
 	}
 
 	defineArgs(yargs) {
-		yargs.option('symbol', {describe:'Stock symbol to display', default:this.config.symbol});
+		yargs.option('symbol', {describe:'Stock symbol to display', default:this.defaults.symbol});
 	}
 
 	run(argv) {
