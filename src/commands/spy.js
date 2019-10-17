@@ -58,8 +58,6 @@ class SpyAnimation extends Animation {
             this.debug(`Fetching quotes for ${symbol}...`);
 
             Yahoo.quote(options).then((data) => {
-                var now = new Date();
-                var time = Math.floor(now.valueOf() - then.valueOf());
 
                 var quote = {};
                 quote.symbol = symbol;
