@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+var yargs = require('yargs');
+
 require('dotenv').config();
 
 var prefixLogs = require('yow/logs').prefix;
@@ -33,17 +35,14 @@ var App = function() {
 	function run() {
 		try {
 			console.log('RUN started');
-
-			var args = require('yargs');
-			console.log('Loaded yargs');
 			loadConfig();
 
 
-			args.usage('Usage: $0 <command> [options]');
-			args.help();
+			yargs.usage('Usage: $0 <command> [options]');
+			yargs.help();
 
 			//args.command(require('./src/commands/server.js'));
-			args.command(require('./src/commands/blink.js'));
+			yargs.command(require('./src/commands/blink.js'));
 			//args.command(require('./src/commands/pulse.js'));
 			//args.command(require('./src/commands/clock.js'));
 //			args.command(require('./src/commands/spy.js'));
@@ -51,7 +50,7 @@ var App = function() {
 			//args.demandCommand(1);
 
 			console.log('Started parsing');
-			args.parse();
+			yargs.parse();
 			console.log('Finished parsing');
 		}
 
