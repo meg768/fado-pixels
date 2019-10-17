@@ -7,6 +7,7 @@ var Command          = require('../scripts/command.js');
 var Animation        = require('../scripts/pixel-animation.js');
 
 var currentColor     = Color('blue').rgbNumber();
+var cache            = null;
 
 class SpyAnimation extends Animation {
 
@@ -19,6 +20,8 @@ class SpyAnimation extends Animation {
 		this.log = console.log;
 		this.debug = console.log;
         this.symbol = symbol;
+        this.lastFetch = null;
+        this.cache = cache;
 
         //this.update();
 
@@ -47,7 +50,6 @@ class SpyAnimation extends Animation {
 
     fetch(symbol) {
         var Yahoo = require('yahoo-finance');
-        var then = new Date();
 
 		return new Promise((resolve, reject) => {
 
@@ -89,15 +91,20 @@ class SpyAnimation extends Animation {
 
 
     update() {
+        var now = new Date();
+
+        if (this.cache && this.cache.quote && this.cache.timestamp && (now - this.cache.timestamp) < 60000)
+            return;
+
+
         this.fetch(this.symbol).then((quote) => {
             return this.computeColor(quote);
         })
         .then((color) => {
             this.setColor(color);
-            this.render();
         })
         .catch((error) => {
-            this.log(sprintf('Could not get quote for symbol %s. %s', symbol, error.message));
+            this.log(`Could not get quote for symbol ${symbol}. ${error.message}`);
         })
     }
 
