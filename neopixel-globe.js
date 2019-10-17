@@ -37,9 +37,9 @@ var App = function() {
 			yargs.help();
 
 			yargs.command(require('./src/commands/blink.js'));
-			args.command(require('./src/commands/pulse.js'));
-			args.command(require('./src/commands/clock.js'));
-			args.command(require('./src/commands/spy.js'));
+			yargs.command(require('./src/commands/pulse.js'));
+			yargs.command(require('./src/commands/clock.js'));
+			yargs.command(require('./src/commands/spy.js'));
 
 			args.demandCommand(1);
 
