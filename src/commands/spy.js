@@ -167,10 +167,10 @@ class SpyCommand extends Command {
 
 		button.on('click', (clicks) => {
 			if (state == 'on') {
-				runAnimation(new ColorAnimation({...defaultOptions, renderOptions:{transition:'fade', duration:500} , duration:-1, color:'black', priority:'!'}));
+				runAnimation(new ColorAnimation({...defaultOptions, renderFrequency:60000, renderOptions:{transition:'fade', duration:500} , duration:-1, color:'black', priority:'!'}));
 			}
 			else {
-				runAnimation(new SpyAnimation({...defaultOptions, symbol:argv.symbol, priority:'!'}));
+				runAnimation(new SpyAnimation({...defaultOptions, renderFrequency:60000, symbol:argv.symbol, priority:'!'}));
 			}
 
 
@@ -178,7 +178,7 @@ class SpyCommand extends Command {
 			this.debug(`Button clicked, state is now ${state}...`);
 		});
 
-        runAnimation(new SpyAnimation({...defaultOptions, symbol:argv.symbol, priority:'!'}));
+        runAnimation(new SpyAnimation({...defaultOptions, renderFrequency:60000, symbol:argv.symbol, priority:'!'}));
 	
 	}
 
