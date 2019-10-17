@@ -123,7 +123,6 @@ class SpyAnimation extends Animation {
                 })
                 .then((color) => {
 					this.setColor(color);
-					this.render();
 
                 })
                 .then(() => {
@@ -183,7 +182,7 @@ class SpyCommand extends Command {
 		var pixels           = new Neopixels({debug:argv.debug});
 		var queue            = new AnimationQueue({debug:argv.debug});
 		var state            = 'on';
-		var defaultOptions   = {...argv, pixels:pixels, duration: -1, renderFrequency:60000, priority:'!'};
+		var defaultOptions   = {...argv, pixels:pixels, duration: -1, renderFrequency:60000};
 
 		var runAnimation = (animation) => {
 			queue.enqueue(animation);
@@ -191,10 +190,10 @@ class SpyCommand extends Command {
 
 		button.on('click', (clicks) => {
 			if (state == 'on') {
-				runAnimation(new ColorAnimation({...defaultOptions, color:'black'}));
+				runAnimation(new ColorAnimation({...defaultOptions, color:'black', priority:'!'}));
 			}
 			else {
-				runAnimation(new SpyAnimation({...defaultOptions, symbol:argv.symbol}));
+				runAnimation(new SpyAnimation({...defaultOptions, symbol:argv.symbol, priority:'!'}));
 			}
 
 
