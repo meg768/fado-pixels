@@ -9,7 +9,6 @@ var App = function() {
 	function loadConfig() {
 
 		
-	
 		var fs = require('fs');
 		var path = require('path');
 		var parts = path.parse(__filename);
@@ -33,6 +32,7 @@ var App = function() {
 
 	function run() {
 		try {
+			console.log('RUN started');
 			loadConfig();
 
 			var args = require('yargs');
