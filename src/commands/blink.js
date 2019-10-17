@@ -1,5 +1,6 @@
+console.log('Loading Blink');
+
 var Command = require('../scripts/command.js');
-var config = require('../scripts/config.js');
 
 class BlinkCommand extends Command {
 
@@ -18,7 +19,7 @@ class BlinkCommand extends Command {
 	defineArgs(args) {
 
 		console.log('CONFIG', this.config);
-		
+
 		args.option('iterations', {describe:'Iterations', default:this.config.iterations});
 		args.option('duration', {describe:'Duration', default:this.config.duration});
 		args.option('color', {describe:'Color', default:this.config.color});
@@ -48,4 +49,6 @@ class BlinkCommand extends Command {
 
 
 new BlinkCommand();
+
+console.log('Finished loading Blink');
 

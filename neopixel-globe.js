@@ -46,7 +46,7 @@ var App = function() {
 			//args.command(require('./src/commands/clock.js'));
 //			args.command(require('./src/commands/spy.js'));
 
-			args.demandCommand(1);
+			//args.demandCommand(1);
 
 			args.argv;
 		}
