@@ -11,7 +11,7 @@ var currentColor     = Color('blue').rgbNumber();
 class SpyAnimation extends Animation {
 
 	constructor(options) {
-		var {updateInterval = 10000, symbol = 'SPY', ...options} = options;
+		var {updateInterval = 60000, symbol = 'SPY', ...options} = options;
 
 		super({renderFrequency: 60000, ...options});
 
@@ -179,12 +179,10 @@ class SpyCommand extends Command {
         var AnimationQueue = require('../scripts/animation-queue.js');
         var ColorAnimation = require('../scripts/color-animation.js');
 
-        console.log('CONFIG', this.config);
-	
 		var button           = new Button({debug:argv.debug, autoEnable:true, pin:6});
 		var pixels           = new Neopixels({debug:argv.debug});
 		var queue            = new AnimationQueue({debug:argv.debug});
-		var state            = 'on'
+		var state            = 'on';
 		var defaultOptions   = {...argv, pixels:pixels, duration: -1, renderFrequency:60000, priority:'!'};
 
 		var runAnimation = (animation) => {
