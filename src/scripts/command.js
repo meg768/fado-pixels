@@ -1,3 +1,6 @@
+console.log(`Loading ${__filename}...`);
+
+
 var config = require('./config.js');
 var merge = require('./merge.js');
 
@@ -45,3 +48,5 @@ module.exports = class Command {
 	run(argv) {
 	}
 }
+
+console.log(`Finished loading ${__filename}...`);
