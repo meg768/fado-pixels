@@ -42,8 +42,8 @@ var App = function() {
 
 			//args.command(require('./src/commands/server.js'));
 			args.command(require('./src/commands/blink.js'));
-			args.command(require('./src/commands/pulse.js'));
-			args.command(require('./src/commands/clock.js'));
+			//args.command(require('./src/commands/pulse.js'));
+			//args.command(require('./src/commands/clock.js'));
 //			args.command(require('./src/commands/spy.js'));
 
 			args.demandCommand(1);
