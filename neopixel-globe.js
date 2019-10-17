@@ -7,11 +7,6 @@ var Yahoo            = require('yahoo-finance');
 var sprintf          = require('yow/sprintf');
 var Color            = require('color');
 
-var Command          = require('../scripts/command.js');
-var Neopixels        = require('../scripts/neopixels.js');
-var AnimationQueue   = require('../scripts/animation-queue.js');
-var Animation        = require('../scripts/pixel-animation.js');
-var ColorAnimation   = require('../scripts/color-animation.js');
 console.log('Finished loading yargs...');
 
 require('dotenv').config();
