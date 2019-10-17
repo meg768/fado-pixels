@@ -104,7 +104,6 @@ class SpyAnimation extends Animation {
         })
         .catch((error) => {
             this.log(error);
-            resolve();
         })
     }
 
