@@ -21,7 +21,7 @@ class SpyAnimation extends Animation {
 		this.symbol = symbol;
 		this.updateInterval = updateInterval;
 
-        this.updateLoop();
+        this.update();
 
 	}
 
@@ -99,55 +99,30 @@ class SpyAnimation extends Animation {
 
 
     update() {
-        return new Promise((resolve, reject) => {
+        this.fetch(this.symbol).then((quote) => {
 
-            try {
+            var color = this.computeColor(quote);
 
-                this.fetch(this.symbol).then((quote) => {
-
-                    var color = this.computeColor(quote);
-
-                    // Set to blue when market closed...
-                    if (false) {
-                        if (this.lastQuote && quote.time) {
-                            if (this.lastQuote.time.valueOf() == quote.time.valueOf()) {
-                                color = Color.rgb(0, 0, 5).rgbNumber();
-                            }
-                        }
-    
+            // Set to blue when market closed...
+            if (false) {
+                if (this.lastQuote && quote.time) {
+                    if (this.lastQuote.time.valueOf() == quote.time.valueOf()) {
+                        color = Color.rgb(0, 0, 5).rgbNumber();
                     }
-                    
-                    this.lastQuote = quote;
+                }
 
-                    return color;
-                })
-                .then((color) => {
-					this.setColor(color);
-
-                })
-                .then(() => {
-                    resolve();
-                })
-                .catch((error) => {
-                    resolve();
-                })
-    
             }
-            catch (error) {
-                reject(error);
-            }
-        });
-    }
+            
+            this.lastQuote = quote;
 
-	updateLoop() {
-        this.update().then(() => {
-            setTimeout(this.updateLoop.bind(this), this.updateInterval);
+            return color;
+        })
+        .then((color) => {
+            this.setColor(color);
+
         })
         .catch((error) => {
-            this.log(error.stack);
-            setTimeout(this.updateLoop.bind(this), this.updateInterval);
-        });
-
+        })
     }
 
 	render() {
@@ -155,6 +130,8 @@ class SpyAnimation extends Animation {
 		this.log('Rendering SPY with color', color);
         this.pixels.fill(color);
         this.pixels.render({transition:'fade', duration:500});
+
+        this.update();
 	}
 
 }
