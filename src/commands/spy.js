@@ -103,7 +103,7 @@ class SpyAnimation extends Animation {
             this.setColor(color);
         })
         .catch((error) => {
-            this.log(`Could not get quote for symbol ${symbol}. ${error.message}`);
+            this.log(`Could not get quote for symbol ${this.symbol}. ${error.message}`);
         })
     }
 
