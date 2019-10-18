@@ -17,9 +17,6 @@ class BlinkCommand extends Command {
 	}
 
 	defineArgs(args) {
-
-		console.log('CONFIG', this.config);
-
 		args.option('iterations', {describe:'Iterations', default:this.defaults.iterations});
 		args.option('duration', {describe:'Duration', default:this.defaults.duration});
 		args.option('color', {describe:'Color', default:this.defaults.color});
