@@ -31,6 +31,7 @@ class SpyAnimation extends Animation {
 	}
 
     computeColor(quote) {
+        quote.change = 0.01;
         var change     = Math.max(-1, Math.min(1, quote.change));
         var hue        = change >= 0 ? 240 : 0;
         var saturation = 100;
