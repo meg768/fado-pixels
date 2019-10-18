@@ -112,6 +112,8 @@ class SpyAnimation extends Animation {
         .then(() => {
             this.isFetching = false;
         });
+
+        return null;
     }
 
 	render() {
