@@ -12,7 +12,7 @@ class SpyAnimation extends Animation {
 	constructor(options) {
 		var {symbol = 'SPY', ...options} = options;
 
-		super({...options, name:'Spy Animation', renderFrequency: 60000});
+		super({name:'Spy Animation', renderFrequency: 5000, ...options});
 
 		this.log = console.log;
 		this.debug = console.log;
@@ -87,7 +87,7 @@ class SpyAnimation extends Animation {
     update() {
         var now = new Date();
 
-        if (this.cache && this.cache.quote && this.cache.timestamp && (now - this.cache.timestamp) < 60000) {
+        if (this.cache && this.cache.quote && this.cache.timestamp && (now - this.cache.timestamp) < this.renderFrequency * 5) {
             this.debug('Not updating, using cache...');
             return;
         }
@@ -105,13 +105,13 @@ class SpyAnimation extends Animation {
     }
 
 	render() {
-        this.update();
-
+		this.debug('Rendering...');
         var color = this.getColor();
-		this.debug('Rendering SPY with color', color);
+
         this.pixels.fill(color);
         this.pixels.render({transition:'fade', duration:500});
 
+        this.update();
     }
 
 }
