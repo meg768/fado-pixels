@@ -21,13 +21,21 @@ class SpyAnimation extends Animation {
 	}
 
     computeColorFromQuote(quote) {
-        var change     = Math.max(-1, Math.min(1, quote.change));
-        var hue        = change >= 0 ? 240 : 0;
-        var saturation = 100;
-        var luminance  = 25 + (Math.abs(change) * 25);
 
-		this.debug('Displaying color', hue, saturation, luminance);
-        return Color.hsl(hue, saturation, luminance).rgbNumber();
+        var color = Color('purple').rgbNumber();
+
+        if (quote && quote.change) {
+            var change     = Math.max(-1, Math.min(1, quote.change));
+            var hue        = change >= 0 ? 240 : 0;
+            var saturation = 100;
+            var luminance  = 25 + (Math.abs(change) * 25);
+    
+            this.debug('Displaying color', hue, saturation, luminance);
+            color = Color.hsl(hue, saturation, luminance).rgbNumber();
+    
+        }
+
+        return color;
     }
 
 
@@ -76,13 +84,16 @@ class SpyAnimation extends Animation {
     getLastQuote() {
         var now = new Date();
 
-        if (cache && cache.quote && cache.timestamp && (now - cache.timestamp) < 5 * 60000) {
-            this.debug('Not fetching, using cache...');
+        if (cache && cache.quote && cache.timestamp && (now - cache.timestamp) < 2 * 60000) {
+            this.debug('Cache contains valid quote. Returning cached quote.');
             return cache.quote;
         }
 
-        if (this.isFetching)
+        if (this.isFetching) {
+            this.debug('Currently fetching quote, so returning null.');
             return null;
+
+        }
 
         this.isFetching = true;
 
@@ -98,10 +109,10 @@ class SpyAnimation extends Animation {
     }
 
 	render() {
-        this.debug('Rendering...');
+        this.debug('Rendering SPY...');
         
         var quote = this.getLastQuote();
-        var color = quote ? this.computeColorFromQuote(quote): Color('purple'.rgbNumber());
+        var color = this.computeColorFromQuote(quote);
 
         this.pixels.fill(color);
         this.pixels.render({transition:'fade', duration:500});
