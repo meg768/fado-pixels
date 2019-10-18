@@ -6,8 +6,8 @@ class ColorCommand extends Command {
 
 	constructor() {
 		var defaults = {
-			color      : 'green',
-			duration   : 10000
+			color           : 'green',
+			duration        : 10000
 		};
 
 		super({module:module, name: 'color', description:'Set color', defaults:defaults});
@@ -27,7 +27,7 @@ class ColorCommand extends Command {
 		var ColorAnimation   = require('../scripts/color-animation.js');
 		
 		var queue      = new AnimationQueue({debug:argv.debug});
-		var options    = {pixels:new Neopixels(), priority:'!', ...argv};	
+		var options    = {pixels:new Neopixels(), renderFrequency:1000, priority:'!', ...argv};	
 		var animation  = new ColorAnimation(options);
 	
 		queue.enqueue(animation);
