@@ -16,6 +16,7 @@ class SpyAnimation extends Animation {
 		this.log = console.log;
         this.debug = console.log;
         this.isFetching = false;
+        this.fetchFrequency = 60000;
         this.symbol = symbol;
 
 	}
@@ -84,8 +85,8 @@ class SpyAnimation extends Animation {
     getLastQuote() {
         var now = new Date();
 
-        if (cache && cache.quote && cache.timestamp && (now - cache.timestamp) < 2 * 60000) {
-            this.debug('Cache contains valid quote. Returning cached quote.');
+        if (cache && cache.quote && cache.timestamp && (now - cache.timestamp) < this.fetchFrequency) {
+            this.debug(`Cache contains valid quote. Returning cached quote. Fetching in about ${now - cache.timestamp} seconds.`);
             return cache.quote;
         }
 
@@ -109,8 +110,6 @@ class SpyAnimation extends Animation {
     }
 
 	render() {
-        this.debug('Rendering SPY...');
-        
         var quote = this.getLastQuote();
         var color = this.computeColorFromQuote(quote);
 
