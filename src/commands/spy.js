@@ -84,11 +84,6 @@ class SpyAnimation extends Animation {
     getLastQuote() {
         var now = new Date();
 
-        if (cache && cache.quote && cache.timestamp && (now - cache.timestamp) < this.fetchFrequency) {
-            this.debug(`Cache contains valid quote. Returning cached quote. Fetching in about ${Math.floor((this.fetchFrequency - (now - cache.timestamp)) / 1000)} seconds.`);
-            return cache.quote;
-        }
-
         if (this.isFetching) {
             var quote = cache && cache.quote ? cache.quote : null; 
 
@@ -99,6 +94,12 @@ class SpyAnimation extends Animation {
 
             return quote;
         }
+
+        if (cache && cache.quote && cache.timestamp && (now - cache.timestamp) < this.fetchFrequency) {
+            this.debug(`Cache contains valid quote. Returning cached quote. Fetching in about ${Math.floor((this.fetchFrequency - (now - cache.timestamp)) / 1000)} seconds.`);
+            return cache.quote;
+        }
+
 
         this.isFetching = true;
 
