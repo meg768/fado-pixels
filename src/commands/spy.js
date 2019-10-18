@@ -4,7 +4,6 @@ var Color            = require('color');
 var Command          = require('../scripts/command.js');
 var Animation        = require('../scripts/pixel-animation.js');
 
-var currentColor     = Color('purple').rgbNumber();
 var cache            = {};
 
 class SpyAnimation extends Animation {
@@ -12,25 +11,16 @@ class SpyAnimation extends Animation {
 	constructor(options) {
 		var {symbol = 'SPY', ...options} = options;
 
-		super({name:'Spy Animation', renderFrequency: 5000, ...options});
+		super({name:'Spy Animation', renderFrequency: 1000, ...options});
 
 		this.log = console.log;
-		this.debug = console.log;
+        this.debug = console.log;
+        this.isFetching = false;
         this.symbol = symbol;
-        this.cache = cache;
-
 
 	}
 
-	getColor() {
-		return Color(currentColor).rgbNumber();
-	}
-
-	setColor(color) {
-		currentColor = Color(color).rgbNumber();
-	}
-
-    computeColor(quote) {
+    computeColorFromQuote(quote) {
         var change     = Math.max(-1, Math.min(1, quote.change));
         var hue        = change >= 0 ? 240 : 0;
         var saturation = 100;
@@ -41,7 +31,7 @@ class SpyAnimation extends Animation {
     }
 
 
-    fetch(symbol) {
+    fetchQuote(symbol) {
         var Yahoo = require('yahoo-finance');
 
 		return new Promise((resolve, reject) => {
@@ -83,35 +73,38 @@ class SpyAnimation extends Animation {
 		})
 	}
 
-
-    update() {
+    getLastQuote() {
         var now = new Date();
 
-        if (this.cache && this.cache.quote && this.cache.timestamp && (now - this.cache.timestamp) < this.renderFrequency * 5) {
-            this.debug('Not updating, using cache...');
-            return;
+        if (cache && cache.quote && cache.timestamp && (now - cache.timestamp) < 5 * 60000) {
+            this.debug('Not fetching, using cache...');
+            return cache.quote;
         }
 
-        this.fetch(this.symbol).then((quote) => {
-            this.cache = cache = {quote:quote, timestamp: new Date()};
-            return this.computeColor(quote);
-        })
-        .then((color) => {
-            this.setColor(color);
+        if (this.isFetching)
+            return null;
+
+        this.isFetching = true;
+
+        this.fetchQuote(this.symbol).then((quote) => {
+            cache = {quote:quote, timestamp: new Date()};
         })
         .catch((error) => {
             this.log(error);
         })
+        .then(() => {
+            this.isFetching = false;
+        });
     }
 
 	render() {
-		this.debug('Rendering...');
-        var color = this.getColor();
+        this.debug('Rendering...');
+        
+        var quote = this.getLastQuote();
+        var color = quote ? this.computeColorFromQuote(quote): Color('purple'.rgbNumber());
 
         this.pixels.fill(color);
         this.pixels.render({transition:'fade', duration:500});
-
-        this.update();
     }
 
 }
@@ -150,7 +143,7 @@ class SpyCommand extends Command {
 				runAnimation(new ColorAnimation({...defaultOptions, renderFrequency:10000, renderOptions:{transition:'fade', duration:500} , duration:-1, color:'black', priority:'!'}));
 			}
 			else {
-				runAnimation(new SpyAnimation({...defaultOptions, renderFrequency:10000, symbol:argv.symbol, priority:'!'}));
+				runAnimation(new SpyAnimation({...defaultOptions, symbol:argv.symbol, priority:'!'}));
 			}
 
 
@@ -158,7 +151,7 @@ class SpyCommand extends Command {
 			this.debug(`Button clicked, state is now ${state}...`);
 		});
 
-        runAnimation(new SpyAnimation({...defaultOptions, renderFrequency:10000, symbol:argv.symbol, priority:'!'}));
+        runAnimation(new SpyAnimation({...defaultOptions, symbol:argv.symbol, priority:'!'}));
 	
 	}
 
