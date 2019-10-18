@@ -90,7 +90,7 @@ class SpyAnimation extends Animation {
         }
 
         if (this.isFetching) {
-            var quote = cache && cache.quote || null; 
+            var quote = cache && cache.quote ? cache.quote : null; 
 
             if (quote)
                 this.debug('Currently fetching quote, so returning last fetched quote.');
