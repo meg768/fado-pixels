@@ -86,7 +86,7 @@ class SpyAnimation extends Animation {
         var now = new Date();
 
         if (cache && cache.quote && cache.timestamp && (now - cache.timestamp) < this.fetchFrequency) {
-            this.debug(`Cache contains valid quote. Returning cached quote. Fetching in about ${now - cache.timestamp} seconds.`);
+            this.debug(`Cache contains valid quote. Returning cached quote. Fetching in about ${(this.fetchFrequency - (now - cache.timestamp)) / 1000} seconds.`);
             return cache.quote;
         }
 
