@@ -84,36 +84,29 @@ class SpyAnimation extends Animation {
     getLastQuote() {
         var now = new Date();
 
-        if (this.isFetching) {
-            var quote = cache && cache.quote ? cache.quote : null; 
-
-            if (quote)
-                this.debug('Currently fetching quote, so returning last fetched quote.');
-            else
-                this.debug('Currently fetching quote, and no previous quote, so returning null.');
-
-            return quote;
-        }
-
+        // Check if last quote is valid
         if (cache && cache.quote && cache.timestamp && (now - cache.timestamp) < this.fetchFrequency) {
             this.debug(`Cache contains valid quote. Returning cached quote. Fetching in about ${Math.floor((this.fetchFrequency - (now - cache.timestamp)) / 1000)} seconds.`);
             return cache.quote;
         }
 
+        // Fetch if not alredy fetching...
+        if (!this.isFetching) {
+            this.isFetching = true;
 
-        this.isFetching = true;
+            this.fetchQuote(this.symbol).then((quote) => {
+                cache = {quote:quote, timestamp: new Date()};
+            })
+            .catch((error) => {
+                this.log(error);
+            })
+            .then(() => {
+                this.isFetching = false;
+            });    
+        }
 
-        this.fetchQuote(this.symbol).then((quote) => {
-            cache = {quote:quote, timestamp: new Date()};
-        })
-        .catch((error) => {
-            this.log(error);
-        })
-        .then(() => {
-            this.isFetching = false;
-        });
-
-        return null;
+        // Return what we got
+        return cache && cache.quote ? cache.quote : null;
     }
 
 	render() {
