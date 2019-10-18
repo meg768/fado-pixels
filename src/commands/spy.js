@@ -31,7 +31,6 @@ class SpyAnimation extends Animation {
             var saturation = 100;
             var luminance  = 25 + (Math.abs(change) * 25);
     
-            this.debug('Displaying color', hue, saturation, luminance);
             color = Color.hsl(hue, saturation, luminance).rgbNumber();
     
         }
@@ -119,6 +118,8 @@ class SpyAnimation extends Animation {
 	render() {
         var quote = this.getLastQuote();
         var color = this.computeColorFromQuote(quote);
+
+        this.debug(`Displaying HSL color ${Color(color).hsl.array()}...`);
 
         this.pixels.fill(color);
         this.pixels.render({transition:'fade', duration:500});
