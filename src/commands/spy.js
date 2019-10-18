@@ -86,14 +86,19 @@ class SpyAnimation extends Animation {
         var now = new Date();
 
         if (cache && cache.quote && cache.timestamp && (now - cache.timestamp) < this.fetchFrequency) {
-            this.debug(`Cache contains valid quote. Returning cached quote. Fetching in about ${(this.fetchFrequency - (now - cache.timestamp)) / 1000} seconds.`);
+            this.debug(`Cache contains valid quote. Returning cached quote. Fetching in about ${Math.floor((this.fetchFrequency - (now - cache.timestamp)) / 1000)} seconds.`);
             return cache.quote;
         }
 
         if (this.isFetching) {
-            this.debug('Currently fetching quote, so returning null.');
-            return null;
+            var quote = cache && cache.quote || null; 
 
+            if (quote)
+                this.debug('Currently fetching quote, so returning last fetched quote.');
+            else
+                this.debug('Currently fetching quote, and no previous quote, so returning null.');
+
+            return quote;
         }
 
         this.isFetching = true;
