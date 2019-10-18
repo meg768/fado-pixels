@@ -119,7 +119,7 @@ class SpyAnimation extends Animation {
         var quote = this.getLastQuote();
         var color = this.computeColorFromQuote(quote);
 
-        this.debug(`Displaying HSL color ${Color(color).hsl.array()}...`);
+        this.debug(`Displaying HSL color ${Color(color).hsl().array()}...`);
 
         this.pixels.fill(color);
         this.pixels.render({transition:'fade', duration:500});
