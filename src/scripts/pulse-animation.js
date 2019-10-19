@@ -14,10 +14,8 @@ module.exports = class extends Animation {
         this.antiColor = Color(antiColor).rgbNumber();
     }
 
-
-
     render() {
-        var duration = Math.floor(this.interval);
+        var duration = Math.floor(this.interval / 3);
 
         this.pixels.fill(this.color);
         this.pixels.render({transition:'fade', duration:duration});
