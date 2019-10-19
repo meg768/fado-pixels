@@ -5,7 +5,7 @@ var Color      = require('color');
 module.exports = class extends Animation {
 
     constructor(options) {
-        var {hue, ...options} = options;
+        var {hue = 0, ...options} = options;
 
         super({name:'Random Color Animation', renderFrequency:100, ...options});
 
