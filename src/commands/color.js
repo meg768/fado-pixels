@@ -1,5 +1,3 @@
-console.log(`Loading ${__filename}...`);
-
 var Command = require('../scripts/command.js');
 
 class ColorCommand extends Command {
@@ -37,5 +35,4 @@ class ColorCommand extends Command {
 
 new ColorCommand();
 
-console.log(`Finished loading ${__filename}...`);
 
