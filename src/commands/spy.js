@@ -2,10 +2,12 @@ var sprintf          = require('yow/sprintf');
 var Color            = require('color');
 
 var Command          = require('../scripts/command.js');
-var Animation        = require('../scripts/pixel-animation.js');
+var Animation        = require('../scripts/animation.js');
+var SpyAnimation     = require('../scripts/spy-animation.js');
 
-var cache            = {};
+var cache = {};
 
+/*
 class SpyAnimation extends Animation {
 
 	constructor(options) {
@@ -121,6 +123,7 @@ class SpyAnimation extends Animation {
     }
 
 }
+*/
 
 class SpyCommand extends Command {
 
