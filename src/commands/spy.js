@@ -16,7 +16,7 @@ class SpyAnimation extends Animation {
 		this.log = console.log;
         this.debug = console.log;
         this.isFetching = false;
-        this.fetchFrequency = 5 * 60000;
+        this.fetchFrequency = 1 * 60000;
         this.symbol = symbol;
 
 	}
