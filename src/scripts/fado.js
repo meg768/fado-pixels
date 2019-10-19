@@ -30,6 +30,10 @@ module.exports = class Fado {
 		this.runAnimation(new Animation({debug:this.debug, pixels:this.pixels, ...options}));
 	}
 
+	random(options) {
+		var Animation = require('./random-animation.js'); 
+		this.runAnimation(new Animation({debug:this.debug, pixels:this.pixels, ...options}));
+	}
 
 
 }

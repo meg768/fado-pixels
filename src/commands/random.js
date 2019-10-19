@@ -20,16 +20,9 @@ class RandomCommand extends Command {
 
 
 	run(argv) {
-		var Neopixels        = require('../scripts/neopixels.js');
-		var AnimationQueue   = require('../scripts/animation-queue.js');
-		var RandomAnimation  = require('../scripts/random-animation.js');
-		
-		var queue      = new AnimationQueue({debug:argv.debug});
-		var options    = {pixels:new Neopixels(), priority:'!', ...argv};	
-		var animation  = new RandomAnimation(options);
-	
-		queue.enqueue(animation);
-
+		var Fado = require('../scripts/fado.js');
+		var fado = new Fado(argv);
+		fado.random(argv);
 	}
 }
 
