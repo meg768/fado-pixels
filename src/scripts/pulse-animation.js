@@ -18,18 +18,13 @@ module.exports = class extends Animation {
 
 
     render() {
-        var pixels = this.pixels;
+        this.pixels.fill(this.color);
+        this.pixels.render({transition:'fade', duration:this.interval / 3});
 
-        pixels.fill(this.color);
-        pixels.render({transition:'fade', duration:this.interval});
+        Sleep.msleep(this.interval / 3);
 
-        if (this.interval && this.interval > 0) {
-            Sleep.msleep(this.interval);
-        }
-
-        pixels.fill(0);
-        pixels.render({transition:'fade', duration:this.interval});
-
+        this.pixels.fill(0);
+        this.pixels.render({transition:'fade', duration:this.interval / 3});
     }
 
 
