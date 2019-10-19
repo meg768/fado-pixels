@@ -5,7 +5,8 @@ module.exports = class Fado {
 
 		var Neopixels        = require('../scripts/neopixels.js');
 		var AnimationQueue   = require('rpi-animations').Queue;
-		
+
+		this.debug   = debug;
 		this.pixels  = new Neopixels({debug:debug});
 		this.queue   = new AnimationQueue({debug:debug});
 	}
@@ -16,12 +17,17 @@ module.exports = class Fado {
 
 	blink(options) {
 		var Animation = require('./blink-animation.js'); 
-		this.runAnimation(new Animation({pixels:this.pixels, ...options}));
+		this.runAnimation(new Animation({debug:debug, pixels:this.pixels, ...options}));
+	}
+
+	pulse(options) {
+		var Animation = require('./pulse-animation.js'); 
+		this.runAnimation(new Animation({debug:debug, pixels:this.pixels, ...options}));
 	}
 
 	color(options) {
 		var Animation = require('./color-animation.js'); 
-		this.runAnimation(new Animation({pixels:this.pixels, ...options}));
+		this.runAnimation(new Animation({debug:debug, pixels:this.pixels, ...options}));
 	}
 
 

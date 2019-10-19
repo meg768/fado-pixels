@@ -20,7 +20,7 @@ class PulseCommand extends Command {
 	run(argv) {		
 		var Fado = require('../scripts/fado.js');
 		var fado = new Fado(argv);
-		fado.runAnimation(new PulseAnimation(argv));
+		fado.pulse(argv);
 
 	};
 }
