@@ -16,12 +16,12 @@ module.exports = class Fado {
 
 	blink(options) {
 		var Animation = require('./blink-animation.js'); 
-		this.runAnimation(new Animation(options));
+		this.runAnimation(new Animation({pixels:this.pixels, ...options}));
 	}
 
 	color(options) {
 		var Animation = require('./color-animation.js'); 
-		this.runAnimation(new Animation(options));
+		this.runAnimation(new Animation({pixels:this.pixels, ...options}));
 	}
 
 
