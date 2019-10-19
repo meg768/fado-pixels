@@ -1,5 +1,3 @@
-console.log(`Loading ${__filename}...`);
-
 var Command = require('../scripts/command.js');
 
 class BlinkCommand extends Command {
@@ -38,8 +36,5 @@ class BlinkCommand extends Command {
 	}
 }
 
-
 new BlinkCommand();
-
-console.log(`Finished loading ${__filename}...`);
 
