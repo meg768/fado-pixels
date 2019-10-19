@@ -4,6 +4,7 @@ class RandomAnimation extends Command {
 
 	constructor() {
 		var defaults = {
+			duration: 60000
 		};
 
 		super({module:module, name: 'random', description:'Random color spinner', defaults:defaults});
@@ -12,6 +13,7 @@ class RandomAnimation extends Command {
 	}
 
 	defineArgs(args) {
+		args.option('duration', {describe:'Duration', default:this.defaults.duration});
 
 	}
 
