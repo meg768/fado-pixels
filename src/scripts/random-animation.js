@@ -13,7 +13,7 @@ module.exports = class extends Animation {
     }
 
     render() {
-
+console.log('x');
         this.hue = (this.hue + 1) % 360;
         this.pixels.fill(Color.hsl(this.hue, 100, 50).rgbNumber());
         this.pixels.render();
