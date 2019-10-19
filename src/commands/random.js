@@ -8,7 +8,7 @@ class RandomCommand extends Command {
 			duration        : 10000
 		};
 
-		super({module:module, name: 'color', description:'Set color', defaults:defaults});
+		super({module:module, name: 'random', description:'Random colors', defaults:defaults});
 
 
 	}
