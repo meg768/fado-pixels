@@ -1,6 +1,5 @@
-
+var Color = require('color');
 var Animation = require('./animation.js');
-var Sleep     = require('sleep');
 
 module.exports = class extends Animation {
 
