@@ -4,8 +4,9 @@ class BlinkCommand extends Command {
 
 	constructor() {
 		var defaults = {
-			color      : 'green',
-			iterations : 3,
+			color      : 'red',
+			duration   : 60000,
+			interval   : 500
 		};
 
 		super({module:module, name: 'blink', description:'Blink', defaults:defaults});
@@ -27,11 +28,9 @@ class BlinkCommand extends Command {
 		var BlinkAnimation   = require('../scripts/blink-animation.js');
 		
 		var queue      = new AnimationQueue({debug:argv.debug});
-		var options    = {pixels:new Neopixels(), priority:'!', ...argv};	
-		var animation  = new BlinkAnimation(options);
-
+		var options    = {pixels:new Neopixels(), ...argv};	
 	
-		queue.enqueue(animation);
+		queue.enqueue(new BlinkAnimation(options));
 
 	}
 }
