@@ -1,6 +1,6 @@
 var Command = require('../scripts/command.js');
 
-class PulseCommand extends Command {
+class BlinkCommand extends Command {
 	constructor() {
 		var defaults = {
 			color      : 'red',
@@ -19,12 +19,10 @@ class PulseCommand extends Command {
 
 	run(argv) {
 		var Fado = require('../scripts/fado.js');
-		var PulseAnimation = require('../scripts/blink-animation.js');
-
 		var fado = new Fado(argv);
-		fado.runAnimation(new PulseAnimation({pixels:fado.pixels, ...argv}));
+		fado.blink(argv);
 
 	};
 }
 
-new PulseCommand();
+new BlinkCommand();
