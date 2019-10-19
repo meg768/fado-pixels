@@ -7,7 +7,7 @@ module.exports = class extends Animation {
     constructor(options) {
         var {hue = 0, ...options} = options;
 
-        super({name:'Random Color Animation', renderFrequency:0, ...options});
+        super({name:'Random Color Animation', renderFrequency:10, ...options});
 
         this.hue = hue;
     }
