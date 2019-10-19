@@ -56,7 +56,7 @@ var App = function() {
 
 			yargs.demandCommand(1);
 
-			yargs.parse();
+			yargs.argv;
 		}
 
 		catch(error) {
