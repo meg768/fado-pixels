@@ -18,8 +18,8 @@ class PulseCommand extends Command {
 	}
 
 	run(argv) {
-		var Fado = require('./fado.js');
-		var PulseAnimation = require('./blink-animation.js');
+		var Fado = require('../scripts/fado.js');
+		var PulseAnimation = require('../scripts/blink-animation.js');
 
 		var fado = new Fado(argv);
 		fado.runAnimation(new PulseAnimation({pixels:fado.pixels, ...argv}));
