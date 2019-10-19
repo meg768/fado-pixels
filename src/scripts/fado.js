@@ -35,6 +35,14 @@ module.exports = class Fado {
 		this.runAnimation(new Animation({debug:this.debug, pixels:this.pixels, ...options}));
 	}
 
+	clock(options) {
+		var Animation = require('./clock-animation.js'); 
+		this.runAnimation(new Animation({debug:this.debug, pixels:this.pixels, ...options}));
+	}
 
+	spy(options) {
+		var Animation = require('./spy-animation.js'); 
+		this.runAnimation(new Animation({debug:this.debug, pixels:this.pixels, ...options}));
+	}
 }
 
