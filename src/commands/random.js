@@ -19,6 +19,8 @@ class RandomAnimation extends Command {
 
 
 	run(argv) {
+		console.log('ARGV', argv);
+		
 		var Neopixels        = require('../scripts/neopixels.js');
 		var AnimationQueue   = require('../scripts/animation-queue.js');
 		
