@@ -5,6 +5,7 @@ class BlinkCommand extends Command {
 		var defaults = {
 			color      : 'red',
 			duration   : 60000,
+			iterations : 5,
 			interval   : 500
 		};
 
