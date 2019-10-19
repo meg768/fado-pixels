@@ -11,7 +11,7 @@ class PulseCommand extends Command {
 			interval   : 500
 		};
 
-		super({module:module, name: 'pulse', description:'Pulse light', defaults:defaults});
+		super({module:module, name: 'blink', description:'Blink light', defaults:defaults});
 	}
 
 	defineArgs(args) {
