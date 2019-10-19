@@ -15,7 +15,7 @@ module.exports = class extends Animation {
     }
 
     render() {
-        var duration = Math.floor(this.interval);
+        var duration = Math.floor(this.interval / 3);
 
         this.pixels.fill(this.color);
         this.pixels.render();
