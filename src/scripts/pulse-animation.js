@@ -1,30 +1,32 @@
 
-var Animation = require('./color-animation.js');
+var Animation = require('./animation.js');
 var Sleep     = require('sleep');
-
 
 module.exports = class extends Animation {
 
 
     constructor(options) {
-        var {interval = 500, color = 'red', ...options} = options;
+        var {interval = 500, color = 'red', antiColor = 'black', ...options} = options;
 
         super({name:'Pulse Animation', renderFrequency:interval, ...options});
 
         this.interval = interval;
-        this.color = color;
+        this.color = Color(color).rgbNumber();
+        this.antiColor = Color(antiColor).rgbNumber();
     }
 
 
 
     render() {
+        var duration = Math.floor(this.interval);
+
         this.pixels.fill(this.color);
-        this.pixels.render({transition:'fade', duration:this.interval / 3});
+        this.pixels.render({transition:'fade', duration:duration});
 
-        Sleep.msleep(this.interval / 3);
+        this.sleep(duration);
 
-        this.pixels.fill(0);
-        this.pixels.render({transition:'fade', duration:this.interval / 3});
+        this.pixels.fill(this.antiColor);
+        this.pixels.render({transition:'fade', duration:duration});
     }
 
 

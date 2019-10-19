@@ -1,6 +1,7 @@
 
-var Animation = require('./animation.js');
+module.exports = require('./animation.js');
 
+/*
 module.exports = class extends Animation {
 
     constructor(options) {
@@ -11,3 +12,5 @@ module.exports = class extends Animation {
         this.pixels = pixels;
     }
 }
+
+*/
