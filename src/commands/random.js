@@ -25,7 +25,7 @@ class RandomCommand extends Command {
 		var RandomAnimation  = require('../scripts/random-animation.js');
 		
 		var queue      = new AnimationQueue({debug:argv.debug});
-		var options    = {pixels:new Neopixels(), renderFrequency:100, priority:'!', ...argv};	
+		var options    = {pixels:new Neopixels(), priority:'!', ...argv};	
 		var animation  = new RandomAnimation(options);
 	
 		queue.enqueue(animation);
