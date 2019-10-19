@@ -1,7 +1,4 @@
-var Neopixels        = require('../scripts/neopixels.js');
-var AnimationQueue   = require('rpi-animations').Queue;
-var PulseAnimation   = require('../scripts/blink-animation.js');
-var Command          = require('../scripts/command.js');
+var Command = require('../scripts/command.js');
 
 class PulseCommand extends Command {
 	constructor() {
@@ -21,11 +18,11 @@ class PulseCommand extends Command {
 	}
 
 	run(argv) {
-		var pixels    = new Neopixels();
-		var queue     = new AnimationQueue({debug:argv.debug});
-		var animation = new PulseAnimation({pixels:pixels, ...argv});
+		var Fado = require('./fado.js');
+		var PulseAnimation = require('./blink-animation.js');
 
-		queue.enqueue(animation);
+		var fado = new Fado(argv);
+		fado.runAnimation(new PulseAnimation({pixels:fado.pixels, ...argv}));
 
 	};
 }
