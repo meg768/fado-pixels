@@ -15,6 +15,7 @@ module.exports = class extends Events {
         this.isFetching = false;
         this.cache = null;
         this.job = null;
+        this.marketState = null;
 
 	}
 
@@ -72,6 +73,16 @@ module.exports = class extends Events {
         return null;
     }
 */
+
+    setMarketState(marketState) {
+        if (marketState == this.marketState)
+            return;
+
+        this.emit(marketState);
+        this.marketState = marketState;
+    }
+
+
     startMonitoring() {
         var Schedule = require('node-schedule');
 
@@ -85,12 +96,17 @@ module.exports = class extends Events {
                 this.isFetching = true;
 
                 this.fetchQuote().then((quote) => {
-//                    if (this.cache && this.cache.quote && this.cache.quote.time == quote.time) {
-  //                      this.emit('marketClosed', quote);
-    //                }
-                    this.cache = {quote:quote, timestamp: new Date()};
+                    if (this.cache && this.cache.quote && this.cache.quote.time == quote.time) {
+                        this.cache = {quote:quote, timestamp: new Date()};
 
-                    this.emit('quote', quote);
+                        this.setMarketState('marketClose');
+                    }
+                    else {
+                        this.cache = {quote:quote, timestamp: new Date()};
+
+                        this.setMarketState('marketOpen');
+                        this.emit('quote', quote);
+                    }
                 })
                 .catch((error) => {
                     this.log(error);
