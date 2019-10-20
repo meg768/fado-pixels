@@ -1,4 +1,5 @@
 var Command = require('../scripts/command.js');
+var Color = require('color');
 
 class SpyCommand extends Command {
 
@@ -14,27 +15,61 @@ class SpyCommand extends Command {
 	}
 
 	run(argv) {
+		var {debug, symbol} = argv;
+
 		var Fado = require('../scripts/fado.js');
 		var Button = require('pigpio-button');
+		var Quotes = require('../scripts/quotes.js');
 
-		var button = new Button({debug: argv.debug, autoEnable: true, pin: 6});
-		var fado = new Fado({debug: argv.debug});
+		var quotes = new Quotes({debug:debug, symbol:symbol});
+		var button = new Button({debug: debug, autoEnable: true, pin: 6});
+		var fado = new Fado({debug: debug});
 		var state = 'on';
 
+
+		quotes.on('marketOpen', () => {
+			fado.blink();
+		});
+
+		quotes.on('marketClose', () => {
+			fado.blink();			
+		});
+
+		quotes.on('quote', (quote) => {
+			function computeColorFromQuote(quote) {
+
+				var color = Color('purple').rgbNumber();
+
+				if (quote && quote.change) {
+					var change     = Math.max(-1, Math.min(1, quote.change));
+					var hue        = change >= 0 ? 240 : 0;
+					var saturation = 100;
+					var luminance  = 25 + (Math.abs(change) * 25);
+			
+					color = Color.hsl(hue, saturation, luminance).rgbNumber();
+			
+				}
+
+				return color;
+			}
+
+			var color = computeColorFromQuote(quote);
+			fado.color({color:color});
+
+		});
+/*
 		button.on('click', (clicks) => {
 			if (state == 'on') {
-				fado.color({ ...argv, renderFrequency: 10000, renderOptions: { transition: 'fade', duration: 500 }, duration: -1, color: 'black', priority: '!' });
+				fado.color({renderFrequency: 10000, renderOptions: { transition: 'fade', duration: 500 }, duration: -1, color: 'black', priority: '!' });
 			}
 			else {
-				fado.spy({ ...argv, priority: '!' });
 			}
 
 
 			state = (state == 'on') ? 'off' : 'on';
 			this.debug(`Button clicked, state is now ${state}...`);
 		});
-
-		fado.spy({...argv, priority: '!'});
+*/
 
 	}
 

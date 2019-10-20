@@ -65,7 +65,15 @@ module.exports = class extends Events {
                 reject(error);
             })
 		})
-	}
+    }
+
+    getQuote() {
+
+    }
+
+    getColor() {
+        
+    }
 
     setMarketState(marketState) {
         if (marketState != this.marketState) {
@@ -99,15 +107,12 @@ module.exports = class extends Events {
                 this.isFetching = true;
 
                 this.fetchQuote().then((quote) => {
-                    if (this.cache && this.cache.quote && this.cache.quote.time.valueOf() == quote.time.valueOf()) {
+                    if (this.cache && this.cache.quote && this.cache.quote.time.valueOf() == quote.time.valueOf())
                         this.setMarketState(MARKET_CLOSED);
-                        this.setQuote(quote);
-                    }
-                    else {
+                    else 
                         this.setMarketState(MARKET_OPEN);
-                        this.setQuote(quote);
 
-                    }
+                    this.setQuote(quote);
                 })
                 .catch((error) => {
                     this.log(error);
