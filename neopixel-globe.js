@@ -52,6 +52,7 @@ var App = function() {
 			yargs.command(require('./src/commands/knock.js'));
 			yargs.command(require('./src/commands/color.js'));
 			yargs.command(require('./src/commands/random.js'));
+			yargs.command(require('./src/commands/quotes.js'));
 			debug('Finished loading commands...')
 
 			yargs.demandCommand(1);

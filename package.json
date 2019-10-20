@@ -25,6 +25,7 @@
     "pigpio-vma309": "^1.0.10",
     "rpi-animations": "^1.0.12",
     "rpi-neopixels": "^1.0.74",
+    "node-schedule": "^1.3.2",
     "sleep": "^6.1.0",
     "socket.io-client": "^2.0.3",
     "yargs": "^14.2.0",
