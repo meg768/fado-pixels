@@ -99,7 +99,7 @@ module.exports = class SpyAnimation extends Animation {
         else {
             // Fetch if not alredy fetching...
             if (!this.isFetching) {
-                render(null);
+                render(cache && cache.quote ? cache.quote : null);
 
                 this.isFetching = true;
 
