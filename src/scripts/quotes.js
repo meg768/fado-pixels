@@ -2,7 +2,7 @@ var sprintf = require('yow/sprintf');
 var Events = require('events');
 
 var MARKET_OPEN   = 'marketOpen';
-var MARKET_CLOSED = 'marketClosed';
+var MARKET_CLOSED = 'marketClose';
 var MARKET_QUOTE  = 'quote';
 
 module.exports = class extends Events {
