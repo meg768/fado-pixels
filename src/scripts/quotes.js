@@ -67,12 +67,12 @@ module.exports = class extends Events {
 	}
 
     setMarketState(marketState) {
-        if (marketState == this.marketState)
-            return;
+        if (marketState != this.marketState) {
+            this.marketState = marketState;
 
-        this.debug(`Changing market state to ${marketState}...`);
-        this.emit(marketState, this.symbol);
-        this.marketState = marketState;
+            this.debug(`Emitting ${marketState} for symbol ${this.symbol}...`);
+            this.emit(marketState, this.symbol);    
+        }
     }
 
     setQuote(quote) {
