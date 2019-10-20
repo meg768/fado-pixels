@@ -26,7 +26,7 @@ class SpyCommand extends Command {
 				fado.color({ ...argv, renderFrequency: 10000, renderOptions: { transition: 'fade', duration: 500 }, duration: -1, color: 'black', priority: '!' });
 			}
 			else {
-				fado.spy({ ...argv, symbol: argv.symbol, priority: '!' });
+				fado.spy({ ...argv, priority: '!' });
 			}
 
 
@@ -34,7 +34,7 @@ class SpyCommand extends Command {
 			this.debug(`Button clicked, state is now ${state}...`);
 		});
 
-		fado.spy({ ...argv, symbol: argv.symbol, priority: '!' });
+		fado.spy({...argv, priority: '!'});
 
 	}
 

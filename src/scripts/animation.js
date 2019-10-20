@@ -1,6 +1,7 @@
 
 var Animation = require('rpi-animations').Animation;
 var Sleep     = require('sleep');
+/*
 
 module.exports = class extends Animation {
 
@@ -16,7 +17,8 @@ module.exports = class extends Animation {
         Sleep.msleep(ms);
     }
 }
-/*
+*/
+
 var Events = require('events');
 
 module.exports = class Animation extends Events {
@@ -45,6 +47,7 @@ module.exports = class Animation extends Events {
     }
 
     render() {
+        this.debug('Animation.render() should not be called!');
     }
 
     start() {
@@ -156,4 +159,5 @@ module.exports = class Animation extends Events {
 
     }
 }
+
 */
