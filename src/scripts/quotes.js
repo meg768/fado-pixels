@@ -15,7 +15,8 @@ module.exports = class extends Events {
 		var {log, debug, symbol, ...options} = options;
 
         console.log('SYMBIL', symbol);
-        
+        console.log('OPTIONS', options);
+
 		super();
 
         this.debug = typeof debug == 'function' ? debug : (debug ? console.log : () => {});
