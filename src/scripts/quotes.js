@@ -99,13 +99,10 @@ module.exports = class extends Events {
 
                 this.fetchQuote().then((quote) => {
                     if (this.cache && this.cache.quote && this.cache.quote.time == quote.time) {
-                        this.cache = {quote:quote, timestamp: new Date()};
-
                         this.setMarketState(MARKET_CLOSED);
+                        this.setQuote(quote);
                     }
                     else {
-                        this.cache = {quote:quote, timestamp: new Date()};
-
                         this.setMarketState(MARKET_OPEN);
                         this.setQuote(quote);
                     }
