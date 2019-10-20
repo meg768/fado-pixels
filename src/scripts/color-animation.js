@@ -8,7 +8,7 @@ module.exports = class extends Animation {
 
         super(options);
 
-        this.color = Color(color);
+        this.color = Color(color).rgbNumber();
         this.renderOptions = renderOptions;
     }
 
