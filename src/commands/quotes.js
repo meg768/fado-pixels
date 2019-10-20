@@ -18,7 +18,7 @@ class QuoteCommand extends Command {
 
 	run(argv) {
 		var Quotes = require('../scripts/quotes.js');
-		var quotes = new Quotes(argv);
+		var quotes = new Quotes({argv, ...{log:this.log, debug:this.debug}});
 
 		quotes.startMonitoring();
 
