@@ -26,7 +26,7 @@ class SpyCommand extends Command {
 		var button = new Button({debug: debug, autoEnable: true, pin: 6});
 		var fado = new Fado({debug: debug});
 		var state = 'on';
-
+/*
 
 		quotes.on('marketOpen', () => {
 			fado.blink({color:'green', duration:-1});	
@@ -58,7 +58,7 @@ class SpyCommand extends Command {
 			fado.color({color:color, duration:-1, priority:'!'});
 
 		});
-
+*/
 		quotes.startMonitoring();
 		fado.color({color:'purple', renderFrequency:10000});
 		/*
