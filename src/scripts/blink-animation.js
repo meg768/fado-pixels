@@ -28,4 +28,3 @@ module.exports = class extends Animation {
 
 
 }
-x
