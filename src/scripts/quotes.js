@@ -12,8 +12,10 @@ module.exports = class extends Events {
         console.log(options);
         console.log('Quote Options------------------');
 
-		var {log, debug, symbol = 'SPY', ...options} = options;
+		var {log, debug, symbol, ...options} = options;
 
+        console.log('SYMBIL', symbol);
+        
 		super();
 
         this.debug = typeof debug == 'function' ? debug : (debug ? console.log : () => {});
