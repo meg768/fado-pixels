@@ -20,14 +20,13 @@ class SpyCommand extends Command {
 		var button = new Button({debug: argv.debug, autoEnable: true, pin: 6});
 		var fado = new Fado({debug: argv.debug});
 		var state = 'on';
-		var defaultOptions = { ...argv, pixels: pixels };
 
 		button.on('click', (clicks) => {
 			if (state == 'on') {
-				fado.color({ ...defaultOptions, renderFrequency: 10000, renderOptions: { transition: 'fade', duration: 500 }, duration: -1, color: 'black', priority: '!' });
+				fado.color({ ...argv, renderFrequency: 10000, renderOptions: { transition: 'fade', duration: 500 }, duration: -1, color: 'black', priority: '!' });
 			}
 			else {
-				fado.spy({ ...defaultOptions, symbol: argv.symbol, priority: '!' });
+				fado.spy({ ...argv, symbol: argv.symbol, priority: '!' });
 			}
 
 
@@ -35,7 +34,7 @@ class SpyCommand extends Command {
 			this.debug(`Button clicked, state is now ${state}...`);
 		});
 
-		fado.spy({ ...defaultOptions, symbol: argv.symbol, priority: '!' });
+		fado.spy({ ...argv, symbol: argv.symbol, priority: '!' });
 
 	}
 
