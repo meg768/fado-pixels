@@ -62,24 +62,18 @@ module.exports = class extends Events {
             })
 		})
 	}
-/*
-    getLastQuote() {
-        // Check if last quote is valid
-        if (this.cache && this.cache.quote && this.cache.timestamp && (now - this.cache.timestamp) < this.fetchFrequency) {
-            this.debug(`Cache contains valid quote. Returning cached quote. Fetching in about ${Math.floor((this.fetchFrequency - (now - cache.timestamp)) / 1000)} seconds.`);
-            return cache.quote;
-        }
 
-        return null;
-    }
-*/
 
     setMarketState(marketState) {
         if (marketState == this.marketState)
             return;
 
-        this.emit(marketState);
+        this.emit(marketState, this.symbol);
         this.marketState = marketState;
+    }
+
+    setQuote(quote) {
+        this.emit('quote', quote);
     }
 
 
@@ -105,7 +99,7 @@ module.exports = class extends Events {
                         this.cache = {quote:quote, timestamp: new Date()};
 
                         this.setMarketState('marketOpen');
-                        this.emit('quote', quote);
+                        this.setQuote(quote);
                     }
                 })
                 .catch((error) => {
