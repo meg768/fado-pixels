@@ -55,12 +55,12 @@ class SpyCommand extends Command {
 			}
 
 			var color = computeColorFromQuote(quote);
-			fado.color({color:color, duration:-1, priority:'!'});
+			fado.color({color:color, renderFrequency:1000, duration:-1, priority:'!'});
 
 		});
 
 		quotes.startMonitoring();
-		fado.color({color:'purple', renderFrequency:10000});
+		fado.color({color:'purple', renderFrequency:1000});
 		/*
 		button.on('click', (clicks) => {
 			if (state == 'on') {
