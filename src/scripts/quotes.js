@@ -97,8 +97,10 @@ module.exports = class extends Events {
             if (!this.isFetching) {
                 this.isFetching = true;
 
+                this.debug(this.cache);
+
                 this.fetchQuote().then((quote) => {
-                    if (this.cache && this.cache.quote && this.cache.quote.time == quote.time) {
+                    if (this.cache && this.cache.quote && this.cache.quote.time.valueOf() == quote.time.valueOf()) {
                         this.setMarketState(MARKET_CLOSED);
                         this.setQuote(quote);
                     }
