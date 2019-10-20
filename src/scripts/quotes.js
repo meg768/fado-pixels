@@ -72,6 +72,7 @@ module.exports = class extends Events {
     }
 
     setQuote(quote) {
+        this.debug('Emitting quote', JSON.stringify(quote));
         this.emit('quote', quote);
     }
 
