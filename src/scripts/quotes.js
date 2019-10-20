@@ -52,7 +52,6 @@ module.exports = class extends Events {
                 quote.name = quote.name.replace(/&amp;/g, '&');
 
                 this.log(sprintf('Fetched quote from Yahoo for symbol %s (%s%.2f%%). Took %d ms.', quote.symbol, quote.change >= 0 ? '+' : '-', parseFloat(Math.abs(quote.change)), now - start));
-                this.debug(quote);
 
                 resolve(quote);
 
