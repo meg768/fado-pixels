@@ -38,6 +38,7 @@ module.exports = class extends Events {
             this.debug(`Fetching quotes for ${symbol}...`);
 
             Yahoo.quote(options).then((data) => {
+                this.debug(`Got quotes for ${symbol}...`);
 
                 var now = new Date();
                 var quote = {};
