@@ -77,6 +77,9 @@ module.exports = class extends Events {
 
         this.stopMonitoring();
 
+        var rule = new Schedule.RecurrenceRule();
+        rule.second = 0;
+
         this.job = Schedule.scheduleJob(rule, () => {
             if (!this.isFetching) {
                 this.isFetching = true;
