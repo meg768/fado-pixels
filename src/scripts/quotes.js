@@ -107,43 +107,5 @@ module.exports = class extends Events {
 
     }
 
-    loop() {
-        var now = new Date();
-
-        var render = (quote) => {
-            var color = this.computeColorFromQuote(quote);
-
-            this.pixels.fill(color);
-            this.pixels.render({transition:'fade', duration:500});
-
-        };
-
-        // Check if last quote is valid
-        if (cache && cache.quote && cache.timestamp && (now - cache.timestamp) < this.fetchFrequency) {
-            this.debug(`Cache contains valid quote. Returning cached quote. Fetching in about ${Math.floor((this.fetchFrequency - (now - cache.timestamp)) / 1000)} seconds.`);
-            render(cache.quote);
-        }
-        else {
-            // Fetch if not alredy fetching...
-            if (!this.isFetching) {
-                render(cache && cache.quote ? cache.quote : null);
-
-                this.isFetching = true;
-
-                this.fetchQuote(this.symbol).then((quote) => {
-                    cache = {quote:quote, timestamp: new Date()};
-                    render(quote);
-                })
-                .catch((error) => {
-                    this.log(error);
-                })
-                .then(() => {
-                    this.isFetching = false;
-                });    
-            }
-        }
-
-    }
-
 
 }

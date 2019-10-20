@@ -21,6 +21,16 @@ class QuoteCommand extends Command {
 
 		quotes.startMonitoring();
 
+		quotes.on('quote', () => {
+			this.log('Got quote.');
+			this.log(JSON.stringify(quote), null, '    ');
+		});
+		
+		quotes.on('marketClosed', () => {
+			this.log(`Market closed for symbol ${quotes.symbol}...`);
+			this.log(JSON.stringify(quote), null, '    ');
+		});
+
 	}
 }
 
