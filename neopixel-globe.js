@@ -4,11 +4,8 @@ require('yow/logs').prefix();
 
 var debug = console.log;
 
-debug('Loading dotenv...');
 require('dotenv').config();
-debug('Loading yargs...');
 require('yargs');
-debug('Finished loading...');
 
 
 
