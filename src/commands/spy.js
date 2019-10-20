@@ -60,7 +60,8 @@ class SpyCommand extends Command {
 		});
 
 		quotes.startMonitoring();
-/*
+		fado.blink();			
+		/*
 		button.on('click', (clicks) => {
 			if (state == 'on') {
 				fado.color({renderFrequency: 10000, renderOptions: { transition: 'fade', duration: 500 }, duration: -1, color: 'black', priority: '!' });
