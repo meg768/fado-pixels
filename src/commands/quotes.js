@@ -22,7 +22,7 @@ class QuoteCommand extends Command {
 
 		quotes.startMonitoring();
 
-		quotes.on('quote', () => {
+		quotes.on('quote', (quote) => {
 			this.log('Got quote.');
 			this.log(JSON.stringify(quote), null, '    ');
 		});
