@@ -1,27 +1,10 @@
 
-var Animation = require('rpi-animations').Animation;
-var Sleep     = require('sleep');
-/*
-
-module.exports = class extends Animation {
-
-    constructor(options) {
-        var {pixels, ...options} = options;
-
-        super(options);
-
-        this.pixels = pixels;
-    }
-
-    sleep(ms) {
-        Sleep.msleep(ms);
-    }
-}
-*/
-
+var Sleep = require('sleep');
 var Events = require('events');
 
-module.exports = class Animation extends Events {
+//var Animation = require('rpi-animations').Animation;
+
+class Animation extends Events {
 
     constructor(options = {}) {
         super();
@@ -160,3 +143,18 @@ module.exports = class Animation extends Events {
     }
 }
 
+
+module.exports = class extends Animation {
+
+    constructor(options) {
+        var {pixels, ...options} = options;
+
+        super(options);
+
+        this.pixels = pixels;
+    }
+
+    sleep(ms) {
+        Sleep.msleep(ms);
+    }
+}
