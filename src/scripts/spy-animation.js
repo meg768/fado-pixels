@@ -108,7 +108,7 @@ module.exports = class SpyAnimation extends Animation {
 
                 this.fetchQuote(this.symbol).then((quote) => {
                     cache = {quote:quote, timestamp: new Date()};
-                    this.render();
+                    render(quote);
                 })
                 .catch((error) => {
                     this.log(error);
