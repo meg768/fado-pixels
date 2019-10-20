@@ -1,5 +1,3 @@
-console.log(`Loading ${__filename}...`);
-
 
 
 module.exports = class Command {
@@ -49,5 +47,3 @@ module.exports = class Command {
 	run(argv) {
 	}
 }
-
-console.log(`Finished loading ${__filename}...`);

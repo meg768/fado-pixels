@@ -1,4 +1,4 @@
-console.log(`Loading ${__filename}...`);
+
 
 var Command = require('../scripts/command.js');
 
@@ -26,5 +26,3 @@ class KnockCommand extends Command {
 }
 
 new KnockCommand();
-
-console.log(`Finished loading ${__filename}...`);
