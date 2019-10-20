@@ -4,7 +4,6 @@ class QuoteCommand extends Command {
 
 	constructor() {
 		var defaults = {
-			symbol: '^OMX'
 		};
 
 		super({module:module, name: 'quotes', description:'Test quotes', defaults:defaults});
@@ -13,7 +12,7 @@ class QuoteCommand extends Command {
 	}
 
 	defineArgs(args) {
-		args.option('symbol', {describe:'Symbol to fetch', default:'SPY'});
+		args.option('symbol', {describe:'Symbol to fetch', default:'^OMX'});
 	}
 
 
