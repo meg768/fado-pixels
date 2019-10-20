@@ -4,6 +4,7 @@ class QuoteCommand extends Command {
 
 	constructor() {
 		var defaults = {
+			symbol: '^OMX'
 		};
 
 		super({module:module, name: 'quotes', description:'Test quotes', defaults:defaults});
