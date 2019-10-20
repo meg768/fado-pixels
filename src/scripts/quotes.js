@@ -61,7 +61,7 @@ module.exports = class extends Events {
             })
 		})
 	}
-
+/*
     getLastQuote() {
         // Check if last quote is valid
         if (this.cache && this.cache.quote && this.cache.timestamp && (now - this.cache.timestamp) < this.fetchFrequency) {
@@ -71,20 +71,20 @@ module.exports = class extends Events {
 
         return null;
     }
-
+*/
     startMonitoring() {
         var Schedule = require('node-schedule');
 
         this.stopMonitoring();
 
         var rule = new Schedule.RecurrenceRule();
-        rule.second = 0;
+        rule.second = [0, 30];
 
         this.job = Schedule.scheduleJob(rule, () => {
             if (!this.isFetching) {
                 this.isFetching = true;
 
-                this.fetchQuote(this.symbol).then((quote) => {
+                this.fetchQuote().then((quote) => {
 //                    if (this.cache && this.cache.quote && this.cache.quote.time == quote.time) {
   //                      this.emit('marketClosed', quote);
     //                }
