@@ -1,5 +1,5 @@
 var Color = require('color');
-var Animation = require('./pixel-animation.js');
+var Animation = require('./animation.js');
 
 module.exports = class extends Animation {
 
@@ -8,16 +8,7 @@ module.exports = class extends Animation {
 
         super(options);
 
-        if (typeof color == 'string') {
-            try {
-                color = Color(color).rgbNumber();
-            }
-            catch (error) {
-                this.debug('Invalid color value.');
-            }
-        }
-
-        this.color = color;
+        this.color = Color(color);
         this.renderOptions = renderOptions;
     }
 

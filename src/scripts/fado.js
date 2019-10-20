@@ -6,7 +6,8 @@ module.exports = class Fado {
 		var Neopixels        = require('../scripts/neopixels.js');
 		var AnimationQueue   = require('rpi-animations').Queue;
 
-		this.debug   = debug;
+
+		this.debug   = typeof debug == 'function' ? debug : (debug ? console.log : () => {});
 		this.pixels  = new Neopixels({debug:debug});
 		this.queue   = new AnimationQueue({debug:debug});
 	}
