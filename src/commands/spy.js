@@ -29,11 +29,11 @@ class SpyCommand extends Command {
 
 
 		quotes.on('marketOpen', () => {
-			fado.blink();
+			fado.blink({color:'green', duration:-1});	
 		});
 
 		quotes.on('marketClose', () => {
-			fado.blink();			
+			fado.blink({color:'yellow', duration:-1});	
 		});
 
 		quotes.on('quote', (quote) => {
@@ -55,7 +55,7 @@ class SpyCommand extends Command {
 			}
 
 			var color = computeColorFromQuote(quote);
-			fado.color({color:color});
+			fado.color({color:color, duration:-1, priority:'!'});
 
 		});
 
