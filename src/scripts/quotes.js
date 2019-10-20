@@ -44,7 +44,7 @@ module.exports = class extends Events {
                 quote.exchange = data.price.exchangeName;
                 quote.type = data.price.quoteType.toLowerCase().replace(/\b\w/g, l => l.toUpperCase());
                 quote.change = data.price.regularMarketChangePercent * 100;
-                quote.time = data.price.regularMarketTime;
+                quote.time = new Date(data.price.regularMarketTime);
                 quote.price = data.price.regularMarketPrice;
 
                 // Fix some stuff
@@ -85,6 +85,9 @@ module.exports = class extends Events {
                 this.isFetching = true;
 
                 this.fetchQuote(this.symbol).then((quote) => {
+//                    if (this.cache && this.cache.quote && this.cache.quote.time == quote.time) {
+  //                      this.emit('marketClosed', quote);
+    //                }
                     this.cache = {quote:quote, timestamp: new Date()};
 
                     this.emit('quote', quote);
