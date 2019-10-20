@@ -66,12 +66,11 @@ module.exports = class extends Events {
 		})
 	}
 
-
     setMarketState(marketState) {
         if (marketState == this.marketState)
             return;
 
-        this.debug(`Changing market to ${marketState}...`);
+        this.debug(`Changing market state to ${marketState}...`);
         this.emit(marketState, this.symbol);
         this.marketState = marketState;
     }
@@ -106,6 +105,7 @@ module.exports = class extends Events {
                     else {
                         this.setMarketState(MARKET_OPEN);
                         this.setQuote(quote);
+
                     }
                 })
                 .catch((error) => {
