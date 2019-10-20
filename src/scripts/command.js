@@ -19,7 +19,7 @@ module.exports = class Command {
 			yargs.wrap(null);
 			yargs.option('help',  {describe:'Display help', default:false});
 			yargs.option('debug', {describe:'Debug mode', boolean:true, default:true});
-	
+
 
 			this.defineArgs(yargs);
 		};
