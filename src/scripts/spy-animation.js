@@ -38,12 +38,9 @@ module.exports = class SpyAnimation extends Animation {
 
 
     fetchQuote(symbol) {
+        var Yahoo = require('yahoo-finance');
 
-		return new Promise((resolve, reject) => {
-            this.debug('Loading yahoo-finance...');
-            var Yahoo = require('yahoo-finance');
-            this.debug('Done loading yahoo-finance...');
-    
+		return new Promise((resolve, reject) => {    
             var options = {};
             var start = new Date();
 
@@ -100,10 +97,10 @@ module.exports = class SpyAnimation extends Animation {
             render(cache.quote);
         }
         else {
-            render(null);
-
             // Fetch if not alredy fetching...
             if (!this.isFetching) {
+                render(null);
+
                 this.isFetching = true;
 
                 this.fetchQuote(this.symbol).then((quote) => {
