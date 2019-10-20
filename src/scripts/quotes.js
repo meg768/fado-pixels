@@ -71,6 +71,7 @@ module.exports = class extends Events {
         if (marketState == this.marketState)
             return;
 
+        this.debug(`Changing market to ${marketState}...`);
         this.emit(marketState, this.symbol);
         this.marketState = marketState;
     }
