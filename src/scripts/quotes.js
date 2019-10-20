@@ -8,14 +8,7 @@ var MARKET_QUOTE  = 'quote';
 module.exports = class extends Events {
 
 	constructor(options) {
-        console.log('Quote Options');
-        console.log(options);
-        console.log('Quote Options------------------');
-
 		var {log, debug, symbol, ...options} = options;
-
-        console.log('SYMBIL', symbol);
-        console.log('OPTIONS', options);
 
 		super();
 

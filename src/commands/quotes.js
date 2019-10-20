@@ -8,8 +8,6 @@ class QuoteCommand extends Command {
 		};
 
 		super({module:module, name: 'quotes', description:'Test quotes', defaults:defaults});
-
-
 	}
 
 	defineArgs(args) {
@@ -26,7 +24,7 @@ class QuoteCommand extends Command {
 		quotes.startMonitoring();
 
 		quotes.on('quote', (quote) => {
-			this.log(`Got quote for symbol ${quotes.symbol}...`);
+			this.log(`Got quote for symbol ${quote.symbol}...`);
 		});
 
 		quotes.on('marketClose', (symbol) => {
