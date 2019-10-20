@@ -38,10 +38,12 @@ module.exports = class SpyAnimation extends Animation {
 
 
     fetchQuote(symbol) {
-        var Yahoo = require('yahoo-finance');
 
 		return new Promise((resolve, reject) => {
-
+            this.debug('Loading yahoo-finance...');
+            var Yahoo = require('yahoo-finance');
+            this.debug('Done loading yahoo-finance...');
+    
             var options = {};
             var start = new Date();
 
@@ -70,7 +72,7 @@ module.exports = class SpyAnimation extends Animation {
 
                 this.log(sprintf('Fetched quote from Yahoo for symbol %s (%s%.2f%%). Took %d ms.', quote.symbol, quote.change >= 0 ? '+' : '-', parseFloat(Math.abs(quote.change)), now - start));
                 this.debug(quote);
-                
+
                 resolve(quote);
 
             })
