@@ -1,5 +1,4 @@
 var Command = require('../scripts/command.js');
-var Color = require('color');
 
 class SpyCommand extends Command {
 
@@ -15,11 +14,13 @@ class SpyCommand extends Command {
 	}
 
 	run(argv) {
+		var Color = require('color');
+		var Button = require('pigpio-button');
+		var Fado = require('../scripts/fado.js');
+		var Quotes = require('../scripts/quotes.js');
+
 		var {debug, symbol} = argv;
 
-		var Fado = require('../scripts/fado.js');
-		var Button = require('pigpio-button');
-		var Quotes = require('../scripts/quotes.js');
 
 		var quotes = new Quotes({debug:debug, symbol:symbol});
 		var button = new Button({debug: debug, autoEnable: true, pin: 6});
