@@ -23,7 +23,7 @@ class QuoteCommand extends Command {
 		quotes.startMonitoring();
 
 		quotes.on('quote', (quote) => {
-			this.log('Got quote.');
+			this.log(`Got quote for symbol ${quotes.symbol}...`);
 			this.log(JSON.stringify(quote, null, '    '));
 		});
 
