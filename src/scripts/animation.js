@@ -20,7 +20,7 @@ class Animation extends Events {
         this.renderTime      = undefined;
         this.debug           = typeof debug === 'function' ? debug : (debug ? console.log : () => {});
 
-        this.debug(options);
+        this.debug(this);
 
     }
 
