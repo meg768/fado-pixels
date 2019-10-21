@@ -36,7 +36,7 @@ class SpyCommand extends Command {
 				fado.color({color:offlineColor, fade:500, renderFrequency:10000, duration:-1, priority: '!'});
 			}
 			else {
-				fado.pulse({duration: -1, interval:500, color: offlineColor, priority: '!'});
+				fado.color({color:offlineColor, fade:500, renderFrequency:10000, duration:-1, priority: '!'});
 			}
 
 			state = (state == 'on') ? 'off' : 'on';
