@@ -20,6 +20,8 @@ class Animation extends Events {
         this.renderTime      = undefined;
         this.debug           = typeof debug === 'function' ? debug : (debug ? console.log : () => {});
 
+        this.debug(options);
+
     }
 
     render() {
@@ -63,7 +65,7 @@ class Animation extends Events {
 
             var render = () => {
                 var now = new Date();
-                
+
                 if (this.renderFrequency == undefined || this.renderFrequency == 0 || this.renderTime == undefined || now - this.renderTime >= this.renderFrequency) {
                     this.debug(`Rendering ${this.name}...`);
                     this.render();
