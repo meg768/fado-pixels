@@ -27,6 +27,10 @@ class SpyCommand extends Command {
 		var fado = new Fado({debug: debug});
 		var state = 'on';
 
+		fado.queue.on('idle', () => {
+			fado.color({color:offlineColor, fade:500, duration:-1});
+		});
+
 		button.on('click', (clicks) => {
 			if (state == 'on') {
 				fado.color({fade:500, iterations:1, color: 'black', priority: '!'});

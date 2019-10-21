@@ -63,15 +63,18 @@ class Animation extends Events {
 
 
     loop() {
-        this.debug('Running loop', this.name);
+        this.debug(`Running loop ${this.name}...`);
         var start = new Date();
 
         return new Promise((resolve, reject) => {
 
             var render = () => {
-                this.debug('Rendering...');
-                this.render();
-                this.renderTime = new Date();
+                if (this.renderFrequency == undefined || this.renderFrequency == 0 || now - this.renderTime >= this.renderFrequency) {
+                    this.debug(`Rendering ${this.name}...`);
+                    this.render();
+                    this.renderTime = new Date();
+                }
+
             };
 
             var loop = () => {
@@ -90,13 +93,10 @@ class Animation extends Events {
                     resolve();
                 }
                 else {
-                    var now = new Date();
+                    render();
 
-                    if (this.iterations || this.renderFrequency == undefined || this.renderFrequency == 0 || now - this.renderTime >= this.renderFrequency) {
-                        render();
-                    }
-
-                    this.iteration++;
+                    if (this.iterations != undefined)
+                        this.iteration++;
 
                     setImmediate(loop);
                 }
