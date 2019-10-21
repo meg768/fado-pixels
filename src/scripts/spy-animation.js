@@ -30,7 +30,6 @@ module.exports = class SpyAnimation extends Animation {
             var luminance  = 25 + (Math.abs(change) * 25);
     
             color = Color.hsl(hue, saturation, luminance).rgbNumber();
-    
         }
 
         return color;

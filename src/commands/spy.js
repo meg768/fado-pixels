@@ -21,6 +21,7 @@ class SpyCommand extends Command {
 
 		var {debug, symbol} = argv;
 
+		var offlineColor = Color('purple').rgbNumber();
 		var quotes = new Quotes({debug:debug, symbol:symbol});
 		var button = new Button({debug: debug, autoEnable: true, pin: 6});
 		var fado = new Fado({debug: debug});
@@ -28,10 +29,12 @@ class SpyCommand extends Command {
 
 		quotes.on('marketOpened', () => {
 			fado.pulse({color:'blue', antiColor:'black', interval:1000, iterations:5});	
+			fado.color({color:offlineColor, fade:500, duration:-1, renderFrequency:10000});
 		});
 
 		quotes.on('marketClosed', () => {
-			fado.pulse({color:'red', antiColor:'black', interval:1000, iterations:5});	
+			fado.pulse({color:'red', antiColor:'black', interval:1000, iterations:5});
+			fado.color({color:offlineColor, fade:500, duration:-1, renderFrequency:10000});
 		});
 
 		quotes.on('quote', (quote) => {
@@ -58,7 +61,7 @@ class SpyCommand extends Command {
 		});
 
 		quotes.startMonitoring();
-		fado.color({color:'purple', fade:500, renderFrequency:1000});
+		fado.color({color:offlineColor, fade:500, duration:-1, renderFrequency:10000});
 		/*
 		button.on('click', (clicks) => {
 			if (state == 'on') {
