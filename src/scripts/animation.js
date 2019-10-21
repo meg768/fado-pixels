@@ -17,15 +17,8 @@ class Animation extends Events {
         this.duration        = duration;
         this.iterations      = iterations;
         this.renderFrequency = renderFrequency;
-        this.renderTime      = 0;
-        this.debug           = () => {};
-
-        if (typeof debug === 'function') {
-            this.debug = debug;
-        }
-        else if (debug) {
-            this.debug = console.log;
-        }
+        this.renderTime      = undefined;
+        this.debug           = typeof debug === 'function' ? debug : (debug ? console.log : () => {});
 
     }
 
@@ -39,7 +32,7 @@ class Animation extends Events {
         return new Promise((resolve, reject) => {
 
             this.cancelled  = false;
-            this.renderTime = 0;
+            this.renderTime = undefined;
             this.iteration  = 0;
 
             this.debug('Animation', this.name, 'started.');
@@ -69,7 +62,7 @@ class Animation extends Events {
         return new Promise((resolve, reject) => {
 
             var render = () => {
-                if (this.renderFrequency == undefined || this.renderFrequency == 0 || now - this.renderTime >= this.renderFrequency) {
+                if (this.renderFrequency == undefined || this.renderFrequency == 0 || this.renderTime == undefined || now - this.renderTime >= this.renderFrequency) {
                     this.debug(`Rendering ${this.name}...`);
                     this.render();
                     this.renderTime = new Date();

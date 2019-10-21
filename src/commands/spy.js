@@ -45,12 +45,12 @@ class SpyCommand extends Command {
 
 		quotes.on('marketOpened', () => {
 			fado.pulse({color:'blue', antiColor:'black', interval:1000, iterations:5, priority: '!'});	
-			fado.color({color:offlineColor, fade:500, duration:-1, renderFrequency:10000});
+			fado.color({color:offlineColor, fade:500, duration:-1});
 		});
 
 		quotes.on('marketClosed', () => {
 			fado.pulse({color:'red', antiColor:'black', interval:1000, iterations:5, priority: '!'});
-			fado.color({color:offlineColor, fade:500, duration:-1, renderFrequency:10000});
+			fado.color({color:offlineColor, fade:500, duration:-1});
 		});
 
 		quotes.on('quote', (quote) => {
@@ -76,7 +76,7 @@ class SpyCommand extends Command {
 		});
 
 		quotes.startMonitoring();
-		fado.color({color:offlineColor, fade:500, duration:-1, renderFrequency:10000});
+		fado.color({color:offlineColor, fade:500, duration:-1});
 
 
 	}
