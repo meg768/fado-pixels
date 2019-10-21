@@ -72,7 +72,7 @@ class SpyCommand extends Command {
 			}
 
 			var color = computeColorFromQuote(quote);
-			fado.color({color:color, fade:500, renderFrequency:10000, duration:-1, priority:'highXXX'});
+			fado.color({color:color, fade:500, renderFrequency:10000, duration:-1, priority:'!'});
 		});
 
 		quotes.startMonitoring();
