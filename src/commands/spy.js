@@ -27,13 +27,25 @@ class SpyCommand extends Command {
 		var fado = new Fado({debug: debug});
 		var state = 'on';
 
+		button.on('click', (clicks) => {
+			if (state == 'on') {
+				fado.color({fade:500, iterations:1, color: 'black', priority: '!'});
+			}
+			else {
+				fado.pulse({duration: -1, color: offlineColor, priority: '!' });
+			}
+
+			state = (state == 'on') ? 'off' : 'on';
+			this.debug(`Button clicked, state is now ${state}...`);
+		});
+
 		quotes.on('marketOpened', () => {
-			fado.pulse({color:'blue', antiColor:'black', interval:1000, iterations:5});	
+			fado.pulse({color:'blue', antiColor:'black', interval:1000, iterations:5, priority: '!'});	
 			fado.color({color:offlineColor, fade:500, duration:-1, renderFrequency:10000});
 		});
 
 		quotes.on('marketClosed', () => {
-			fado.pulse({color:'red', antiColor:'black', interval:1000, iterations:5});
+			fado.pulse({color:'red', antiColor:'black', interval:1000, iterations:5, priority: '!'});
 			fado.color({color:offlineColor, fade:500, duration:-1, renderFrequency:10000});
 		});
 
@@ -57,24 +69,11 @@ class SpyCommand extends Command {
 
 			var color = computeColorFromQuote(quote);
 			fado.color({color:color, fade:500, renderFrequency:1000, duration:-1, priority:'!'});
-
 		});
 
 		quotes.startMonitoring();
 		fado.color({color:offlineColor, fade:500, duration:-1, renderFrequency:10000});
-		/*
-		button.on('click', (clicks) => {
-			if (state == 'on') {
-				fado.color({renderFrequency: 10000, renderOptions: { transition: 'fade', duration: 500 }, duration: -1, color: 'black', priority: '!' });
-			}
-			else {
-			}
 
-
-			state = (state == 'on') ? 'off' : 'on';
-			this.debug(`Button clicked, state is now ${state}...`);
-		});
-*/
 
 	}
 
