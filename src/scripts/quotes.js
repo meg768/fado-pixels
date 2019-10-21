@@ -1,8 +1,8 @@
 var sprintf = require('yow/sprintf');
 var Events = require('events');
 
-var MARKET_OPEN   = 'marketOpen';
-var MARKET_CLOSED = 'marketClose';
+var MARKET_OPENED = 'marketOpened';
+var MARKET_CLOSED = 'marketClosed';
 var MARKET_QUOTE  = 'quote';
 
 module.exports = class extends Events {
@@ -87,7 +87,7 @@ module.exports = class extends Events {
     setQuote(quote) {
         this.cache = {quote:quote, timestamp: new Date()};
 
-        if (this.marketState == MARKET_OPEN) {
+        if (this.marketState == MARKET_OPENED) {
             this.debug('Emitting quote', JSON.stringify(quote));
             this.emit(MARKET_QUOTE, quote);    
         }
@@ -110,7 +110,7 @@ module.exports = class extends Events {
                     if (this.cache && this.cache.quote && this.cache.quote.time.valueOf() == quote.time.valueOf())
                         this.setMarketState(MARKET_CLOSED);
                     else 
-                        this.setMarketState(MARKET_OPEN);
+                        this.setMarketState(MARKET_OPENED);
 
                     this.setQuote(quote);
                 })

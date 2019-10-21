@@ -4,23 +4,19 @@ var Animation = require('./animation.js');
 module.exports = class extends Animation {
 
     constructor(options) {
-        var {renderOptions = undefined, color = 'red', ...options} = options;
+        var {fade = undefined, color = 'red', ...options} = options;
 
         super(options);
 
         this.color = Color(color).rgbNumber();
-        this.renderOptions = renderOptions;
-    }
-
-    getColor() {
-        return this.color;
+        this.fade = fade;
     }
 
     render() {
-        this.pixels.fill(this.getColor());
+        this.pixels.fill(this.color);
 
-        if (this.renderOptions)
-            this.pixels.render(this.renderOptions);
+        if (this.fade)
+            this.pixels.render({transition:'fade', duration:fade});
         else
             this.pixels.render();
 
