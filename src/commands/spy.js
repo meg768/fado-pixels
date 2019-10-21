@@ -33,7 +33,7 @@ class SpyCommand extends Command {
 
 		button.on('click', (clicks) => {
 			if (state == 'on') {
-				fado.color({color:offlineColor, fade:500, renderFrequency:10000, duration:-1, priority: '!'});
+				fado.color({color:'black', fade:500, renderFrequency:10000, duration:-1, priority: '!'});
 			}
 			else {
 				fado.color({color:offlineColor, fade:500, renderFrequency:10000, duration:-1, priority: '!'});
