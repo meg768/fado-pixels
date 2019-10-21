@@ -26,7 +26,7 @@ class SpyCommand extends Command {
 		var button = new Button({debug: debug, autoEnable: true, pin: 6});
 		var fado = new Fado({debug: debug});
 		var state = 'on';
-
+/*
 		fado.queue.on('idle', () => {
 			fado.color({color:offlineColor, fade:500, duration:-1});
 		});
@@ -74,7 +74,7 @@ class SpyCommand extends Command {
 			var color = computeColorFromQuote(quote);
 			fado.color({color:color, fade:500, renderFrequency:1000, duration:-1, priority:'!'});
 		});
-
+*/
 		quotes.startMonitoring();
 		fado.color({color:offlineColor, fade:500, duration:-1});
 		fado.color({color:offlineColor, fade:500, duration:-1});
