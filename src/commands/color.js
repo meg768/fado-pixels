@@ -25,7 +25,7 @@ class ColorCommand extends Command {
 		var ColorAnimation   = require('../scripts/color-animation.js');
 		
 		var queue      = new AnimationQueue({debug:argv.debug});
-		var options    = {pixels:new Neopixels(), renderFrequency:1000, priority:'!', ...argv};	
+		var options    = {pixels:new Neopixels(), renderFrequency:0, priority:'!', ...argv};	
 		var animation  = new ColorAnimation(options);
 	
 		queue.enqueue(animation);
