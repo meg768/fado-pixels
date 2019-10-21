@@ -62,10 +62,12 @@ class Animation extends Events {
         return new Promise((resolve, reject) => {
 
             var render = () => {
+                var now = new Date();
+                
                 if (this.renderFrequency == undefined || this.renderFrequency == 0 || this.renderTime == undefined || now - this.renderTime >= this.renderFrequency) {
                     this.debug(`Rendering ${this.name}...`);
                     this.render();
-                    this.renderTime = new Date();
+                    this.renderTime = now;
                 }
 
             };
