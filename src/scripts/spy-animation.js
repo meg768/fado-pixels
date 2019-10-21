@@ -9,7 +9,7 @@ module.exports = class SpyAnimation extends Animation {
 	constructor(options) {
 		var {symbol = 'SPY', ...options} = options;
 
-		super({name:'Spy Animation', renderFrequency: 10000, ...options});
+		super({name:'SpyAnimation', renderFrequency: 10000, ...options});
 
 		this.log = console.log;
         this.debug = console.log;

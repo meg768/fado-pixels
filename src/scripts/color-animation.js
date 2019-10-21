@@ -6,7 +6,7 @@ module.exports = class extends Animation {
     constructor(options) {
         var {fade = undefined, color = 'red', ...options} = options;
 
-        super(options);
+        super({name:'ColorAnimation', ...options});
 
         this.color = Color(color).rgbNumber();
         this.fade = fade;

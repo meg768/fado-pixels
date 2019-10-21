@@ -4,7 +4,7 @@ var Color = require('color');
 module.exports = class extends Animation {
 
     constructor(options) {        
-        super({name:'Clock Animation', renderFrequency: 15000, ...options});
+        super({name:'ClockAnimation', renderFrequency: 15000, ...options});
     }
 
     getHue() {
