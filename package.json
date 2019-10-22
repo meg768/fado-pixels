@@ -24,7 +24,7 @@
     "pigpio-button": "^1.0.0",
     "pigpio-vma309": "^1.0.10",
     "rpi-animations": "^1.0.12",
-    "rpi-neopixels": "^1.0.74",
+    "rpi-neopixels": "^1.0.76",
     "node-schedule": "^1.3.2",
     "sleep": "^6.1.0",
     "socket.io-client": "^2.0.3",
