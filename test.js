@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-var merge = require('./src/scripts/merge.js');
+var merge = require('yow/merge');
 
 var a = {
 	a:10,

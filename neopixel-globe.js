@@ -18,7 +18,7 @@ var App = function() {
 		var path = require('path');
 		var parts = path.parse(__filename);
 		var config = require('./src/scripts/config.js');
-		var merge = require('./src/scripts/merge.js');
+		var merge = require('yow/merge');
 
 		var localConfigFile = path.join(parts.dir, parts.name + '.json');
 		var bootConfigFile  = path.join('/boot', parts.name + '.json');

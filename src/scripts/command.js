@@ -4,7 +4,7 @@ module.exports = class Command {
 
 	constructor(options) {
 		var config = require('./config.js');
-		var merge = require('./merge.js');
+		var merge = require('yow/merge');
 
 		var {module, name, description, aliases, defaults} = options;
 
