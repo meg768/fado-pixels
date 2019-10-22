@@ -15,7 +15,7 @@ module.exports = class extends Animation {
     }
 
     render() {
-        var duration = Math.floor(this.interval);
+        var duration = Math.floor(this.interval / 2);
 
         this.pixels.fill(this.color);
         this.pixels.render();
@@ -24,6 +24,8 @@ module.exports = class extends Animation {
 
         this.pixels.fill(this.antiColor);
         this.pixels.render();
+        
+        this.sleep(duration);
     }
 
 
