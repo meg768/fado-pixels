@@ -30,6 +30,6 @@
     "socket.io-client": "^2.0.3",
     "yargs": "^14.2.0",
     "yahoo-finance": "^0.3.6",
-    "yow": "^1.0.84"
+    "yow": "^1.0.107"
   }
 }

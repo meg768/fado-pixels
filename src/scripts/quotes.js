@@ -1,4 +1,5 @@
 var sprintf = require('yow/sprintf');
+var range = require('yow/range');
 var Events = require('events');
 
 var MARKET_OPENED = 'marketOpened';
@@ -100,7 +101,7 @@ module.exports = class extends Events {
         this.stopMonitoring();
 
         var rule = new Schedule.RecurrenceRule();
-        rule.second = [0, 30];
+        rule.minute = range(0, 60, 5);
 
         this.job = Schedule.scheduleJob(rule, () => {
             if (!this.isFetching) {
