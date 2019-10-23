@@ -2,7 +2,6 @@
 module.exports = class prefixedConsole   {
 
 	constructor(prefix) {
-		super();
 
 		if (prefix == undefined) {
 			prefix = function() {
