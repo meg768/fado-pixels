@@ -3,7 +3,7 @@ module.exports = function(fn) {
 
 	var sprintf = require('yow/sprintf');
 	var isFunction = require('yow/isFunction');
-	var methodsNames = ['log', 'error', 'warn', 'info'];
+	var methodsNames = ['log', 'error', 'warn', 'info', 'debug'];
 
 	if (fn == undefined) {
 		fn = function() {
