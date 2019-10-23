@@ -1,5 +1,4 @@
-var sprintf = require('yow/sprintf');
-var debugMode = process.env.DEBUG == undefined ? 1 : parseInt(process.env.DEBUG) != 0;
+
 
 module.exports = function() {
 
