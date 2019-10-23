@@ -1,5 +1,5 @@
 
-module.exports = prefixConsole = function(fn) {
+module.exports = function(fn) {
 
 	var sprintf = require('yow/sprintf');
 	var methods = ['log', 'error', 'warn', 'info'];
