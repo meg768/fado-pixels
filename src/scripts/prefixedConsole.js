@@ -2,6 +2,7 @@
 module.exports = class prefixedConsole   {
 
 	constructor(prefix) {
+		var sprintf = require('yow/sprintf');
 
 		if (prefix == undefined) {
 			prefix = function() {
