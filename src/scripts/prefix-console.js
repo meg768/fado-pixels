@@ -2,6 +2,7 @@
 module.exports = function(fn) {
 
 	var sprintf = require('yow/sprintf');
+	var isFunction = require('yow/isFunction');
 	var methods = ['log', 'error', 'warn', 'info'];
 
 	if (fn == undefined) {
@@ -14,7 +15,7 @@ module.exports = function(fn) {
 	methods.forEach((method) => {
 		console[method] = function() {
 			var args = Array.prototype.slice.call(arguments);
-			var prefix = typeof fn == 'function' ? fn() : fn;
+			var prefix = isFunction(fn) ? fn() : fn;
 		
 			args.unshift(prefix);
 		
