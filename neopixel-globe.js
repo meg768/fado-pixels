@@ -1,5 +1,8 @@
 #!/usr/bin/env node
 
+require('./src/scripts/prefixConsole.js')('X');
+require('./src/scripts/prefixConsole.js')('Y');
+
 require('./src/scripts/prefixConsole.js')();
 
 var debug = console.log;
