@@ -23,7 +23,7 @@ module.exports = class prefixedConsole   {
 	
 		args.unshift(prefix);
 	
-		super.log.apply(this, args);	
+		console.log.apply(this, args);	
 
 	}
 
