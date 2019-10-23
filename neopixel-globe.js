@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-require('yow/logs').prefix();
+require('../scripts/prefixConsole')('X');
 
 var debug = console.log;
 
