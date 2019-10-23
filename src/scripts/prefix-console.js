@@ -3,7 +3,7 @@ module.exports = function(fn) {
 
 	var sprintf = require('yow/sprintf');
 	var isFunction = require('yow/isFunction');
-	var methods = ['log', 'error', 'warn', 'info'];
+	var methodsNames = ['log', 'error', 'warn', 'info'];
 
 	if (fn == undefined) {
 		fn = function() {
@@ -12,14 +12,16 @@ module.exports = function(fn) {
 		}
 	}
 
-	methods.forEach((method) => {
-		console[method] = function() {
+	methodsNames.forEach((methodName) => {
+		var method = console[methodName];
+
+		console[methodName] = function() {
 			var args = Array.prototype.slice.call(arguments);
 			var prefix = isFunction(fn) ? fn() : fn;
 		
 			args.unshift(prefix);
 		
-			console[method].apply(console, args);	
+			method.apply(console, args);	
 		}
 		
 	});
