@@ -1,5 +1,5 @@
 
-module.exports = class prefixedConsole extends console.constructor  {
+module.exports = class prefixedConsole   {
 
 	constructor(prefix) {
 		super();
