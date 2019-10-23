@@ -8,7 +8,7 @@ module.exports = function(fn) {
 	if (fn == undefined) {
 		fn = function() {
 			var date = new Date();
-			return sprintf('%04d-%02d-%02d %02d:%02d.%02d: ', date.getFullYear(), date.getMonth() + 1, date.getDate(), date.getHours(), date.getMinutes(), date.getSeconds());
+			return sprintf('%04d-%02d-%02d %02d:%02d.%02d:', date.getFullYear(), date.getMonth() + 1, date.getDate(), date.getHours(), date.getMinutes(), date.getSeconds());
 		}
 	}
 
