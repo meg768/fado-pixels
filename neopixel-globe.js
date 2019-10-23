@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-var console = new require('./src/scripts/prefixedConsole.js')();
+var console = new require('./src/scripts/prefixedConsole.js');
 
 console.log('HEJ');
 console.warn('HEJ DÅ');
