@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-require('./src/scripts/prefix-console.js')('X');
+require('./src/scripts/prefixConsole.js')();
 
 var debug = console.log;
 
