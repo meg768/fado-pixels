@@ -1,12 +1,6 @@
 #!/usr/bin/env node
 
 
-var Console = require('./src/scripts/prefixedConsole.js');
-var console = new Console();
-
-
-require('./src/scripts/prefixConsole.js')('X');
-require('./src/scripts/prefixConsole.js')('Y');
 
 require('./src/scripts/prefixConsole.js')();
 
