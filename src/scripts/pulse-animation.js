@@ -25,6 +25,4 @@ module.exports = class extends Animation {
         this.pixels.fill(this.antiColor);
         this.pixels.render({transition:'fade', duration:duration});
     }
-
-
 }

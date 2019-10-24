@@ -27,11 +27,11 @@ class QuoteCommand extends Command {
 			this.log(`Got quote for symbol ${quote.symbol}...`);
 		});
 
-		quotes.on('marketClose', (symbol) => {
+		quotes.on('marketClosed', (symbol) => {
 			this.log(`Market closed for symbol ${symbol}...`);
 		});
 
-		quotes.on('marketOpen', (symbol) => {
+		quotes.on('marketOpened', (symbol) => {
 			this.log(`Market open for symbol ${symbol}...`);
 		});
 	}
