@@ -1,13 +1,9 @@
 #!/usr/bin/env node
 
 
-require('./src/scripts/prefixConsole.js')();
-
-var debug = console.log;
-
+require('yow/prefixConsole')();
 require('dotenv').config();
 require('yargs');
-
 
 
 var App = function() {
@@ -42,7 +38,7 @@ var App = function() {
 			yargs.usage('Usage: $0 <command> [options]');
 			yargs.help();
 
-			debug('Loading commands...')
+			console.debug('Loading commands...')
 			yargs.command(require('./src/commands/blink.js'));
 			yargs.command(require('./src/commands/pulse.js'));
 			yargs.command(require('./src/commands/clock.js'));
@@ -51,7 +47,7 @@ var App = function() {
 			yargs.command(require('./src/commands/color.js'));
 			yargs.command(require('./src/commands/random.js'));
 			yargs.command(require('./src/commands/quotes.js'));
-			debug('Finished loading commands...')
+			console.debug('Finished loading commands...')
 
 			yargs.demandCommand(1);
 
