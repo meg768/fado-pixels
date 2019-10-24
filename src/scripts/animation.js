@@ -1,8 +1,7 @@
+//var Animation = require('rpi-animations').Animation;
 
 var Sleep = require('sleep');
 var Events = require('events');
-
-//var Animation = require('rpi-animations').Animation;
 
 class Animation extends Events {
 
@@ -19,13 +18,14 @@ class Animation extends Events {
         this.renderFrequency = renderFrequency;
         this.renderTime      = undefined;
         this.debug           = typeof debug === 'function' ? debug : (debug ? console.log : () => {});
-
-        this.debug(this);
-
     }
 
     render() {
         this.debug('Animation.render() should not be called!');
+    }
+
+    sleep(ms) {
+        Sleep.msleep(ms);
     }
 
     start() {
@@ -151,7 +151,4 @@ module.exports = class extends Animation {
         this.pixels = pixels;
     }
 
-    sleep(ms) {
-        Sleep.msleep(ms);
-    }
 }
