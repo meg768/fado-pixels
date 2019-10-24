@@ -21,9 +21,7 @@ module.exports = class extends Events {
         this.cache = null;
         this.job = null;
         this.marketState = null;
-
 	}
-
 
     fetchQuote() {
         var Yahoo = require('yahoo-finance');
@@ -96,14 +94,10 @@ module.exports = class extends Events {
 
 
     startMonitoring() {
-        var Schedule = require('node-schedule');
 
         this.stopMonitoring();
 
-        var rule = new Schedule.RecurrenceRule();
-        rule.minute = range(0, 60, 5);
-
-        this.job = Schedule.scheduleJob(rule, () => {
+        var fetchQuote = () => {
             if (!this.isFetching) {
                 this.isFetching = true;
 
@@ -122,7 +116,15 @@ module.exports = class extends Events {
                     this.isFetching = false;
                 });    
             }
-        }); 
+        };
+
+        var Schedule = require('node-schedule');
+
+        var rule = new Schedule.RecurrenceRule();
+        rule.minute = range(0, 60, 5);
+
+        this.job = Schedule.scheduleJob(rule, fetchQuote);
+        fetchQuote();
     }
 
     stopMonitoring() {
@@ -130,7 +132,6 @@ module.exports = class extends Events {
             this.job.cancel();
 
         this.job = null;
-
     }
 
 

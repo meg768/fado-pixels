@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 
 
-
 require('./src/scripts/prefixConsole.js')();
 
 var debug = console.log;
