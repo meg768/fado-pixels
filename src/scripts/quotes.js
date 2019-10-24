@@ -13,9 +13,6 @@ module.exports = class extends Events {
 
 		super();
 
-        if (cache[symbol] == undefined)
-            cache[symbol] == {};
-
         this.debug = typeof debug == 'function' ? debug : (debug ? console.log : () => {});
         this.log = typeof log == 'function' ? log : (log ? console.log : () => {});
         this.symbol = symbol;
