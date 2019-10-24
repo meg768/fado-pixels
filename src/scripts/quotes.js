@@ -13,6 +13,9 @@ module.exports = class extends Events {
 
 		super();
 
+        if (cache[symbol] == undefined)
+            cache[symbol] == {};
+
         this.debug = typeof debug == 'function' ? debug : (debug ? console.log : () => {});
         this.log = typeof log == 'function' ? log : (log ? console.log : () => {});
         this.symbol = symbol;
@@ -66,13 +69,7 @@ module.exports = class extends Events {
 		})
     }
 
-    getQuote() {
 
-    }
-
-    getColor() {
-        
-    }
 
     setMarketState(marketState) {
         if (marketState != this.marketState) {
@@ -93,38 +90,37 @@ module.exports = class extends Events {
     }
 
 
+    requestQuote() {
+        if (!this.isFetching) {
+            this.isFetching = true;
+
+            this.fetchQuote().then((quote) => {
+                if (this.cache && this.cache.quote && this.cache.quote.time.valueOf() == quote.time.valueOf())
+                    this.setMarketState(MARKET_CLOSED);
+                else 
+                    this.setMarketState(MARKET_OPENED);
+
+                this.setQuote(quote);
+            })
+            .catch((error) => {
+                this.log(error);
+            })
+            .then(() => {
+                this.isFetching = false;
+            });    
+        }
+    }
+
     startMonitoring() {
 
         this.stopMonitoring();
-
-        var fetchQuote = () => {
-            if (!this.isFetching) {
-                this.isFetching = true;
-
-                this.fetchQuote().then((quote) => {
-                    if (this.cache && this.cache.quote && this.cache.quote.time.valueOf() == quote.time.valueOf())
-                        this.setMarketState(MARKET_CLOSED);
-                    else 
-                        this.setMarketState(MARKET_OPENED);
-
-                    this.setQuote(quote);
-                })
-                .catch((error) => {
-                    this.log(error);
-                })
-                .then(() => {
-                    this.isFetching = false;
-                });    
-            }
-        };
 
         var Schedule = require('node-schedule');
 
         var rule = new Schedule.RecurrenceRule();
         rule.minute = range(0, 60, 5);
 
-        this.job = Schedule.scheduleJob(rule, fetchQuote);
-        fetchQuote();
+        this.job = Schedule.scheduleJob(rule, this.requestQuote.bind(this));
     }
 
     stopMonitoring() {

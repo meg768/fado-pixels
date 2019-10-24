@@ -37,6 +37,7 @@ class SpyCommand extends Command {
 			}
 			else {
 				fado.color({color:offlineColor, fade:500, renderFrequency:60000, duration:-1, priority: '!'});
+				quotes.requestQuote();
 			}
 
 			state = (state == 'on') ? 'off' : 'on';
@@ -75,8 +76,10 @@ class SpyCommand extends Command {
 			fado.color({color:color, fade:500, renderFrequency:10000, duration:-1, priority:'!'});
 		});
 
-		quotes.startMonitoring();
 		fado.color({color:offlineColor, fade:500, renderFrequency:10000, duration:-1});
+
+		quotes.startMonitoring();
+		quotes.requestQuote();
 
 
 	}
