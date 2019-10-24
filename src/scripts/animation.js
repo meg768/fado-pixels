@@ -1,5 +1,6 @@
-//var Animation = require('rpi-animations').Animation;
+var Animation = require('rpi-animations').Animation;
 
+/*
 var Sleep = require('sleep');
 var Events = require('events');
 
@@ -140,7 +141,7 @@ class Animation extends Events {
     }
 }
 
-
+*/
 module.exports = class extends Animation {
 
     constructor(options) {
