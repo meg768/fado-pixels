@@ -4,9 +4,6 @@
 var Console = require('./src/scripts/prefixedConsole.js');
 var console = new Console();
 
-console.log('HEJ');
-console.warn('HEJ DÅ');
-exit(1);
 
 require('./src/scripts/prefixConsole.js')('X');
 require('./src/scripts/prefixConsole.js')('Y');
