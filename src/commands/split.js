@@ -1,5 +1,6 @@
 var Command = require('../scripts/command.js');
 var Animation = require('../scripts/animation.js');
+var Color = require('color');
 
 class DualColorAnimation extends Animation {
 
