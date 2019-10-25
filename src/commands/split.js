@@ -56,11 +56,10 @@ class SplitColorCommand extends Command {
 	run(argv) {
 		var Neopixels        = require('../scripts/neopixels.js');
 		var AnimationQueue   = require('../scripts/animation-queue.js');
-		var ColorAnimation   = require('../scripts/color-animation.js');
 		
 		var queue      = new AnimationQueue({debug:argv.debug});
 		var options    = {pixels:new Neopixels(), renderFrequency:1000, priority:'!', ...argv};	
-		var animation  = new ColorAnimation(options);
+		var animation  = new DualColorAnimation(options);
 	
 		queue.enqueue(animation);
 
