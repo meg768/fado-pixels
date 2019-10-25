@@ -47,6 +47,7 @@ var App = function() {
 			yargs.command(require('./src/commands/color.js'));
 			yargs.command(require('./src/commands/random.js'));
 			yargs.command(require('./src/commands/quotes.js'));
+			yargs.command(require('./src/commands/split.js'));
 			console.debug('Finished loading commands...')
 
 			yargs.demandCommand(1);
