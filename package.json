@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "goto-github": "open https://github.com/meg768/fado-pixels",
     "git-commit": "git add -A && git commit -m '-' && git push",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
