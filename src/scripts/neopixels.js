@@ -17,7 +17,6 @@ function configure() {
     }
 
     
-    console.log('**************', thisConfig);
     Neopixels.configure(thisConfig);
 
     process.on('SIGUSR1', cleanup);
