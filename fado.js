@@ -6,10 +6,9 @@ require('dotenv').config();
 require('yargs');
 
 
-var App = function() {
+class App {
 
-	function loadConfig() {
-
+	constructor() {
 		
 		var fs = require('fs');
 		var path = require('path');
@@ -27,9 +26,15 @@ var App = function() {
 		if (fs.existsSync(bootConfigFile)) {
 			merge(config, JSON.parse(fs.readFileSync(bootConfigFile)));
 		}
+
+		process.on('unhandledRejection', (reason, p) => {
+			console.log('Unhandled Rejection at: Promise', p, 'reason:', reason);
+		});
+	
 	}
 
-	function run() {
+
+	run() {
 		try {
 			var yargs = require('yargs');
 
@@ -60,13 +65,8 @@ var App = function() {
 			process.exit(-1);
 		}
 
-	};
+	}
+} 
 
-	process.on('unhandledRejection', (reason, p) => {
-		console.log('Unhandled Rejection at: Promise', p, 'reason:', reason);
-	});
-
-	run();
-};
 
 module.exports = new App();

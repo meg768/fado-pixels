@@ -1,6 +1,7 @@
 {
 	"commment": [
-		"This file contains default values for fado.js"
+		"This file contains default values for fado.js",
+		"and is merged with the file /boot/fado.json, /boot/fado.json having precedence."
 	],
 
 	"commands": {
@@ -12,7 +13,6 @@
 		"spy": {
 			"symbol": "SPY"
 		}
-
 	},
 	"neopixels": {
 		"stripType":"rgb"
