@@ -1,6 +1,7 @@
 var sprintf = require('yow/sprintf');
 var range = require('yow/range');
 var Events = require('events');
+var Yahoo = undefined;
 
 var MARKET_OPENED = 'marketOpened';
 var MARKET_CLOSED = 'marketClosed';
@@ -13,6 +14,7 @@ module.exports = class extends Events {
 
 		super();
 
+        this.Yahoo = undefined;
         this.debug = typeof debug == 'function' ? debug : (debug ? console.log : () => {});
         this.log = typeof log == 'function' ? log : (log ? console.log : () => {});
         this.symbol = symbol;
@@ -23,8 +25,18 @@ module.exports = class extends Events {
         this.marketState = null;
 	}
 
+    requireYahoo() {
+        if (Yahoo == undefined) {
+            this.debug('Loading Yahoo Finance...');
+            Yahoo = require('yahoo-finance');
+            this.debug('Finished loaded Yahoo Finance.');
+        }
+
+        return Yahoo;
+    }
     fetchQuote() {
-        var Yahoo = require('yahoo-finance');
+
+        var Yahoo = this.reuireYahoo();
 
 		return new Promise((resolve, reject) => {    
             var options = {};
