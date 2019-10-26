@@ -3,6 +3,8 @@ var config = require('./config.js');
 
 function configure() {
 
+    var config = config.neopixels || {};
+
     function cleanup() {
         console.log('Cleaning up...');
         var pixels = new Neopixels();
@@ -13,6 +15,7 @@ function configure() {
         process.exit();
     }
 
+    
 console.log('**************', config);
     Neopixels.configure(config);
 
