@@ -13,7 +13,7 @@ function configure() {
         process.exit();
     }
 
-
+console.log('**************', config);
     Neopixels.configure(config);
 
     process.on('SIGUSR1', cleanup);
