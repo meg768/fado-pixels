@@ -28,13 +28,17 @@ module.exports = class Command {
 		module.exports.handler  = (argv) => {
 
 			if (argv.debug) {
-				this.debug = this.log;
+				this.debug = console.debug;
+			}
+
+			if (argv.log) {
+				this.log = console.log;
 			}
 
 			return this.run(argv)
 		};
 
-		this.log = console.log;
+		this.log = () => {};
 		this.debug = () => {};
 		this.defaults = merge({}, defaults, config.commands && config.commands[name]);
 
