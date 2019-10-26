@@ -1,9 +1,10 @@
 var Neopixels = require('rpi-neopixels');
 var config = require('./config.js');
 
+
 function configure() {
 
-    var config = config.neopixels || {};
+    var thisConfig = config.neopixels || {};
 
     function cleanup() {
         console.log('Cleaning up...');
@@ -16,8 +17,8 @@ function configure() {
     }
 
     
-console.log('**************', config);
-    Neopixels.configure(config);
+    console.log('**************', thisConfig);
+    Neopixels.configure(thisConfig);
 
     process.on('SIGUSR1', cleanup);
     process.on('SIGUSR2', cleanup);
