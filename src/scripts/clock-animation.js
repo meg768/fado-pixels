@@ -17,7 +17,6 @@ module.exports = class extends Animation {
     }
 
     render() {
-        this.debug('Rendering clock animation...');
         this.pixels.fill(this.getColor());
         this.pixels.render();
     }
