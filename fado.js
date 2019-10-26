@@ -40,8 +40,6 @@ class App {
 		try {
 			var yargs = require('yargs');
 
-			loadConfig();
-
 			yargs.usage('Usage: $0 <command> [options]');
 			yargs.help();
 
