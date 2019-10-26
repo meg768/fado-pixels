@@ -13,7 +13,8 @@ function configure() {
         process.exit();
     }
 
-    Neopixels.configure({stripType:'rgb', width:24, height:1, map:undefined, ...config.neopixels});
+
+    Neopixels.configure(config);
 
     process.on('SIGUSR1', cleanup);
     process.on('SIGUSR2', cleanup);
