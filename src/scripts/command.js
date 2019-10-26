@@ -27,7 +27,6 @@ module.exports = class Command {
 		module.exports.handler  = (argv) => {
 
 			if (argv.debug) {
-				this.log(argv);
 				this.debug = this.log;
 			}
 
