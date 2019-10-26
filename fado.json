@@ -15,7 +15,7 @@
 		}
 	},
 	"neopixels": {
-		"stripType":"rrr",
+		"stripType":"brg",
 		"width": 24,
 		"height": 1
 	}	
