@@ -25,18 +25,13 @@ module.exports = class extends Events {
         this.marketState = null;
 	}
 
-    requireYahoo() {
+
+    fetchQuote() {
         if (Yahoo == undefined) {
             this.debug('Loading Yahoo Finance...');
             Yahoo = require('yahoo-finance');
             this.debug('Finished loaded Yahoo Finance.');
         }
-
-        return Yahoo;
-    }
-    fetchQuote() {
-
-        var Yahoo = this.reuireYahoo();
 
 		return new Promise((resolve, reject) => {    
             var options = {};
