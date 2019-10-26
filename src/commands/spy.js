@@ -19,12 +19,12 @@ class SpyCommand extends Command {
 		var Fado = require('../scripts/fado.js');
 		var Quotes = require('../scripts/quotes.js');
 
-		var {debug, symbol} = argv;
+		var {symbol} = argv;
 
 		var offlineColor = Color('purple').rgbNumber();
-		var quotes = new Quotes({debug:debug, symbol:symbol});
-		var button = new Button({debug: debug, autoEnable: true, pin: 6});
-		var fado = new Fado({debug: debug});
+		var quotes = new Quotes({log:this.log, debug:this.debug, symbol:symbol});
+		var button = new Button({log:this.log, debug:this.debug, autoEnable: true, pin: 6});
+		var fado = new Fado({log:this.log, debug: this.debug});
 		var state = 'on';
 
 		fado.queue.on('idle', () => {

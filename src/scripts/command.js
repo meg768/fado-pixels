@@ -25,7 +25,7 @@ module.exports = class Command {
 			this.defineArgs(yargs);
 		};
 
-		module.exports.handler  = (argv) => {
+		module.exports.handler = (argv) => {
 
 			if (argv.debug) {
 				this.debug = console.debug;
