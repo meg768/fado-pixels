@@ -1,4 +1,8 @@
 {
+	"commment": [
+		"This file contains default values for fado.js"
+	],
+
 	"commands": {
 		"blink": {		
 			"color": "red",
