@@ -1,5 +1,5 @@
 {
-  "name": "neopixel-globe",
+  "name": "fado-pixels",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/meg768/neopixel-globe.git"
+    "url": "git+https://github.com/meg768/fado-pixels.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/meg768/neopixel-globe/issues"
+    "url": "https://github.com/meg768/fado-pixels/issues"
   },
-  "homepage": "https://github.com/meg768/neopixel-globe#readme",
+  "homepage": "https://github.com/meg768/fado-pixels#readme",
   "dependencies": {
     "color": "^2.0.0",
     "dotenv": "^4.0.0",
