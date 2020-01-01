@@ -21,40 +21,80 @@ class SpyCommand extends Command {
 
 		var {symbol} = argv;
 
-		var offlineColor = Color('purple').rgbNumber();
+		var colors = {
+			offline: Color('purple').rgbNumber(),
+			on: Color('white').rgbNumber(),
+			off: Color('black').rgbNumber()
+		};
+
 		var quotes = new Quotes({log:this.log, debug:this.debug, symbol:symbol});
 		var button = new Button({log:this.log, debug:this.debug, autoEnable: true, pin: 6});
 		var fado = new Fado({log:this.log, debug: this.debug});
-		var state = 'on';
+		var state = 'spy';
 
 		fado.queue.on('idle', () => {
-			fado.color({color:offlineColor, fade:500, renderFrequency:10000, duration:-1});
+			fado.color({color:'green', fade:500, renderFrequency:60000, duration:-1});
 		});
 
+
 		button.on('click', (clicks) => {
-			if (state == 'on') {
-				fado.color({color:'black', fade:500, renderFrequency:60000, duration:-1, priority: '!'});
-			}
-			else {
-				fado.color({color:offlineColor, fade:500, renderFrequency:60000, duration:-1, priority: '!'});
-				quotes.requestQuote();
+
+			switch (state) {
+				case 'spy': {
+					nextState = 'off';
+					break;
+				}
+				case 'off': {
+					nextState = 'on';
+					break;
+				}
+				case 'on': {
+					nextState = 'spy';
+					break;
+				}
 			}
 
-			state = (state == 'on') ? 'off' : 'on';
+
+			switch (state) {
+				case 'spy': {
+					fado.color({color:colors.offline, fade:500, renderFrequency:60000, duration:-1, priority: '!'});
+					quotes.requestQuote();
+					break;
+				}
+				case 'off': {
+					fado.color({color:colors.off, fade:500, renderFrequency:60000, duration:-1, priority: '!'});
+					break;
+				}
+				case 'on': {
+					fado.color({color:colors.on, fade:500, renderFrequency:60000, duration:-1, priority: '!'});
+					break;
+				}
+			}
+
+			state = nextState;
 			this.debug(`Button clicked, state is now ${state}...`);
 		});
 
 		quotes.on('marketOpened', () => {
+			if (state != 'spy')
+				return;
+
 			fado.pulse({color:'blue', antiColor:'black', interval:1000, iterations:5, priority: '!'});	
 			fado.color({color:offlineColor, fade:500, renderFrequency:10000, duration:-1});
 		});
 
 		quotes.on('marketClosed', () => {
-			fado.pulse({color:'red', antiColor:'black', interval:1000, iterations:5, priority: '!'});
+			if (state != 'spy')
+				return;
+
+				fado.pulse({color:'red', antiColor:'black', interval:1000, iterations:5, priority: '!'});
 			fado.color({color:offlineColor, fade:500, renderFrequency:10000, duration:-1});
 		});
 
 		quotes.on('quote', (quote) => {
+			if (state != 'spy')
+				return;
+
 			function computeColorFromQuote(quote) {
 
 				var color = Color('purple').rgbNumber();
