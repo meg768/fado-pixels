@@ -1,6 +1,32 @@
 var Command = require('../scripts/command.js');
+var express = require('express');
 
-class Server extends Command {
+class Server {
+
+	constructor(options) {
+		var {debug, log, port = 3000, ...options} = options;
+		var Fado = require('../scripts/fado.js');
+
+		this.express  = express();
+		this.fado     = new Fado({log:log, debug:debug});
+		this.port     = port;
+        this.debug    = typeof debug == 'function' ? debug : (debug ? console.log : () => {});
+        this.log      = typeof log == 'function' ? log : (log ? console.log : () => {});
+
+		this.fado.color({color:'blue', fade:1000, renderFrequency:60000, duration:-1, priority:'!'});
+
+		this.express.post('/blink', (request, response) => {
+			response.send('Hello World');
+		});
+
+		this.debug('Express is listening to port', this.port);
+		this.express.listen(this.port);
+
+	}
+
+};
+
+class ServerCommand extends Command {
 
 	constructor() {
 		var defaults = {
@@ -14,21 +40,9 @@ class Server extends Command {
 	}
 
 	run(argv) {
-		var Color = require('color');
-		var Fado = require('../scripts/fado.js');
-
-		var fado = new Fado({log:this.log, debug: this.debug});
-
-		fado.queue.on('idle', () => {
-			fado.color({color:'red', fade:1000, renderFrequency:60000, duration:-1});
-		});
-
-
-		fado.color({color:'red', fade:1000, renderFrequency:60000, duration:-1, priority:'!'});
-
+		var server = new Server(argv);
 	}
 
 }
 
-new Server();
-
+new ServerCommand
