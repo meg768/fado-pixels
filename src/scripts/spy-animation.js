@@ -7,7 +7,7 @@ module.exports = class extends Animation {
     constructor(options) {
         var {interval = 500, color = 'red', antiColor = 'black', ...options} = options;
 
-        super({name:'PulseAnimation', renderFrequency:interval, ...options});
+        super({name:'Spy', renderFrequency:interval, ...options});
 
         this.interval = interval;
         this.color = Color(color).rgbNumber();
@@ -18,11 +18,15 @@ module.exports = class extends Animation {
         var duration = Math.floor(this.interval / 2);
 
         this.pixels.fill(this.color);
-        this.pixels.render({transition:'fade', duration:duration});
+        this.pixels.render();
+
+        this.sleep(duration);
 
         this.pixels.fill(this.antiColor);
-        this.pixels.render({transition:'fade', duration:duration});
-
-
+        this.pixels.render();
+        
+        this.sleep(duration);
     }
+
+
 }

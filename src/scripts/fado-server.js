@@ -1,19 +1,18 @@
-var Express = require('express');
-var BodyParser = require('body-parser');
-var Fado = require('./fado.js');
+var Fado = require('../scripts/fado.js');
 
 module.exports = class FadoServer extends Fado {
 
 	constructor(options) {
-		var {port = 3000, ...options} = options;
+		var Express = require('express');
+		var BodyParser = require('body-parser');
 
+		var {port, ...options} = options;
 		super(options);
 
 		this.express = Express();
 		this.express.use(BodyParser.json());
-		this.port = port;
 
-		this.color({color:'blue', fade:1000, renderFrequency:60000, duration:-1, priority:'!'});
+		this.port = port;
 
 		this.express.post('/blink', (request, response) => {
 			this.blink(request.body);
@@ -37,6 +36,11 @@ module.exports = class FadoServer extends Fado {
 
 		this.express.post('/random', (request, response) => {
 			this.random(request.body);
+			response.send('OK');
+		});
+
+		this.express.post('/spy', (request, response) => {
+			this.spy(request.body);
 			response.send('OK');
 		});
 
