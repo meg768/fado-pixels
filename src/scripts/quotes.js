@@ -86,10 +86,10 @@ module.exports = class extends Events {
     setQuote(quote) {
         this.cache = {quote:quote, timestamp: new Date()};
 
-        if (this.marketState == MARKET_OPENED) {
+//        if (this.marketState == MARKET_OPENED) {
             this.debug('Emitting quote', JSON.stringify(quote));
             this.emit(MARKET_QUOTE, quote);    
-        }
+//        }
     }
 
 
