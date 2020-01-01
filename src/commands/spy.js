@@ -25,7 +25,8 @@ class SpyCommand extends Command {
 			offline: Color('purple').rgbNumber(),
 			on: Color('white').rgbNumber(),
 			off: Color('black').rgbNumber(),
-			warmWhite: Color('rgb(255,255,200)').rgbNumber()
+			white: Color('white').rgbNumber(),
+			warmWhite: Color('rgb(255,255,240)').rgbNumber()
 		};
 
 		var quotes = new Quotes({log:this.log, debug:this.debug, symbol:symbol});
@@ -119,10 +120,10 @@ class SpyCommand extends Command {
 			}
 
 			var color = computeColorFromQuote(quote);
-			fado.color({color:color, fade:500, renderFrequency:10000, duration:-1, priority:'!'});
+			fado.color({color:color, fade:500, renderFrequency:60000, duration:-1, priority:'!'});
 		});
 
-		fado.color({color:colors.offline, fade:500, renderFrequency:10000, duration:-1});
+		fado.pulse({color:colors.white, interval:500, renderFrequency:60000, duration:-1});
 
 		quotes.startMonitoring();
 		quotes.requestQuote();
