@@ -39,6 +39,8 @@ class SpyCommand extends Command {
 
 		button.on('click', (clicks) => {
 
+			var nextState = 'spy';
+
 			switch (state) {
 				case 'spy': {
 					nextState = 'off';
@@ -76,6 +78,7 @@ class SpyCommand extends Command {
 		});
 
 		quotes.on('marketOpened', () => {
+			this.log('Market open.')
 			if (state != 'spy')
 				return;
 
@@ -84,10 +87,11 @@ class SpyCommand extends Command {
 		});
 
 		quotes.on('marketClosed', () => {
+			this.log('Market closed.')
 			if (state != 'spy')
 				return;
 
-				fado.pulse({color:'red', antiColor:'black', interval:1000, iterations:5, priority: '!'});
+			fado.pulse({color:'red', antiColor:'black', interval:1000, iterations:5, priority: '!'});
 			fado.color({color:offlineColor, fade:500, renderFrequency:10000, duration:-1});
 		});
 
