@@ -8,8 +8,8 @@ module.exports = class Fado {
 
 		this.debug   = typeof debug == 'function' ? debug : (debug ? console.debug : () => {});
 		this.log     = typeof log == 'function' ? log : (log ? console.log : () => {});
-		this.pixels  = new Neopixels({log:log, debug:debug});
-		this.queue   = new AnimationQueue({log:log, debug:debug});
+		this.pixels  = new Neopixels({log:log, debug:false});
+		this.queue   = new AnimationQueue({log:log, debug:false});
 	}
 
 	runAnimation(animation) {

@@ -24,7 +24,8 @@ class SpyCommand extends Command {
 		var colors = {
 			offline: Color('purple').rgbNumber(),
 			on: Color('white').rgbNumber(),
-			off: Color('black').rgbNumber()
+			off: Color('black').rgbNumber(),
+			warmWhite: Color('rgb(255,255,100').rgbNumber()
 		};
 
 		var quotes = new Quotes({log:this.log, debug:this.debug, symbol:symbol});
@@ -66,7 +67,7 @@ class SpyCommand extends Command {
 					break;
 				}
 				case 'on': {
-					fado.color({color:colors.on, fade:500, renderFrequency:60000, duration:-1, priority: '!'});
+					fado.color({color:colors.warmWhite, fade:500, renderFrequency:60000, duration:-1, priority: '!'});
 					break;
 				}
 			}
