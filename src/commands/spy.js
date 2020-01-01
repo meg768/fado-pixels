@@ -123,7 +123,7 @@ class SpyCommand extends Command {
 			fado.color({color:color, fade:500, renderFrequency:60000, duration:-1, priority:'!'});
 		});
 
-		fado.pulse({color:colors.white, interval:500, renderFrequency:60000, duration:-1});
+		fado.pulse({color:colors.white, interval:500, duration:-1});
 
 		quotes.startMonitoring();
 		quotes.requestQuote();
