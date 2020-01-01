@@ -39,19 +39,17 @@ class SpyCommand extends Command {
 
 		button.on('click', (clicks) => {
 
-			var nextState = 'spy';
-
 			switch (state) {
 				case 'spy': {
-					nextState = 'off';
+					state = 'off';
 					break;
 				}
 				case 'off': {
-					nextState = 'on';
+					state = 'on';
 					break;
 				}
-				case 'on': {
-					nextState = 'spy';
+				default: {
+					state = 'spy';
 					break;
 				}
 			}
@@ -73,7 +71,6 @@ class SpyCommand extends Command {
 				}
 			}
 
-			state = nextState;
 			this.debug(`Button clicked, state is now ${state}...`);
 		});
 
