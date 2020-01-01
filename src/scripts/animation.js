@@ -145,7 +145,7 @@ class Animation extends Events {
 module.exports = class extends Animation {
 
     constructor(options) {
-        var {pixels, ...options} = options;
+        var {pixels, debug, ...options} = options;
 
         super(options);
 
