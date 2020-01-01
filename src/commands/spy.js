@@ -25,7 +25,7 @@ class SpyCommand extends Command {
 			offline: Color('purple').rgbNumber(),
 			on: Color('white').rgbNumber(),
 			off: Color('black').rgbNumber(),
-			warmWhite: Color('rgb(255,255,100)').rgbNumber()
+			warmWhite: Color('rgb(255,255,200)').rgbNumber()
 		};
 
 		var quotes = new Quotes({log:this.log, debug:this.debug, symbol:symbol});
