@@ -33,7 +33,7 @@ class SpyCommand extends Command {
 		var state = 'spy';
 
 		fado.queue.on('idle', () => {
-			fado.color({color:'green', fade:500, renderFrequency:60000, duration:-1});
+			fado.color({color:'red', fade:500, renderFrequency:60000, duration:-1});
 		});
 
 
@@ -91,7 +91,7 @@ class SpyCommand extends Command {
 				return;
 
 			fado.pulse({color:'red', antiColor:'black', interval:1000, iterations:5, priority: '!'});
-			fado.color({color:offlineColor, fade:500, renderFrequency:10000, duration:-1});
+			fado.color({color:colors.offline, fade:500, renderFrequency:10000, duration:-1});
 		});
 
 		quotes.on('quote', (quote) => {
