@@ -116,7 +116,7 @@ class SpyCommand extends Command {
 			fado.color({color:color, fade:500, renderFrequency:10000, duration:-1, priority:'!'});
 		});
 
-		fado.color({color:offlineColor, fade:500, renderFrequency:10000, duration:-1});
+		fado.color({color:offline, fade:500, renderFrequency:10000, duration:-1});
 
 		quotes.startMonitoring();
 		quotes.requestQuote();
