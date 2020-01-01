@@ -78,16 +78,18 @@ class SpyCommand extends Command {
 		});
 
 		quotes.on('marketOpened', () => {
-			this.log('Market open.')
+			this.debug('Market open.');
+
 			if (state != 'spy')
 				return;
 
 			fado.pulse({color:'blue', antiColor:'black', interval:1000, iterations:5, priority: '!'});	
-			fado.color({color:offlineColor, fade:500, renderFrequency:10000, duration:-1});
+			fado.color({color:colors.offline, fade:500, renderFrequency:10000, duration:-1});
 		});
 
 		quotes.on('marketClosed', () => {
-			this.log('Market closed.')
+			this.debug('Market closed.');
+
 			if (state != 'spy')
 				return;
 
@@ -96,6 +98,8 @@ class SpyCommand extends Command {
 		});
 
 		quotes.on('quote', (quote) => {
+			this.debug('Got quote.', quote);
+
 			if (state != 'spy')
 				return;
 
