@@ -74,7 +74,7 @@ module.exports = class extends Events {
 
             })
             .catch((error) => {
-                reject(error);
+                reject(new Error(`No data for symbol ${symbol}...`));
             })
 		})
     }
