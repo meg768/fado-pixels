@@ -24,9 +24,9 @@ module.exports = class extends Events {
         this.marketState = null;
 	}
 
-
     fetchQuote() {
         if (Yahoo == undefined) {
+            this.emit('initializing'); 
             this.debug('Loading Yahoo Finance...');
             Yahoo = require('yahoo-finance');
             this.debug('Finished loaded Yahoo Finance.');
@@ -72,8 +72,6 @@ module.exports = class extends Events {
 		})
     }
 
-
-
     setMarketState(marketState) {
         if (marketState != this.marketState) {
             this.marketState = marketState;
@@ -81,6 +79,11 @@ module.exports = class extends Events {
             this.debug(`Emitting ${marketState} for symbol ${this.symbol}...`);
             this.emit(marketState, this.symbol);    
         }
+    }
+
+    setSymbol(symbol) {
+        this.symbol = symbol;
+        this.requestQuote();
     }
 
     setQuote(quote) {
