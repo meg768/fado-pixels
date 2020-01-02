@@ -43,7 +43,7 @@ class Spy {
 
 		this.quotes.on('initializing', () => {
 			this.log('Initializing...');
-			this.fado.color({color:Color('orange').rgbNumber(), fade:1000, renderFrequency:10000, duration:-1});
+			this.fado.color({color:Color('orange').rgbNumber(), fade:1000, renderFrequency:10000, duration:-1, priority:'!'});
 		});
 
 		this.quotes.on('marketOpened', () => {
