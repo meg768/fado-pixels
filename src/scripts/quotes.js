@@ -45,7 +45,7 @@ module.exports = class extends Events {
             Yahoo.quote(options).then((data) => {
 
                 if (!data) {
-                    reject(new Error(`No data for symbol ${symbol}...`));
+                    reject(new Error(`Data empty for symbol ${symbol}...`));
                 }
                 else {
                     this.debug(`Got quotes for ${symbol}...`, data);
