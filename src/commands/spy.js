@@ -42,6 +42,7 @@ class Spy {
 		this.quotes = new Quotes({log:this.log, debug:this.debug, symbol:this.symbol});
 
 		this.quotes.on('initializing', () => {
+			this.log('Initializing...');
 			this.fado.color({color:Color('orange').rgbNumber(), fade:1000, renderFrequency:10000, duration:-1});
 		});
 
