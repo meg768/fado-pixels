@@ -65,9 +65,12 @@ class Spy {
 			var {symbol} = request.body;
 
 			if (symbol) {
+				this.symbol = symbol;
+				
+				this.debug(`Setting new symbol ${this.symbol}...`);
 				this.quotes.setSymbol(symbol);
 			}
-			
+
 			response.send('OK');
 		});
 
