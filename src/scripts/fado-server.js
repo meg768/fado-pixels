@@ -39,11 +39,6 @@ module.exports = class FadoServer extends Fado {
 			response.send('OK');
 		});
 
-		this.express.post('/spy', (request, response) => {
-			this.spy(request.body);
-			response.send('OK');
-		});
-
 		this.debug('Express is listening to port', this.port);
 		this.express.listen(this.port);
 
