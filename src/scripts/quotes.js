@@ -96,10 +96,10 @@ module.exports = class extends Events {
     setQuote(quote) {
         this.cache = {quote:quote, timestamp: new Date()};
 
-//        if (this.marketState == MARKET_OPENED) {
+        if (this.marketState == MARKET_OPENED) {
             this.debug('Emitting quote', JSON.stringify(quote));
             this.emit(MARKET_QUOTE, quote);    
-//        }
+        }
     }
 
 
@@ -131,7 +131,7 @@ module.exports = class extends Events {
         var Schedule = require('node-schedule');
 
         var rule = new Schedule.RecurrenceRule();
-        rule.minute = range(0, 60, 5);
+        rule.minute = range(0, 60, 1);
 
         this.job = Schedule.scheduleJob(rule, this.requestQuote.bind(this));
     }
