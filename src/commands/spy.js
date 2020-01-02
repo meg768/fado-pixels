@@ -34,13 +34,11 @@ class Spy {
 			this.fado.color({color:this.colors.RED, fade:1000, renderFrequency:60000, duration:-1});
 		});
 
-		this.fado.color({color:Color('black').rgbNumber(), fade:1000, renderFrequency:60000, duration:-1, priority:'!'});
+		this.fado.color({color:Color('orange').rgbNumber(), fade:1000, renderFrequency:60000, duration:-1, priority:'!'});
 
 	}
 
 	setupQuotes()  {
-		this.fado.color({color:Color('orange').rgbNumber(), fade:1000, renderFrequency:60000, duration:-1, priority:'!'});
-
 		var Quotes = require('../scripts/quotes.js');
 		this.quotes = new Quotes({log:this.log, debug:this.debug, symbol:this.symbol});
 
