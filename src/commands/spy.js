@@ -67,7 +67,7 @@ class Spy {
 			if (this.state != 'spy')
 				return;
 
-			function computeColorFromQuote(quote) {
+			var computeColorFromQuote = (quote) => {
 
 				var color = this.colors.OFFLINE;
 
