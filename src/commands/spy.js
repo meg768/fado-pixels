@@ -61,6 +61,16 @@ class Spy {
 			response.send('OK');
 		});
 
+		this.express.post('/spy', (request, response) => {
+			var {symbol} = request.body;
+
+			if (symbol) {
+				this.quotes.setSymbol(symbol);
+			}
+			
+			response.send('OK');
+		});
+
 		this.debug('Express is listening to port', this.port);
 		this.express.listen(this.port);
 
