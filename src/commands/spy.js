@@ -67,30 +67,29 @@ class Spy {
 			if (this.state != 'spy')
 				return;
 
-			var computeColorFromQuote = (quote) => {
-
-				var color = this.colors.OFFLINE;
-
-				if (quote && quote.change) {
-					var change     = Math.max(-1, Math.min(1, quote.change));
-					var hue        = change >= 0 ? 240 : 0;
-					var saturation = 100;
-					var luminance  = 25 + (Math.abs(change) * 25);
-			
-					color = Color.hsl(hue, saturation, luminance).rgbNumber();
-			
-				}
-
-				return color;
-			}
-
-			var color = computeColorFromQuote(quote);
-			this.fado.color({color:color, fade:1000, renderFrequency:60000, duration:-1, priority:'!'});
+			this.fado.color({color:this.computeColorFromQuote(quote), fade:1000, renderFrequency:60000, duration:-1, priority:'!'});
 		});
 
 		this.quotes.startMonitoring();
 		this.quotes.requestQuote();
 
+	}
+
+	computeColorFromQuote(quote) {
+
+		var color = this.colors.OFFLINE;
+
+		if (quote && quote.change) {
+			var change     = Math.max(-1, Math.min(1, quote.change));
+			var hue        = change >= 0 ? 240 : 0;
+			var saturation = 100;
+			var luminance  = 25 + (Math.abs(change) * 25);
+	
+			color = Color.hsl(hue, saturation, luminance).rgbNumber();
+	
+		}
+
+		return color;
 	}
 
 	setupButton() {
