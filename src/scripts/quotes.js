@@ -48,7 +48,7 @@ module.exports = class extends Events {
                     reject(new Error(`No data for symbol ${symbol}...`));
                 }
                 else {
-                    this.debug(`Got quotes for ${symbol}...`);
+                    this.debug(`Got quotes for ${symbol}...`, data);
 
                     var now = new Date();
                     var quote = {};
