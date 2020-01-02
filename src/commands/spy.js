@@ -14,11 +14,12 @@ class Spy {
 		this.state  = 'spy';
 
 		this.colors = {
-			OFFLINE    : Color('purple').rgbNumber(),
-			BLACK      : Color('black').rgbNumber(),
-			WHITE      : Color('white').rgbNumber(),
-			RED        : Color('red').rgbNumber(),
-			WARM_WHITE : Color('rgb(255,255,240)').rgbNumber()
+			OFFLINE       : Color('purple').rgbNumber(),
+			BLACK         : Color('black').rgbNumber(),
+			MARKED_CLOSED : Color('brown').rgbNumber(),
+			WHITE         : Color('white').rgbNumber(),
+			RED           : Color('red').rgbNumber(),
+			WARM_WHITE    : Color('rgb(255,255,240)').rgbNumber()
 		};
 
 		this.setupFado();
