@@ -5,9 +5,10 @@ class Spy {
 
 	constructor(options) {
 
-		var {debug, symbol, ...options} = options;
+		var {debug = true, symbol = 'SPY', port = 3000, ...options} = options;
 
 		this.symbol = symbol;
+		this.port = port;
 		this.debug  = typeof debug === 'function' ? debug : (debug ? console.log : () => {});
 		this.log    = console.log;
 		this.state  = 'spy';
@@ -23,6 +24,45 @@ class Spy {
 		this.setupFado();
 		this.setupButton();
 		this.setupQuotes();
+		this.setupExpress();
+
+	}
+
+	setupExpress() {
+		var Express = require('express');
+		var BodyParser = require('body-parser');
+
+		this.express = Express();
+		this.express.use(BodyParser.json());
+
+
+		this.express.post('/blink', (request, response) => {
+			this.fado.blink(request.body);
+			response.send('OK');
+		});
+
+		this.express.post('/color', (request, response) => {
+			this.fado.color(request.body);
+			response.send('OK');
+		});
+
+		this.express.post('/pulse', (request, response) => {
+			this.fado.pulse(request.body);
+			response.send('OK');
+		});
+
+		this.express.post('/clock', (request, response) => {
+			this.fado.clock(request.body);
+			response.send('OK');
+		});
+
+		this.express.post('/random', (request, response) => {
+			this.fado.random(request.body);
+			response.send('OK');
+		});
+
+		this.debug('Express is listening to port', this.port);
+		this.express.listen(this.port);
 
 	}
 
