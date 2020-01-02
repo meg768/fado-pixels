@@ -3,12 +3,14 @@ var Command = require('../scripts/command.js');
 class Spy {
 
 	constructor(options) {
+		var {debug, symbol, ...options} = options;
+
+		this.debug = typeof debug === 'function' ? debug : (debug ? console.log : () => {});
+
 		var Color = require('color');
 		var Button = require('pigpio-button');
 		var Fado = require('../scripts/fado.js');
 		var Quotes = require('../scripts/quotes.js');
-
-		var {symbol} = options;
 
 		var colors = {
 			offline: Color('purple').rgbNumber(),
@@ -139,7 +141,7 @@ class SpyCommand extends Command {
 	run(argv) {
 		new Spy(argv);
 		return;
-		
+
 		var Color = require('color');
 		var Button = require('pigpio-button');
 		var Fado = require('../scripts/fado.js');
