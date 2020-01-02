@@ -43,27 +43,34 @@ module.exports = class extends Events {
             this.debug(`Fetching quotes for ${symbol}...`);
 
             Yahoo.quote(options).then((data) => {
-                this.debug(`Got quotes for ${symbol}...`);
 
-                var now = new Date();
-                var quote = {};
+                if (!data) {
+                    reject(new Error(`No data for symbol ${symbol}...`));
+                }
+                else {
+                    this.debug(`Got quotes for ${symbol}...`);
 
-                quote.symbol = symbol;
-                quote.name = data.price.longName ? data.price.longName : data.price.shortName;
-                quote.sector = data.summaryProfile ? data.summaryProfile.sector : 'n/a';
-                quote.industry = data.summaryProfile ? data.summaryProfile.industry : 'n/a';
-                quote.exchange = data.price.exchangeName;
-                quote.type = data.price.quoteType.toLowerCase().replace(/\b\w/g, l => l.toUpperCase());
-                quote.change = data.price.regularMarketChangePercent * 100;
-                quote.time = new Date(data.price.regularMarketTime);
-                quote.price = data.price.regularMarketPrice;
-
-                // Fix some stuff
-                quote.name = quote.name.replace(/&amp;/g, '&');
-
-                this.log(sprintf('Fetched quote from Yahoo for symbol %s (%s%.2f%%). Took %d ms.', quote.symbol, quote.change >= 0 ? '+' : '-', parseFloat(Math.abs(quote.change)), now - start));
-
-                resolve(quote);
+                    var now = new Date();
+                    var quote = {};
+    
+                    quote.symbol = symbol;
+                    quote.name = data.price.longName ? data.price.longName : data.price.shortName;
+                    quote.sector = data.summaryProfile ? data.summaryProfile.sector : 'n/a';
+                    quote.industry = data.summaryProfile ? data.summaryProfile.industry : 'n/a';
+                    quote.exchange = data.price.exchangeName;
+                    quote.type = data.price.quoteType.toLowerCase().replace(/\b\w/g, l => l.toUpperCase());
+                    quote.change = data.price.regularMarketChangePercent * 100;
+                    quote.time = new Date(data.price.regularMarketTime);
+                    quote.price = data.price.regularMarketPrice;
+    
+                    // Fix some stuff
+                    quote.name = quote.name.replace(/&amp;/g, '&');
+    
+                    this.log(sprintf('Fetched quote from Yahoo for symbol %s (%s%.2f%%). Took %d ms.', quote.symbol, quote.change >= 0 ? '+' : '-', parseFloat(Math.abs(quote.change)), now - start));
+    
+                    resolve(quote);
+    
+                }
 
             })
             .catch((error) => {

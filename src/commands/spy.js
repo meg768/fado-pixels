@@ -66,9 +66,9 @@ class Spy {
 
 			if (symbol) {
 				this.symbol = symbol;
-				
+
 				this.debug(`Setting new symbol ${this.symbol}...`);
-				this.quotes.setSymbol(symbol);
+				this.quotes.setSymbol(this.symbol);
 			}
 
 			response.send('OK');
