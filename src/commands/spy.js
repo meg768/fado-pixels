@@ -162,10 +162,6 @@ class Spy {
 					this.state = 'off';
 					break;
 				}
-				case 'off': {
-					this.state = 'on';
-					break;
-				}
 				default: {
 					this.state = 'spy';
 					break;
@@ -179,12 +175,8 @@ class Spy {
 					this.quotes.requestQuote();
 					break;
 				}
-				case 'off': {
+				default: {
 					this.fado.color({color:this.colors.BLACK, fade:1000, renderFrequency:60000, duration:-1, priority: '!'});
-					break;
-				}
-				case 'on': {
-					this.fado.color({color:this.colors.WARM_WHITE, fade:1000, renderFrequency:60000, duration:-1, priority: '!'});
 					break;
 				}
 			}
