@@ -126,7 +126,7 @@ class Spy {
 			if (this.state != 'spy')
 				return;
 
-			this.fado.color({color:this.computeColorFromQuote(quote), fade:1000, renderFrequency:60000, duration:-1, priority:'!'});
+			this.fado.color({color:this.computeColorFromQuote(quote), fade:1000, renderFrequency:60000, duration:-1});
 		});
 
 		this.quotes.startMonitoring();
