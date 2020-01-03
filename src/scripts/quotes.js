@@ -62,6 +62,7 @@ module.exports = class extends Events {
                     quote.change = data.price.regularMarketChangePercent * 100;
                     quote.time = new Date(data.price.regularMarketTime);
                     quote.price = data.price.regularMarketPrice;
+                    quote.marketState = data.price.marketState;
     
                     // Fix some stuff
                     quote.name = quote.name.replace(/&amp;/g, '&');
