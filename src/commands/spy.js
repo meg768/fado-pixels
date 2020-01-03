@@ -96,6 +96,7 @@ class Spy {
 		var Quotes = require('../scripts/quotes.js');
 		this.quotes = new Quotes({log:this.log, debug:this.debug, symbol:this.symbol});
 
+		/*
 		this.quotes.on('initializing', () => {
 			this.log('Initializing...');
 		});
@@ -120,13 +121,17 @@ class Spy {
 			this.fado.color({color:this.colors.OFFLINE, fade:1000, renderFrequency:10000, duration:-1});
 		});
 
+		*/
+
 		this.quotes.on('quote', (quote) => {
 			this.debug('Got quote.', quote);
 
 			if (this.state != 'spy')
 				return;
 
-			this.fado.color({color:this.computeColorFromQuote(quote), fade:1000, renderFrequency:60000, duration:-1, priority:'!'});
+			var color = quote.marketState == 'REGULAR' ? this.computeColorFromQuote(quote) : this.colors.OFFLINE;
+			this.fado.color({color:color, fade:1000, renderFrequency:60000, duration:-1, priority:'!'});
+
 		});
 
 		this.quotes.startMonitoring();
