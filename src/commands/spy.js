@@ -85,7 +85,7 @@ class Spy {
 		this.fado = new Fado({log:this.log, debug:this.debug});
 
 		this.fado.queue.on('idle', () => {
-			this.fado.color({color:this.colors.RED, fade:1000, renderFrequency:60000, duration:-1});
+			this.fado.color({color:Color('orange').rgbNumber(), fade:1000, renderFrequency:60000, duration:-1, priority:'!'});
 		});
 
 		this.fado.color({color:Color('orange').rgbNumber(), fade:1000, renderFrequency:60000, duration:-1, priority:'!'});
