@@ -5,7 +5,7 @@ var Yahoo = undefined;
 module.exports = class extends Events {
 
 	constructor(options) {
-		var {log = true, debug, symbol, ...options} = options;
+		var {log = true, schedule = '*/5 * * * *', debug, symbol = 'SPY', ...options} = options;
 
 		super();
 
@@ -15,6 +15,7 @@ module.exports = class extends Events {
         this.isFetching = false;
         this.cache      = null;
         this.job        = null;
+        this.schedule   = schedule;
 	}
 
     fetchQuote() {
@@ -72,11 +73,6 @@ module.exports = class extends Events {
 		})
     }
 
-    setSymbol(symbol) {
-        this.symbol = symbol;
-        this.requestQuote();
-    }
-
     requestQuote() {
         if (!this.isFetching) {
             this.isFetching = true;
@@ -96,12 +92,18 @@ module.exports = class extends Events {
         }
     }
 
-    startMonitoring(schedule) {
+    setSymbol(symbol) {
+        this.symbol = symbol;
+        this.requestQuote();
+    }
+
+
+    startMonitoring() {
 
         this.stopMonitoring();
 
         var Schedule = require('node-schedule');
-        this.job = Schedule.scheduleJob(schedule, this.requestQuote.bind(this));
+        this.job = Schedule.scheduleJob(this.schedule, this.requestQuote.bind(this));
     }
 
     stopMonitoring() {
