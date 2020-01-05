@@ -5,13 +5,14 @@ class Spy {
 
 	constructor(options) {
 
-		var {debug = true, symbol = 'SPY', port = 3000, ...options} = options;
+		var {debug = true, schedule = '*/5 * * * *', symbol = 'SPY', port = 3000, ...options} = options;
 
-		this.symbol = symbol;
-		this.port = port;
-		this.debug  = typeof debug === 'function' ? debug : (debug ? console.log : () => {});
-		this.log    = console.log;
-		this.state  = 'spy';
+		this.symbol   = symbol;
+		this.port     = port;
+		this.debug    = typeof debug === 'function' ? debug : (debug ? console.log : () => {});
+		this.log      = console.log;
+		this.state    = 'spy';
+		this.schedule = schedule;
 
 		this.colors = {
 			OFFLINE       : Color('purple').rgbNumber(),
@@ -134,7 +135,7 @@ class Spy {
 
 		});
 
-		this.quotes.startMonitoring('*/5 * * * *');
+		this.quotes.startMonitoring(this.schedule);
 		this.quotes.requestQuote();
 
 	}
@@ -199,14 +200,14 @@ class SpyCommand extends Command {
 	constructor() {
 		var defaults = {
 			symbol: 'SPY',
-			interval: '*/1 * * * *'
+			schedule: '*/5 * * * *'
 		};
 		super({ module: module, name: 'spy', description: 'Displays stock market symbol as a color', defaults:defaults});
 	}
 
 	defineArgs(yargs) {
 		yargs.option('symbol', {describe: 'Stock symbol to display', default: this.defaults.symbol});
-		yargs.option('interval', {describe: 'Polling interval using cron syntax', default: this.defaults.interval});
+		yargs.option('schedule', {describe: 'Polling schedule using cron syntax', default: this.defaults.schedule});
 	}
 
 	run(argv) {
