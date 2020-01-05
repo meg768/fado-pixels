@@ -1,11 +1,6 @@
 var sprintf = require('yow/sprintf');
-var range = require('yow/range');
 var Events = require('events');
 var Yahoo = undefined;
-
-var MARKET_OPENED = 'marketOpened';
-var MARKET_CLOSED = 'marketClosed';
-var MARKET_QUOTE  = 'quote';
 
 module.exports = class extends Events {
 
@@ -14,14 +9,12 @@ module.exports = class extends Events {
 
 		super();
 
-        this.debug = typeof debug == 'function' ? debug : (debug ? console.log : () => {});
-        this.log = typeof log == 'function' ? log : (log ? console.log : () => {});
-        this.symbol = symbol;
-
+        this.debug      = typeof debug == 'function' ? debug : (debug ? console.log : () => {});
+        this.log        = typeof log == 'function' ? log : (log ? console.log : () => {});
+        this.symbol     = symbol;
         this.isFetching = false;
-        this.cache = null;
-        this.job = null;
-        this.marketState = null;
+        this.cache      = null;
+        this.job        = null;
 	}
 
     fetchQuote() {
@@ -48,7 +41,6 @@ module.exports = class extends Events {
                     reject(new Error(`Data empty for symbol ${symbol}...`));
                 }
                 else {
-                    this.debug(`Got quotes for ${symbol}...`, data);
 
                     var now = new Date();
                     var quote = {};
@@ -80,41 +72,20 @@ module.exports = class extends Events {
 		})
     }
 
-    setMarketState(marketState) {
-        if (marketState != this.marketState) {
-            this.marketState = marketState;
-
-            this.debug(`Emitting ${marketState} for symbol ${this.symbol}...`);
-            this.emit(marketState, this.symbol);    
-        }
-    }
-
     setSymbol(symbol) {
         this.symbol = symbol;
         this.requestQuote();
     }
-
-    setQuote(quote) {
-        this.cache = {quote:quote, timestamp: new Date()};
-
-        if (this.marketState == MARKET_OPENED) {
-            this.debug('Emitting quote', JSON.stringify(quote));
-            this.emit(MARKET_QUOTE, quote);    
-        }
-    }
-
 
     requestQuote() {
         if (!this.isFetching) {
             this.isFetching = true;
 
             this.fetchQuote().then((quote) => {
-                if (this.cache && this.cache.quote && this.cache.quote.time.valueOf() == quote.time.valueOf())
-                    this.setMarketState(MARKET_CLOSED);
-                else 
-                    this.setMarketState(MARKET_OPENED);
+                this.cache = {quote:quote, timestamp: new Date()};
 
-                this.setQuote(quote);
+                this.debug('Emitting quote', JSON.stringify(quote));
+                this.emit('quote', quote);    
             })
             .catch((error) => {
                 this.log(error);
@@ -125,12 +96,12 @@ module.exports = class extends Events {
         }
     }
 
-    startMonitoring(cron) {
+    startMonitoring(schedule) {
 
         this.stopMonitoring();
 
         var Schedule = require('node-schedule');
-        this.job = Schedule.scheduleJob(cron, this.requestQuote.bind(this));
+        this.job = Schedule.scheduleJob(schedule, this.requestQuote.bind(this));
     }
 
     stopMonitoring() {
