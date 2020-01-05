@@ -125,16 +125,12 @@ module.exports = class extends Events {
         }
     }
 
-    startMonitoring() {
+    startMonitoring(cron) {
 
         this.stopMonitoring();
 
         var Schedule = require('node-schedule');
-
-        var rule = new Schedule.RecurrenceRule();
-        rule.minute = range(0, 60, 1);
-
-        this.job = Schedule.scheduleJob(rule, this.requestQuote.bind(this));
+        this.job = Schedule.scheduleJob(cron, this.requestQuote.bind(this));
     }
 
     stopMonitoring() {

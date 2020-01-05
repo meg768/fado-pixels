@@ -134,7 +134,7 @@ class Spy {
 
 		});
 
-		this.quotes.startMonitoring();
+		this.quotes.startMonitoring('*/5 * * * *');
 		this.quotes.requestQuote();
 
 	}
@@ -198,13 +198,15 @@ class SpyCommand extends Command {
 
 	constructor() {
 		var defaults = {
-			symbol: 'SPY'
+			symbol: 'SPY',
+			interval: '*/1 * * * *'
 		};
-		super({ module: module, name: 'spy', description: 'Displays stock market symbol as a color', defaults: defaults });
+		super({ module: module, name: 'spy', description: 'Displays stock market symbol as a color', defaults:defaults});
 	}
 
 	defineArgs(yargs) {
-		yargs.option('symbol', { describe: 'Stock symbol to display', default: this.defaults.symbol });
+		yargs.option('symbol', {describe: 'Stock symbol to display', default: this.defaults.symbol});
+		yargs.option('interval', {describe: 'Polling interval using cron syntax', default: this.defaults.interval});
 	}
 
 	run(argv) {
