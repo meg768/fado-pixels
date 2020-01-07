@@ -179,97 +179,100 @@ class Spy {
 		];		
 
 		var rgbIndex = 0;
-		var percentage = quote.change;
 
-		switch (true) {
-			// Negative
-			case (percentage < -0.9):
-				rgbIndex = 10; 
-				break;
+		if (quote && quote.change) {
+			var percentage = quote.change;
 
-			case (percentage < -0.8):
-				rgbIndex = 9; 
-				break;
-
-			case (percentage < -0.7):
-				rgbIndex = 8; 
-				break;
-
-			case (percentage < -0.6):
-				rgbIndex = 7; 
-				break;
-
-			case (percentage < -0.5):
-				rgbIndex = 6; 
-				break;
-
-			case (percentage < -0.4):
-				rgbIndex = 5; 
-				break;
-			
-			case (percentage < -0.3):
-				rgbIndex = 4; 
-				break;
-			
-			case (percentage < -0.2):
-				rgbIndex = 3; 
-				break;
-			
-			case (percentage < -0.1):
-				rgbIndex = 2; 
-				break;
-			
-			case (percentage < 0):
-				rgbIndex = 1; 
-				break;
-
-			
-			// Neutral
-			case (percentage == 0):
-				rgbIndex = 11; 
-				break;					
-						
-			// Positive
-			case (percentage > 0.9):
-				rgbIndex = 12; 
-				break;
-
-			case (percentage > 0.8):
-				rgbIndex = 13; 
-				break;
-
-			case (percentage > 0.7):
-				rgbIndex = 14; 
-				break;
-
-			case (percentage > 0.6):
-				rgbIndex = 15; 
-				break;
-
-			case (percentage > 0.5):
-				rgbIndex = 16; 
-				break;
-
-			case (percentage > 0.4):
-				rgbIndex = 17; 
-				break;
-
-			case (percentage > 0.3):
-				rgbIndex = 18; 
-				break;
-
-			case (percentage > 0.2):
-				rgbIndex = 19; 
-				break;
-
-			case (percentage > 0.1):
-				rgbIndex = 20; 
-				break;
-			
-			case (percentage > 0):
-				rgbIndex = 21; 
-				break;
-								
+			switch (true) {
+				// Negative
+				case (percentage < -0.9):
+					rgbIndex = 10; 
+					break;
+	
+				case (percentage < -0.8):
+					rgbIndex = 9; 
+					break;
+	
+				case (percentage < -0.7):
+					rgbIndex = 8; 
+					break;
+	
+				case (percentage < -0.6):
+					rgbIndex = 7; 
+					break;
+	
+				case (percentage < -0.5):
+					rgbIndex = 6; 
+					break;
+	
+				case (percentage < -0.4):
+					rgbIndex = 5; 
+					break;
+				
+				case (percentage < -0.3):
+					rgbIndex = 4; 
+					break;
+				
+				case (percentage < -0.2):
+					rgbIndex = 3; 
+					break;
+				
+				case (percentage < -0.1):
+					rgbIndex = 2; 
+					break;
+				
+				case (percentage < 0):
+					rgbIndex = 1; 
+					break;
+	
+				
+				// Neutral
+				case (percentage == 0):
+					rgbIndex = 11; 
+					break;					
+							
+				// Positive
+				case (percentage > 0.9):
+					rgbIndex = 12; 
+					break;
+	
+				case (percentage > 0.8):
+					rgbIndex = 13; 
+					break;
+	
+				case (percentage > 0.7):
+					rgbIndex = 14; 
+					break;
+	
+				case (percentage > 0.6):
+					rgbIndex = 15; 
+					break;
+	
+				case (percentage > 0.5):
+					rgbIndex = 16; 
+					break;
+	
+				case (percentage > 0.4):
+					rgbIndex = 17; 
+					break;
+	
+				case (percentage > 0.3):
+					rgbIndex = 18; 
+					break;
+	
+				case (percentage > 0.2):
+					rgbIndex = 19; 
+					break;
+	
+				case (percentage > 0.1):
+					rgbIndex = 20; 
+					break;
+				
+				case (percentage > 0):
+					rgbIndex = 21; 
+					break;
+									
+			}
 		}
 
 		return Color(COLORS[rgbIndex]).rgbNumber();
