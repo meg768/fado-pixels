@@ -54,7 +54,7 @@ class Spy {
 		// Add headers
 this.express.use(function (req, res, next) {
 
-	
+	console.log('Adding stuff!!');
     // Website you wish to allow to connect
     res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
 
