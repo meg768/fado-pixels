@@ -36,6 +36,7 @@ class Spy {
 	getIP() {
 		var os = require('os');
 		var networkInterfaces = os.networkInterfaces();
+
 		var item = networkInterfaces.wlan0.find((item) => {
 			return item.family = 'IPv4';
 		});
@@ -52,49 +53,17 @@ class Spy {
 		var Express = require('express');
 		var BodyParser = require('body-parser');
 
-
-		let allowCrossDomain = function(req, res, next) {
-			console.log('ALLOWING CROSS DOMAIN!! WTF!!!')
-			res.header('Access-Control-Allow-Origin', "*");
-			res.header('Access-Control-Allow-Headers', "*");
-			next();
-		  }
-
 		this.express = Express();
 		this.express.use(BodyParser.json());
-		this.express.use(Cors({origin: 'http://localhost:3000'}));
-//		this.express.use(allowCrossDomain);
+		this.express.use(Cors());
 
-		// Add headers
-		/*
-this.express.use(function (req, res, next) {
-
-	console.log('Adding stuff!!');
-    // Website you wish to allow to connect
-    res.setHeader('Access-Control-Allow-Origin', '*');
-
-    // Request methods you wish to allow
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-
-    // Request headers you wish to allow
-    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-
-    // Set to true if you need the website to include cookies in the requests sent
-    // to the API (e.g. in case you use sessions)
-    res.setHeader('Access-Control-Allow-Credentials', true);
-
-    // Pass to next layer of middleware
-    next();
-});
-*/
-/*
-		this.express.all('*', function(req, res, next) {
-			console.log('ALLOWING ALLLLLLLLLLL');
+		this.express.use(function(req, res, next) {
+			console.log('---------------------------------------------');
 			res.header("Access-Control-Allow-Origin", "*");
-			res.header("Access-Control-Allow-Headers", "X-Requested-With");
+			res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 			next();
-		});
-*/
+		  });		
+
 		this.express.post('/blink', (request, response) => {
 			this.fado.blink(request.body);
 			response.send('OK');
