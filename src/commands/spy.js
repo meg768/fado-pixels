@@ -33,15 +33,20 @@ class Spy {
 
 	}
 
+	getIP() {
+		var os = require('os');
+		var networkInterfaces = os.networkInterfaces();
+		var item = networkInterfaces.wlan0.find((item) => {
+			return item.family = 'IPv4';
+		});
+
+		return item.address;
+	}
+
 	setupExpress() {
 
-		var os = require( 'os' );
-
-		var networkInterfaces = os.networkInterfaces( );
 		
-		console.log( networkInterfaces );
-		
-		console.log('IP:', networkInterfaces.wlan0.address);
+		console.log('IP:', this.getIP());
 
 		var Cors = require('cors')
 		var Express = require('express');
