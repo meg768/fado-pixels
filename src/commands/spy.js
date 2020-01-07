@@ -48,7 +48,7 @@ class Spy {
 
 		this.express = Express();
 		this.express.use(BodyParser.json());
-		this.express.use(Cors());
+		this.express.use(Cors({origin: 'http://localhost:3000'}));
 //		this.express.use(allowCrossDomain);
 
 		// Add headers
