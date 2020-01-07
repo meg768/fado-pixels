@@ -5,7 +5,7 @@ class Spy {
 
 	constructor(options) {
 
-		var {debug = true, schedule = '*/5 * * * *', symbol = 'SPY', port = 3000, ...options} = options;
+		var {debug = true, schedule = '*/2 * * * *', symbol = 'SPY', port = 3000, ...options} = options;
 
 		this.symbol   = symbol;
 		this.port     = port;
@@ -13,6 +13,7 @@ class Spy {
 		this.log      = console.log;
 		this.state    = 'spy';
 		this.schedule = schedule;
+		this.marketState = 'UNKNOWN';
 
 		this.colors = {
 			OFFLINE       : Color('purple').rgbNumber(),
@@ -102,8 +103,16 @@ class Spy {
 				return;
 
 			var color = quote.marketState == 'REGULAR' ? this.computeColorFromQuote(quote) : this.colors.OFFLINE;
-			this.fado.color({color:color, fade:1000, renderFrequency:60000, duration:-1, priority:'!'});
 
+			if (quote.marketState == 'REGULAR' && this.marketState != 'REGULAR') {
+				this.fado.random({color:color, duration:5000, priority:'!'});
+				this.fado.color({color:color, fade:1000, renderFrequency:60000, duration:-1, priority:'normal'});
+			}
+			else {
+				this.fado.color({color:color, fade:1000, renderFrequency:60000, duration:-1, priority:'!'});
+			}
+
+			this.marketState = quote.marketState;
 		});
 
 		this.quotes.startMonitoring(this.schedule);
