@@ -52,6 +52,7 @@ class Spy {
 //		this.express.use(allowCrossDomain);
 
 		// Add headers
+		/*
 this.express.use(function (req, res, next) {
 
 	console.log('Adding stuff!!');
@@ -71,6 +72,7 @@ this.express.use(function (req, res, next) {
     // Pass to next layer of middleware
     next();
 });
+*/
 /*
 		this.express.all('*', function(req, res, next) {
 			console.log('ALLOWING ALLLLLLLLLLL');
