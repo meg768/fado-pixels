@@ -5,7 +5,7 @@ class Spy {
 
 	constructor(options) {
 
-		var {debug = true, schedule = '*/2 * * * *', symbol = 'SPY', port = 3000, ...options} = options;
+		var {debug = true, schedule, symbol, port = 3000, ...options} = options;
 
 		this.symbol   = symbol;
 		this.port     = port;
@@ -105,6 +105,12 @@ class Spy {
 			var color = quote.marketState == 'REGULAR' ? this.computeColorFromQuote(quote) : this.colors.OFFLINE;
 
 			if (quote.marketState == 'REGULAR' && this.marketState != 'REGULAR') {
+				// Market opened
+				this.fado.random({duration:5000, priority:'!'});
+				this.fado.color({color:color, fade:1000, renderFrequency:60000, duration:-1, priority:'normal'});
+			}
+			else if (quote.marketState != 'REGULAR' && this.marketState == 'REGULAR') {
+				// Market closed
 				this.fado.random({duration:5000, priority:'!'});
 				this.fado.color({color:color, fade:1000, renderFrequency:60000, duration:-1, priority:'normal'});
 			}
@@ -115,6 +121,7 @@ class Spy {
 			this.marketState = quote.marketState;
 		});
 
+		this.debug(`Monitoring ${this.symbol} using schedule ${this.schedule}...`);
 		this.quotes.startMonitoring(this.schedule);
 		this.quotes.requestQuote();
 
@@ -180,7 +187,7 @@ class SpyCommand extends Command {
 	constructor() {
 		var defaults = {
 			symbol: 'SPY',
-			schedule: '*/5 * * * *'
+			schedule: '*/1 * * * *'
 		};
 		super({ module: module, name: 'spy', description: 'Displays stock market symbol as a color', defaults:defaults});
 	}
