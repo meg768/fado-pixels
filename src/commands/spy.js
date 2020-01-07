@@ -55,7 +55,7 @@ var allowCrossDomain = function(req, res, next) {
 		this.express.use(Cors());
 		//this.express.use(allowCrossDomain());
 
-		this.express.all('/', function(req, res, next) {
+		this.express.all('*', function(req, res, next) {
 			console.log('ALLOWING ALLLLLLLLLLL');
 			res.header("Access-Control-Allow-Origin", "*");
 			res.header("Access-Control-Allow-Headers", "X-Requested-With");
