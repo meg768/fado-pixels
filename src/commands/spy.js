@@ -39,12 +39,17 @@ class Spy {
 		var BodyParser = require('body-parser');
 
 
-
+		let allowCrossDomain = function(req, res, next) {
+			console.log('ALLOWING CROSS DOMAIN!! WTF!!!')
+			res.header('Access-Control-Allow-Origin', "*");
+			res.header('Access-Control-Allow-Headers', "*");
+			next();
+		  }
 
 		this.express = Express();
 		this.express.use(BodyParser.json());
 		this.express.use(Cors());
-		//this.express.use(allowCrossDomain());
+		this.express.use(allowCrossDomain);
 
 		this.express.all('*', function(req, res, next) {
 			console.log('ALLOWING ALLLLLLLLLLL');
