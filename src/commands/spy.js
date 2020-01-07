@@ -38,9 +38,21 @@ class Spy {
 		var Express = require('express');
 		var BodyParser = require('body-parser');
 
+
+//CORS middleware
+var allowCrossDomain = function(req, res, next) {
+    res.header('Access-Control-Allow-Origin', '*');
+    //res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    //res.header('Access-Control-Allow-Headers', 'Content-Type');
+
+    next();
+}
+
+
 		this.express = Express();
 		this.express.use(BodyParser.json());
 		this.express.use(Cors());
+		this.express.use(allowCrossDomain);
 
 
 		this.express.post('/blink', (request, response) => {
