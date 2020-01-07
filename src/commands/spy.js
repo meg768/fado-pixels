@@ -71,14 +71,14 @@ this.express.use(function (req, res, next) {
     // Pass to next layer of middleware
     next();
 });
-
+/*
 		this.express.all('*', function(req, res, next) {
 			console.log('ALLOWING ALLLLLLLLLLL');
 			res.header("Access-Control-Allow-Origin", "*");
 			res.header("Access-Control-Allow-Headers", "X-Requested-With");
 			next();
 		});
-
+*/
 		this.express.post('/blink', (request, response) => {
 			this.fado.blink(request.body);
 			response.send('OK');
