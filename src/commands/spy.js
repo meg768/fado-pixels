@@ -34,11 +34,13 @@ class Spy {
 	}
 
 	setupExpress() {
+		var Cors = require('cors')
 		var Express = require('express');
 		var BodyParser = require('body-parser');
 
 		this.express = Express();
 		this.express.use(BodyParser.json());
+		this.express.use(Cors());
 
 
 		this.express.post('/blink', (request, response) => {
