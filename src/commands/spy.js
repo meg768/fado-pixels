@@ -71,7 +71,7 @@ class Spy {
 		this.express.post('/spy', (request, response) => {
 			var {symbol} = request.body;
 
-			this.debug(`Got /spy post`, JSON.stringify(request));
+			this.debug(`Got /spy post`, JSON.stringify(request.body));
 
 			if (symbol) {
 				this.symbol = symbol;
