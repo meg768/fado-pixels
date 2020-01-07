@@ -34,6 +34,13 @@ class Spy {
 	}
 
 	setupExpress() {
+
+		var os = require( 'os' );
+
+		var networkInterfaces = os.networkInterfaces( );
+		
+		console.log( networkInterfaces );
+				
 		var Cors = require('cors')
 		var Express = require('express');
 		var BodyParser = require('body-parser');
