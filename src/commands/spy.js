@@ -187,7 +187,7 @@ class SpyCommand extends Command {
 	constructor() {
 		var defaults = {
 			symbol: 'SPY',
-			schedule: '*/1 * * * *'
+			schedule: '*/5 * * * *'
 		};
 		super({ module: module, name: 'spy', description: 'Displays stock market symbol as a color', defaults:defaults});
 	}
