@@ -53,7 +53,7 @@ var allowCrossDomain = function(req, res, next) {
 		this.express = Express();
 		this.express.use(BodyParser.json());
 		this.express.use(Cors());
-		this.express.use(allowCrossDomain);
+		this.express.use(allowCrossDomain());
 
 
 		this.express.post('/blink', (request, response) => {
