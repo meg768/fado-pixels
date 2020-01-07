@@ -84,6 +84,7 @@ class Spy {
 		});
 
 		this.express.post('/spy', (request, response) => {
+			response.setHeader('Access-Control-Allow-Origin', '*');
 			var {symbol} = request.body;
 
 			this.debug(`Got /spy post`, JSON.stringify(request.body));
