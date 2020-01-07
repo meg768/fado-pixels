@@ -33,22 +33,10 @@ class Spy {
 
 	}
 
-	getIP() {
-		var os = require('os');
-		var networkInterfaces = os.networkInterfaces();
-
-		var item = networkInterfaces.wlan0.find((item) => {
-			return item.family = 'IPv4';
-		});
-
-		return item.address;
-	}
 
 	setupExpress() {
 
 		
-		console.log('IP:', this.getIP());
-
 		var Cors = require('cors')
 		var Express = require('express');
 		var BodyParser = require('body-parser');
@@ -57,12 +45,11 @@ class Spy {
 		this.express.use(BodyParser.json());
 		this.express.use(Cors());
 
-		this.express.use(function(req, res, next) {
-			console.log('---------------------------------------------');
-			res.header("Access-Control-Allow-Origin", "*");
-			res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+		this.express.use(function(request, response, next) {
+			response.header("Access-Control-Allow-Origin", "*");
+			response.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 			next();
-		  });		
+		});		
 
 		this.express.post('/blink', (request, response) => {
 			this.fado.blink(request.body);
