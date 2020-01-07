@@ -40,7 +40,9 @@ class Spy {
 		var networkInterfaces = os.networkInterfaces( );
 		
 		console.log( networkInterfaces );
-				
+		
+		console.log('IP:', networkInterfaces.wlan0.address);
+
 		var Cors = require('cors')
 		var Express = require('express');
 		var BodyParser = require('body-parser');
