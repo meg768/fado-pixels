@@ -105,7 +105,7 @@ class Spy {
 			var color = quote.marketState == 'REGULAR' ? this.computeColorFromQuote(quote) : this.colors.OFFLINE;
 
 			if (quote.marketState == 'REGULAR' && this.marketState != 'REGULAR') {
-				this.fado.random({color:'green', duration:5000, priority:'!'});
+				this.fado.random({duration:5000, priority:'!'});
 				this.fado.color({color:color, fade:1000, renderFrequency:60000, duration:-1, priority:'normal'});
 			}
 			else {
