@@ -1,6 +1,8 @@
 var Color = require('color');
 var Command = require('../scripts/command.js');
 
+
+
 class Spy {
 
 	constructor(options) {
@@ -127,7 +129,7 @@ class Spy {
 
 	}
 
-	computeColorFromQuote(quote) {
+	computeColorFromQuoteOLD(quote) {
 
 		var color = this.colors.OFFLINE;
 
@@ -143,6 +145,136 @@ class Spy {
 
 		return color;
 	}
+
+	computeColorFromQuote(quote) {
+
+		var COLORS = [
+			"rgb(0, 0, 50)", // sleeping
+			
+			// reds
+			"rgb(255, 170, 170)", // 1
+			"rgb(255, 160, 160)",
+			"rgb(240, 140, 140)",
+			"rgb(255, 130, 130)", 
+			"rgb(255, 110, 110)",
+			"rgb(255, 90, 90)", 
+			"rgb(255, 70, 70)", 
+			"rgb(255, 51, 51)", 
+			"rgb(255, 40, 40)",
+			"rgb(255, 0, 0)", // 10
+				
+			"rgb(209,202,245)", // neutral
+			
+			// greens
+			"rgb(0, 255, 0)", // 12
+			"rgb(0, 240, 0)",
+			"rgb(0, 230, 0)",
+			"rgb(40, 220, 40)",
+			"rgb(80, 220, 80)",
+			"rgb(70, 240, 70)",
+			"rgb(90, 240, 90)",
+			"rgb(90, 250, 90)",
+			"rgb(110, 250, 110)",
+			"rgb(120, 252, 120)" // 21
+		];		
+
+		var rgbIndex = 0;
+		var percentage = quote.change;
+
+		switch (true) {
+			// Negative
+			case (percentage < -0.9):
+				rgbIndex = 10; 
+				break;
+
+			case (percentage < -0.8):
+				rgbIndex = 9; 
+				break;
+
+			case (percentage < -0.7):
+				rgbIndex = 8; 
+				break;
+
+			case (percentage < -0.6):
+				rgbIndex = 7; 
+				break;
+
+			case (percentage < -0.5):
+				rgbIndex = 6; 
+				break;
+
+			case (percentage < -0.4):
+				rgbIndex = 5; 
+				break;
+			
+			case (percentage < -0.3):
+				rgbIndex = 4; 
+				break;
+			
+			case (percentage < -0.2):
+				rgbIndex = 3; 
+				break;
+			
+			case (percentage < -0.1):
+				rgbIndex = 2; 
+				break;
+			
+			case (percentage < 0):
+				rgbIndex = 1; 
+				break;
+
+			
+			// Neutral
+			case (percentage == 0):
+				rgbIndex = 11; 
+				break;					
+						
+			// Positive
+			case (percentage > 0.9):
+				rgbIndex = 12; 
+				break;
+
+			case (percentage > 0.8):
+				rgbIndex = 13; 
+				break;
+
+			case (percentage > 0.7):
+				rgbIndex = 14; 
+				break;
+
+			case (percentage > 0.6):
+				rgbIndex = 15; 
+				break;
+
+			case (percentage > 0.5):
+				rgbIndex = 16; 
+				break;
+
+			case (percentage > 0.4):
+				rgbIndex = 17; 
+				break;
+
+			case (percentage > 0.3):
+				rgbIndex = 18; 
+				break;
+
+			case (percentage > 0.2):
+				rgbIndex = 19; 
+				break;
+
+			case (percentage > 0.1):
+				rgbIndex = 20; 
+				break;
+			
+			case (percentage > 0):
+				rgbIndex = 21; 
+				break;
+								
+		}
+
+		return Color(COLORS[rgbIndex]).rgbNumber();
+	}
+
 
 	setupButton() {
 		var Button = require('pigpio-button');
