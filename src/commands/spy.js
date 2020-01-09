@@ -9,7 +9,7 @@ class Spy {
 
 		var {debug = true, schedule, symbol, port = 3000, ...options} = options;
 
-		this.symbol   = symbol;
+		this.config.symbol   = symbol;
 		this.port     = port;
 		this.debug    = typeof debug === 'function' ? debug : (debug ? console.log : () => {});
 		this.log      = console.log;
@@ -17,14 +17,10 @@ class Spy {
 		this.schedule = schedule;
 		this.marketState = 'UNKNOWN';
 
-		this.colors = {
-			OFFLINE       : Color('rgb(0,0,50)').rgbNumber(),
-			BLACK         : Color('black').rgbNumber(),
-			MARKED_CLOSED : Color('brown').rgbNumber(),
-			WHITE         : Color('white').rgbNumber(),
-			RED           : Color('red').rgbNumber(),
-			WARM_WHITE    : Color('rgb(255,255,240)').rgbNumber()
-		};
+		this.config = {};
+		this.config.symbol = symbol;
+		this.config.offlineColor = Color('rgb(0,0,50)').rgbNumber();
+
 
 		this.setupFado();
 		this.setupButton();
@@ -83,11 +79,24 @@ class Spy {
 			this.debug(`Got /spy post`, JSON.stringify(request.body));
 
 			if (symbol) {
-				this.symbol = symbol;
+				this.config.symbol = symbol;
 
-				this.debug(`Setting new symbol ${this.symbol}...`);
-				this.quotes.setSymbol(this.symbol);
+				this.debug(`Setting new symbol ${this.config.symbol}...`);
+				this.quotes.setSymbol(this.config.symbol);
 			}
+
+			response.send('OK');
+		});
+
+		this.express.post('/config', (request, response) => {
+			var config = request.body;
+
+			this.debug(`Setting new configuration`, JSON.stringify(config));
+			this.config = Object.assign({}, this.config, config);
+			this.debug(`New configuration is`, JSON.stringify(this.config));
+
+			this.quotes.symbol = this.config.symbol;
+			this.quotes.requestQuote();
 
 			response.send('OK');
 		});
@@ -111,13 +120,13 @@ class Spy {
 
 	setupQuotes()  {
 		var Quotes = require('../scripts/quotes.js');
-		this.quotes = new Quotes({log:this.log, debug:this.debug, symbol:this.symbol});
+		this.quotes = new Quotes({log:this.log, debug:this.debug, symbol:this.config.symbol});
 
 		this.quotes.on('quote', (quote) => {
 			if (this.state != 'spy')
 				return;
 
-			var color = quote.marketState == 'REGULAR' ? this.computeColorFromQuote(quote) : this.colors.OFFLINE;
+			var color = quote.marketState == 'REGULAR' ? this.computeColorFromQuote(quote) : this.config.offlineColor;
 
 			if (quote.marketState == 'REGULAR' && this.marketState != 'REGULAR') {
 				// Market opened
@@ -136,7 +145,7 @@ class Spy {
 			this.marketState = quote.marketState;
 		});
 
-		this.debug(`Monitoring ${this.symbol} using schedule ${this.schedule}...`);
+		this.debug(`Monitoring ${this.config.symbol} using schedule ${this.schedule}...`);
 		this.quotes.startMonitoring(this.schedule);
 		this.quotes.requestQuote();
 
@@ -144,7 +153,7 @@ class Spy {
 
 	computeColorFromQuoteOLD(quote) {
 
-		var color = this.colors.OFFLINE;
+		var color = this.config.offlineColor;
 
 		if (quote && quote.change) {
 			var change     = Math.max(-1, Math.min(1, quote.change));
@@ -312,12 +321,12 @@ class Spy {
 
 			switch (this.state) {
 				case 'spy': {
-					this.fado.color({color:this.colors.OFFLINE, fade:1000, renderFrequency:60000, duration:-1, priority: '!'});
+					this.fado.color({color:this.config.offlineColor, fade:1000, renderFrequency:60000, duration:-1, priority: '!'});
 					this.quotes.requestQuote();
 					break;
 				}
 				default: {
-					this.fado.color({color:this.colors.BLACK, fade:1000, renderFrequency:60000, duration:-1, priority: '!'});
+					this.fado.color({color:'black', fade:1000, renderFrequency:60000, duration:-1, priority: '!'});
 					break;
 				}
 			}
