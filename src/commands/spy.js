@@ -9,7 +9,6 @@ class Spy {
 
 		var {debug = true, schedule, symbol, port = 3000, ...options} = options;
 
-		this.config.symbol   = symbol;
 		this.port     = port;
 		this.debug    = typeof debug === 'function' ? debug : (debug ? console.log : () => {});
 		this.log      = console.log;
