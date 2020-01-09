@@ -18,7 +18,7 @@ class Spy {
 		this.marketState = 'UNKNOWN';
 
 		this.colors = {
-			OFFLINE       : Color('purple').rgbNumber(),
+			OFFLINE       : Color('rgb(0,0,50)').rgbNumber(),
 			BLACK         : Color('black').rgbNumber(),
 			MARKED_CLOSED : Color('brown').rgbNumber(),
 			WHITE         : Color('white').rgbNumber(),
