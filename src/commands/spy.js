@@ -119,6 +119,8 @@ class Spy {
 			this.quotes.symbol = this.config.symbol;
 			this.quotes.requestQuote();
 
+			this.saveConfig();
+
 			response.send('OK');
 		});
 
