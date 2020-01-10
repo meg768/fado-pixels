@@ -16,18 +16,34 @@ class Spy {
 		this.schedule = schedule;
 		this.marketState = 'UNKNOWN';
 
-		this.config = {};
-		this.config.symbol = symbol;
-		this.config.offlineColor = Color('rgb(0,0,50)').rgbNumber();
-
+		this.config = Object.assign({}, this.loadConfig(), {symbol:symbol, schedule:schedule, offlineColor:Color('rgb(0,0,50)').rgbNumber()});
 
 		this.setupFado();
 		this.setupButton();
 		this.setupQuotes();
 		this.setupExpress();
-
 	}
 
+	getConfigFileName() {
+		var Path = require('path');
+		var parts = Path.parse(__filename);
+		var fileName = Path.join(parts.dir, parts.name + '.json');  
+
+		return fileName;
+	}
+
+	loadConfig() {
+		var fs = require('fs');
+		var fileName = this.getConfigFileName();
+		var config = fs.existsSync(fileName) ? JSON.parse(fs.readFileSync(fileName)) : {};
+		this.debug(`Loaded config file ${fileName}. ${JSON.stringify(config)}`);
+	}
+
+	saveConfig() {
+		var fs = require('fs');
+		var fileName = this.getConfigFileName();
+		return fs.writeFileSync(fileName, JSON.stringify(object, null, '\t'));
+	}
 
 	setupExpress() {
 
@@ -85,6 +101,10 @@ class Spy {
 			}
 
 			response.send('OK');
+		});
+
+		this.express.get('/config', (request, response) => {
+			response.status(200).json(this.config);
 		});
 
 		this.express.post('/config', (request, response) => {
