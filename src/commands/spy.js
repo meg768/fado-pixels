@@ -42,7 +42,8 @@ class Spy {
 	saveConfig() {
 		var fs = require('fs');
 		var fileName = this.getConfigFileName();
-		return fs.writeFileSync(fileName, JSON.stringify(object, null, '\t'));
+		this.debug(`Saved config file ${fileName}. ${JSON.stringify(this.config)}`);
+		return fs.writeFileSync(fileName, JSON.stringify(this.config, null, '\t'));
 	}
 
 	setupExpress() {
