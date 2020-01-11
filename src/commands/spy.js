@@ -160,7 +160,7 @@ class Spy {
 
 			switch(this.config.theme) {
 				case 'cool': {
-					offlineColor = Color('rgb(0,0,50').rgbNumber();
+					offlineColor = Color('rgb(0,0,50)').rgbNumber();
 					break;					
 				}
 				case 'warm': {
