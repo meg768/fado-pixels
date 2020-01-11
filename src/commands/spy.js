@@ -117,7 +117,7 @@ class Spy {
 		this.express.post('/config', (request, response) => {
 			response.setHeader('Access-Control-Allow-Origin', '*');
 			this.debug(`Setting new configuration:`, JSON.stringify(request.body));
-			this.config = Object.assign({}, request.body, this.config);
+			this.config = Object.assign({}, this.config, request.body);
 			this.debug(`New configuration:`, JSON.stringify(this.config));
 
 			this.quotes.symbol = this.config.symbol;
