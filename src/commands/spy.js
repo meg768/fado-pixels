@@ -22,6 +22,7 @@ class Spy {
 		};
 
 		this.config = Object.assign({}, this.loadConfig(), defaultConfig); 
+		this.debug(`Config ${JSON.stringify(this.config)}`);
 
 		this.setupFado();
 		this.setupButton();
@@ -41,7 +42,7 @@ class Spy {
 		var fs = require('fs');
 		var fileName = this.getConfigFileName();
 		var config = fs.existsSync(fileName) ? JSON.parse(fs.readFileSync(fileName)) : {};
-		this.debug(`Loaded config file ${fileName}. ${JSON.stringify(config)}`);
+		this.debug(`Loaded config file ${fileName}...`);
 	}
 
 	saveConfig() {
