@@ -18,8 +18,7 @@ class Spy {
 		var defaultConfig = {
 			symbol:symbol,
 			schedule:schedule,
-			displayMode:'default',
-			offlineColor:Color('rgb(0,0,50)').rgbNumber()
+			theme:'default'
 		};
 
 		this.config = Object.assign({}, this.loadConfig(), defaultConfig); 
@@ -156,7 +155,23 @@ class Spy {
 				return;
 
 			var onlineColor = this.computeColorFromQuote(quote);
-			var offlineColor = this.config.displayMode == 'always' ? onlineColor : this.config.offlineColor;
+			var offlineColor = onlineColor;
+
+			switch(this.config.theme) {
+				case 'cool': {
+					offlineColor = Color('rgb(0,0,50').rgbNumber();
+					break;					
+				}
+				case 'warm': {
+					offlineColor = Color('#FFA500').darken(0.5).rgbNumber();
+					break;					
+				}
+				default: {
+					offlineColor = onlineColor;
+					break;					
+				}
+			}
+
 			var color = quote.marketState == 'REGULAR' ? onlineColor : offlineColor;
 
 			if (quote.marketState == 'REGULAR' && this.marketState != 'REGULAR') {
@@ -351,7 +366,7 @@ class Spy {
 
 			switch (this.state) {
 				case 'spy': {
-					this.fado.color({color:this.config.offlineColor, fade:1000, renderFrequency:60000, duration:-1, priority: '!'});
+					this.fado.color({color:'white', fade:1000, renderFrequency:60000, duration:-1, priority: '!'});
 					this.quotes.requestQuote();
 					break;
 				}
