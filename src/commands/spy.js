@@ -9,14 +9,20 @@ class Spy {
 
 		var {debug = true, schedule, symbol, port = 3000, ...options} = options;
 
-		this.port     = port;
-		this.debug    = typeof debug === 'function' ? debug : (debug ? console.log : () => {});
-		this.log      = console.log;
-		this.state    = 'spy';
-		this.schedule = schedule;
+		this.port        = port;
+		this.debug       = typeof debug === 'function' ? debug : (debug ? console.log : () => {});
+		this.log         = console.log;
+		this.state       = 'spy';
 		this.marketState = 'UNKNOWN';
 
-		this.config = Object.assign({}, this.loadConfig(), {symbol:symbol, schedule:schedule, offlineColor:Color('rgb(0,0,50)').rgbNumber()});
+		var defaultConfig = {
+			symbol:symbol,
+			schedule:schedule,
+			displayMode:'default',
+			offlineColor:Color('rgb(0,0,50)').rgbNumber()
+		};
+
+		this.config = Object.assign({}, this.loadConfig(), defaultConfig); 
 
 		this.setupFado();
 		this.setupButton();
@@ -149,7 +155,9 @@ class Spy {
 			if (this.state != 'spy')
 				return;
 
-			var color = quote.marketState == 'REGULAR' ? this.computeColorFromQuote(quote) : this.config.offlineColor;
+			var onlineColor = this.computeColorFromQuote(quote);
+			var offlineColor = this.config.displayMode == 'always' ? onlineColor : this.config.offlineColor;
+			var color = quote.marketState == 'REGULAR' ? onlineColor : offlineColor;
 
 			if (quote.marketState == 'REGULAR' && this.marketState != 'REGULAR') {
 				// Market opened
@@ -168,8 +176,8 @@ class Spy {
 			this.marketState = quote.marketState;
 		});
 
-		this.debug(`Monitoring ${this.config.symbol} using schedule ${this.schedule}...`);
-		this.quotes.startMonitoring(this.schedule);
+		this.debug(`Monitoring ${this.config.symbol} using schedule ${this.config.schedule}...`);
+		this.quotes.startMonitoring(this.config.schedule);
 		this.quotes.requestQuote();
 
 	}
@@ -340,7 +348,6 @@ class Spy {
 					break;
 				}
 			}
-
 
 			switch (this.state) {
 				case 'spy': {
