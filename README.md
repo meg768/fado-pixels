@@ -6,10 +6,10 @@ This is a project where I replaced the lamp of an IKEA Fado with Neopixels. XXXX
 
 See https://github.com/meg768/installing-new-rpi-from-scratch.
 
-### Install git and pigpio
+### Install pigpio
 
 ````bash
-sudo apt-get install pigpio
+sudo apt-get install pigpio -y
 ````
 ### Clone repository
 
