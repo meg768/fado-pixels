@@ -1,6 +1,6 @@
 # fado-pixels
 
-This is a project where I replaced the lamp of an IKEA Fado with Neopixels. XXXXX
+This is a project where I replaced the lamp of an IKEA Fado with Neopixels. 
 
 ## Setting up the Pi Zero
 
