@@ -14,8 +14,7 @@ sudo apt-get install pigpio -y
 ### Clone repository
 
 ````bash
-git clone https://github.com/meg768/fado-pixels.git
-cd fado-pixels
+git clone https://github.com/meg768/fado-pixels.git && cd fado-pixels
 ````
 
 ### Install Node Modules
