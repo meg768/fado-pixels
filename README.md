@@ -31,6 +31,10 @@ This project uses the npm module **dotenv** and needs some enviroment variables 
 echo > .env
 ````
 
+### Install Apache
+
+See https://www.raspberrypi.org/documentation/remote-access/web-server/apache.md.
+
 ## Links
 - Send files to RPI over Bluetooth - https://www.raspberrypi.org/forums/viewtopic.php?p=963751#p963751
 - Powering lots of leds - http://www.eerkmans.nl/powering-lots-of-leds-from-arduino/
