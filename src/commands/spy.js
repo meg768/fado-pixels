@@ -345,12 +345,10 @@ class Spy {
 		}
 
 		var color = Color(COLORS[rgbIndex]);
-		var intensity = parseFloat(this.config.intensity);
+		var brightness = parseFloat(this.config.brightness);
 
-		if (isNumber(intensity) && intensity >= 0 && intensity < 1) {
-			this.debug(`Intensity set to ${intensity}...`);
-			color = color.darken(1 - intensity);
-
+		if (isNumber(brightness) && brightness >= 0 && brightness < 1) {
+			color = color.darken(1 - brightness);
 		}
 		
 		return color.rgbNumber();
