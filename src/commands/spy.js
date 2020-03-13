@@ -21,7 +21,7 @@ class Spy {
 			theme:'default'
 		};
 
-		this.config = Object.assign({}, this.loadConfig(), defaultConfig); 
+		this.config = Object.assign({}, defaultConfig, this.loadConfig()); 
 		this.debug(`Config ${JSON.stringify(this.config)}`);
 
 		this.setupFado();
