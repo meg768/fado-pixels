@@ -1,6 +1,6 @@
 var Color = require('color');
 var Command = require('../scripts/command.js');
-
+var isNumber = require('yow/isNumber');
 
 
 class Spy {
@@ -43,6 +43,8 @@ class Spy {
 		var fileName = this.getConfigFileName();
 		var config = fs.existsSync(fileName) ? JSON.parse(fs.readFileSync(fileName)) : {};
 		this.debug(`Loaded config file ${fileName}...`);
+
+		return config;
 	}
 
 	saveConfig() {
@@ -342,7 +344,16 @@ class Spy {
 			}
 		}
 
-		return Color(COLORS[rgbIndex]).rgbNumber();
+		var color = Color(COLORS[rgbIndex]);
+		var intensity = parseFloat(this.config.intensity);
+
+		if (isNumber(intensity) && intensity >= 0 && intensity < 1) {
+			this.debug(`Intensity set to ${intensity}...`);
+			color = color.darken(1 - intensity);
+
+		}
+		
+		return color.rgbNumber();
 	}
 
 
