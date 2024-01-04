@@ -17,8 +17,8 @@ class MqttCommand extends Command {
 
 	run(argv) {
         let args = {};
-        this.fado = new Fado({log:this.log, debug:this.debug});
-        this.fado.blink();
+        let fado = new Fado({log:this.log, debug:this.debug});
+        fado.flash();
 	}
 
 }
