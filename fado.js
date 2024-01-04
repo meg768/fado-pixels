@@ -53,6 +53,7 @@ class App {
 			yargs.command(require('./src/commands/random.js'));
 			yargs.command(require('./src/commands/quotes.js'));
 			yargs.command(require('./src/commands/server.js'));
+			yargs.command(require('./src/commands/mqtt.js'));
 			console.debug('Finished loading commands...')
 
 			yargs.demandCommand(1);
