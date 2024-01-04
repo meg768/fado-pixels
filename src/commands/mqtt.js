@@ -1,4 +1,5 @@
 var Command = require('../scripts/command.js');
+var Fado = require('../scripts/fado.js')
 
 
 class MqttCommand extends Command {
@@ -16,9 +17,8 @@ class MqttCommand extends Command {
 
 	run(argv) {
         let args = {};
-		var Fado = require('../scripts/fado.js')
-		var fado = new Fado();
-        fado.blink();
+        this.fado = new Fado({log:this.log, debug:this.debug});
+        this.fado.blink();
 	}
 
 }
