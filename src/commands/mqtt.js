@@ -7,7 +7,7 @@ class MqttCommand extends Command {
 		var defaults = {
 			port:3000
 		};
-		super({ module: module, name: 'server', description: 'Fado server', defaults: defaults});
+		super({ module: module, name: 'mqtt', description: 'MQTT server', defaults: defaults});
 	}
 
 	defineArgs(yargs) {
