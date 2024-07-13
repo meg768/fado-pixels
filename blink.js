@@ -37,6 +37,9 @@ class App {
 			var Fado = require('./src/scripts/fado.js');
 			var fado = new Fado({});
 
+			var config = require('./config.json');
+			console.log(config);
+			
 			var options = {
 				color      : 'red',
 				duration   : 60000,
