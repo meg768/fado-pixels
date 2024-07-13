@@ -38,7 +38,7 @@ class App {
 
 	run() {
 		try {
-			var Fado = require('./scripts/fado.js');
+			var Fado = require('./src/scripts/fado.js');
 			var fado = new Fado(argv);
 
 			var options = {
