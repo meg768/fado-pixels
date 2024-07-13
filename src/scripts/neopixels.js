@@ -1,5 +1,5 @@
 var Neopixels = require('rpi-neopixels');
-var config = require('./config.js');
+var config = require('../../config.json');
 
 
 function configure() {
