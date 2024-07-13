@@ -39,7 +39,7 @@ class App {
 			var fado = new Fado();
 
 			var options = {
-				color      : 'red',
+				color      : argv.color,
 				duration   : 60000,
 				iterations : 5,
 				interval   : 500
