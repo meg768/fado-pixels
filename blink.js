@@ -7,10 +7,9 @@ class App {
 	constructor() {
 		var yargs = require('yargs');
 
-//		yargs.usage('Usage: $0 [options]');
 		yargs.help();
-
 		yargs.option('color', {describe:'Color', default:'red'});
+		yargs.option('interval', {describe:'Interval', default:100});
 		console.log(yargs.argv);
 
 		this.run(yargs.argv);
@@ -28,7 +27,7 @@ class App {
 				color      : argv.color,
 				duration   : 60000,
 				iterations : 5,
-				interval   : 500
+				interval   : argv.interval
 			};
 	
 			fado.blink(options);		
