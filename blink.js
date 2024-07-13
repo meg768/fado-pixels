@@ -11,7 +11,7 @@ class App {
 		yargs.option('color', {describe:'Color', default:'red'});
 		yargs.option('interval', {describe:'Interval', default:100});
 		yargs.option('duration', {describe:'Duration', default:30000});
-		yargs.option('interations', {describe:'Iterations', default:1};
+		yargs.option('interations', {describe:'Iterations', default:1});
 
 		console.log(yargs.argv);
 
