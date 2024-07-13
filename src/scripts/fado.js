@@ -1,6 +1,6 @@
 
 module.exports = class Fado {
-	constructor(options) {
+	constructor(options = {}) {
 		var {debug, log} = options;
 
 		var Neopixels        = require('../scripts/neopixels.js');

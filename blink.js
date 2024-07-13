@@ -10,17 +10,6 @@ class App {
 
 	constructor() {
 		
-		var fs = require('fs');
-		var path = require('path');
-		var parts = path.parse(__filename);
-		var config = require('./src/scripts/config.js');
-		var merge = require('yow/merge');
-
-		config.neopixels = {
-			"stripType":"rgb",
-			"width": 24,
-			"height": 1	
-		};
 
 
 		process.on('unhandledRejection', (reason, p) => {
