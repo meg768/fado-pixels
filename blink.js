@@ -23,6 +23,16 @@ class App {
 
 	run() {
 		try {
+
+			var yargs = require('yargs');
+
+
+			yargs.usage('Usage: $0 <command> [options]');
+			yargs.help();
+
+			var argv = yargs.argv;
+			console.log(argv);
+
 			var Fado = require('./src/scripts/fado.js');
 			var fado = new Fado();
 
