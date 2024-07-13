@@ -8,8 +8,8 @@ class App {
 		var yargs = require('yargs');
 
 		yargs.help();
-		yargs.option('color', {describe:'Color', default:'red'});
-		yargs.option('interval', {describe:'Interval', default:100});
+		yargs.option('color', {describe:'Color', default:'blue'});
+		yargs.option('interval', {describe:'Interval', default:500});
 		yargs.option('duration', {describe:'Duration', default:10000});
 		yargs.option('interations', {describe:'Iterations', default:1});
 
