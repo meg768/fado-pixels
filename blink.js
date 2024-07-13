@@ -7,7 +7,7 @@ class App {
 	constructor() {
 		var yargs = require('yargs');
 
-		yargs.usage('Usage: $0 <command> [options]');
+//		yargs.usage('Usage: $0 [options]');
 		yargs.help();
 
 		yargs.option('color', {describe:'Color', default:'red'});
@@ -16,8 +16,6 @@ class App {
 		this.run(yargs.argv);
 	
 	}
-
-
 
 	run(argv) {
 		try {
