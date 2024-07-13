@@ -16,16 +16,12 @@ class App {
 		var config = require('./src/scripts/config.js');
 		var merge = require('yow/merge');
 
-		var localConfigFile = path.join(parts.dir, parts.name + '.json');
-		var bootConfigFile  = path.join('/boot', parts.name + '.json');
+		config.neopixels = {
+			"stripType":"rgb",
+			"width": 24,
+			"height": 1	
+		};
 
-		if (fs.existsSync(localConfigFile)) {
-			merge(config, JSON.parse(fs.readFileSync(localConfigFile)));
-		}
-
-		if (fs.existsSync(bootConfigFile)) {
-			merge(config, JSON.parse(fs.readFileSync(bootConfigFile)));
-		}
 
 		process.on('unhandledRejection', (reason, p) => {
 			console.log('Unhandled Rejection at: Promise', p, 'reason:', reason);
@@ -39,7 +35,7 @@ class App {
 	run() {
 		try {
 			var Fado = require('./src/scripts/fado.js');
-			var fado = new Fado(argv);
+			var fado = new Fado();
 
 			var options = {
 				color      : 'red',
