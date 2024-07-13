@@ -35,7 +35,7 @@ class App {
 	run() {
 		try {
 			var Fado = require('./src/scripts/fado.js');
-			var fado = new Fado();
+			var fado = new Fado({});
 
 			var options = {
 				color      : 'red',
