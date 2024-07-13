@@ -28,7 +28,7 @@ class App {
 		yargs.help();
 
 		yargs.option('color', {describe:'Color', default:'red'});
-		console.log(argv);
+		console.log(yargs.argv);
 
 		return yargs.argv;
 	}
