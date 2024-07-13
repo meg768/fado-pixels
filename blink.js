@@ -21,22 +21,25 @@ class App {
 	}
 
 
+	getArgv() {
+		var yargs = require('yargs');
+
+		yargs.usage('Usage: $0 <command> [options]');
+		yargs.help();
+
+		yargs.option('color', {describe:'Color', default:'red'});
+		console.log(argv);
+
+		return yargs.argv;
+	}
+
 	run() {
 		try {
 
-			var yargs = require('yargs');
-
-
-			yargs.usage('Usage: $0 <command> [options]');
-			yargs.help();
-
-			yargs.option('color', {describe:'Color', default:'red'});
-
-			var argv = yargs.argv;
-			console.log(argv);
 
 			var Fado = require('./src/scripts/fado.js');
 			var fado = new Fado();
+			var argv = this.getArgv();
 
 			var options = {
 				color      : argv.color,
