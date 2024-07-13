@@ -1,27 +1,10 @@
 #!/usr/bin/env node
 
 
-require('yow/prefixConsole')();
-require('dotenv').config();
-require('yargs');
-
 
 class App {
 
 	constructor() {
-		
-
-
-		process.on('unhandledRejection', (reason, p) => {
-			console.log('Unhandled Rejection at: Promise', p, 'reason:', reason);
-		});
-
-		this.run();
-	
-	}
-
-
-	getArgv() {
 		var yargs = require('yargs');
 
 		yargs.usage('Usage: $0 <command> [options]');
@@ -30,16 +13,18 @@ class App {
 		yargs.option('color', {describe:'Color', default:'red'});
 		console.log(yargs.argv);
 
-		return yargs.argv;
+		this.run(yargs.argv);
+	
 	}
 
-	run() {
+
+
+	run(argv) {
 		try {
 
 
 			var Fado = require('./src/scripts/fado.js');
 			var fado = new Fado();
-			var argv = this.getArgv();
 
 			var options = {
 				color      : argv.color,
