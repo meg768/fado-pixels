@@ -25,7 +25,7 @@ class App {
 				debug      : console.log,
 				color      : argv.color,
 				duration   : argv.duration,
-				interval   : argv.interval
+				xinterval   : argv.interval
 			};
 	
 			fado.runAnimation(new Animation(options));
