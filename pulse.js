@@ -6,7 +6,7 @@ class App {
 		var yargs = require('yargs');
 
 		yargs.option('color', {describe:'Color', default:'red'});
-		yargs.option('duration', {describe:'Duration', default:10});
+		yargs.option('duration', {describe:'Duration', default:1000});
 		yargs.option('interval', {describe:'Interval', default:500});
 
 		yargs.help();
