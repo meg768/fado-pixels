@@ -19,7 +19,6 @@ class App {
 			var Animation = require('./src/scripts/blink-animation.js'); 
 			var Fado = require('./src/scripts/fado.js');
 			var fado = new Fado();
-
 	
 			var options = {
 				pixels     : fado.pixels,
