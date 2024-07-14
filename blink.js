@@ -7,7 +7,6 @@ class App {
 
 		yargs.option('color', {describe:'Color', default:'blue'});
 		yargs.option('duration', {describe:'Duration', default:10000});
-		yargs.option('interations', {describe:'Iterations', default:1});
 		yargs.help();
 
 		this.run(yargs.argv);
@@ -23,8 +22,7 @@ class App {
 				pixels     : fado.pixels,
 				debug      : console.log,
 				color      : argv.color,
-				duration   : argv.duration,
-				iterations : argv.iterations
+				duration   : argv.duration
 			};
 	
 			fado.runAnimation(new Animation(options));
