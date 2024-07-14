@@ -20,9 +20,12 @@ module.exports = class extends Animation {
         this.pixels.fill(this.color);
         this.pixels.render({transition:'fade', duration:duration});
 
+        this.sleep(duration);
+
         this.pixels.fill(this.antiColor);
         this.pixels.render({transition:'fade', duration:duration});
 
+        this.sleep(duration);
 
     }
 }
