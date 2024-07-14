@@ -16,7 +16,7 @@ class App {
 
 	run(argv) {
 		try {
-			var Animation = require('./src/blink-animation.js'); 
+			var Animation = require('./src/scripts/blink-animation.js'); 
 			var Fado = require('./src/scripts/fado.js');
 			var fado = new Fado();
 
