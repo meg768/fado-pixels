@@ -6,7 +6,6 @@ class App {
 		var yargs = require('yargs');
 
 		yargs.option('color', {describe:'Color', default:'blue'});
-		yargs.option('interval', {describe:'Interval', default:500});
 		yargs.option('duration', {describe:'Duration', default:10000});
 		yargs.option('interations', {describe:'Iterations', default:1});
 		yargs.help();
@@ -25,8 +24,7 @@ class App {
 				debug      : console.log,
 				color      : argv.color,
 				duration   : argv.duration,
-				iterations : argv.iterations,
-				interval   : argv.interval
+				iterations : argv.iterations
 			};
 	
 			fado.runAnimation(new Animation(options));
