@@ -7,7 +7,7 @@ class App {
 
 		yargs.option('color', {describe:'Color', default:'red'});
 		yargs.option('duration', {describe:'Duration', default:10000});
-		yargs.option('interval', {describe:'Interval', default:500});
+		yargs.option('interval', {describe:'Interval', default:10});
 
 		yargs.help();
 
