@@ -13,7 +13,7 @@ module.exports = class extends Animation {
     }
 
     getColor() {        
-        return Color.hsl([this.getHue(), 100, 10]).rgbNumber();
+        return Color.hsl([this.getHue(), 100, 50]).rgbNumber();
     }
 
     render() {
