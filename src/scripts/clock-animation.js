@@ -17,6 +17,7 @@ module.exports = class extends Animation {
     }
 
     render() {
+        console.log(this.getColor());
         this.pixels.fill(this.getColor());
         this.pixels.render();
     }
