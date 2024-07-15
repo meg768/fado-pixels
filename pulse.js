@@ -23,7 +23,7 @@ class App {
 				pixels     : fado.pixels,
 				debug      : console.log,
 				color      : argv.color,
-				interval   : 250,
+				interval   : 100,
 				duration   : argv.duration,
 			};
 	
