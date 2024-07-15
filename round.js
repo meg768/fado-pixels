@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 var Color = require('color');
-var Animation = require('./animation.js');
+var Animation = require('./src/scripts/animation.js');
 
 class RoundAnimation extends Animation {
 
