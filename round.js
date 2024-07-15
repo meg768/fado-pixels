@@ -14,6 +14,11 @@ class RoundAnimation extends Animation {
 		this.tick = 0;
     }
 
+	async stop() {
+		this.pixels.clear();
+		this.pixels.render();
+		await super.stop();
+	}
     render() {
         this.pixels.fill(Color("black").rgbNumber());
 
