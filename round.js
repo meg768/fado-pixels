@@ -45,6 +45,7 @@ class App {
 			var options = {
 				pixels     : fado.pixels,
 				debug      : console.log,
+				iterations : 10,
 				duration   : 10000
 			};
 	
