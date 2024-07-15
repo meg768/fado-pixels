@@ -19,15 +19,16 @@ class RoundAnimation extends Animation {
 		this.pixels.render();
 		await super.stop();
 	}
+
     render() {
         this.pixels.fill(Color("black").rgbNumber());
 
 		for (let i = 0; i < 24; i++) {
-			let color = Color(Random(["black", "black", "black", "red", "yellow"])).rgbNumber();
+			let color = Color(Random(["black", "black", "black", "red", "orange"])).rgbNumber();
 			this.pixels.setPixel(i, 0, color);
 		}
         //this.pixels.render();
-        this.pixels.render({transition:'fade', duration:1000});
+        this.pixels.render({transition:'fade', duration:2000});
 
     }
 
