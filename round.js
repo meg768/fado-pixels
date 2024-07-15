@@ -16,7 +16,7 @@ class RoundAnimation extends Animation {
 
 	async stop() {
 		this.pixels.clear();
-        this.pixels.render({transition:'fade', duration:500});
+        this.pixels.render({transition:'fade', duration:1000});
 		await super.stop();
 	}
 
