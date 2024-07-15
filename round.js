@@ -2,6 +2,7 @@
 
 var Color = require('color');
 var Animation = require('./src/scripts/animation.js');
+var Random = require('yow/random');
 
 class RoundAnimation extends Animation {
 
@@ -14,14 +15,15 @@ class RoundAnimation extends Animation {
     }
 
     render() {
-		console.log("renderinng");
         this.pixels.fill(Color("black").rgbNumber());
-		this.pixels.setPixel(this.tick, 0, Color("red").rgbNumber());
-        this.pixels.render();
 
-		this.tick = (this.tick + 1) % 24;
+		for (let i = 0; i < 24; i++) {
+			let color = Color(Random(["black", "red", "yellow"])).rgbNumber();
+			this.pixels.setPixel(i, 0, color);
+		}
+        //this.pixels.render();
+        this.pixels.render({transition:'fade', duration:20});
 
-        this.sleep(10);
     }
 
 
