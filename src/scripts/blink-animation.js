@@ -7,7 +7,7 @@ module.exports = class extends Animation {
     constructor(options) {
         var {interval = 500, color = 'red', antiColor = 'black', ...options} = options;
 
-        super({name:'BlinkAnimation', renderFrequency:interval, ...options});
+        super({name:'BlinkAnimation', ...options});
 
         this.interval = interval;
         this.color = Color(color).rgbNumber();
