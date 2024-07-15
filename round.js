@@ -47,7 +47,8 @@ class App {
 	
 			var options = {
 				pixels     : fado.pixels,
-				debug      : console.log
+				debug      : console.log,
+				duration   : 10000
 			};
 	
 			fado.runAnimation(new RoundAnimation(options));
