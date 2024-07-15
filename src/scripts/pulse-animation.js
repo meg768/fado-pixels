@@ -7,7 +7,7 @@ module.exports = class extends Animation {
     constructor(options) {
         var {interval = 500, color = 'red', antiColor = 'black', ...options} = options;
 
-        super({name:'PulseAnimation', renderFrequency:interval, ...options});
+        super({name:'PulseAnimation', ...options});
 
         this.interval = interval;
         this.color = Color(color).rgbNumber();
