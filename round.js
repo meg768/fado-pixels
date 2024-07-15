@@ -22,7 +22,7 @@ class RoundAnimation extends Animation {
 			this.pixels.setPixel(i, 0, color);
 		}
         //this.pixels.render();
-        this.pixels.render({transition:'fade', duration:20});
+        this.pixels.render({transition:'fade', duration:1000});
 
     }
 
