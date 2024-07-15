@@ -24,7 +24,7 @@ class RoundAnimation extends Animation {
         this.pixels.fill(Color("black").rgbNumber());
 
 		for (let i = 0; i < 24; i++) {
-			let color = Color(Random(["black", "black", "black", "black", "black", "black", "orange"])).rgbNumber();
+			let color = Color(Random(["black", "black", "black", "black", "black", "black", "red"])).rgbNumber();
 			this.pixels.setPixel(i, 0, color);
 		}
         //this.pixels.render();
