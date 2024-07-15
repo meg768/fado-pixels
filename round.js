@@ -7,17 +7,14 @@ class RoundAnimation extends Animation {
 
 
     constructor(options) {
-        var {interval = 500, color = 'red', antiColor = 'black', ...options} = options;
 
         super({name:'RoundAnimation', ...options});
 
 		this.tick = 0;
-        this.interval = interval;
-        this.color = Color(color).rgbNumber();
-        this.antiColor = Color(antiColor).rgbNumber();
     }
 
     render() {
+		console.log("renderinng");
         this.pixels.fill(Color("black").rgbNumber());
 		this.pixels.setPixel(this.tick, 0, this.Color("red").rgbNumber());
         this.pixels.render();
