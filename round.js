@@ -21,7 +21,7 @@ class RoundAnimation extends Animation {
 
 		this.tick = (this.tick + 1) % 24;
 
-        this.sleep(200);
+        this.sleep(10);
     }
 
 
