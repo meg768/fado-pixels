@@ -8,7 +8,7 @@ module.exports = class extends Animation {
     }
 
     getHue() {
-        var now = new Date("2000-01-01 15:00");
+        var now = new Date();
         return Math.floor(360 * (((now.getHours() % 12) * 60) + now.getMinutes()) / (12 * 60));
     }
 
