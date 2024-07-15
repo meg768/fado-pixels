@@ -16,12 +16,12 @@ class RoundAnimation extends Animation {
     render() {
 		console.log("renderinng");
         this.pixels.fill(Color("blue").rgbNumber());
-//		this.pixels.setPixel(this.tick, 0, this.Color("red").rgbNumber());
+		this.pixels.setPixel(this.tick, 0, Color("red").rgbNumber());
         this.pixels.render();
 
 		this.tick = (this.tick + 1) % 24;
 
-//        this.sleep(200);
+        this.sleep(200);
     }
 
 
