@@ -23,6 +23,8 @@ class MqttCommand extends Command {
 	}
 
 	run(argv) {
+		console.log('sdflskdjföalkjasölkfj');
+
         let args = {};
         let fado = new Fado({log:this.log, debug:this.debug});
 
