@@ -55,6 +55,7 @@ class MqttCommand extends Command {
 
 					this.debug('----');
 					this.debug(animation);
+					this.debug(options);
 					this.debug('----');
 					switch(animation) {
 						case "blink": {
