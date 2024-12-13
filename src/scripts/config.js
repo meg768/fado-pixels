@@ -1,4 +1,4 @@
 
 
-module.exports = require('../../config.json');
+module.exports = require('../../fado.json');
 
