@@ -26,15 +26,14 @@ class MqttCommand extends Command {
         let args = {};
         let fado = new Fado({log:this.log, debug:this.debug});
 
-		this.debug(`Connecting to host '${this.argv.host}'...`);
-		var mqtt = MQTT.connect(this.argv.host, {username:this.argv.username, password:this.argv.password, port:this.argv.port});
+		this.debug(`Connecting to host '${argv.host}'...`);
+		var mqtt = MQTT.connect(argv.host, {username:argv.username, password:argv.password, port:argv.port});
 
 		mqtt.on('connect', () => {
-			this.log(`Connected to ${this.argv.host}:${this.argv.port}...`);
-//			this.displayText(`Listening to MQTT topic ${this.argv.topic}... 🤪`);
+			this.log(`Connected to ${argv.host}:${argv.port}...`);
 		})
 
-		mqtt.subscribe(this.argv.topic, (error) => {
+		mqtt.subscribe(argv.topic, (error) => {
 
         });
 
@@ -52,10 +51,10 @@ class MqttCommand extends Command {
                     let payload = JSON.parse(message)
                     let {animation, ...options} = payload;
 
-                    this.runAnimation(animation, options);
+                    //this.runAnimation(animation, options);
                 }
                 catch(error) {
-                    this.displayText(error);
+                    this.log(error);
 
                 }
 
