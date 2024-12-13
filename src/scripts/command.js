@@ -18,7 +18,7 @@ module.exports = class Command {
 		module.exports.builder  = (yargs) => {
 			yargs.wrap(null);
 			yargs.option('help',  {describe:'Display help', default:false});
-			yargs.option('debug', {describe:'Debug mode', boolean:true, default:false});
+			yargs.option('debug', {describe:'Debug mode', boolean:true, default:true});
 			yargs.option('log',   {describe:'Log mode', boolean:true, default:true});
 
 
