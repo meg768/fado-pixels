@@ -48,6 +48,7 @@ class MqttCommand extends Command {
                     return;
 
                 try {
+					this.debug('parsing');
                     let payload = JSON.parse(message)
                     let {animation, ...options} = payload;
 
