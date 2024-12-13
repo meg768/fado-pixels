@@ -26,7 +26,7 @@
     "express": "^4.17.1",
     "node-schedule": "^1.3.2",
     "rpi-animations": "^1.0.12",
-    "rpi-neopixels": "^1.0.76",
+    "rpi-neopixels": "^1.0.78",
     "sleep": "^6.1.0",
     "yahoo-finance": "^0.3.6",
     "yargs": "^14.2.0",
