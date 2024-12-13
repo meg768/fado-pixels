@@ -23,8 +23,6 @@ class MqttCommand extends Command {
 	}
 
 	run(argv) {
-		console.log('sdflskdjföalkjasölkfj');
-		this.log(argv);
 
         let args = {};
         let fado = new Fado({log:this.log, debug:this.debug});
@@ -36,9 +34,7 @@ class MqttCommand extends Command {
 			this.log(`Connected to ${argv.host}:${argv.port}...`);
 		})
 
-
 		mqtt.subscribe(argv.topic, (error) => {
-
         });
 
 		
@@ -46,7 +42,7 @@ class MqttCommand extends Command {
 			try {
                 message = message.toString();
 
-                this.log(`MQTT message: '${message}'`);
+                this.debug(`MQTT message: '${message}'`);
 
                 if (message == '')
                     return
@@ -54,7 +50,7 @@ class MqttCommand extends Command {
                 try {
                     let payload = JSON.parse(message)
                     let {animation, ...options} = payload;
-
+this.debug(animation);
 					switch(animation) {
 						case "blink": {
 							fado.blink(options);
