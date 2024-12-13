@@ -45,12 +45,16 @@ class MqttCommand extends Command {
                 this.debug(`MQTT message: '${message}'`);
 
                 if (message == '')
-                    return
+                    return;
 
                 try {
                     let payload = JSON.parse(message)
                     let {animation, ...options} = payload;
-this.debug(animation);
+
+
+					this.debug('----');
+					this.debug(animation);
+					this.debug('----');
 					switch(animation) {
 						case "blink": {
 							fado.blink(options);
