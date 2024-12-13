@@ -55,7 +55,16 @@ class MqttCommand extends Command {
                     let payload = JSON.parse(message)
                     let {animation, ...options} = payload;
 
-                    //this.runAnimation(animation, options);
+					switch(animation) {
+						case "blink": {
+							fado.blink(options);
+							break;
+						}
+						case "color": {
+							fado.color(options);
+							break;
+						}
+					}
                 }
                 catch(error) {
                     this.log(error);
