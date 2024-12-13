@@ -33,10 +33,11 @@ class MqttCommand extends Command {
 			this.log(`Connected to ${argv.host}:${argv.port}...`);
 		})
 
+		/*
 		mqtt.subscribe(argv.topic, (error) => {
 
         });
-
+		*/
 
 		mqtt.on('message', (topic, message) => {
 			try {
