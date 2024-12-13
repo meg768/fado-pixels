@@ -48,15 +48,11 @@ class MqttCommand extends Command {
                     return;
 
                 try {
-					this.debug('parsing');
                     let payload = JSON.parse(message)
                     let {animation, ...options} = payload;
 
-
-					this.debug('----');
-					this.debug(animation);
-					this.debug(options);
-					this.debug('----');
+					options.priority = '!';
+					
 					switch(animation) {
 						case "blink": {
 							fado.blink(options);
@@ -64,6 +60,10 @@ class MqttCommand extends Command {
 						}
 						case "color": {
 							fado.color(options);
+							break;
+						}
+						case "pulse": {
+							fado.pulse(options);
 							break;
 						}
 					}
