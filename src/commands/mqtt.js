@@ -24,6 +24,7 @@ class MqttCommand extends Command {
 
 	run(argv) {
 		console.log('sdflskdjföalkjasölkfj');
+		this.log(argv);
 
         let args = {};
         let fado = new Fado({log:this.log, debug:this.debug});
@@ -35,12 +36,12 @@ class MqttCommand extends Command {
 			this.log(`Connected to ${argv.host}:${argv.port}...`);
 		})
 
-		/*
+
 		mqtt.subscribe(argv.topic, (error) => {
 
         });
-		*/
 
+		
 		mqtt.on('message', (topic, message) => {
 			try {
                 message = message.toString();
