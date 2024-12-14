@@ -15,25 +15,20 @@ module.exports = class Fado {
 			this.runDefaultAnimation();
 		});
 
-		this.defaultAnimation = {};
-		this.defaultAnimation.animation = 'color';
-		this.defaultAnimation.color = 'green';
-		this.defaultAnimation.fade = 500;
-		this.defaultAnimation.duration = -1;
-
-		this.runDefaultAnimation();
+		this.setColor('green');
 
 	}
 
-	setColor() {
-		let defaultAnimation = {};
-		defaultAnimation.animation = 'color';
-		defaultAnimation.color = 'green';
-		defaultAnimation.fade = 500;
-		defaultAnimation.duration = -1;
-		defaultAnimation.renderFrequency = 60000;
+	setColor(color) {
+		let animation = {};
+		animation.animation = 'color';
+		animation.color = color;
+		animation.fade = 500;
+		animation.duration = -1;
+		animation.priority = '!';
 
-		this.defaultAnimation(defaultAnimation);
+		this.defaultAnimation = animation;
+		this.runAnimation(this.defaultAnimation);
 	}
 
 	runDefaultAnimation() {
