@@ -11,11 +11,12 @@ module.exports = class Fado {
 		this.pixels  = new Neopixels({log:false, debug:false});
 		this.queue   = new AnimationQueue({log:false, debug:false});
 
+		this.setColor('green');
+
 		this.queue.on('idle', () => {
 			this.runDefaultAnimation();
 		});
 
-		this.setColor('green');
 
 	}
 
