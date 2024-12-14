@@ -11,6 +11,8 @@ module.exports = class Fado {
 		this.pixels  = new Neopixels({log:false, debug:false});
 		this.queue   = new AnimationQueue({log:false, debug:false});
 
+		this.now = new Date();
+
 		this.defaultAnimation = {};
 		this.defaultAnimation.animation = 'color';
 		this.defaultAnimation.color = 'green';
@@ -27,6 +29,12 @@ module.exports = class Fado {
 	}
 
 	runDefaultAnimation() {
+		let now = new Date();
+		if (now - this.now < 500) {
+			this.log('loop');
+			return;
+		}
+		this.now = now;
 		this.debug(`Running default animation.`);
 		this.runAnimation(this.defaultAnimation);
 	}
