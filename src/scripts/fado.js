@@ -12,7 +12,7 @@ module.exports = class Fado {
 		this.queue   = new AnimationQueue({log:false, debug:false});
 
 		this.queue.on('idle', () => {
-			this.runDefaultAnimation();
+			//this.runDefaultAnimation();
 		});
 
 		this.defaultAnimation = {};
@@ -20,7 +20,6 @@ module.exports = class Fado {
 		this.defaultAnimation.color = 'green';
 		this.defaultAnimation.fade = 500;
 		this.defaultAnimation.duration = -1;
-		this.defaultAnimation.renderFrequency = 60000;
 
 		this.runDefaultAnimation();
 
