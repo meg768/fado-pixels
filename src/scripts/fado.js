@@ -73,7 +73,10 @@ module.exports = class Fado {
 			this.log(`Animation ${animation} not found.`);
 		}
 
+
+
 		if (Animation != undefined) {
+			this.debug(`Running animation ${animation}...`)
 			this.queue.enqueue(new Animation({ debug: this.debug, pixels: this.pixels, ...options }));
 		}
 	}
