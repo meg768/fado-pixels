@@ -13,12 +13,6 @@ module.exports = class Fado {
 
 		this.now = new Date();
 
-		this.defaultAnimation = {};
-		this.defaultAnimation.animation = 'color';
-		this.defaultAnimation.color = 'green';
-		this.defaultAnimation.fade = 500;
-		this.defaultAnimation.duration = -1;
-		this.defaultAnimation.priority = '!';
 
 		this.queue.on('idle', () => {
 			this.runDefaultAnimation();
@@ -35,7 +29,6 @@ module.exports = class Fado {
 		this.defaultAnimation.color = color
 		this.defaultAnimation.fade = 500;
 		this.defaultAnimation.duration = -1;
-		this.defaultAnimation.priority = '!';
 
 		this.runAnimation(this.defaultAnimation);
 	}
@@ -53,12 +46,13 @@ module.exports = class Fado {
 
 	runAnimation(params) {
 
+		let FadeAnimation = require('./fade-animation.js');
+
 		let Animation = undefined;
 		let {animation, ...options} = params;
 
 		switch (animation) {
 			case 'color': {
-				options.fade = 500;
 				Animation = require('./color-animation.js');
 				break;
 			}
@@ -88,6 +82,7 @@ module.exports = class Fado {
 
 		if (Animation != undefined) {
 			this.debug(`Running animation ${animation}...`)
+			this.queue.enqueue(new FadeAnimation({ debug: this.debug, pixels: this.pixels, priority:'!'}));
 			this.queue.enqueue(new Animation({ debug: this.debug, pixels: this.pixels, ...options }));
 		}
 	}

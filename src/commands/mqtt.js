@@ -51,9 +51,6 @@ class MqttCommand extends Command {
                     let payload = JSON.parse(message)
                     let {animation, ...options} = payload;
 
-					// Interrupt prevoius animation if any
-					options.priority = '!';
-
 					switch(animation) {
 						case "blink": {
 							fado.blink(options);
