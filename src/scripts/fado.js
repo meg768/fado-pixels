@@ -24,9 +24,21 @@ module.exports = class Fado {
 			this.runDefaultAnimation();
 		});
 
+//		this.runAnimation(this.defaultAnimation);
+		this.setColor('red');
+
+
+	}
+
+	setColor(color) {
+		this.defaultAnimation = {};
+		this.defaultAnimation.animation = 'color';
+		this.defaultAnimation.color = color
+		this.defaultAnimation.fade = 500;
+		this.defaultAnimation.duration = -1;
+		this.defaultAnimation.priority = '!';
+
 		this.runAnimation(this.defaultAnimation);
-
-
 	}
 
 	runDefaultAnimation() {
