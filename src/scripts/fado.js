@@ -21,11 +21,10 @@ module.exports = class Fado {
 
 		this.queue.on('idle', () => {
 			this.log(`IDLÖE`);
-			//this.runDefaultAnimation();
+			this.runDefaultAnimation();
 		});
 
 		this.runAnimation(this.defaultAnimation);
-
 
 
 	}
