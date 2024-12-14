@@ -15,7 +15,7 @@ module.exports = class Fado {
 			this.runDefaultAnimation();
 		});
 
-		this.setColor('blue');
+		this.setColor('black');
 
 
 	}
@@ -43,6 +43,11 @@ module.exports = class Fado {
 
 		switch (animation) {
 			case 'color': {
+				this.defaultAnimation = {};
+				this.defaultAnimation.animation = 'color';
+				this.defaultAnimation.color = options.color;
+				this.defaultAnimation.duration = -1;
+
 				Animation = require('./color-animation.js');
 				break;
 			}
