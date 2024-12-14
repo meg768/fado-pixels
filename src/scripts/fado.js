@@ -18,6 +18,7 @@ module.exports = class Fado {
 		this.defaultAnimation = {};
 		this.defaultAnimation.animation = 'color';
 		this.defaultAnimation.color = 'green';
+		this.defaultAnimation.fade = 500;
 		this.defaultAnimation.duration = -1;
 
 		this.runDefaultAnimation();
