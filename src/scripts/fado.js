@@ -11,24 +11,19 @@ module.exports = class Fado {
 		this.pixels  = new Neopixels({log:false, debug:false});
 		this.queue   = new AnimationQueue({log:false, debug:false});
 
-		this.setColor('green');
-
 		this.queue.on('idle', () => {
 			this.runDefaultAnimation();
 		});
 
+		this.defaultAnimation = {};
+		this.defaultAnimation.animation = 'color';
+		this.defaultAnimation.color = 'green';
+		this.defaultAnimation.fade = 500;
+		this.defaultAnimation.duration = -1;
+		this.defaultAnimation.renderFrequency = 60000;
 
-	}
+		this.runDefaultAnimation();
 
-	setColor(color) {
-		let animation = {};
-		animation.animation = 'color';
-		animation.color = color;
-		animation.fade = 500;
-		animation.duration = -1;
-
-		this.defaultAnimation = animation;
-		this.runAnimation(this.defaultAnimation);
 	}
 
 	runDefaultAnimation() {
