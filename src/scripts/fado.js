@@ -26,7 +26,6 @@ module.exports = class Fado {
 		animation.color = color;
 		animation.fade = 500;
 		animation.duration = -1;
-		animation.priority = '!';
 
 		this.defaultAnimation = animation;
 		this.runAnimation(this.defaultAnimation);
