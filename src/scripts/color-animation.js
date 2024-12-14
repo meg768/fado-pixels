@@ -4,9 +4,9 @@ var Animation = require('./animation.js');
 module.exports = class extends Animation {
 
     constructor(options) {
-        var { fade = undefined, renderFrequency = 60000, color = 'red', ...options} = options;
+        var { fade = undefined, color = 'red', ...options} = options;
 
-        super({name:'ColorAnimation', ...options});
+        super({name: 'ColorAnimation', renderFrequency:60000, ...options});
 
         this.color = Color(color).rgbNumber();
         this.fade = fade;
