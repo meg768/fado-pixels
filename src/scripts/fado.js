@@ -11,35 +11,79 @@ module.exports = class Fado {
 		this.pixels  = new Neopixels({log:false, debug:false});
 		this.queue   = new AnimationQueue({log:false, debug:false});
 
+		this.queue.on('idle', () => {
+			this.runDefaultAnimation();
+		});
+
+		this.defaultAnimation = {};
+		this.defaultAnimation.animation = 'color';
+		this.defaultAnimation.color = 'green';
+		this.defaultAnimation.duration = -1;
+
+		this.defaultAnimation();
+
 	}
 
-	runAnimation(animation) {
-		this.queue.enqueue(animation);
+	runDefaultAnimation() {
+		this.debug(`Running default animation.`);
+		this.runAnimation(this.defaultAnimation);
+	}
+
+	runAnimation(params) {
+
+		let Animation = undefined;
+		let {animation, ...options} = params;
+
+		switch (animation) {
+			case 'color': {
+				Animation = require('./color-animation.js');
+				break;
+			}
+			case 'pulse': {
+				Animation = require('./pulse-animation.js');
+				break;
+			}
+			case 'clock': {
+				Animation = require('./clock-animation.js');
+				break;
+			}
+			case 'blink': {
+				Animation = require('./blink-animation.js');
+				break;
+			}
+			case 'random': {
+				Animation = require('./random-animation.js');
+				break;
+			}
+		}
+
+		if (Animation == undefined) {
+			this.log(`Animation ${animation} not found.`);
+		}
+
+		if (Animation != undefined) {
+			this.queue.enqueue(new Animation({ debug: this.debug, pixels: this.pixels, ...options }));
+		}
 	}
 
 	blink(options) {
-		var Animation = require('./blink-animation.js'); 
-		this.runAnimation(new Animation({debug:this.debug, pixels:this.pixels, ...options}));
+		this.runAnimation({animation:'blink', ...options});
 	}
 
 	pulse(options) {
-		var Animation = require('./pulse-animation.js'); 
-		this.runAnimation(new Animation({debug:this.debug, pixels:this.pixels, ...options}));
+		this.runAnimation({ animation: 'pulse', ...options });
 	}
 
 	color(options) {
-		var Animation = require('./color-animation.js'); 
-		this.runAnimation(new Animation({debug:this.debug, pixels:this.pixels, ...options}));
+		this.runAnimation({ animation: 'color', ...options });
 	}
 
 	random(options) {
-		var Animation = require('./random-animation.js'); 
-		this.runAnimation(new Animation({debug:this.debug, pixels:this.pixels, ...options}));
+		this.runAnimation({ animation: 'random', ...options });
 	}
 
 	clock(options) {
-		var Animation = require('./clock-animation.js'); 
-		this.runAnimation(new Animation({debug:this.debug, pixels:this.pixels, ...options}));
+		this.runAnimation({ animation: 'clock', ...options });
 	}
 
 }
