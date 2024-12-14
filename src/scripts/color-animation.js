@@ -14,7 +14,7 @@ module.exports = class extends Animation {
 
     render() {
         this.pixels.fill(this.color);
-
+console.log('sdfsadfas');
         if (this.fade)
             this.pixels.render({transition:'fade', duration:this.fade});
         else
