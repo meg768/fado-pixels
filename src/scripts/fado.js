@@ -12,7 +12,7 @@ module.exports = class Fado {
 		this.queue   = new AnimationQueue({log:false, debug:false});
 
 		this.queue.on('idle', () => {
-			//this.runDefaultAnimation();
+			this.runDefaultAnimation();
 		});
 
 		this.defaultAnimation = {};
