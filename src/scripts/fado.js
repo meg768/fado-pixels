@@ -19,10 +19,11 @@ module.exports = class Fado {
 		this.defaultAnimation.fade = 500;
 		this.defaultAnimation.duration = -1;
 
-//		this.runDefaultAnimation();
+		this.runDefaultAnimation();
 
 		this.queue.on('idle', () => {
-			this.runDefaultAnimation();
+			this.log(`IDLÖE`);
+			//this.runDefaultAnimation();
 		});
 
 
