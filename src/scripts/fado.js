@@ -11,10 +11,6 @@ module.exports = class Fado {
 		this.pixels  = new Neopixels({log:false, debug:false});
 		this.queue   = new AnimationQueue({log:false, debug:false});
 
-		this.queue.on('idle', () => {
-			this.runDefaultAnimation();
-		});
-
 		this.defaultAnimation = {};
 		this.defaultAnimation.animation = 'color';
 		this.defaultAnimation.color = 'green';
@@ -22,6 +18,11 @@ module.exports = class Fado {
 		this.defaultAnimation.duration = -1;
 
 		this.runDefaultAnimation();
+
+		this.queue.on('idle', () => {
+			this.runDefaultAnimation();
+		});
+
 
 	}
 
