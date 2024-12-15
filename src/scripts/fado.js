@@ -24,7 +24,6 @@ module.exports = class Fado {
 		this.defaultAnimation = {};
 		this.defaultAnimation.animation = 'color';
 		this.defaultAnimation.color = color;
-		this.defaultAnimation.fade = 500;
 		this.defaultAnimation.duration = -1;
 
 		this.runAnimation(this.defaultAnimation);
@@ -75,7 +74,7 @@ module.exports = class Fado {
 
 		if (Animation != undefined) {
 			this.debug(`Running animation ${animation}...`)
-			this.queue.enqueue(new FadeAnimation({ debug: this.debug, pixels: this.pixels, fade:500, priority:'!'}));
+			this.queue.enqueue(new FadeAnimation({ debug: this.debug, pixels: this.pixels, priority:'!'}));
 			this.queue.enqueue(new Animation({ debug: this.debug, pixels: this.pixels, ...options }));
 		}
 	}
