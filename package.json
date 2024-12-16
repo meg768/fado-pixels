@@ -1,31 +1,30 @@
 {
-  "name": "fado-pixels",
-  "version": "1.0.2",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "goto-github": "open https://github.com/meg768/fado-pixels",
-    "git-commit": "git add -A && git commit -m '-' && git push",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/meg768/fado-pixels.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/meg768/fado-pixels/issues"
-  },
-  "homepage": "https://github.com/meg768/fado-pixels#readme",
-  "dependencies": {
-    "color": "^2.0.0",
-    "dotenv": "^4.0.0",
-    "rpi-animations": "^1.0.12",
-    "rpi-neopixels": "^1.0.78",
-    "mqtt": "^4.2.6",
-    "sleep": "^6.1.0",
-    "yargs": "^14.2.0",
-    "yow": "^1.0.108"
-  }
+    "name": "fado-pixels",
+    "version": "1.0.2",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "goto-github": "open https://github.com/meg768/fado-pixels",
+        "git-commit": "git add -A && git commit -m '-' && git push"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/meg768/fado-pixels.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/meg768/fado-pixels/issues"
+    },
+    "homepage": "https://github.com/meg768/fado-pixels#readme",
+    "dependencies": {
+        "color": "^2.0.0",
+        "dotenv": "^4.0.0",
+        "rpi-animations": "^1.0.12",
+        "rpi-neopixels": "^1.0.78",
+        "mqtt": "^4.2.6",
+        "sleep": "^6.1.0",
+        "yargs": "^14.2.0",
+        "yow": "^1.0.108"
+    }
 }
