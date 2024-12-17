@@ -10,16 +10,16 @@ module.exports = class Fado {
 		this.log     = typeof log == 'function' ? log : (log ? console.log : () => {});
 		this.pixels  = new Neopixels({log:false, debug:false});
 		this.queue   = new AnimationQueue({log:false, debug:false});
-
+/*
 		this.queue.on('idle', () => {
 			this.runDefaultAnimation();
 		});
 
 		this.setColor('black');
-
+*/
 
 	}
-
+/*
 	setColor(color) {
 		this.defaultAnimation = {};
 		this.defaultAnimation.animation = 'color';
@@ -33,7 +33,7 @@ module.exports = class Fado {
 		this.debug(`Running default animation.`);
 		this.runAnimation(this.defaultAnimation);
 	}
-
+*/
 	runAnimation(params) {
 
 		let FadeAnimation = require('./fade-animation.js');
