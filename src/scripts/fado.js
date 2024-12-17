@@ -43,7 +43,7 @@ module.exports = class Fado {
 
 		switch (animation) {
 			case 'color': {
-				this.defaultAnimation.color = options.color;
+				//this.defaultAnimation.color = options.color;
 
 				Animation = require('./color-animation.js');
 				break;
@@ -75,7 +75,8 @@ module.exports = class Fado {
 		if (Animation != undefined) {
 			this.debug(`Running animation ${animation}...`)
 			//this.queue.enqueue(new FadeAnimation({ debug: this.debug, pixels: this.pixels, priority:'!'}));
-			this.queue.enqueue(new Animation({ debug: this.debug, pixels: this.pixels, priority: '!', ...options }));
+			//this.queue.enqueue(new Animation({ debug: this.debug, pixels: this.pixels, priority: '!', ...options }));
+			this.queue.enqueue(new Animation({ debug: this.debug, pixels: this.pixels, ...options }));
 		}
 	}
 
