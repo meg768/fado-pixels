@@ -1,6 +1,6 @@
 {
     "name": "fado-pixels",
-    "version": "1.0.2",
+    "version": "1.1.6",
     "description": "",
     "main": "index.js",
     "scripts": {
@@ -20,8 +20,8 @@
     "dependencies": {
         "color": "^2.0.0",
         "dotenv": "^4.0.0",
-        "rpi-animations": "^1.0.12",
-        "rpi-neopixels": "^1.0.78",
+        "rpi-animations": "^1.1.6",
+        "rpi-neopixels": "^1.1.6",
         "mqtt": "^4.2.6",
         "sleep": "^6.1.0",
         "yargs": "^14.2.0",
